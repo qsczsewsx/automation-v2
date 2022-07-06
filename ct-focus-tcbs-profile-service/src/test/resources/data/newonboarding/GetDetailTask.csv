@@ -1,0 +1,6 @@
+testCaseName|statusCode|errorMessage|task
+Verify get detail task api case returns data detail correctly for valid request|200|null|task
+Verify get detail task api case actor has no permission handle this task|403|Not Authorized|task
+Verify get detail task api case taskID is not found|400|Task not found|1043
+Verify get detail task api case taskID value is text|400|Task not found|999999999
+Verify get detail task api case taskID value is special word|400|Type mismatch request parameter|taskId

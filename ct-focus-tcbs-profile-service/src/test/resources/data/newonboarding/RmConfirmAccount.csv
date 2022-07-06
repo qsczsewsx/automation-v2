@@ -1,0 +1,5 @@
+testCaseName|statusCode|status|errorMessage|referenceId|fullName|birthday|gender|idPlace|idDate|contactAddress
+Verify rm open account api case response SUCCESS valid request|200|0|Tài Khoản hợp lệ|null|Đào Quý Hùng|1988/09/11|1|Cuc Canh Sat QLHC ve TTXH|2021/04/10|số 191 Bà Triệu, Lê Đại Hành, Hai Bà Trưng
+Verify rm open account api case response ERROR missing BODY|200|2|FSS_CONFIRM_ERROR_BY_CALL_BPM_EXCEPTION|null|null|null|null|null|null|null
+Verify rm open account api case response ERROR referenceId not existed|200|2|FSS_CONFIRM_ERROR_BY_CALL_BPM_EXCEPTION|9959281327585501|Đào Quý Hùng|1988/09/11|1|Cuc Canh Sat QLHC ve TTXH|2021/04/10|số 191 Bà Triệu, Lê Đại Hành, Hai Bà Trưng
+Verify rm open account api case response ERROR referenceId as invalid characters|200|2|FSS_CONFIRM_ERROR_BY_CALL_BPM_EXCEPTION|abcv12333333|Đào Quý Hùng|1988/09/11|1|Cuc Canh Sat QLHC ve TTXH|2021/04/10|số 191 Bà Triệu, Lê Đại Hành, Hai Bà Trưng

@@ -1,0 +1,17 @@
+testCaseName|statusCode|fromDate|toDate|pageSize|pageNumber|errorMessage
+Verify api get r3rd user list case 200 return valid data in the past|200|01/06/2022 00:00:00|06/06/2022 00:00:00|5|1|
+Verify api get r3rd user list case 200 return valid data from the past to the future|200|01/05/2022 00:00:00|31/07/2023 00:00:00|5|1|
+Verify api get r3rd user list case 200 return no data in period time|200|02/02/2020 00:00:00|02/02/2020 00:00:00|5|1|No record found
+Verify api get r3rd user list case 200 return no data in future|200|31/07/2023 00:00:00|31/08/2023 00:00:00|5|1|No record found
+Verify api get r3rd user list case 200 return no data when toDate is greater than fromDate|200|31/05/2022 00:00:00|01/05/2022 00:00:00|5|1|No record found
+Verify api get r3rd user list case 400 param fromDate has wrong format|400|01-05-2022|31/07/2022 00:00:00|5|1|invalid format [FromDate]
+Verify api get r3rd user list case 400 param toDate has wrong format|400|01/05/2022 00:00:00|31-07-2022|5|1|invalid format [ToDate]
+Verify api get r3rd user list case 401 with invalid x-api-key|401|01/05/2022 00:00:00|31/07/2023 00:00:00|5|1|Invalid X-Api-Key
+Verify api get r3rd user list case 400 missing param pageSize|400|01/05/2022 00:00:00|31/07/2023 00:00:00|null|1|Missing request parameter
+Verify api get r3rd user list case 400 missing param pageNumber|400|01/05/2022 00:00:00|31/07/2023 00:00:00|5|null|Missing request parameter
+Verify api get r3rd user list case 400 param pageSize is negative|400|01/05/2022 00:00:00|31/07/2023 00:00:00|-5|1|Invalid request param
+Verify api get r3rd user list case 400 param pageNumber is negative|400|01/05/2022 00:00:00|31/07/2023 00:00:00|5|-1|Invalid request param
+Verify api get r3rd user list case 400 param pageSize is not digit|400|01/05/2022 00:00:00|31/07/2023 00:00:00|abc|1|Type mismatch request parameter
+Verify api get r3rd user list case 400 param pageNumber is not digit|400|01/05/2022 00:00:00|31/07/2023 00:00:00|5|xyz|Type mismatch request parameter
+Verify api get r3rd user list case 200 return no data when pageNumber is greater than pageSize|200|01/05/2022 00:00:00|31/07/2023 00:00:00|5|10|No record found
+Verify api get r3rd user list case 200 return no data when pageNumber expect is greater than actual|200|01/05/2022 00:00:00|31/07/2023 00:00:00|1000|900|No record found

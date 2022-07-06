@@ -1,0 +1,21 @@
+testCaseName|value|condition|statusCode|errorMessage
+Verify API get multi Ia by key is username and fields null|105K100122|null|200|
+Verify API get multi Ia by key is username and fields empty|105K100122|empty|200|
+Verify API get multi Ia by key is usernamefields userSetting|105K100122|userSetting|200|
+Verify API get multi Ia by key is usernamefields iaBankAccounts|105K100122|iaBankAccounts|200|
+Verify API get multi Ia by key is usernamefields basicInfo|105K100122|basicInfo|200|
+Verify API get multi Ia by key is usernamefields userSetting iaBankAccounts|105K100122|userSetting,iaBankAccounts|200|
+Verify API get multi Ia by key is usernamefields userSetting basicInfo|105K100122|userSetting,basicInfo|200|
+Verify API get multi Ia by key is usernamefields iaBankAccounts basicInfo|105K100122|iaBankAccounts,basicInfo|200|
+Verify API get multi Ia by key is usernamefields invalid|105K100122|abcdefgh|200|
+Verify API get multi Ia by key is usernamevalue not exist|9999999999|userSetting,iaBankAccounts,basicInfo|400|Profile not found
+Verify API get multi Ia by key is usernamefields userSetting iaBankAccounts basicInfo|105K100122|userSetting,iaBankAccounts,basicInfo|200|
+Verify API get multi Ia by key is usernamevalue empty||userSetting,iaBankAccounts,basicInfo|400|Profile not found
+Verify API get multi Ia by key is usernamefields personalInfo|105K100122|personalInfo|200|""
+Verify API get multi Ia by key is usernamefields userSetting personalInfo|105K100122|userSetting,personalInfo|200|
+Verify API get multi Ia by key is usernamefields iaBankAccounts personalInfo|105K100122|iaBankAccounts,personalInfo|200|
+Verify API get multi Ia by key is usernamefields basicInfo personalInfo|105K100122|basicInfo,personalInfo|200|
+Verify API get multi Ia by key is usernamefields userSetting iaBankAccounts personalInfo|105K100122|userSetting,iaBankAccounts,personalInfo|200|
+Verify API get multi Ia by key is usernamefields userSetting basicInfo personalInfo|105K100122|userSetting,basicInfo,personalInfo|200|
+Verify API get multi Ia by key is usernamefields iaBankAccounts basicInfo personalInfo|105K100122|iaBankAccounts,basicInfo,personalInfo|200|
+Verify API get multi Ia by key is usernamefields userSetting iaBankAccounts basicInfo personalInfo|105K100122|userSetting,iaBankAccounts,basicInfo,personalInfo|200|

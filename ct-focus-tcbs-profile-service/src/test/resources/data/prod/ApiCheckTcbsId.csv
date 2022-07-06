@@ -1,0 +1,7 @@
+testCaseName|statusCode|tcbsId|erroMsg
+Verify check tcbsId api case 200 with valid request|200|0001400005|
+Verify check tcbsId api case 400 with missing tcbsId param|400||Profile not found
+Verify check tcbsId api case 400 with missing value of tcbsId|400||Profile not found
+Verify check tcbsId api case 400 with value of tcbsId as text|400|tcbsId|User's info not found
+Verify check tcbsId api case 400 with value of tcbsId as special word|400|$001400005|User's info not found
+Verify check tcbsId api case 400 with value of tcbsId as not exist in database|400|000140000|User's info not found

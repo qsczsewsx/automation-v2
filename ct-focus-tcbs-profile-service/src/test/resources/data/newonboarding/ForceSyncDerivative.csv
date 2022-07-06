@@ -1,0 +1,5 @@
+testCaseName|statusCode|errorMessage|referralCode|userName
+Verify force sync derivative api case valid request|200|null|105C101988|105C166876
+Verify force sync derivative api case missing BODY|400|Invalid parameter|null|null
+Verify force sync derivative api case referralCode is empty|400|Mã giới thiệu không hợp lệ|empty|105C166876
+Verify force sync derivative api case referralCode is invalid|400|Mã giới thiệu không hợp lệ|105C101981|105C166876

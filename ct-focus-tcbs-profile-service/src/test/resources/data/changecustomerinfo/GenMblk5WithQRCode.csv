@@ -1,0 +1,4 @@
+testCaseName|statusCode|errorMessage|qrCode
+Verify gen change mblk5 with qrcode api case valid request|200|null|valid
+Verify gen change mblk5 with qrcode api case missing BODY|400|Invalid parameter|empty
+Verify gen change mblk5 with qrcode api case param qrCode has wrong format|200|null|abc

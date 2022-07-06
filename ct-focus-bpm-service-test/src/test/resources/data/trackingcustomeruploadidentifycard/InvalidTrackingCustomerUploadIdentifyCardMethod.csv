@@ -1,0 +1,7 @@
+TestCaseName |HeaderAuthorization |HeaderKey |HeaderValue |InputBody |ExpectedStatus |Method
+Verify httpStatusCode ""405"" is getting when request has invalid method GET |Basic YnBtX2FwaV9wcm9maWxlOjEyMzQ1NkAxMjNfcHJvZmlsZQ== |Content-Type |application/json |"{\"tcbsId\": \"0001519077\", \"code105C\":\"105C519077\"}" |405 |GET
+Verify httpStatusCode ""405"" is getting when request has invalid method PUT |Basic YnBtX2FwaV9wcm9maWxlOjEyMzQ1NkAxMjNfcHJvZmlsZQ== |Content-Type |application/json |"{\"tcbsId\": \"0001519077\", \"code105C\":\"105C519077\"}" |405 |PUT
+Verify httpStatusCode ""405"" is getting when request has invalid method PATCH |Basic YnBtX2FwaV9wcm9maWxlOjEyMzQ1NkAxMjNfcHJvZmlsZQ== |Content-Type |application/json |"{\"tcbsId\": \"0001519077\", \"code105C\":\"105C519077\"}" |405 |PATCH
+Verify httpStatusCode ""405"" is getting when request has invalid method DELETE |Basic YnBtX2FwaV9wcm9maWxlOjEyMzQ1NkAxMjNfcHJvZmlsZQ== |Content-Type |application/json |"{\"tcbsId\": \"0001519077\", \"code105C\":\"105C519077\"}" |405 |DELETE
+Verify httpStatusCode ""405"" is getting when request has invalid method HEAD |Basic YnBtX2FwaV9wcm9maWxlOjEyMzQ1NkAxMjNfcHJvZmlsZQ== |Content-Type |application/json |"{\"tcbsId\": \"0001519077\", \"code105C\":\"105C519077\"}" |405 |HEAD
+Verify httpStatusCode ""405"" is getting when request has invalid method OPTIONS |Basic YnBtX2FwaV9wcm9maWxlOjEyMzQ1NkAxMjNfcHJvZmlsZQ== |Content-Type |application/json |"{\"tcbsId\": \"0001519077\", \"code105C\":\"105C519077\"}" |405 |OPTIONS

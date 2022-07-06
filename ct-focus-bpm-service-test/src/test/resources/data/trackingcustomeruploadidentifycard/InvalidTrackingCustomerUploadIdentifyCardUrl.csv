@@ -1,0 +1,2 @@
+TestCaseName |HeaderAuthorization |HeaderKey |HeaderValue |InputBody |Url |ExpectedStatus |Method
+Verify httpStatusCode ""404"" is getting when request has invalid url: /trackingUploadIdentifyCard |Basic YnBtX2FwaV9wcm9maWxlOjEyMzQ1NkAxMjNfcHJvZmlsZQ== |Content-Type |application/json |"{\"tcbsId\": \"0001519077\", \"code105C\":\"105C519077\"}" |/trackingUploadIdentifyCard |404 |POST

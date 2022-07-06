@@ -1,0 +1,8 @@
+testCaseName|statusCode|code|errorMessage|Expected
+Verify API agency search with code is empty|200|||data list is empty
+Verify API agency search with code is missing|200|||get all data list
+Verify API agency search with code is invalid|200|#$%^||data list is empty
+Verify API agency search with code is valid but it's not exist|200|TEST||data list is empty
+Verify API agency search with code is valid and exist|200|HCM||
+Verify API get all partner with Authorization is incorrect|400||Internal Error|display error message
+Verify API get all partner with Authorization is correct|200|||

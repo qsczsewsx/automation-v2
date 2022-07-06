@@ -1,0 +1,2 @@
+testCaseName|statusCode|errorMessage
+Verify bank sync H2H api case valid request|200|null

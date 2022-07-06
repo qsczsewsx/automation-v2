@@ -1,0 +1,10 @@
+testCaseName|authorization|taskId|statusCode|errorMsg
+Verify maker send approve api case 400 with taskId as not assigned to maker|maker|1161|400|This task is not yours
+Verify maker send approve api case 200 with valid request|maker|#taskId#|200|
+Verify maker send approve api case 400 with missing value in taskId|maker||400|getTaskId is null
+Verify maker send approve api case 400 with value in taskId as 9999999|maker|9999999|400|Task not found
+Verify maker send approve api case 400 with value in taskId as taskId|maker|taskId|400|Invalid parameter
+Verify maker send approve api case 400 with value in taskId as special word|maker|#$#|400|Invalid parameter
+Verify maker send approve api case 400 with value in taskId as done task|maker|687|400|Task is close
+Verify maker send approve api case 400 with value in authorization as checker|checker|#taskId#|400|Internal Error
+Verify maker send approve api case 400 with account is not belong to owner|maker|#taskId#|400|The account name does not match the account number

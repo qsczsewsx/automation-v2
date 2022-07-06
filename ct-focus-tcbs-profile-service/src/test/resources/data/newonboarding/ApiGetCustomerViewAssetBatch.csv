@@ -1,0 +1,6 @@
+testCaseName|statusCode|tcbsIds|errMess
+Verify ai get customer's view asset data case 401 with user having no permission|401|gen|Invalid X-Api-Key
+Verify ai get customer's view asset data case 200 with tcbsIds containing invalid tcbsId form|200|@@@@@@@@!!!,howAREyOU|
+Verify ai get customer's view asset data case 400 with empty tcbsIds list|400||Min batch size 1
+Verify ai get customer's view asset data case 200 with tcbsIds containing duplicated tcbsId|200|genDuplicated|
+Verify ai get customer's view asset data case 200 with valid tcbsIds|200|gen|

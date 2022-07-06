@@ -1,0 +1,7 @@
+testCaseName|statusCode|errorMessage|sessionIDs
+Verify add sessionID to black list success|200|null|sessionID
+Verify add to black list missing sessionID|400|invalid input->sessionIds existed:   |
+Verify add to black list with sessionID not exist|200|invalid input->sessionIds existed: 105C883322|105C883322
+Verify add to black list with sessionID already exist in black list|200|invalid input->sessionIds existed|b16d2215-9004-460e-8435-e0277613fad1
+Verify add to black list missing body|400|invalid format|
+Verify add to black list multiple sessionId |200||sessionID, e61e6dce-ab50-4ae4-a58d-b2c8b131140f

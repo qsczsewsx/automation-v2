@@ -1,0 +1,7 @@
+testCaseName|statusCode|id|errorMessage
+Verify api with ID is not exist in table R3RD_USER|400|9999999|Cannot find user with id = 9999999
+Verify api WITH ID is correct and exist in table R3RD_USER|200|gen|""
+Verify api with missing Id param|400|""|Missing request parameter
+Verify api with ID is empty|400|empty|(id) is required
+Verify api with authorization is incorrect|403||Not Authorization
+Verify api with ID is text|400|aaa|Type mismatch request parameter

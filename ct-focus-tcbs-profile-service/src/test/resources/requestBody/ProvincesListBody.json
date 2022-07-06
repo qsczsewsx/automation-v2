@@ -1,0 +1,256 @@
+{
+  "provinces": [
+    {
+      "divisionCode": "HA-NOI",
+      "divisionName": "Hà Nội"
+    },
+    {
+      "divisionCode": "HO-CHI-MINH",
+      "divisionName": "Hồ Chí Minh"
+    },
+    {
+      "divisionCode": "DA-NANG",
+      "divisionName": "Đà Nẵng"
+    },
+    {
+      "divisionCode": "HAI-PHONG",
+      "divisionName": "Hải Phòng"
+    },
+    {
+      "divisionCode": "CAN-THO",
+      "divisionName": "Cần Thơ"
+    },
+    {
+      "divisionCode": "AN-GIANG",
+      "divisionName": "An Giang"
+    },
+    {
+      "divisionCode": "BARIA-VUNGTAU",
+      "divisionName": "Bà Rịa - Vũng Tàu"
+    },
+    {
+      "divisionCode": "BAC-GIANG",
+      "divisionName": "Bắc Giang"
+    },
+    {
+      "divisionCode": "BAC-KAN",
+      "divisionName": "Bắc Kạn"
+    },
+    {
+      "divisionCode": "BAC-LIEU",
+      "divisionName": "Bạc Liêu"
+    },
+    {
+      "divisionCode": "BAC-NINH",
+      "divisionName": "Bắc Ninh"
+    },
+    {
+      "divisionCode": "BEN-TRE",
+      "divisionName": "Bến Tre"
+    },
+    {
+      "divisionCode": "BINH-DINH",
+      "divisionName": "Bình Định"
+    },
+    {
+      "divisionCode": "BINH-DUONG",
+      "divisionName": "Bình Dương"
+    },
+    {
+      "divisionCode": "BINH-PHUOC",
+      "divisionName": "Bình Phước"
+    },
+    {
+      "divisionCode": "BINH-THUAN",
+      "divisionName": "Bình Thuận"
+    },
+    {
+      "divisionCode": "CA-MAU",
+      "divisionName": "Cà Mau"
+    },
+    {
+      "divisionCode": "CAO-BANG",
+      "divisionName": "Cao Bằng"
+    },
+    {
+      "divisionCode": "DAC-LAK",
+      "divisionName": "Đắc Lắc"
+    },
+    {
+      "divisionCode": "DAC-NONG",
+      "divisionName": "Đắc Nông"
+    },
+    {
+      "divisionCode": "DIEN-BIEN",
+      "divisionName": "Điện Biên"
+    },
+    {
+      "divisionCode": "DONG-NAI",
+      "divisionName": "Đồng Nai"
+    },
+    {
+      "divisionCode": "DONG-THAP",
+      "divisionName": "Đồng Tháp"
+    },
+    {
+      "divisionCode": "GIA-LAI",
+      "divisionName": "Gia Lai"
+    },
+    {
+      "divisionCode": "HA-GIANG",
+      "divisionName": "Hà Giang"
+    },
+    {
+      "divisionCode": "HA-NAM",
+      "divisionName": "Hà Nam"
+    },
+    {
+      "divisionCode": "HA-TINH",
+      "divisionName": "Hà Tĩnh"
+    },
+    {
+      "divisionCode": "HAI-DUONG",
+      "divisionName": "Hải Dương"
+    },
+    {
+      "divisionCode": "HAU-GIANG",
+      "divisionName": "Hậu Giang"
+    },
+    {
+      "divisionCode": "HOA-BINH",
+      "divisionName": "Hoà Bình"
+    },
+    {
+      "divisionCode": "HUNG-YEN",
+      "divisionName": "Hưng Yên"
+    },
+    {
+      "divisionCode": "KHANH-HOA",
+      "divisionName": "Khánh Hoà"
+    },
+    {
+      "divisionCode": "KIEN-GIANG",
+      "divisionName": "Kiên Giang"
+    },
+    {
+      "divisionCode": "KON-TUM",
+      "divisionName": "Kon Tum"
+    },
+    {
+      "divisionCode": "LAI-CHAU",
+      "divisionName": "Lai Châu"
+    },
+    {
+      "divisionCode": "LAM-DONG",
+      "divisionName": "Lâm Đồng"
+    },
+    {
+      "divisionCode": "LANG-SON",
+      "divisionName": "Lạng Sơn"
+    },
+    {
+      "divisionCode": "LAO-CAI",
+      "divisionName": "Lào Cai"
+    },
+    {
+      "divisionCode": "LONG-AN",
+      "divisionName": "Long An"
+    },
+    {
+      "divisionCode": "NAM-DINH",
+      "divisionName": "Nam Định"
+    },
+    {
+      "divisionCode": "NGHE-AN",
+      "divisionName": "Nghệ An"
+    },
+    {
+      "divisionCode": "NINH-BINH",
+      "divisionName": "Ninh Bình"
+    },
+    {
+      "divisionCode": "NINH-THUAN",
+      "divisionName": "Ninh Thuận"
+    },
+    {
+      "divisionCode": "PHU-THO",
+      "divisionName": "Phú Thọ"
+    },
+    {
+      "divisionCode": "QUANG-BINH",
+      "divisionName": "Quảng Bình"
+    },
+    {
+      "divisionCode": "QUANG-NAM",
+      "divisionName": "Quảng Nam"
+    },
+    {
+      "divisionCode": "QUANG-NGAI",
+      "divisionName": "Quảng Ngãi"
+    },
+    {
+      "divisionCode": "QUANG-NINH",
+      "divisionName": "Quảng Ninh"
+    },
+    {
+      "divisionCode": "QUANG-TRI",
+      "divisionName": "Quảng Trị"
+    },
+    {
+      "divisionCode": "SOC-TRANG",
+      "divisionName": "Sóc Trăng"
+    },
+    {
+      "divisionCode": "SON-LA",
+      "divisionName": "Sơn La"
+    },
+    {
+      "divisionCode": "TAY-NINH",
+      "divisionName": "Tây Ninh"
+    },
+    {
+      "divisionCode": "THAI-BINH",
+      "divisionName": "Thái Bình"
+    },
+    {
+      "divisionCode": "THAI-NGUYEN",
+      "divisionName": "Thái Nguyên"
+    },
+    {
+      "divisionCode": "THANH-HOA",
+      "divisionName": "Thanh Hoá"
+    },
+    {
+      "divisionCode": "THUATHIEN-HUE",
+      "divisionName": "Thừa Thiên Huế"
+    },
+    {
+      "divisionCode": "TIEN-GIANG",
+      "divisionName": "Tiền Giang"
+    },
+    {
+      "divisionCode": "TRA-VINH",
+      "divisionName": "Trà Vinh"
+    },
+    {
+      "divisionCode": "TUYEN-QUANG",
+      "divisionName": "Tuyên Quang"
+    },
+    {
+      "divisionCode": "VINH-LONG",
+      "divisionName": "Vĩnh Long"
+    },
+    {
+      "divisionCode": "VINH-PHUC",
+      "divisionName": "Vĩnh Phúc"
+    },
+    {
+      "divisionCode": "YEN-BAI",
+      "divisionName": "Yên Bái"
+    },
+    {
+      "divisionCode": "PHU-YEN",
+      "divisionName": "Phú Yên"
+    }
+  ]
+}

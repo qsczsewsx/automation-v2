@@ -1,0 +1,10 @@
+testCaseName|statusCode|errorMessage|token|stepupExp|sotpSign
+Verify authen hb session api case success|200|null|success|2423523525|bec3d893-312f-4087-90cc-15b5a1caa830
+Verify authen hb session api case sotpSign is empty|200|null|success|2423523525|
+Verify authen hb session api case stepup_exp is empty|400|Invalid format|success|empty|bec3d893-312f-4087-90cc-15b5a1caa830
+Verify authen hb session api case missing BODY|400|Invalid format|success|2423523525|
+Verify authen hb session api case token has wrong format|400|Invalid JWT token format|suer|2423523525|
+Verify authen hb session api case token is expired|400|Token is expried|eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzaXRfYXV0aGVuX3NlcnZpY2UiLCJleHAiOjE2NDc2NzIzODMsImp0aSI6IiIsImlhdCI6MTY0NzY2MTU4Mywic3ViIjoiMDAwMTY5Mzk5NyIsImN1c3RvZHlJRCI6IjEwNUM3OTM5OTciLCJlbWFpbCI6InR5dWk1NDY3QGdtYWlsLmNvbSIsInJvbGVzIjpbImN1c3RvbWVyIl0sInN0ZXB1cF9leHAiOjAsInNvdHBfc2lnbiI6IiIsImNsaWVudF9rZXkiOiJvN0kxaFR2QW5Wa3MwOUZBWXRrYzF3WldyTGx5N01wNSIsInNlc3Npb25JRCI6ImRjNDY5NzJjLTliMDAtNDU4NS04ODNmLTFkZDNkMWE3ZTdlZSIsImFjY291bnRfc3RhdHVzIjoiMSIsIm90cCI6IiIsIm90cFR5cGUiOiIiLCJvdHBTb3VyY2UiOiJUQ0lOVkVTVCJ9.uc-wByNMrg-kbl0fq2ltUb4_SQdxz0dEAzVWUDRqBAKd-DfxA74n8slEfSO6jsWLeehowlSmd6JbiDdaiOzz3Pj4aiKlhhuXqswCa7R-ueo0CygTmgL0VAnkAYfTK9LHjyTeksdYKEDK26d3k8UXeeu_7wNacsMon1EUb6vKGaPLIGqyKZmryrVgMU4yhuOPDuK8kAZgweaR1uMcBAqBvTlk_c8lTrhRDywCreeVKOO65zbbwlhMJAAm81S5Ky1pKdN6oNt0Y9XMPsNjCgYk0owadoXLVA7oqygGw18rmTyLuNZMDkwaopBU3sLlTlCvRUj5lZFQVv27NQ3v5LSnvw|2423523525|
+Verify authen hb session api case token is empty|400|Invalid JWT token format->token is required|empty|2423523525|
+Verify authen hb session api case stepup_exp as 0 and sotp_sign is empty|400|Invalid input->one of stepup_exp and sotp_sign is required|success|0|empty
+Verify authen hb session api case stepup_exp is not a digit|400|Invalid format|success|abc|

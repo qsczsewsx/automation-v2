@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServer2012Dialect</property>
+        <property name="show_sql">false</property>
+        <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+
+        <mapping class="com.tcbs.automation.tcinvest.InvHoliday"/>
+        <mapping class="com.tcbs.automation.tcinvest.InvGlobalAttr"/>
+        <mapping class="com.tcbs.automation.tcinvest.InvBondAttr"/>
+        <mapping class="com.tcbs.automation.tcinvest.InvProductAttr"/>
+        <mapping class="com.tcbs.automation.tcinvest.ifund.entity.InvOrder"/>
+        <mapping class="com.tcbs.automation.tcinvest.ifund.entity.InvOrderMatched"/>
+        <mapping class="com.tcbs.automation.tcinvest.ifund.entity.InvOrderAttr"/>
+        <mapping class="com.tcbs.automation.tcinvest.ifund.entity.InvGroupOrder"/>
+        <mapping class="com.tcbs.automation.tcinvest.ifund.entity.InvFund"/>
+        <mapping class="com.tcbs.automation.tcinvest.ifund.entity.InvFundMarketData"/>
+        <mapping class="com.tcbs.automation.tcinvest.ifund.entity.InvFundSupervisor"/>
+        <mapping class="com.tcbs.automation.tcinvest.InvPlanInstance"/>
+        <mapping class="com.tcbs.automation.tcinvest.InvPlanAuditLog"/>
+        <mapping class="com.tcbs.automation.tcinvest.InvPlanGoals"/>
+        <mapping class="com.tcbs.automation.tcinvest.ConversionBondTracking"/>
+        <mapping class="com.tcbs.automation.tcinvest.InvBondCoupon"/>
+
+
+        <mapping class="com.tcbs.automation.tcinvest.ifund.entity.InvFundSipConfig"/>
+        <mapping class="com.tcbs.automation.tcinvest.ifund.entity.InvInternalUserInfo"/>
+        <mapping class="com.tcbs.automation.tcinvest.ifund.entity.InvInternalUserUnderlyingProduct"/>
+        <mapping class="com.tcbs.automation.tcinvest.ifund.entity.InvFundNavManager"/>
+    </session-factory>
+</hibernate-configuration>

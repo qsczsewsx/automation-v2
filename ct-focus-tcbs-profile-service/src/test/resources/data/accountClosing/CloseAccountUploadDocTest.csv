@@ -1,0 +1,9 @@
+testCaseName|taskId|fileName|fileContents|statusCode|errorMessage
+Verify upload file api case 200 with fileName as xlsx|taskId|dummy.xlsx|file|200|null
+Verify upload file api case 400 with missing value in taskId||dummy.xlsx|file|400|({0}) is required
+Verify upload file api case 400 with value in taskId not exsit|98gghu|dummy.xlsx|file|400|Invalid parameter
+Verify upload file api case 400 with missing value in fileName|taskId||file|400|({0}) is required
+Verify upload file api case 400 with missing value in fileContents|taskId|dummy.xlsx||400|({0}) is required
+Verify upload file api case 400 with file size > 20MB|taskId|dummy.xlsx|file lon hon 20mb|200|null
+Verify upload file api case 200 with file size <= 20MB|taskId|dummy.xlsx|file|200|null
+Verify upload file api case 500 with fileContent not Base64|taskId|dummy.xlsx|file invalid|500|

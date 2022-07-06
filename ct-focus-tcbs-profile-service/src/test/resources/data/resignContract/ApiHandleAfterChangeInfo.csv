@@ -1,0 +1,12 @@
+testCaseName|statusCode|status|tcbsId|statusKey|statusValue|errMess
+Verify api handle after change info case 401 with invalid x-api-key|401||0001954259|||Invalid X-Api-Key
+Verify api handle after change info case 404 with null tcbsId|404|||||No message available
+Verify api handle after change info case 400 with tcbsId containing word characters|200|400|helloThisISME|||Not exist in list need resign
+Verify api handle after change info case 400 with tcbsId containing special characters|200|400|@@@@@123|||Not exist in list need resign
+Verify api handle after change info case 200 with customer that is verified by AMOPs|200|200|0001954259|RESIGN_STATUS|VERIFIED|Not need to handle
+Verify api handle after change info case 200 with customer that waits to be verified by AMOPs|200|200|0001954259|RESIGN_STATUS|WAIT_FOR_VERIFY|Not need to handle
+Verify api handle after change info case 200 with customer that dont need to update information|200|200|0001954259|RESIGN_STATUS|WAIT_CUSTOMER|Not need to handle
+Verify api handle after change info case 200 with customer that is updating information|200|200|0001954259|RESIGN_STATUS|WAIT_CHANGE_INFO|
+Verify api handle after change info case 200 with customer that already complete updating information|200|200|0001954259|RESIGN_STATUS|HAS_CHANGE_INFO|Not need to handle
+Verify api handle after change info case 400 with customer that has status value as null|200|200|0001954259|RESIGN_STATUS||Not need to handle
+Verify api handle after change info case 400 with customer that is not in resign list|200|400|0001CA7085|||Not exist in list need resign

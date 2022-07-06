@@ -1,0 +1,16 @@
+testCaseName|testCaseKey|taskId|fieldsVal|onboardingStatus|statusCode|errorMsg
+Verify get cust info api case 200 with missing value of param onboarding|missing value of param onboarding in Url|761|personalInfo,accountStatus,bankAccounts|""|200|
+Verify get cust info api case 200 with value of param onboarding as false|value of param onboarding as false|761|personalInfo,accountStatus,bankAccounts|false|200|
+Verify get cust info api case 200 with missing param onboarding|missing param onboarding in Url|761|personalInfo,accountStatus,bankAccounts||200|
+Verify get cust info api case 200 with missing fields|missing fields in Url|761||true|200|
+Verify get cust info api case 200 with fields as personalInfo|value of param field as only personalInfo|761|personalInfo|true|200|
+Verify get cust info api case 200 with field as accountStatus|value of param field as only accountStatus|761|accountStatus|true|200|
+Verify get cust info api case 200 with field as bankAccounts|value of param field as only bankAccounts|761|bankAccounts|true|200|
+Verify get cust info api case 200 with valid request|value of param field as all|761|personalInfo,accountStatus,bankAccounts|true|200|
+Verify get cust info api case 200 with invalid value in fields|contained invalid value in fields|761|personalInfoaccountStatusbankAccounts|true|200|
+Verify get cust info api case 200 with missing value in fields|missing value in fields|761||true|200|
+Verify get cust info api case 400 with value of param taskId as special word|which is contained value of param taskId in Url as special word|2!#!2|personalInfo,accountStatus,bankAccounts|true|400|Type mismatch request parameter
+Verify get cust info api case 400 with value of param taskId as 99999999|which is contained not exist value of param taskId in Url as 99999999|9999999|personalInfo,accountStatus,bankAccounts|true|400|Task not found
+Verify get cust info api case 404 with missing value of param taskId|which is missing value of param taskId in Url||personalInfo,accountStatus,bankAccounts|true|404|No message available
+Verify get cust info api case 400 with value of param taskId as text|which is contained value of param taskId in Url as text|taskId|personalInfo,accountStatus,bankAccounts|true|400|Type mismatch request parameter
+Verify get cust info api case 400 with value of param onboarding not as true or false|which is value of param onboarding not as true or false|761|personalInfo,accountStatus,bankAccounts|trealse|400|Type mismatch request parameter

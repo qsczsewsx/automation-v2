@@ -1,0 +1,24 @@
+{
+  "qrCode": "#qrCode#",
+  "data": [
+    {
+      "newFullName": "",
+      "oldFullName": "Nguyen Thanh Ha",
+      "newIdNumber": "",
+      "oldIdNumber": "",
+      "newIdDate": "11/12/2022",
+      "oldIdDate": "20/10/2021",
+      "newIdType": "",
+      "oldIdType": "",
+      "newCustype": "",
+      "oldCustype": "",
+      "newNationality": "",
+      "oldNationality": "",
+      "newAddress": "",
+      "oldAddress": "",
+      "newCode105C": "",
+      "oldCode105C": "105C166656",
+      "reason": ""
+    }
+  ]
+}

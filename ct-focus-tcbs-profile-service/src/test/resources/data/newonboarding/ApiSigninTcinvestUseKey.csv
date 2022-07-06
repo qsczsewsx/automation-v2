@@ -1,0 +1,4 @@
+testCaseName|statusCode|errMess|loginKey
+Verify api login use login key case 400 with null login key |400|one of username, email and phone must be present|
+Verify api login use login key case 400 with login key containing special characters|500|internal server error|Login@@Key
+Verify api login use login key case 200 with correct login key|200||gen

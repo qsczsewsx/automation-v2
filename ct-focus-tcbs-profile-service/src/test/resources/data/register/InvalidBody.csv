@@ -1,0 +1,5 @@
+description |bodyPathFile
+Verify httpStatusCode 400 is getting when request has invalid body 1|src/test/resources/requestBody/InvalidBody1.json
+Verify httpStatusCode 400 is getting when request has invalid body 2|src/test/resources/requestBody/InvalidBody2.json
+Verify httpStatusCode 400 is getting when request has invalid body 3|src/test/resources/requestBody/InvalidBody3.json
+Verify httpStatusCode 400 is getting when request has invalid body 4|src/test/resources/requestBody/InvalidBody4.json

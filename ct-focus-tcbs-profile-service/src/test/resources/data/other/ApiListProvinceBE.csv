@@ -1,0 +1,7 @@
+testCaseName|statusCode|countryCode|errorMsg
+Verify list province api case with valid request|200|VN|
+Verify list province api case user has no permission|403|VN|Not Authorized
+Verify list province api case with missing param countryCode|200||
+Verify list province api case with value of countryCode as empty|200||
+Verify list province api case with value of countryCode as lowercase|400|vn|Provinces not found
+Verify list province api case with value of countryCode as invalid value|400|V|Provinces not found

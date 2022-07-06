@@ -1,0 +1,11 @@
+testCaseName|statusCode|tcbsId|errorMessage|custodyCd|custName|birthday|cardId|idDate|expireDate|idPlace|address
+Verify send custom msg to derivative api case valid request|200|10000000400|null|105C090011|Trần Hải Long|20/09/1993|001876225858|10/04/2021|20/09/2033|Cuc Canh Sat QLHC ve TTXH|số 1 Thiền Quang, Hoàn Kiếm
+Verify send custom msg to derivative api case user has no permission|403|10000000400|Not Authorized|105C090011|Trần Hải Long|20/09/1993|001876225858|10/04/2021|20/09/2033|Cuc Canh Sat QLHC ve TTXH|số 1 Thiền Quang, Hoàn Kiếm
+Verify send custom msg to derivative api case missing BODY|400|empty|Invalid parameter|empty|empty|empty|empty|empty|empty|empty|empty
+Verify send custom msg to derivative api case missing value of param tcbsId|400|empty|Wrong format of tcbsid|empty|Trần Hải Long|20/09/1993|001876225858|10/04/2021|20/09/2033|Cuc Canh Sat QLHC ve TTXH|số 1 Thiền Quang, Hoàn Kiếm
+Verify send custom msg to derivative api case missing value of param custName|400|10000000400|Ten Khach hang dang trong <CUST_NAME=>|105C090011|empty|20/09/1993|001876225858|10/04/2021|20/09/2033|Cuc Canh Sat QLHC ve TTXH|số 1 Thiền Quang, Hoàn Kiếm
+Verify send custom msg to derivative api case missing value of param cardId|400|10000000400|So DKSH dang trong <CARD_ID=>|105C090011|Trần Hải Long|20/09/1993|empty|10/04/2021|20/09/2033|Cuc Canh Sat QLHC ve TTXH|số 1 Thiền Quang, Hoàn Kiếm
+Verify send custom msg to derivative api case missing value of param idDate|400|10000000400|must not be empty|105C090011|Trần Hải Long|20/09/1993|001876225858|empty|20/09/2033|Cuc Canh Sat QLHC ve TTXH|số 1 Thiền Quang, Hoàn Kiếm
+Verify send custom msg to derivative api case missing value of param idPlace|400|10000000400|must not be empty|105C090011|Trần Hải Long|20/09/1993|001876225858|10/04/2021|20/09/2033|empty|số 1 Thiền Quang, Hoàn Kiếm
+Verify send custom msg to derivative api case missing value of param address|400|10000000400|must not be empty|105C090011|Trần Hải Long|20/09/1993|001876225858|10/04/2021|20/09/2033|Cuc Canh Sat QLHC ve TTXH|empty
+Verify send custom msg to derivative api case tcbsId does not exist|400|0001388896|Profile not found|105C888999|Trần Hải Long|20/09/1993|001876225858|10/04/2021|20/09/2033|Cuc Canh Sat QLHC ve TTXH|số 1 Thiền Quang, Hoàn Kiếm

@@ -1,0 +1,11 @@
+testCaseName|statusCode|tcbsId|idNumber|birthDate|name|errorMessage|expectedStatus
+Verify check AMLock api case customer idNumber is on the alert list of AMLOCK|200|10000210433|77091001659|1998-11-03|NGUYEN THUC ANH||2
+Verify check AMLock api case customer name and birthDate is on the alert list of AMLOCK|200|10000210433|999997812|1991-09-30|VO MINH TIEN||2
+Verify check AMLock api case customer is not on the alert list of AMLOCK|200|10000210433|098371839102|1990-07-13|Nguyễn Thanh Tùng||1
+Verify check AMLock api case missing BODY|400|empty|empty|empty|empty|Invalid parameter|0
+Verify check AMLock api case param tcbsId is empty|400|empty|241697812|1996-07-11|VU NGUYEN BAO QUYEN|(tcbsId) is required|0
+Verify check AMLock api case param idNumber is empty|400|10000210433|empty|1996-07-11|VU NGUYEN BAO QUYEN|is required|0
+Verify check AMLock api case param birthDate is empty|400|10000210433|241697812|empty|VU NGUYEN BAO QUYEN|is required|0
+Verify check AMLock api case param name is empty|400|10000210433|241697812|1996-07-11|empty|is required|0
+Verify check AMLock api case tcbsId is not found|400|99999999999|241697812|1996-07-11|VU NGUYEN BAO QUYEN|Profile not found|0
+Verify check AMLock api case birthDate has wrong format|200|10000210433|241697812|11/07/1996|VU NGUYEN BAO QUYEN||0

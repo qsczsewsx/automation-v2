@@ -1,0 +1,4 @@
+testcaseName|id|statusCode|errorMsg
+Verify api get error stp transaction detail case 403 with Authorization key is invalid|22|403|Not Authorized
+Verify api get error stp transaction detail case 400 with id doesn't exist |9999|400|Invalid transaction
+Verify api get error stp transaction detail case 200 with id is valid|245|200|

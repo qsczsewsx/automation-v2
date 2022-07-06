@@ -1,0 +1,21 @@
+testCaseName|statusCode|errorMessage|token|type|otp|otpType|otpSource|action|resource
+Verify author validation api case success 1 otpSource TCINVEST|200|null|success|stepup|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all
+Verify author validation api case success 2 otpSource TCINVEST|200|null|success|sotp|111111|SMS|TCINVEST|rest:POST|/tcbs-h2h-gw-biz/v1/stock/withdraw
+Verify author validation api case success 3 otpSource HB|200|null|success|stepup|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/create-sell-order
+Verify author validation api case success 4 otpSource WT|200|null|success|stepup|111111|TOTP|WT|rest:POST|/wealth-lending/v1/pawn/sign/223
+Verify author validation api case missing BODY|400|invalid format|||||||
+Verify author validation api case token has wrong format|400|invalid input->token contains an invalid number of segments|suer|stepup|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all
+Verify author validation api case token is expired|400|invalid input->token is expried|eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzaXRfYXV0aGVuX3NlcnZpY2UiLCJleHAiOjE2NDc2NzIzODMsImp0aSI6IiIsImlhdCI6MTY0NzY2MTU4Mywic3ViIjoiMDAwMTY5Mzk5NyIsImN1c3RvZHlJRCI6IjEwNUM3OTM5OTciLCJlbWFpbCI6InR5dWk1NDY3QGdtYWlsLmNvbSIsInJvbGVzIjpbImN1c3RvbWVyIl0sInN0ZXB1cF9leHAiOjAsInNvdHBfc2lnbiI6IiIsImNsaWVudF9rZXkiOiJvN0kxaFR2QW5Wa3MwOUZBWXRrYzF3WldyTGx5N01wNSIsInNlc3Npb25JRCI6ImRjNDY5NzJjLTliMDAtNDU4NS04ODNmLTFkZDNkMWE3ZTdlZSIsImFjY291bnRfc3RhdHVzIjoiMSIsIm90cCI6IiIsIm90cFR5cGUiOiIiLCJvdHBTb3VyY2UiOiJUQ0lOVkVTVCJ9.uc-wByNMrg-kbl0fq2ltUb4_SQdxz0dEAzVWUDRqBAKd-DfxA74n8slEfSO6jsWLeehowlSmd6JbiDdaiOzz3Pj4aiKlhhuXqswCa7R-ueo0CygTmgL0VAnkAYfTK9LHjyTeksdYKEDK26d3k8UXeeu_7wNacsMon1EUb6vKGaPLIGqyKZmryrVgMU4yhuOPDuK8kAZgweaR1uMcBAqBvTlk_c8lTrhRDywCreeVKOO65zbbwlhMJAAm81S5Ky1pKdN6oNt0Y9XMPsNjCgYk0owadoXLVA7oqygGw18rmTyLuNZMDkwaopBU3sLlTlCvRUj5lZFQVv27NQ3v5LSnvw|stepup|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all
+Verify author validation api case token is empty|400|invalid input->require at least subjects or token in the request body|empty|stepup|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all
+Verify author validation api case token has expired stepup_exp|403||success|stepup|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all
+Verify author validation api case token has expired sotp_sign 1|403||success|sotp|111111|SMS|TCINVEST|rest:POST|/tcbs-h2h-gw-biz/v1/stock/withdraw
+Verify author validation api case token has expired sotp_sign 2|403||success|sotp|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/register-with-authorized-firm
+Verify author validation api case token has otpSource HB and resource does not match|403||success|stepup|111111|SMS|HB|rest:POST|/iftrading/v2/order/cancel/all
+Verify author validation api case token has otpSource HB and resource does not match 2|403||success|stepup|111111|SMS|HB|rest:POST|/wealth-lending/v1/pawn/prepayment
+Verify author validation api case token has otpSource TCINVEST and resource does not match|403||success|stepup|111111|SMS|TCINVEST|rest:POST|/cd-trading/v2/orders/cds/create-sell-order
+Verify author validation api case token has otpSource TCINVEST and resource does not match 2|403||success|stepup|111111|SMS|TCINVEST|rest:POST|/wealth-lending/v1/pawn/prepayment
+Verify author validation api case token has otpSource WT and resource does not match|403||success|stepup|111111|SMS|WT|rest:POST|/cd-trading/v2/orders/cds/create-sell-order
+Verify author validation api case token has otpSource WT and resource does not match 2|403||success|stepup|111111|SMS|WT|rest:POST|/iftrading/v2/order/cancel/all
+Verify author validation api case action is empty|400|invalid input->action is required|success|stepup|111111|SMS|TCINVEST|empty|/iftrading/v2/order/cancel/all
+Verify author validation api case resource is empty|400|invalid input->resource is required|success|stepup|111111|SMS|TCINVEST|rest:POST|empty
+Verify author validation api case token has stepup_exp as negative digit|403||success|stepup|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all

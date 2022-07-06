@@ -1,0 +1,8 @@
+testCaseName|statusCode|keys|value|erroMsg
+Verify check account exist case 200 with value of keyValue as idnumber of account exist in CAS database|200|phone,idnumber|021099520641|
+Verify check account exist case 400 with value of keyValue as idnumber of account not exist in CAS database|400|phone,idnumber|164193718|Profile not found
+Verify check account exist case 500 with missing param key in Body and keyValue as valid phone|500||0143290202|No value present
+Verify check account exist case 500 with missing param key in Body and keyValue as valid idnumber|500||021099520641|No value present
+Verify check account exist case 400 with value of keyValue as empty or null|400|phone,idnumber|null|Profile not found
+Verify check account exist case 400 with value of keyValue as text|400|phone,idnumber|value|Profile not found
+Verify check account exist case 400 with value of keyValue as special word|400|phone,idnumber|#$#|Profile not found

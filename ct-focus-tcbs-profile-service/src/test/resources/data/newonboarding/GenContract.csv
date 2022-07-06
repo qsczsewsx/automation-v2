@@ -1,0 +1,11 @@
+testCaseName|statusCode|typeValue|accountLogin|tcbsid|errorMessage
+Verify gen contract api case valid request with TYPE_VALUE as 1|200|1|105C021929|0001921929|null
+Verify gen contract api case valid request with TYPE_VALUE as 3|200|3|105C021929|0001921929|null
+Verify gen contract api case request which is missing type_value in Url|200|null|105C021929|0001921929|null
+Verify gen contract api case request which is missing value in type_value in Url|200|empty|105C021929|0001921929|null
+Verify gen contract api case user has no permission view eContract|403|1|105C021929|0001496401|null
+Verify gen contract api case request which tcbsId is not found|403|1|105C021929|abc|null
+Verify gen contract api case request which is contained value of param type_value as special word|400|@|105C021929|0001921929|Generate contract fail exception
+Verify gen contract api case request which is contained value of param type_value as text|400|a|105C021929|0001921929|Generate contract fail exception
+Verify gen contract api case request which is contained value of param type_value as invalid digit|400|9|105C021929|0001921929|Generate contract fail exception
+Verify api gen contract case customer account has been not yet activated VSD|400|3|105C010210|0001010210|Generate contract fail exception

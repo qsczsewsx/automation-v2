@@ -1,0 +1,35 @@
+testCaseName|statusCode|typeValue|accountLogin|tcbsid|errorMessage|otp|otpId
+Verify api sign contract case check OTP with request missing body|400|0|105C021929|0001921929|Invalid parameter|null|null
+Verify api sign contract case check OTP with request which is missing param otp|400|0|105C021929|0001921929|Invalid request|empty|otpId
+Verify api sign contract case check OTP with request which is missing param otpId|400|0|105C021929|0001921929|Invalid request|111111|empty
+Verify api sign contract case check OTP with request which is missing params otp and otpId|403|0|105C021929|0001921929||empty|empty
+Verify api sign contract case check OTP with request which otp and otpId are valid|200|0|105C021929|0001921929||111111|otpId
+Verify api sign contract case check OTP with request which otp and otpId are invalid|400|0|105C021929|0001921929|Otp is invalid|222222|otpId
+Verify api sign contract case valid request with TYPE_VALUE as 1|200|1|105C021929|0001921929|null|empty|empty
+Verify api sign contract case valid request with TYPE_VALUE as 3|200|3|105C100064|0001100064|null|empty|empty
+Verify api sign contract case valid request with TYPE_VALUE as 0|200|0|105C021929|0001921929|null|empty|empty
+Verify api sign contract case request which is missing type_value in Url|200|null|105C021929|0001921929|null|empty|empty
+Verify api sign contract case request which is missing value in type_value in Url|200|empty|105C021929|0001921929|null|empty|empty
+Verify api sign contract case user has no permission sign eContract|403|1|105C021929|0001496401|null|empty|empty
+Verify api sign contract case request which tcbsId is not found|403|1|105C021929|abc|null|empty|empty
+Verify api sign contract case request which contains value of param type_value as special word|400|@|105C021929|0001921929|Generate contract fail exception|empty|empty
+Verify api sign contract case request which contains value of param type_value as text|400|t|105C021929|0001921929|Generate contract fail exception|empty|empty
+Verify api sign contract case request which contains value of param type_value as invalid digit|400|9|105C021929|0001921929|Generate contract fail exception|empty|empty
+Verify api sign contract case customer account has been not yet activated VSD|400|3|105C010210|0001010210|Cần kích hoạt Tài khoản chứng khoán cơ sở trước khi đăng ký mở TK phái sinh. Vui lòng mang theo CMND/CCCD còn hiệu lực đến chi nhánh Techcombank gần nhất để hoàn thiện nốt hợp đồng|empty|empty
+Verify api sign contract case customer account has expiredDate is a past date|400|3|105C932529|0001932529|Không thể đăng ký TK phái sinh do CMND/CCCD đã hết hạn. Quý khách vui lòng thực hiện Thay đổi thông tin và thực hiện lại thao tác mở tài khoản phái sinh sau 5-7 ngày|empty|empty
+Verify api sign contract case customer account has STATUS as 0 in TCBS_USER_CHANGE_INFOR_RECORD table|400|3|105C020104|0001020104|Yêu cầu không thực hiện được do TKCK đang cập nhật thay đổi thông tin CMND/CCCD. Sau khi nhận được thông báo thay đổi thông tin CMND/CCCD thành công (5-7 ngày làm việc từ ngày đăng ký thay đổi), Quý khách vui lòng quay lại thao tác đăng ký TK phái sinh|empty|empty
+Verify api sign contract case customer account has upload file not enough|400|3|105C593366|0001593366|Cần kích hoạt Tài khoản chứng khoán cơ sở trước khi đăng ký mở TK phái sinh. Vui lòng mang theo CMND/CCCD còn hiệu lực đến chi nhánh Techcombank gần nhất để hoàn thiện nốt hợp đồng|empty|empty
+Verify api sign contract case customer account has not sign basic contract yet|400|3|105C760192|0001760192|Cần kích hoạt Tài khoản chứng khoán cơ sở trước khi đăng ký mở TK phái sinh|empty|empty
+Verify api sign contract derivatives successfully case corporate is not Vietnam|200|3|105C119076|0001519076|null|empty|empty
+Verify api sign contract derivatives successfully case corporate is Vietnam|200|3|105C519069|0001519069|null|empty|empty
+Verify api sign contract derivatives failed for corporates with CKCS is actived and username is not 105C|400|3|BIDV819068|0001819068|Yêu cầu không thực hiện được do tài khoản không lưu ký tại TCBS|empty|empty
+Verify api sign contract derivatives failed for corporates with CKCS is actived, username is 105C but business type is FUND|400|3|105C519061|0001519061|Yêu cầu không thực hiện được do loại hình kinh doanh không phù hợp|empty|empty
+Verify api sign contract derivatives failed for corporates with CKCS is actived, username is 105C but business type is BANK|400|3|105C519060|0001519060|Yêu cầu không thực hiện được do loại hình kinh doanh không phù hợp|empty|empty
+Verify api sign contract derivatives failed for corporates with CKCS is actived, username is 105C but business type is GOVERNMENT|400|3|105C519059|0001519059|Yêu cầu không thực hiện được do loại hình kinh doanh không phù hợp|empty|empty
+Verify api sign contract derivatives failed for corporates with CKCS is actived, username is 105C, business type is OTHER/INSURENCE BUT corporate is updating information|400|3|105C519067|0001519067|Yêu cầu không thực hiện được do TKCK đang cập nhật thay đổi thông tin CMND/CCCD. Sau khi nhận được thông báo thay đổi thông tin CMND/CCCD thành công (5-7 ngày làm việc từ ngày đăng ký thay đổi), Quý khách vui lòng quay lại thao tác đăng ký TK phái sinh|empty|empty
+Verify api sign contract derivatives failed for corporates with CKCS is not actived|400|3|105C519065|0001519065|Cần kích hoạt Tài khoản chứng khoán cơ sở trước khi đăng ký mở TK phái sinh|empty|empty
+Verify api sign contract derivatives failed for personal customer with CKCS VSD is actived, id number is valid but nationality is not Vietnam|400|3|105C888812|0001888812|Yêu cầu không thực hiện được do quốc tịch không hợp lệ|empty|empty
+Verify api sign contract derivatives failed for personal customer with CKCS VSD is actived, id number is valid, nationality is Vietnam but not signed e-contract yet|400|3|105C459426|0001459426|Cần kích hoạt Tài khoản chứng khoán cơ sở trước khi đăng ký mở TK phái sinh. Vui lòng mang theo CMND/CCCD còn hiệu lực đến chi nhánh Techcombank gần nhất để hoàn thiện nốt hợp đồng|empty|empty
+Verify api sign contract derivatives failed for personal customer with CKCS VSD is actived, id number is valid, nationality is Vietnam, signed e-contract but updating information|400|3|105C083456|10000022827|Yêu cầu không thực hiện được do TKCK đang cập nhật thay đổi thông tin CMND/CCCD. Sau khi nhận được thông báo thay đổi thông tin CMND/CCCD thành công (5-7 ngày làm việc từ ngày đăng ký thay đổi), Quý khách vui lòng quay lại thao tác đăng ký TK phái sinh|empty|empty
+Verify api sign contract derivatives failed for personal customer with CKCS VSD is not actived|400|3|105C030042|10000024856|Cần kích hoạt Tài khoản chứng khoán cơ sở trước khi đăng ký mở TK phái sinh|empty|empty
+Verify api sign contract derivatives successfully for personal customer with CKCS VSD is actived, id number is valid, nationality is Vietnam, signed e-contract & not updating infor|200|3|105C089367|10000024819||empty|empty

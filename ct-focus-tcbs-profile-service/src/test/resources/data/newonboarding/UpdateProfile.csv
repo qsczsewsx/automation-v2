@@ -1,0 +1,6 @@
+testCaseName|statusCode|tcbsId|errorMsg|avatarData
+Verify update profile api case success|200|10000025769||avatarData
+Verify update profile api case tcbsId does not match token|403|10000025769||avatarData
+Verify update profile api case missing BODY|400|10000025769|Invalid parameter|empty
+Verify update profile api case param avatarData is empty|400|10000025769|Avatar Data is invalid|empty
+Verify update profile api case param avatarData does not have base64 format|400|10000025769|Avatar Data is invalid|data:image/jpeg;base64,zbc

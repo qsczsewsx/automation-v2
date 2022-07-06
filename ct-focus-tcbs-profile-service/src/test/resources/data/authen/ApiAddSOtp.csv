@@ -1,0 +1,12 @@
+testCaseName|statusCode|errorMessage|duration|otp|otpId|otpTypeName|tcbsId
+Verify api add sotp success|200|Success|0|111111||SMS|10000025745
+Verify api add sotp missing duration|200|""||111111||SMS|10000025745
+Verify api add sotp missing otp|400|invalid input->otp must be numbers|0|||SMS|10000025745
+Verify api add sotp missing otpId|200|Success|0|111111||SMS|10000025745
+Verify api add sotp missing otpTypeName|400|missing required inputs->otpTypeName is required|0|111111|||10000025745
+Verify api add sotp missing tcbsId|400|missing required inputs->tcbsId is required|0|111111||SMS|
+Verify api add sotp with tcbsId of anothor user|403||0|111111||SMS|105C060980
+Verify api add sotp with invalid otpTypeName|400|invalid input->otp type 1343 is not supported|0|111111||1343|10000025745
+Verify api add sotp with otp contains text|400|invalid input->otp must be numbers|0|aaaa||SMS|10000025745
+Verify api add sotp with tcbsId invalid|403||0|111111||SMS|1000093
+Verify api add sotp with missing body|400|invalid format|||||

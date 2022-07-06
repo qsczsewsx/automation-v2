@@ -1,0 +1,24 @@
+testCaseName|viewAssetFund|viewAssetBond|actor|tcbsId|statusCode|erroMess
+Verify Set Status View Asset API Case 400 With User Has No Permission|1|0|Not Authorized|0001100129|403|""
+Verify Set Status View Asset API Case 200 With Empty viewAssetFund only but database is not updated|null|0|Authorized|0001955995|200|""
+Verify Set Status View Asset API Case 200 With Empty viewAssetBond only but database is not updated|0|null|Authorized|0001955995|200|""
+Verify Set Status View Asset API Case 200 With Empty viewAssetBond And viewAssetBond but database is not updated|null|null|Authorized|0001955995|200|""
+Verify Set Status View Asset API Case 400 With viewAssetFund containing word characters|a|1|Authorized|0001955995|400|Invalid parameter
+Verify Set Status View Asset API Case 400 With viewAssetBond containing word characters|1|a|Authorized|0001955995|400|Invalid parameter
+Verify Set Status View Asset API Case 400 With both viewAssetBond and viewAssetFund containing word characters|a|a|Authorized|0001955995|400|Invalid parameter
+Verify Set Status View Asset API Case 400 With viewAssetFund containing special characters|@|0|Authorized|0001955995|400|Invalid parameter
+Verify Set Status View Asset API Case 400 With viewAssetBond containing special characters|0|@|Authorized|0001955995|400|Invalid parameter
+Verify Set Status View Asset API Case 400 With both viewAssetBond and viewAssetFund containing special characters|!|#|Authorized|0001955995|400|Invalid parameter
+Verify Set Status View Asset API Case 200 With viewAssetFund containing more than 1 number digit but database is not updated|1111|1|Authorized|0001955995|200|
+Verify Set Status View Asset API Case 200 With viewAssetBond containing more than 1 number digit but database is not updated|1|1111|Authorized|0001955995|200|
+Verify Set Status View Asset API Case 200 With both viewAssetFund and viewAssetBond containing more than 1 number digit  but database is not updated|1111|1111|Authorized|0001955995|200|
+Verify Set Status View Asset API Case 200 With viewAssetFund containing negative number but database is not updated|-11|1|Authorized|0001955995|200|
+Verify Set Status View Asset API Case 200 With viewAssetBond containing negative number but database is not updated|1|-11|Authorized|0001955995|200|
+Verify Set Status View Asset API Case 200 With both viewAssetFund and viewAssetBond containing negative  but database is not updated|-11|-11|Authorized|0001955995|200|
+Verify Set Status View Asset API Case 200 With both viewAssetFund and viewAssetBond are enabled|1|1|Authorized|0001955995|200|
+Verify Set Status View Asset API Case 200 With only viewAssetFund is enabled|1|0|Authorized|0001955995|200|
+Verify Set Status View Asset API Case 200 With only viewAssetBond is enabled|0|1|Authorized|0001955995|200|
+Verify Set Status View Asset API Case 400 With empty tcbsId param|0|0|Authorized||404|No message available
+Verify Set Status View Asset API Case 400 With tcbsId param conatining word characters|1|1|Authorized|00019559aa|403|
+Verify Set Status View Asset API Case 400 With tcbsId param conatining special characters|0|0|Authorized|00019559@@|403|
+Verify Set Status View Asset API Case 400 With non-existed tcbsId param|1|1|Authorized|0001955000|403|

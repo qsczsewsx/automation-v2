@@ -1,0 +1,9 @@
+testCaseName|statusCode|phone|message
+Verify suggestion fancy 105C API case 200 with valid data|200|8999999997|
+Verify suggestion fancy 105C API case 200 with missing BODY|200||
+Verify suggestion fancy 105C API case 200 with missing value of phone|200||
+Verify suggestion fancy 105C API case 200 with value of phone as contains space|200|8999 999997|
+Verify suggestion fancy 105C API case 200 with value of phone as contains special charactes|200|8999$99997|
+Verify suggestion fancy 105C API case 200 with value of phone as contains unreadable charactes|200|¤8999999997|
+Verify suggestion fancy 105C API case 200 with value of phone as contains words|200|899sd999997|
+Verify suggestion fancy 105C API case 200 with value of phone as more than 12 number|200|1234567890123|

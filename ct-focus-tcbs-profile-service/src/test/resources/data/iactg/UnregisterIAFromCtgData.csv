@@ -1,0 +1,9 @@
+testCaseName|account|accountName|bankSource|statusCode|messageCode
+Verify api unregister IA from CTG with case code105C is null|null|DUONG BAO VIET|CTG|200|104300
+Verify api unregister IA from CTG with case code105C is empty|empty|DUONG BAO VIET|CTG|200|104300
+Verify api unregister IA from CTG with case code105C is invalid|abcdef|DUONG BAO VIET|CTG|200|104165
+Verify api unregister IA from CTG with case bankSource is null|105C200341|DUONG BAO VIET|null|400|null
+Verify api unregister IA from CTG with case bankSource is empty|105C200341|DUONG BAO VIET|empty|400|null
+Verify api unregister IA from CTG with case bankSource is invalid|105C200341|DUONG BAO VIET|AAA|400|null
+Verify api unregister IA from CTG with case success|105C071588|TRAN KHANH LINH|CTG|200|104200
+Verify api unregister IA from CTG with case bankSource is TCB|105C200341|DUONG BAO VIET|TCB|400|null

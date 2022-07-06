@@ -1,0 +1,9 @@
+testCaseName|username|reasonRemove|actorDeleting|statusCode|erroMsg
+Verify Inactivate ProInvestor API case 403 with user has no permission|402|For Automation Testing|105C898989|403|Not Authorized
+Verify Inactivate ProInvestor API case 400 with Inactive username|402|For Automation testing|AMOPS.MAKER|400|ProInvestor Active not found
+Verify Incativate proInvestor API case 400 with empty username||For Automation testing|AMOPS.MAKER|400|(username) is required
+Verify Inactivate proInvestor API case 400 with username containing word characters|402abc|For Automation testing|AMOPS.MAKER|400|ProInvestor Active not found
+Verify Inactivate proInvestor API case 400 with username containing special characters|402!@#$'|For Automation testing|AMOPS.MAKER|400|ProInvestor Active not found
+Verify Inactivate proInvestor API case 400 with negative username|-2926|For Automation testing|AMOPS.MAKER|400|ProInvestor Active not found
+Verify Inactivate proInvestor API case 400 with empty reasonRemove|2926|""|AMOPS.MAKER|400|(reasonRemove) is required
+Verify Incativate proInvestor API case 200 with valid proinvestorId and reasonRemove|105C101955|For Automation testing|AMOPS.MAKER|200|Update process status success

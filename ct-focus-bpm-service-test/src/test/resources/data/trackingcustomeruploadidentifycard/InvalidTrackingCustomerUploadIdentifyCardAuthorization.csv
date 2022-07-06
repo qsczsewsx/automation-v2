@@ -1,0 +1,2 @@
+TestCaseName |HeaderAuthorization |HeaderKey |HeaderValue |InputBody |ExpectedStatus |Method
+Verify httpStatusCode ""200"" is getting when request is valid: full param |{username=bpm_developer, password=123456@123_crm} |Content-Type |application/json |"{\"tcbsId\": \"0001519077\", \"code105C\":\"105C519077\"}" |401 |POST

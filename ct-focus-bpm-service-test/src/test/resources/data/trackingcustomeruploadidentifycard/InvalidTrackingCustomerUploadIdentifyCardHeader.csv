@@ -1,0 +1,3 @@
+TestCaseName |HeaderAuthorization |HeaderKey |HeaderValue |InputBody |ExpectedStatus |Method
+Verify httpStatusCode ""404"" is getting when request has invalid url: missing headerKey |Basic YnBtX2FwaV9wcm9maWxlOjEyMzQ1NkAxMjNfcHJvZmlsZQ== | |application/json |"{\"tcbsId\": \"0001519077\", \"code105C\":\"105C519077\"}" |415 |POST
+Verify httpStatusCode ""404"" is getting when request has invalid url: missing headerValue |Basic YnBtX2FwaV9wcm9maWxlOjEyMzQ1NkAxMjNfcHJvZmlsZQ== |"Content-Type" | |"{\"tcbsId\": \"0001519077\", \"code105C\":\"105C519077\"}" |400 |POST

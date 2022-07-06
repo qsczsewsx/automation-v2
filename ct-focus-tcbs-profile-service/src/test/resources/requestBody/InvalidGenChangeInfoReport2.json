@@ -1,0 +1,18 @@
+{
+  "reportType": "#reportType#",
+  "data": [
+    {
+      "code105C": "105C693997",
+      "customerName": "Trinh Minh Thuy",
+      "dateSendRequest": "20/10/2020",
+      "isNewAccount": false,
+      "oldData": {
+        "contactAddress": "191 Bà Triệu Hai Bà Trưng",
+        "nationality": "Việt Nam",
+        "idNumber": "00112455555",
+        "idDate": "20/10/2020",
+        "idPlace": "CA TP.Hà Nội"
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+testCaseName|tcbsId|statusCode|erroMess
+Verify Get View Asset Permission Status API Case 403 With User Unauthorized|0001100129|403|Profile not found
+Verify Get View Asset Permission Status API Case 403 With Null TcbsId|""|403|
+Verify Get View Asset Permission Status API Case 403 With TcbsId Containing Word Characters|00019559aa|403|
+Verify Get View Asset Permission Status API Case 403 With TcbsId Containing Special Characters|00019559@@|403|
+Verify Get View Asset Permission Status API Case 403 With Non-existed TcbsId|1111111111|403|
+Verify Get View Asset Permission Status API Case 200 With Valid TcbsId|gen|200|

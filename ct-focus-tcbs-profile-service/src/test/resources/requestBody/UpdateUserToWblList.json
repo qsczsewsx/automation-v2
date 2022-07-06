@@ -1,0 +1,81 @@
+{
+  "fullName": "Tạ Đức Anh",
+  "address": "số 76 An Dương",
+  "identifications": [
+    {
+      "id": "#identifiedId1#",
+      "beAction": "DELETE"
+    },
+    {
+      "id": "#identifiedId2#",
+      "idNumber": "#idNumber1#",
+      "beAction": "UPDATE"
+    },
+    {
+      "idNumber": "#idNumber2#",
+      "beAction": "CREATE"
+    }
+  ],
+  "policies": [
+    {
+      "type": "NNB",
+      "policyCode": "NNB_NLQ.TCS",
+      "note": "note NNB update",
+      "policyItems": [
+        {
+          "policyUserId": "#policyUserId2#",
+          "beAction": "UPDATE",
+          "businessTitle": "Chỉnh sửa Giám đốc khối",
+          "startDatetime": "2024-08-01",
+          "endDatetime": "2024-09-01",
+          "actions": [
+            {
+              "code": "DISCLOSURE_INFO"
+            },
+            {
+              "code": "WARNING"
+            }
+          ]
+        },
+        {
+          "policyUserId": "#policyUserId1#",
+          "beAction": "DELETE"
+        },
+        {
+          "businessTitle": "Thêm mới Trưởng chi nhánh",
+          "startDatetime": "2024-06-01",
+          "endDatetime": "2024-07-01",
+          "actions": [
+            {
+              "code": "DISCLOSURE_INFO"
+            }
+          ],
+          "beAction": "CREATE"
+        }
+      ]
+    }
+  ],
+  "stakeHolders": [
+    {
+      "id": "#idStakeHolder1#",
+      "beAction": "DELETE"
+    },
+    {
+      "id": "#idStakeHolder2#",
+      "beAction": "UPDATE",
+      "companyName": "Công ty phần mềm FSS",
+      "companyIdNumber": "DKKD-1002",
+      "address": "Thanh Xuân, Hà Nội",
+      "capitalRatio": "80%",
+      "fromDate": "2020-03-18"
+    },
+    {
+      "companyName": "Công ty tài chính KYC",
+      "companyIdNumber": "DKKD-1003",
+      "address": "Ba Đình Hà Nội",
+      "capitalRatio": "75%",
+      "fromDate": "2019-02-01",
+      "beAction": "CREATE"
+    }
+  ]
+}

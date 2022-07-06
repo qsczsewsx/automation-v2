@@ -1,0 +1,17 @@
+testCaseName|idNumber|idDate|birthday|statusCode|errorMsg|resData
+Verify check expiry date api case 200 with expire date as unlimited|002202434333|2021-05-05|1960-08-10|200|""|-1
+Verify check expiry date api case 200 with idNumber not as 9 or 12 digit|00220243433|2021-05-05|1960-08-10|200|""|""
+Verify check expiry date api case 200 with valid request|002202434333|2007-06-06|1990-07-11|200|""|2022-06-06
+Verify check expiry date api case 400 with idNumber as 999999999|999999999|2007-06-06|1990-07-11|200|""|2022-06-06
+Verify check expiry date api case 400 with missing param idNumber|""|2007-06-06|1990-07-11|400|""|null
+Verify check expiry date api case 400 with missing value in param idNumber|""|2007-06-06|1990-07-11|400|""|null
+Verify check expiry date api case 400 with missing param idDate|002202434333|""|1990-07-11|400|""|null
+Verify check expiry date api case 400 with missing value in param idDate|002202434333|""|1990-07-11|400|""|null
+Verify check expiry date api case 400 with value in param idDate as invalid|002202434333|06-06-2007|1990-07-11|400|Date is invalid|null
+Verify check expiry date api case 400 with value in param idDate as future date|002202434333|2027-06-06|1990-07-11|400|IdDate is invalid|null
+Verify check expiry date api case 400 with missing param birthday|002202434333|2020-05-05|""|400|""|null
+Verify check expiry date api case 400 with missing value in param birthday|002202434333|2020-05-05|""|400|""|null
+Verify check expiry date api case 400 with value in param birthday as invalid|002202434333|2007-06-06|11-07-1990|400|Date is invalid|null
+Verify check expiry date api case 400 with customer is not enough 14 years old according to value of param birthday and idDate|002202434333|2020-05-05|2008-07-11|400|Birthday is invalid|null
+Verify check expiry date api case 400 with customer is not enough 18 years old according to value of param birthday and idDate|002202434333|2020-05-05|2005-07-11|400|Birthday is invalid|null
+Verify check expiry date api case 400 with value in param birthday as future date|002202434333|2020-05-05|2025-07-11|400|Birthday is invalid|null

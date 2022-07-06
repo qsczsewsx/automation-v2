@@ -1,0 +1,8 @@
+testCaseName|statusCode|tcbsId|bankAccountName|bankAccountNumber|expectedStatus|errorMessage
+Verify check bank account owner api case account belong to right owner|200|10000023695|KHACH HANG 29310443|19029310443017|1|
+Verify check bank account owner api case account does not belong to right owner|200|10000023695|Đinh Hoàng Anh|19029310443017|2|
+Verify check bank account owner api case param bankAccountName is empty|200|10000023695|""|19029310443017|2|
+Verify check bank account owner api case param bankAccountNumber not exist in H2H database|200|10000023695|KHACH HANG 29310443|19029310443000|2|
+Verify check bank account owner api case tcbsId is not found|400|99999999999|KHACH HANG 29310443|19029310443017|0|Profile not found
+Verify check bank account owner api case tcbsId value is text|400|abc|KHACH HANG 29310443|19029310443017|0|Profile not found
+Verify check bank account owner api case tcbsId value is special word|400|*#@|KHACH HANG 29310443|19029310443017|0|Wrong format of tcbsid

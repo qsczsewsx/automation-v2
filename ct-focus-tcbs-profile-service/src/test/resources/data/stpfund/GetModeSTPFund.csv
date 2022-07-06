@@ -1,0 +1,5 @@
+testcaseName|product|statusCode|errorMsg
+Verify API get Mode STP Fund case 400 with product doesn't exist|fund|400|Invalid product
+Verify API get Mode STP Fund case 400 with product is not FUND|BOND|400|Invalid product
+Verify API get Mode STP Fund case 200 |FUND|200|
+Verify API get Mode STP Fund case 403 with Authorization key is invalid|FUND|403|Not Authorized

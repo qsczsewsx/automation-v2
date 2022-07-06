@@ -1,0 +1,7 @@
+testcaseName|statusCode|cookie|csrfToken|tcbsId|status|errMsg
+Verify tracking point case wrong cookie - start change info process|403|JSESSIONID=C128A6BF937EB6C4048F6D0|97064fac-6539-4aad-8d0c-aa6ef4992ab1|0001838857|0|null
+Verify tracking point case wrong csrfToken - start change info process|403|JSESSIONID=1580E0BF742D96493FFD12A3B984BBC7|8cf3ee37-058b-4dc0-9d78-df3|0001838857|0|null
+Verify tracking point case valid - start change info process|200|JSESSIONID=1580E0BF742D96493FFD12A3B984BBC7|97064fac-6539-4aad-8d0c-aa6ef4992ab1|0001838857|0|SUCCESS
+Verify tracking point case invalid - start change info process|200|JSESSIONID=1580E0BF742D96493FFD12A3B984BBC7|97064fac-6539-4aad-8d0c-aa6ef4992ab1|0001838857|0|SYSTEM_ERROR
+Verify tracking point case valid - end change info process|200|JSESSIONID=1580E0BF742D96493FFD12A3B984BBC7|97064fac-6539-4aad-8d0c-aa6ef4992ab1|0001838857|1|SUCCESS
+Verify tracking point case invalid - end change info process|200|JSESSIONID=1580E0BF742D96493FFD12A3B984BBC7|97064fac-6539-4aad-8d0c-aa6ef4992ab1|0001838857|0|SYSTEM_ERROR

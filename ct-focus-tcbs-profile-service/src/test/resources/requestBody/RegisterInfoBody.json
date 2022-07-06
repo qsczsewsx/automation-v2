@@ -1,0 +1,46 @@
+{
+  "personalInfo": {
+    "fullName": "Nguyễn Đình Quyền",
+    "email": "quyen.nguyen#value#@gmail.com",
+    "phoneNumber": "#phone#",
+    "phoneCode": "#phoneCode#",
+    "gender": "MALE",
+    "birthday": "1984-03-25T00:00:00.000+07:00",
+    "contactAddress": "191 Ba Trieu Hai Ba Trung, Hà Nội",
+    "nationality": "VN",
+    "identityCard": {
+      "idNumber": "#value#",
+      "idPlace": "Cục CS QLHC về TTXH",
+      "idDate": "2021-05-12T00:00:00.000+07:00"
+    },
+    "province": "HA-NOI",
+    "referralCode": "",
+    "password": "Abc@1234"
+  },
+  "bankAccounts": [
+    {
+      "accountNo": "#accountNumber#",
+      "accountName": "Nguyễn Đình Quyền",
+      "bankCode": "01201001",
+      "bankName": "NH TMCP CONG THUONG VN (VIETINBANK)",
+      "bankProvince": null,
+      "branchCode": null,
+      "bankType": "CENTRALIZED_PAYMENT"
+    }
+  ],
+  "wealthPartnerInfo": {
+    "iwealthPartnerChannel": "ONLINE",
+    "custodyCode": "",
+    "isComfirmiWPCare": 0,
+    "cusTransparent": 0,
+    "iwealthPartnerCode": ""
+  },
+  "receiveAdvertise": 1,
+  "campaignInfo": {
+    "referralCode": ""
+  },
+  "basicInfo": {
+    "code105C": "#code105C#"
+  },
+  "pkVid": ""
+}

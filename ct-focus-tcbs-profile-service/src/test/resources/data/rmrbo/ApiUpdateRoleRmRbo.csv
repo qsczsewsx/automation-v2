@@ -1,0 +1,43 @@
+testCaseName|statusCode|errorMessage|custodyCode|bankCode|role|masterRole|status|branchCode|note|roleBefore|statusBefore|emailTechcombank|inListHrm|passElearning|expected|actor
+Verify api with invalid token - not maker not checker|403|Not Authorized|105C167697|TCB|RM|NORMAL|1|NTD|test||0|false||||
+Verify api with invalid token - not checker when update SRM|400|Not Authorization|105C167697|TCB|RM|SRM|1|NTD|test||0|false||||maker
+Verify api with missing body|400|Invalid parameter|null|null|null|null|0|null|null||0|||||maker
+Verify api with missing custodyCode field|400|(custodyCode) is required|null|TCB|RM|NORMAL|1|NTD|test||0|false||||maker
+Verify api with missing branchCode field|200||105C167697|TCB|RM|NORMAL|1|null|test|RM|0|true|RM|RM||maker
+Verify api with missing role field|400|(role) is required|105C167697|TCB|null|NORMAL|1|NTD|test||0|false||||maker
+Verify api with missing note field|400|(note) is required|105C167697|TCB|RM|NORMAL|1|NTD|null||0|false||||maker
+Verify api with empty custodyCode field|400|(custodyCode) is required|empty|TCB|RM|NORMAL|1|NTD|test||0|false||||maker
+Verify api with empty branchCode field|400|branchCode is not existed|105C167697|TCB|RM|NORMAL|1|empty|test|RM|0|true|RM|RM||maker
+Verify api with empty role field|400|(role) is required|105C167697|TCB|empty|NORMAL|1|NTD|test||0|false||||maker
+Verify api with empty note field|400|(note) is required|105C167697|TCB|RM|NORMAL|1|NTD|empty||0|false||||maker
+Verify api with empty status field|400|(status) is required|105C167697|TCB|RM|NORMAL|null|NTD|test||0|false||||maker
+Verify api with empty bankCode field|400|(bankCode) is required|105C167697|empty|RM|NORMAL|1|NTD|test||0|false||||maker
+Verify api with note more than 500 characters field|400|Note has more 500 character|105C167697|TCB|RM|NORMAL|1|NTD|Test cập nhật branchCode từ NTD thành CHD, nhập lý do nhiều hơn 500 ký tự. Test cập nhật branchCode từ NTD thành CHD, nhập lý do nhiều hơn 500 ký tự. Test cập nhật branchCode từ NTD thành CHD, nhập lý do nhiều hơn 500 ký tự. Test cập nhật branchCode từ NTD thành CHD, nhập lý do nhiều hơn 500 ký tự. Test cập nhật branchCode từ NTD thành CHD, nhập lý do nhiều hơn 500 ký tự. Test cập nhật branchCode từ NTD thành CHD, nhập lý do nhiều hơn 500 ký tự. Test cập nhật branchCode từ NTD thành CHD, nhập lýy||0|false||||maker
+Verify api with role not exist in db|400|Cannot found role: ABC	 bankCode: TCB|105C167697|TCB|ABC|NORMAL|1|NTD|test||0|false||||maker
+Verify api with status not exist in enum|400|status is not exist|105C167697|TCB|RM|NORMAL|10|NTD|test||0|false||||maker
+Verify api with branchCode not exist in db|400|branchCode is not existed|105C167697|TCB|RM|NORMAL|1|NTD222|test|RM|0|true|RM|RM||maker
+Verify api with bankCode not exist in db|400|Cannot found role: RM	 bankCode: ABC|105C167697|ABC|RM|NORMAL|1|NTD|test||0|false||||maker
+Verify api with masterRole is incorrect|400|masterRole is not existed|105C167697|TCB|RM|NORMAL11|1|NTD|test||0|false||||maker
+Verify api with custodyCode not exist in db|400|Profile not found: 105C9464|105C9464|TCB|RM|NORMAL|1|NTD|test||0|false||||maker
+Verify api with masterRole is SuperRM and current is inactive RM|200||105C167697|TCB|RM|SRM|1|NTD|test|RM|0|false|||active in r3rd_user and wso2|checker
+Verify api with masterRole is SuperRM and no row in r3rd_user|200||105C167697|TCB|RM|SRM|1|NTD|test|RM|0|false|||active in r3rd_user and wso2|checker
+Verify api with masterRole is SuperRM and current is active RBO|200||105C167697|TCB|RM|SRM|1|NTD|test|RBO|1|false|||active in r3rd_user and wso2|checker
+Verify api with masterRole is exception HRM and email not techcombank|400|Mail of staff is not TCB|105C167697|TCB|RM|HRM|1|NTD|test||0|false|RM|RM||checker
+Verify api with masterRole is exception HRM and not pass learning|400|Staff 105C167697 is not pass course RM/RBO|105C167697|TCB|RM|HRM|1|NTD|test||0|true|RM|||checker
+Verify api with masterRole is exception HRM success 1|200||105C167697|TCB|RM|HRM|1|NTD|test||0|true||RM|active in r3rd_user and wso2|checker|checker
+Verify api with masterRole is exception HRM success 2|200||105C167697|TCB|RM|HRM|1|NTD|test|RM|0|true||RM|active in r3rd_user and wso2|checker|checker
+Verify api with masterRole is exception HRM success 3|200||105C167697|TCB|RM|HRM|1|NTD|test|RBO|1|true||RM|active in r3rd_user and wso2|checker|checker
+Verify api inactive HRM|200||105C167697|TCB|RM|HRM|0|NTD|test|HRM|1|false|||inactive in r3rd_user and wso2|checker
+Verify api inactive SRM|200||105C167697|TCB|RM|HRM|0|NTD|test|SRM|1|true||RM|inactive in r3rd_user and wso2|checker
+Verify api inactive RBO|200||105C167697|TCB|RM|HRM|0|NTD|test|RBO|1|true|RBO|RM|inactive in r3rd_user and wso2|checker
+Verify api inactive RM|200||105C167697|TCB|RM|HRM|0|NTD|test|RM|1|true|RM|RM|inactive in r3rd_user and wso2|checker
+Verify api active RM masterRole is normal and pass 3 conditions|200||105C167697|TCB|RM|NORMAL|1|CTO|test|RBO|1|true|RM|RM|active in r3rd_user and wso2|checker
+Verify api active RBO masterRole is normal and pass 3 conditions|200||105C167697|TCB|RBO|NORMAL|1|CTO|test|RM|1|true|RBO|RBO|active in r3rd_user and wso2|checker
+Verify api active RM masterRole is normal and pass 3 conditions but other branch|200||105C167697|TCB|RM|NORMAL|1|NTD|test|RM|1|true|RM|RM|active in r3rd_user and wso2|checker
+Verify api active RBO masterRole is normal and pass 3 conditions but other branch|200||105C167697|TCB|RBO|NORMAL|1|NTD|test|RBO|1|true|RBO|RBO|active in r3rd_user and wso2|checker
+Verify api active RM masterRole is normal and email not techcombank|400|Mail of staff is not TCB|105C167697|TCB|RM|NORMAL|1|NTD|test||0|false|RM|RM||checker
+Verify api active RBO masterRole is normal and email not techcombank|400|Mail of staff is not TCB|105C167697|TCB|RBO|NORMAL|1|NTD|test||0|false|RBO|RBO||checker
+Verify api active RM masterRole is normal and not pass elearning|400|Staff 105C167697 is not pass course RM/RBO|105C167697|TCB|RM|NORMAL|1|NTD|test||0|true|RM|||checker
+Verify api active RBO masterRole is normal and not pass elearning|400|Staff 105C167697 is not pass course RM/RBO|105C167697|TCB|RBO|NORMAL|1|NTD|test||0|true|RBO|||checker
+Verify api active RM masterRole is normal and not in list hrm|400|Staff 105C167697 is not exist in RM/RBO list|105C167697|TCB|RM|NORMAL|1|NTD|test||0|true||RM||checker
+Verify api active RBO masterRole is normal and not in list hrm|400|Staff 105C167697 is not exist in RM/RBO list|105C167697|TCB|RBO|NORMAL|1|NTD|test||0|true||RBO||checker

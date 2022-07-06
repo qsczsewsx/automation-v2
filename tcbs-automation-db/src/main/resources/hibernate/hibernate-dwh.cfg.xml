@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServer2012Dialect</property>
+        <property name="show_sql">true</property>
+        <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+
+        <mapping class="com.tcbs.automation.dwh.ICalendarTimelineInfo"/>
+        <mapping class="com.tcbs.automation.dwh.StockRelatedCountEntity"/>
+        <mapping class="com.tcbs.automation.dwh.StockHoldCountEntity"/>
+        <mapping class="com.tcbs.automation.dwh.ICalendarBondProExpriedEntity"/>
+        <mapping class="com.tcbs.automation.dwh.ParentUserEntity"/>
+        <mapping class="com.tcbs.automation.dwh.StgFlxVwDailyMarginBycusEntity"/>
+        <mapping class="com.tcbs.automation.dwh.StgTcbBondEntity"/>
+        <mapping class="com.tcbs.automation.dwh.ICalendarBondDataEntity"/>
+        <mapping class="com.tcbs.automation.dwh.StgTciInvBondAttrEntity"/>
+        <mapping class="com.tcbs.automation.dwh.StgTciInvBondStaticEntity"/>
+        <mapping class="com.tcbs.automation.dwh.ICalendarBondExpiryDateEntity"/>
+        <mapping class="com.tcbs.automation.dwh.SmyDwhCasAllUserViewEntity"/>
+        <mapping class="com.tcbs.automation.dwh.StgTcbBondEntity"/>
+        <mapping class="com.tcbs.automation.dwh.ICalendarAllTlEventsEntity"/>
+        <mapping class="com.tcbs.automation.dwh.StgTciInvBondEntity"/>
+        <mapping class="com.tcbs.automation.dwh.ICalendarAllDataEntity"/>
+        <mapping class="com.tcbs.automation.dwh.AllCusHoldAssetEntity"/>
+        <mapping class="com.tcbs.automation.dwh.PrcFundNavByDateEntity"/>
+        <mapping class="com.tcbs.automation.dwh.ixu.SmyDwhFlxAllStockTxnEntity"/>
+        <mapping class="com.tcbs.automation.dwh.DailyPortCashBalEntity"/>
+        <mapping class="com.tcbs.automation.dwh.SmyDwhTciFundPortfolioEntity"/>
+        <mapping class="com.tcbs.automation.dwh.iaconnection.StgBankCustomerBalancesEntity"/>
+        <mapping class="com.tcbs.automation.dwh.biz.RtTcbInvOrderAttrEntity"/>
+        <mapping class="com.tcbs.automation.dwh.biz.RtTcbTradingEntity"/>
+        <mapping class="com.tcbs.automation.dwh.biz.RtTcbTradingAttrEntity"/>
+        <mapping class="com.tcbs.automation.dwh.biz.PrcMortgageAssetMortgageEntity"/>
+        <mapping class="com.tcbs.automation.dwh.biz.ApReportDwhEntity"/>
+        <mapping class="com.tcbs.automation.dwh.dwhservice.SmyDwhFlxStockEventEntity"/>
+        <mapping class="com.tcbs.automation.dwh.ICalendarISquareUserEventEntity"/>
+        <mapping class="com.tcbs.automation.dwh.StgWbDbCusInfoEntity"/>
+        <mapping class="com.tcbs.automation.dwh.businessfinance.GetLCTransactionEntity"/>
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,17 @@
+testCaseName|statusCode|tcbsId|courseCode|courseStatus|errorMessage|partner|role|username|note
+Verify api update status Elearning case 200 inactive with user not in r3rd_user|200|0001100103|EL0123123|0|""|ACB|RM|105C100103|test
+Verify api update status Elearning case 400 with missing tcbsId|400|""|EL0123123|1|(UserName) is required|ACB|RM||test
+Verify api update status Elearning case 400 with missing courseCode|400|0001100103|""|1|(CourseCode) is required|ACB|RM|105C100103|test
+Verify api update status Elearning case 400 with missing courseStatus|400|0001100103|EL0123123|""|(CourseStatus) is required|ACB|RM|105C100103|test
+Verify api update status Elearning case 400 with missing body|400|""||""|Invalid parameter|ACB|RM||test
+Verify api update status Elearning case 400 with tcbsId not exist|400|10000|EL0123123|0|Profile not found|ACB|RM|1000|test
+Verify api update status Elearning case 400 with courseStatus invalid|400|0001100103|15|aaa|Invalid parameter|ACB|RM|105C100103|test
+Verify api update status Elearning case 400 with invalid token|403|0001100103|||Not Authorized|""|""|105C100103|test
+Verify api update status Elearning case 400 with update status 1 = currently status|400|0001100103|EL0123123|1|Mã khóa học đang ở trạng thái ACTIVE|ACB|RM|105C100103|test
+Verify api update status Elearning case 400 with user have role active and status = 1|400|0001173773|EL0123123|0|User Role Active existed|TCB|RBO|105C173773|test
+Verify api update status Elearning case 400 with update status 0 = currently status|400|0001900002|EL00001|0|Mã khóa học đang ở trạng thái INACTIVE|TCB|RBO|105C900002|test
+Verify api update status Elearning case 400 with missing role|400|0001100103|EL0123123|0|Invalid parameter|ACB||105C100103|test
+Verify api update status Elearning case 400 with role is invalid|400|0001100103|EL0123123|0|Invalid parameter|ACB|iWP|105C100103|test
+Verify api update status Elearning case 200 inactive with user in r3rd_user and status = 0|200|0001559929|EL0123123|0||TCB|RM|105C559929|test
+Verify api update status Elearning case 200 active status|200|0001900002|EL00001|1||TCB|RBO|105C900002|test
+Verify api update status Elearning case 400 missing note|400|0001100103|EL0123123|1|(Note) is required|TCB|RM|105C100103|

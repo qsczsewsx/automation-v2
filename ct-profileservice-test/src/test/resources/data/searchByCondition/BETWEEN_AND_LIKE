@@ -1,0 +1,5 @@
+{
+    "condition": "id BETWEEN (1,10000000000) AND lastName LIKE '%a%'",
+    "fields": "personalInfo,basicInfo",
+    "limit": 10
+}

@@ -1,0 +1,13 @@
+testCaseName|taskId|documentGroup|fileName|mimeType|fileContents|statusCode|erroMsg
+Verify upload file api case 200 with fileName as doc|#taskId#|REGISTER_INFORMATION|Mau-20-DK-NPT+dang+ky+GTGC|.doc|file|200|
+Verify upload file api case 200 with fileName as docx|#taskId#|BANK_INFORMATION|Mau-20-DK-NPT+dang+ky+GTGC|.docx|file|200|
+Verify upload file api case 200 with fileName as pdf|#taskId#|OTHER|Mau-20-DK-NPT+dang+ky+GTGC|.pdf|file|200|
+Verify upload file api case 200 with fileName as xls|#taskId#|BANK_INFORMATIONs|Mau-20-DK-NPT+dang+ky+GTGC|.xls|file|200|
+Verify upload file api case 200 with fileName as xlsx|#taskId#|REGISTER|Mau-20-DK-NPT+dang+ky+GTGC|.xlsx|file|200|
+Verify upload file api case 400 with missing value in taskId||BANK_INFORMATION|Mau-20-DK-NPT+dang+ky+GTGC|.doc|file|400|({0}) is required
+"Verify upload file api case 400 with value in taskId as ""9999999"""|9999999|BANK_INFORMATION|Mau-20-DK-NPT+dang+ky+GTGC|.doc|file|400|Task not found
+Verify upload file api case 400 with value in taskId as taskId|taskId|BANK_INFORMATION|Mau-20-DK-NPT+dang+ky+GTGC|.doc|file|400|Invalid parameter
+Verify upload file api case 400 with value in taskId as special word|#$#|BANK_INFORMATION|Mau-20-DK-NPT+dang+ky+GTGC|.doc|file|400|Invalid parameter
+Verify upload file api case 400 with missing value in mimeType|#taskId#|REGISTER_INFORMATION|Mau-20-DK-NPT+dang+ky+GTGC||file|400|({0}) is required
+Verify upload file api case 400 with missing value in fileName|#taskId#|REGISTER_INFORMATION||""|file|400|({0}) is required
+Verify upload file api case 400 with missing value in fileContents|#taskId#|REGISTER_INFORMATION|Mau-20-DK-NPT+dang+ky+GTGC|.doc||400|Wrong format of Input

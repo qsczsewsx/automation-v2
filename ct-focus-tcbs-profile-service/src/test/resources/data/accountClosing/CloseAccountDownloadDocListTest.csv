@@ -1,0 +1,5 @@
+testCaseName|downloadId|statusCode|errorMessage
+Verify download file api case 200 with valid request|QU1PUFMvNDEvMTY1MDUzNzU0MTE0MQ==|200|null
+Verify download file api case 400 with missing value in downloadId||400|File download not exist exception
+Verify download file api case 400 with value in downloadId as 9999999|999999|400|File download not exist exception
+Verify download file api case 400 with value in downloadId as special word|#$#|400|File download not exist exception

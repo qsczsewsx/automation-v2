@@ -1,0 +1,4 @@
+description |headerKey |headerValue
+Verify httpStatusCode 415 is getting when request has wrong content type value |Content-Type |
+Verify httpStatusCode 415 is getting when request has wrong content type key and value |Content-Type |application/jsonn
+Verify httpStatusCode 415 is getting when request has wrong content type key and value |Content-Typee |application/json

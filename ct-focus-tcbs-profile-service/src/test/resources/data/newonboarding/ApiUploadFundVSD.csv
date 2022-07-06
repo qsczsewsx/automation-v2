@@ -1,0 +1,9 @@
+testCaseName|fileKey|filePath|fileName|statusCode|erroMsg
+Verify Upload Fund VSD api case 200 with valid fileName and fileName type as xlsx and all data of file are stored in VSD_IMPORT_CK table|files|src/test/resources/data/newonboarding/|FundSample.xlsx|200|
+Verify Upload Fund VSD api case 400 with file type is Null|files|src/test/resources/data/newonboarding/|FundSamples|400|Invalid file name: must contain
+Verify Upload Fund VSD api case 400 with file type as xls|files|src/test/resources/data/newonboarding/|FundSample.xls|400|The supplied data appears to be in the OLE2 Format. You are calling the part of POI that deals with OOXML (Office Open XML) Documents. You need to call a different part of POI to process this data (eg HSSF instead of XSSF)
+Verify Upload stock VSD api case 400 with fileName and columns in file as differents colums in file sample|||||400|
+Verify Upload Fund VSD api case 400 with fileName type not as xlsx|files|src/test/resources/data/newonboarding/|FundSample.txt|400|Invalid file name: must contain
+Verify Upload Fund VSD api case 400 with missing files key in Body|file|src/test/resources/data/newonboarding/|FundSample.xlsx|500|Files upload is invalid
+Verify Upload Fund VSD api case 400 with missing value in files key in Body|filesNull|||400|Nothing file select for upload
+Verify Upload Fund VSD api case 400 with fileName and columns in file as differents colums in file sample|files|src/test/resources/data/newonboarding/|StockSample.xlsx|400|"Unparseable date: ""105C235932"""

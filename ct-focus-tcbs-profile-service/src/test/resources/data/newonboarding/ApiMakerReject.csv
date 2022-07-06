@@ -1,0 +1,15 @@
+testCaseName|authorization|statusCode|taskId|reasonNode|reasonId|errorMsg
+Verify maker reject api case 400 with taskId as not assigned to maker|invalid_maker|400|1161|ok done|2,5,12|This task is not yours
+Verify maker reject api case 200 with value in reasonIds as 2|maker|200|gen|ok done|2|
+Verify maker reject api case 400 with missing value in taskId|maker|400||ok done|2,5,12|getTaskId is null
+Verify maker reject api case 400 with value in taskId as 9999999|maker|400|9999999|ok done|2,5,12|Task not found
+Verify maker reject api case 400 with value in taskId as taskId|maker|400|taskId|ok done|2,5,12|Invalid parameter
+Verify maker reject api case 400 with value in taskId as special word|maker|400|#$#|ok done|2,5,12|Invalid parameter
+Verify maker reject api case 400 with value in taskId as done task|maker|400|22370|ok done|2,5,12|Task is close
+Verify maker reject api case 400 with missing value in reasonIds|maker|400|gen|ok done||Channel or Reason is null
+Verify maker reject api case 400 with value in reasonIds as 9999999|maker|400|gen|ok done|9999999|Task is close
+Verify maker reject api case 400 with value in reasonIds as reasonIds|maker|400|gen|ok done|reasonIds|Invalid parameter
+Verify maker reject api case 400 with value in reasonIds as special word|maker|400|gen|ok done|$%#|Invalid parameter
+Verify maker reject api case 200 with null reasonNode|maker|200|gen||2,5,12|
+Verify maker reject api case 200 with reasonNode being number|maker|200|gen|1234567|2,5,12|
+Verify maker reject api case 200 with reasonNode being special characters|maker|200|gen|@@@@@|2,5,12|

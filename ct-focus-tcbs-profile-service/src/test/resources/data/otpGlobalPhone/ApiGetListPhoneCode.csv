@@ -1,0 +1,2 @@
+testCaseName|statusCode|errorMessage
+Verify api getListPhoneCode with data list exist in tcbs_region table|200|

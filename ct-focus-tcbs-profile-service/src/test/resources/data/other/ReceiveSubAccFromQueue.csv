@@ -1,0 +1,9 @@
+testCaseName|code|afAcctno|custodyId|productCodes|accountStatus|isIA|isIaPaid|autoTransfer|expectAccountType|expectUserType|expectStatus|bankAccountNo|expectIA
+Verify receive subaccount from queue case isIA as Y, isIaPaid as Y, autoTransfer as Y|200|0001111080|105C084938|SPOT|A|Y|Y|Y|NORMAL|NORMAL|1|18820787608866|1
+Verify receive subaccount from queue case isIA as Y, isIaPaid as N, autoTransfer as Y|200|0001111081|105C084938|SPOT|A|Y|N|Y|NORMAL|NORMAL|1|18820787608866|1
+Verify receive subaccount from queue case isIA as Y, isIaPaid as Y, autoTransfer as N|200|0001111082|105C084938|SPOT|A|Y|Y|N|NORMAL|NORMAL|1|18820787608866|1
+Verify receive subaccount from queue case isIA as N, isIaPaid as N, autoTransfer as N|200|0001111083|105C084938|SPOT|A|N|N|N|NORMAL|NORMAL|1|18820787608866|0
+Verify receive subaccount from queue case accountStatus as close|200|0001111084|105C084938|SPOT|C|Y|Y|Y|NORMAL|NORMAL|0|18820787608866|1
+Verify receive subaccount from queue case productCodes as MARGIN|200|0001111085|105C084938|MARGIN|A|Y|Y|Y|MARGIN|NORMAL|1|18820787608867|1
+Verify receive subaccount from queue case productCodes as COPYER|200|0001111086|105C084938|ICOPIER,SPOT|A|Y|Y|Y|NORMAL|COPYER|1|18820787608868|1
+Verify receive subaccount from queue case productCodes as TRADER|200|0001111087|105C084938|ITRADER,SPOT|A|Y|Y|Y|NORMAL|TRADER|1|18820787608869|1

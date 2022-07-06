@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</property>
+        <property name="show_sql">false</property>
+        <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+
+        <mapping class="com.tcbs.automation.coco.AccountPublicInfo"/>
+        <mapping class="com.tcbs.automation.coco.DepositPermission"/>
+        <mapping class="com.tcbs.automation.coco.OggAccountOds"/>
+        <mapping class="com.tcbs.automation.coco.OggAzAccountOds"/>
+        <mapping class="com.tcbs.automation.coco.OggCompanyOds"/>
+        <mapping class="com.tcbs.automation.coco.OggCustomerOds"/>
+        <mapping class="com.tcbs.automation.coco.OggLdLoansAndDepositsOds"/>
+        <mapping class="com.tcbs.automation.coco.OggMmMoneyMarketOds"/>
+        <mapping class="com.tcbs.automation.coco.PeCashDataPresent"/>
+        <mapping class="com.tcbs.automation.coco.PeIndicesSnapshot"/>
+        <mapping class="com.tcbs.automation.coco.PePerformancePresent"/>
+        <mapping class="com.tcbs.automation.coco.PePerformanceSnapshot"/>
+        <mapping class="com.tcbs.automation.coco.PePortfolioPresent"/>
+        <mapping class="com.tcbs.automation.coco.PePortfolioSnapshot"/>
+        <mapping class="com.tcbs.automation.coco.PeTransactionDetail"/>
+        <mapping class="com.tcbs.automation.coco.PeTransactionSummary"/>
+        <mapping class="com.tcbs.automation.coco.PeTransFifoMapping"/>
+        <mapping class="com.tcbs.automation.coco.PeUserCashDataPresent"/>
+        <mapping class="com.tcbs.automation.coco.PeUserCashDataSnapshot"/>
+        <mapping class="com.tcbs.automation.coco.PeUserIndicesSnapshot"/>
+        <mapping class="com.tcbs.automation.coco.PeUserPerformancePresent"/>
+        <mapping class="com.tcbs.automation.coco.PeUserPerformanceSnapshot"/>
+        <mapping class="com.tcbs.automation.coco.PeUserPortfolioPresent"/>
+        <mapping class="com.tcbs.automation.coco.PeUserPortfolioSnapshot"/>
+        <mapping class="com.tcbs.automation.coco.PeWorkingDay"/>
+        <mapping class="com.tcbs.automation.coco.RiskCompAllowed"/>
+        <mapping class="com.tcbs.automation.coco.RiskCondition"/>
+        <mapping class="com.tcbs.automation.coco.RiskConfig"/>
+        <mapping class="com.tcbs.automation.coco.RiskInOutLog"/>
+        <mapping class="com.tcbs.automation.coco.RiskMarginLog"/>
+        <mapping class="com.tcbs.automation.coco.TransSummaryReportByUser"/>
+        <mapping class="com.tcbs.automation.coco.WhitelistTicker"/>
+    </session-factory>
+</hibernate-configuration>

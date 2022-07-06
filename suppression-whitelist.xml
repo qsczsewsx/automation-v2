@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suppressions PUBLIC
+        "-//Puppy Crawl//DTD Suppressions 1.1//EN"
+        "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
+
+<suppressions>
+    <suppress files="RoomInfo\.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="ListedBondPrice\.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="MessageParser\.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="MarketInforProtos\.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="StockInforProtos\.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="TransLogProtos\.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="MonthlyStatementProc\.java" checks="[a-zA-Z0-9]*"/>
+</suppressions>

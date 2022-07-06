@@ -1,0 +1,11 @@
+testcaseName|product|mode|note|errorMsg|statusCode
+Verify Api set mode STP Fund case 403 with token of user is Maker role|FUND|ON|SET MODE IS ON|Not Authorized|403
+Verify Api set mode STP Fund case 400 with product is not FUND|BOND|ON|SET MODE IS ON|Invalid product|400
+Verify Api set mode STP Fund case 400 with product doesn't exist|fund|ON|SET MODE IS ON|Invalid product|400
+Verify Api set mode STP Fund case 400 with mode is invalid|FUND|ONOFF32423@@|SET MODE IS OFF|Invalid mode|400
+Verify Api set mode STP Fund case 200 with note is empty|FUND|OFF||Invalid note: 1 - 200 characters|400
+Verify Api set mode STP Fund case 200|FUND|ON|SET MODE IS ON||200
+Verify Api set mode STP Fund case 200 with note is more than 200 characters|FUND|OFF|qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq|Invalid note: 1 - 200 characters|400
+Verify Api set mode STP Fund case 400 with missing body||||Invalid parameter|400
+Verify Api set mode STP Fund case 400 with missing product ||ON|SET MODE IS ON|Invalid product|400
+Verify Api set mode STP Fund case 400 with missing mode|FUND||SET MODE IS ON|Invalid mode|400

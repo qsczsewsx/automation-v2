@@ -1,0 +1,13 @@
+testcaseName|idList|statusCode|errorMsg|stpStatus|stpMode|size
+Verify api retry many transactions case 403 with Authorization key is invalid|805|403|Not Authorized|1|ON|
+Verify api retry many transactions case 200 update to failedList (1) with idList doesn't exist and mode is on|90311|200||2|ON|1
+Verify api retry many transactions case 200 update to failedList (2) with idList have status 1 and mode is on|805|200||1|ON|1
+Verify api retry many transactions case 200 update to failedList (3) with idList has status 4 and mode is on|835|200||4|ON|1
+Verify api retry many transactions case 200 update to successList (1) with idList has status 0 and mode is on and depend on VSD|1318|200||0|ON|1
+Verify api retry many transactions case 200 update to successList (2) with idList has status 2 and mode is on and depend on VSD|1316|200||2|ON|1
+Verify api retry many transactions case 200 update to successList (3) with idList has status 3 and mode is on and depend on VSD|705|200||3|ON|1
+Verify api retry many transactions case 200 update to successList (4) with idList has more than 1 and less than 500 ids and mode is on||200||2|ON|3
+Verify api retry many transactions case 200 update to successList (5) with idList has 500 ids and mode is on||200||2|ON|500
+Verify api retry many transactions case 400 with idList has more than 500 ids and mode is on||400|Invalid list: 1 - 500 ids|2|ON|
+Verify api retry many transactions case 400 with idList is empty and mode is on||400|Invalid list: 1 - 500 ids|2|ON|
+Verify api retry many transactions case 400 with mode is off|1315|400|Not support retry: STP off|2|OFF|

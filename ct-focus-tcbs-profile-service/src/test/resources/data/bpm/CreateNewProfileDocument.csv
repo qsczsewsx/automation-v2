@@ -1,0 +1,8 @@
+testCaseName|statusCode|tcbsId|errorMessage|bookEmailRMUpload|bookManagerGroup|bookManagerUser|bookNote|bookReceivedDate|bookType
+Verify create new profile document api case open account with new no_number|200|10000023709|null|tuannd2@tcbs.com.vn|CS|Nguyễn Đình Tuấn|case add note|2020-10-28T00:00:00.000Z|OPEN
+Verify create new profile document api case open account with old no_number|200|10000023709|null|tuannd2@tcbs.com.vn|CS|Nguyễn Đình Tuấn|case add note|2020-10-28T00:00:00.000Z|OPEN
+Verify create new profile document api case edit account with new no_number|200|10000023692|null|tuannd2@tcbs.com.vn|CS|Nguyễn Đình Tuấn|case edit note|2020-10-28T00:00:00.000Z|EDIT
+Verify create new profile document api case edit account with old no_number|200|10000023692|null|tuannd2@tcbs.com.vn|CS|Nguyễn Đình Tuấn|case edit note|2020-10-28T00:00:00.000Z|EDIT
+Verify create new profile document api case verify proInvestor with old no_number|200|10000023709|null|tuannd2@tcbs.com.vn|CS|Nguyễn Đình Tuấn|case proInv note|2020-10-28T00:00:00.000Z|PROINV
+Verify create new profile document api case missing BODY|400|10000023709|Invalid parameter|empty|empty|empty|empty|empty|empty
+Verify create new profile document api case tcbsId does not exist|400|0001388896|Profile not found|tuannd2@tcbs.com.vn|CS|Nguyễn Đình Tuấn|case add note|2020-10-28T00:00:00.000Z|OPEN

@@ -1,0 +1,7 @@
+testCaseName|statusCode|errorMessage|bankCode
+Verify API get role by partner with bankCode is empty|400|(bankCode) is required|
+Verify API get role by partner with bankCode is missing|400|(bankCode) is required|
+Verify API get role by partner with bankCode is invalid|400|Role of partner: !@)* invalid|!@)*
+Verify API get role by partner with bankCode is valid but it's not exist|400|Role of partner: TEST01 invalid|TEST01
+Verify API get role by partner with bankCode is valid and exist|200||TCB
+Verify API get role by partner with incorrect Authorization|403|Not Authorized|

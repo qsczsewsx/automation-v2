@@ -1,0 +1,8 @@
+testCaseName|errorCode|tcbsId|errorMessage
+Verify check close derivative account api case response 200 check status of derivative account is ready to closed|1|0001010890|Tai khoan san sang de dong
+Verify check close derivative account api case response 200 check status of derivative account is not allowed to close|1|0001019015|Tai khoan khong duoc phep dong
+Verify check close derivative account api case response 400 tcbsId does not exist|-1|0001921928|Profile not found
+Verify check close derivative account api case response 400 tcbsId has format different from 10 or 11 digit|-1|0001921938888|Profile not found
+Verify check close derivative account api case response 400 tcbsId value is text|-1|hvh|Profile not found
+Verify check close derivative account api case response 400 tcbsId value is special word|-1|$#|Profile not found
+Verify check close derivative account api case response 400 tcbsId LIKE tcbsId exists in DB|-1|000192192|Profile not found

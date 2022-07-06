@@ -1,0 +1,13 @@
+testCaseName,statusCode,tcbsId,statusKey,statusValue,errMess
+Verify API Caculate SLA logic case 404 with null tcbsId,404,,,,No message available
+Verify API Caculate SLA logic case 403 with tcbsId containing word characters,403,1000002aaaa,,,
+Verify API Caculate SLA logic case 403 with tcbsId containing special characters,403,1000002@@@@,,,
+Verify API Caculate SLA logic case 403 with tcbsId containing more than 11 digits,403,100000236101111,,,
+Verify API Caculate SLA logic case 200 data return null with with customer has NOT sign contract,200,10000023610,ECONTRACT_STATUS,WAIT_ADDITIONAL_INFO,
+Verify API Caculate SLA logic case 200 data return null with with customer has NOT confirm contract after AMOPs modifies information of customer,200,10000023610,ECONTRACT_STATUS,WAIT_FOR_CONFIRM,
+Verify API Caculate SLA logic case 200 data return null with with customer identity card was verified by AMOPs,200,10000023610,ID_STATUS,VERIFIED,
+Verify API Caculate SLA logic case 200 data return null with with customer has NOT re-uploaded video,200,10000023610,EKYC_STATUS,WAIT_FOR_UPDATE,
+Verify API Caculate SLA logic case 200 data return null with with customer has NOT upload video,200,10000023610,EKYC_STATUS,WAIT_EKYC,
+Verify API Caculate SLA logic case 200 data return null with with customer econtract has NOT been verified by AMOPs and created date of maker task is older than updated date of econtract identity card and video,200,10000023610,ECONTRACT_STATUS,WAIT_FOR_UPLOAD,
+Verify API Caculate SLA logic case 200 full data with customer contract has been verified by AMOPs,200,10000023610,ECONTRACT_STATUS,VERIFIED,
+Verify API Caculate SLA logic case 200 data return null with maker's task date is before customer upload identity card or video or sign contract,200,10000023610,ECONTRACT_STATUS,WAIT_FOR_UPLOAD,

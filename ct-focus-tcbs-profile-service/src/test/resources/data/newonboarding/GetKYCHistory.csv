@@ -1,0 +1,8 @@
+testCaseName|statusCode|errorMessage|tcbsId
+Verify get kyc history api case data is returned as objects correctly for valid request|200|null|0001249014
+Verify get kyc history api case no any data is returned for request when OB_TASK table does not contain any task of current user|200|null|0001100129
+Verify get kyc history api case user has no AM.OPS role|200|null|0001100126
+Verify get kyc history api case actor has no permission handle this task|403|Not Authorized|0001802899
+Verify get kyc history api case request tcbsId is not found|200|null|0001100121
+Verify get kyc history api case request is missing value tcbsId|200|null|0001100106
+Verify get kyc history api case request is missing tcbsId param|200|null|0001100101

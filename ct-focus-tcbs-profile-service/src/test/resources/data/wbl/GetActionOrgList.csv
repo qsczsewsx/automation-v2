@@ -1,0 +1,5 @@
+testCaseName|statusCode|errorMessage|policyCode
+Verify get action org list api case valid request|200|null|NNB_NLQ.FUND.TCBF
+Verify get action org list api case user has no permission|403|Not Authorized|NNB_NLQ.FUND.TCBF
+Verify get action org list api case missing param policyCode|400|Missing request parameter|null
+Verify get action org list api case policyCode does not exist|400|policyCode not found|avxNNB_NLQ.FUND.TCBF

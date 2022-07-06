@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</property>
+        <property name="show_sql">false</property>
+        <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+        <property name="hibernate.proc.param_null_passing">true</property>
+
+        <mapping class="com.tcbs.automation.cas.TcbsUser"/>
+        <mapping class="com.tcbs.automation.cas.TcbsAddress"/>
+        <mapping class="com.tcbs.automation.cas.TcbsUserOpenaccountQueue"/>
+        <mapping class="com.tcbs.automation.cas.TcbsUserInstrument"/>
+        <mapping class="com.tcbs.automation.cas.TcbsUserAccount"/>
+        <mapping class="com.tcbs.automation.cas.TcbsIdentification"/>
+        <mapping class="com.tcbs.automation.cas.TcbsApplicationUser"/>
+        <mapping class="com.tcbs.automation.cas.TcbsIagentVideoCall"/>
+        <mapping class="com.tcbs.automation.cas.TcbsReferral"/>
+        <mapping class="com.tcbs.automation.cas.TcbsReferralData"/>
+        <mapping class="com.tcbs.automation.cas.TcbsIconnectOrder"/>
+        <mapping class="com.tcbs.automation.cas.TcbsUser"/>
+        <mapping class="com.tcbs.automation.cas.TcbsBankAccount"/>
+        <mapping class="com.tcbs.automation.cas.InvAccountProUser"/>
+        <mapping class="com.tcbs.automation.cas.TcbsReferralIncentive"/>
+        <mapping class="com.tcbs.automation.cas.TcbsReferralIncentiveCalculation"/>
+        <mapping class="com.tcbs.automation.cas.InvAccountSpecialAftype"/>
+        <mapping class="com.tcbs.automation.cas.TcbsReferralNetIncentiveBondFund"/>
+        <mapping class="com.tcbs.automation.cas.TcbsReferralNetIncentiveStock"/>
+        <mapping class="com.tcbs.automation.cas.TcbsNewOnboardingStatus"/>
+        <mapping class="com.tcbs.automation.cas.ObTask"/>
+        <mapping class="com.tcbs.automation.cas.ObUserOpenaccountQueue"/>
+        <mapping class="com.tcbs.automation.cas.ObDocs"/>
+        <mapping class="com.tcbs.automation.cas.OcrData"/>
+        <mapping class="com.tcbs.automation.cas.TcbsIdPlace"/>
+        <mapping class="com.tcbs.automation.cas.VsdImportFund"/>
+        <mapping class="com.tcbs.automation.cas.VsdImportStock"/>
+        <mapping class="com.tcbs.automation.cas.TcbsContractTrust"/>
+        <mapping class="com.tcbs.automation.cas.TcbsUserUpload"/>
+        <mapping class="com.tcbs.automation.cas.TcbsBankSubaccount"/>
+        <mapping class="com.tcbs.automation.cas.TcbsAddressDivision"/>
+        <mapping class="com.tcbs.automation.cas.ObAction"/>
+        <mapping class="com.tcbs.automation.cas.ObConfig"/>
+        <mapping class="com.tcbs.automation.cas.ObTaskReason"/>
+        <mapping class="com.tcbs.automation.cas.ObReason"/>
+        <mapping class="com.tcbs.automation.cas.WblPolicy"/>
+        <mapping class="com.tcbs.automation.cas.WblPolicyUser"/>
+        <mapping class="com.tcbs.automation.cas.WblUser"/>
+        <mapping class="com.tcbs.automation.cas.WblReportDoc"/>
+        <mapping class="com.tcbs.automation.cas.WblUserIdentification"/>
+        <mapping class="com.tcbs.automation.cas.WblStakeHolder"/>
+        <mapping class="com.tcbs.automation.cas.TcbsFancy105C"/>
+        <mapping class="com.tcbs.automation.cas.TcbsUserCampaignHold105C"/>
+        <mapping class="com.tcbs.automation.cas.TcbsBankIaaccount"/>
+        <mapping class="com.tcbs.automation.cas.TcbsProInvestorDocument"/>
+        <mapping class="com.tcbs.automation.cas.TcbsUserAdditionStatus"/>
+        <mapping class="com.tcbs.automation.cas.TcbsUserBook"/>
+        <mapping class="com.tcbs.automation.cas.StpTransaction"/>
+        <mapping class="com.tcbs.automation.cas.StpModeHistory"/>
+        <mapping class="com.tcbs.automation.cas.VsdTransactionLog"/>
+        <mapping class="com.tcbs.automation.cas.UserChangeInforRecordEntity"/>
+        <mapping class="com.tcbs.automation.cas.TcbsRelation"/>
+        <mapping class="com.tcbs.automation.cas.TcbsReminderSchedule"/>
+        <mapping class="com.tcbs.automation.cas.TcbsReminderSource"/>
+        <mapping class="com.tcbs.automation.cas.TcbsReminder"/>
+        <mapping class="com.tcbs.automation.cas.ObUserCloseDocs"/>
+        <mapping class="com.tcbs.automation.cas.ObTaskClose"/>
+        <mapping class="com.tcbs.automation.cas.ObUserClose"/>
+        <mapping class="com.tcbs.automation.cas.ObTask"/>
+        <mapping class="com.tcbs.automation.cas.TcbsAuthenInfo"/>
+        <mapping class="com.tcbs.automation.cas.VsdTransaction"/>
+        <mapping class="com.tcbs.automation.cas.VsdModeHistory"/>
+        <mapping class="com.tcbs.automation.cas.R3RdElearning"/>
+        <mapping class="com.tcbs.automation.cas.R3RdUser"/>
+        <mapping class="com.tcbs.automation.cas.R3RdRole"/>
+        <mapping class="com.tcbs.automation.cas.R3RdSyncTcb"/>
+        <mapping class="com.tcbs.automation.cas.TcbsRegion"/>
+        <mapping class="com.tcbs.automation.cas.R3RdAuditLog"/>
+    </session-factory>
+</hibernate-configuration>

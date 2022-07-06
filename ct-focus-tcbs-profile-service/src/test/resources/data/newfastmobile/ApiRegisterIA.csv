@@ -1,0 +1,22 @@
+testCaseName|statusCode|action|accountNo|accountName|bankCode|bankName|bankProvince|branchCode|bankType|autoTransfer|isIAPaid|isIA|message
+Verify register IA api case 200 with valid action as CREATE|200|CREATE|0918506666851|Nguyễn Đức Thụ|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|Y||
+Verify register IA api case 200 with valid action as UPDATE autoTransfer as Y, isIAPaid as N|200|UPDATE|19029224183542|Nguyễn Đức Thụ|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|N|Y|
+Verify register IA api case 200 with valid action as UPDATE autoTransfer as N, isIAPaid as Y|200|UPDATE|19029224183542|Nguyễn Đức Thụ|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|N|Y|Y|
+Verify register IA api case 200 with valid action as UPDATE autoTransfer as N, isIAPaid as N|200|UPDATE|19029224183542|Nguyễn Đức Thụ|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|N|N|Y|
+Verify register IA api case 400 with valid action as CANCEL with autoTransfer as Y|400|CANCEL|0918506666851|Nguyễn Đức Thụ|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|N|N|Thông tin đăng kí IA không chính xác
+Verify register IA api case 400 with valid action as CANCEL with isIAPaid as Y|400|CANCEL|0918506666851|Nguyễn Đức Thụ|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|N|Y|N|Thông tin đăng kí IA không chính xác
+Verify register IA api case 400 with missing param accountNo|400|UPDATE|""|Nguyễn Đức Thụ|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|N|Y|BankAccountNumber is invalid
+Verify register IA api case 400 missing value of accountNo|400|UPDATE|""|Nguyễn Đức Thụ|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|N|Y|BankAccountNumber is invalid
+Verify register IA api case 400 value of accountNo more than 40 character|400|UPDATE|23231312121223231312121223231312121234234|Nguyễn Đức Thụ|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|N|Y|BankAccountNumber is invalid
+Verify register IA api case 400 value of accountNo contains special charaters|400|UPDATE|&3231312121#|Nguyễn Đức Thụ|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|N|Y|BankAccountNumber is invalid
+Verify register IA api case 400 with missing param accountName|400|UPDATE|19029224183542|""|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|N|Y|Bank account name is invalid
+Verify register IA api case 400 missing value of accountName|400|UPDATE|19029224183542|""|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|N|Y|Bank account name is invalid
+Verify register IA api case 400 value of accountName contains special charaters|400|UPDATE|19029224183542|NGUYEN$VAN@A|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|N|Y|Bank account name is invalid
+Verify register IA api case 400 with missing param bankName|400|UPDATE|19029224183542|Nguyễn Đức Thụ|01310001|""|||CENTRALIZED_PAYMENT|Y|N|Y|BankName is invalid
+Verify register IA api case 400 missing value of bankName|400|UPDATE|19029224183542|Nguyễn Đức Thụ|01310001|""|||CENTRALIZED_PAYMENT|Y|N|Y|BankName is invalid
+Verify register IA api case 400 value of accountNo contains unreadable character|400|UPDATE|23231�121212|Nguyễn Đức Thụ|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|N|Y|BankAccountNumber is invalid
+Verify register IA api case 400 value of accountName contains unreadable character|400|UPDATE|19029224183542|NGUYEN �VAN �A|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|N|Y|Bank account name is invalid
+Verify register IA api case 400 with valid action as CREATE and isIA as N|400|CREATE|0918506666851|Nguyễn Đức Thụ|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|Y|N|Action đăng ký IA không chính xác
+Verify register IA api case 400 with valid action as CREATE and isIA is invalid|400|CREATE|0918506666851|Nguyễn Đức Thụ|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|Y|abc|Action đăng ký IA không chính xác
+Verify register IA api case 400 with valid action as CANCEL and isIA as Y|400|CANCEL|0918506666851|Nguyễn Đức Thụ|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|N|N|Y|Thông tin yêu cầu hủy chưa đúng
+Verify register IA api case 400 with valid action as CANCEL and isIA is invalid|400|CANCEL|0918506666851|Nguyễn Đức Thụ|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|N|N|abc|Thông tin yêu cầu hủy chưa đúng

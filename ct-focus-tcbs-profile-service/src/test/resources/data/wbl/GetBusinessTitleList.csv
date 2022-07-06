@@ -1,0 +1,3 @@
+testCaseName|statusCode|authorized|errorMessage
+Verify get business title list api case valid request|200|yes|null
+Verify get business title list api case user has no permission|403|no|Not Authorized

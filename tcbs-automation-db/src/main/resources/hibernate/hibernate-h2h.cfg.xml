@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</property>
+        <property name="show_sql">false</property>
+        <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+        <property name="hibernate.proc.param_null_passing">true</property>
+
+		<mapping class="com.tcbs.automation.hth.HthBatch"/>
+		<mapping class="com.tcbs.automation.hth.HthBankInfo"/>
+		<mapping class="com.tcbs.automation.hth.HthTrans"/>
+		<mapping class="com.tcbs.automation.hth.HthTxnReconcile"/>
+		<mapping class="com.tcbs.automation.hth.HthTxnReview"/>
+		<mapping class="com.tcbs.automation.hth.Conf"/>
+		<mapping class="com.tcbs.automation.hth.BankMockTest"/>
+		<mapping class="com.tcbs.automation.hth.BBSPattern"/>
+		<mapping class="com.tcbs.automation.hth.GwTransReq"/>
+		<mapping class="com.tcbs.automation.hth.H2HOrganizeAccountEntity"/>
+		<mapping class="com.tcbs.automation.hth.TcbsTransEntity"/>
+		<mapping class="com.tcbs.automation.hth.CollectionTrans"/>
+		<mapping class="com.tcbs.automation.hth.IsociasTxnReconcile"/>
+		<mapping class="com.tcbs.automation.hth.SubAccountBalance"/>
+		<mapping class="com.tcbs.automation.hth.SubAccountBlockade"/>
+		<mapping class="com.tcbs.automation.hth.SubAccountLoan"/>
+		<mapping class="com.tcbs.automation.hth.SubAccountPayBackLoan"/>
+		<mapping class="com.tcbs.automation.hth.SubAccountPlanning"/>
+		<mapping class="com.tcbs.automation.hth.TcbsBankSubaccount"/>
+		<mapping class="com.tcbs.automation.hth.SubAccountTransaction"/>
+		<mapping class="com.tcbs.automation.hth.BlockadeTransaction"/>
+		<mapping class="com.tcbs.automation.hth.SubAccountBalanceFluctuation"/>
+		<mapping class="com.tcbs.automation.hth.SubAccountTransactionLog"/>
+		<mapping class="com.tcbs.automation.hth.BondTransaction"/>
+		<mapping class="com.tcbs.automation.hth.H2HCustomerBankAccount"/>
+		<mapping class="com.tcbs.automation.hth.TransactionReviewHistory"/>
+		<mapping class="com.tcbs.automation.hth.H2HBankAccount"/>
+		<mapping class="com.tcbs.automation.hth.BlockadeSequence"/>
+		<mapping class="com.tcbs.automation.hth.BlockadeBalance"/>
+	</session-factory>
+</hibernate-configuration>

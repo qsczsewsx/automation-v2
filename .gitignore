@@ -1,0 +1,13 @@
+.idea
+*.iml
+*/target
+*/.DS_Store
+.DS_Store
+target
+*/target/**
+*/*.iml
+*/tm4j_result.json
+*/.classpath
+*/.project
+*/.settings
+*.project

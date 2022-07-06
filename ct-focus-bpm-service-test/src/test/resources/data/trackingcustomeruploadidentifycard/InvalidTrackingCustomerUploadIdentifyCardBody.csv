@@ -1,0 +1,8 @@
+TestCaseName |HeaderAuthorization |HeaderKey |HeaderValue |InputBody |ExpectedStatus |Method
+Verify httpStatusCode ""400"" is getting when request has invalid body: no param |Basic YnBtX2FwaV9wcm9maWxlOjEyMzQ1NkAxMjNfcHJvZmlsZQ== |Content-Type |application/json |"{}" |400 |POST
+Verify httpStatusCode ""400"" is getting when request has invalid body: miss param tcbsId |Basic YnBtX2FwaV9wcm9maWxlOjEyMzQ1NkAxMjNfcHJvZmlsZQ== |Content-Type |application/json |"{\"code105C\":\"105C519077\"}" |400 |POST
+Verify httpStatusCode ""400"" is getting when request has invalid body: wrong param tcbsID |Basic YnBtX2FwaV9wcm9maWxlOjEyMzQ1NkAxMjNfcHJvZmlsZQ== |Content-Type |application/json |"{\"tcbsID\": \"0001519077\"}" |400 |POST
+Verify httpStatusCode ""400"" is getting when request has invalid body: wrong param tcbsI |Basic YnBtX2FwaV9wcm9maWxlOjEyMzQ1NkAxMjNfcHJvZmlsZQ== |Content-Type |application/json |"{\"tcbsI\": \"0001519077\"}" |400 |POST
+Verify httpStatusCode ""400"" is getting when request has invalid body: wrong param tcbsIde |Basic YnBtX2FwaV9wcm9maWxlOjEyMzQ1NkAxMjNfcHJvZmlsZQ== |Content-Type |application/json |"{\"tcbsIde\": \"0001519077\"}" |400 |POST
+Verify httpStatusCode ""400"" is getting when request has invalid body: param tcbsId with empty value |Basic YnBtX2FwaV9wcm9maWxlOjEyMzQ1NkAxMjNfcHJvZmlsZQ== |Content-Type |application/json |"{\"tcbsId\": \"\"}" |400 |POST
+Verify httpStatusCode ""400"" is getting when request has invalid body: param tcbsId is not handled by any process instance |Basic YnBtX2FwaV9wcm9maWxlOjEyMzQ1NkAxMjNfcHJvZmlsZQ== |Content-Type |application/json |"{\"tcbsId\": \"0001100\"}" |400 |POST

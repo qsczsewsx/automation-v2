@@ -1,0 +1,9 @@
+testCaseName|tcbsId|frontIdentity|backIdentity|statusCode|erroMsg
+Verify upload identity api case 400 with invalid value in tcbsId as 999999|999999|front|back|400|Profile not found
+Verify upload identity api case 400 with invalid value in tcbsId as tcbsId|tcbsId|front|back|400|Profile not found
+Verify upload identity api case 400 with missing Body|0001496401|""|""|400|Missing back of identity
+Verify upload identity api case 400 with missing value in frontIdentity|0001496401||back|400|Missing front of identity
+Verify upload identity api case 400 with value in frontIdentity as invalid|0001496401|invalid|back|500|1
+Verify upload identity api case 400 with missing value in backIdentity|0001496401|front||400|Missing back of identity
+Verify upload identity api case 400 with value in backIdentity as invalid|0001496401|front|invalid|500|Identity is verifying
+Verify upload identity api case 200 with valid request|0001496401|front|back|200|Upload identity success

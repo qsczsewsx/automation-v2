@@ -1,0 +1,12 @@
+testCaseName|authorization|taskId|reason|assignToActor|statusCode|errorMsg
+Verify checker reject api case 400 with taskId as not assigned to checker|checker|1255|Vì một lí do nào đó|AMOPS.MAKER|400|This task is not yours
+Verify checker reject api case 200 with valid request|checker|#taskId#|Vì một lí do nào đó|AMOPS.MAKER|200|
+Verify checker reject api case 400 with missing value in taskId|checker||Vì một lí do nào đó|AMOPS.MAKER|400|Invalid request taskId
+Verify checker reject api case 400 with value in taskId as 9999999|checker|9999999|Vì một lí do nào đó|AMOPS.MAKER|400|Task not found
+Verify checker reject api case 400 with value in taskId as taskId|checker|taskId|Vì một lí do nào đó|AMOPS.MAKER|400|Invalid parameter
+Verify checker reject api case 400 with value in taskId as special word|checker|#$#|Vì một lí do nào đó|AMOPS.MAKER|400|Invalid parameter
+Verify checker reject api case 400 with value in taskId as done task|checker|1253|Vì một lí do nào đó|AMOPS.MAKER|400|Task is close
+Verify checker reject api case 400 with value in authorization as maker|maker|#taskId#|Vì một lí do nào đó|AMOPS.MAKER|400|Internal Error
+Verify checker reject api case 400 with missing value in reason|checker|#taskId#||AMOPS.MAKER|400|Invalid request reason
+Verify checker reject api case 400 with missing value in assignToActor|checker|#taskId#|Vì một lí do nào đó||400|This task is not yours
+Verify checker reject api case 400 with value in assignToActor not as AMOPS.MAKER|checker|#taskId#|Vì một lí do nào đó|AMOPS|400|This task is not yours

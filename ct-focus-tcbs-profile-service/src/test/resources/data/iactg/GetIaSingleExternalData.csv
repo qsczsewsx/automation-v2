@@ -1,0 +1,4 @@
+testCaseName,fieldKey,fieldValue,statusCode,iaConnect,isIa
+Verify api get info IA single external case get by username,username,105C738764,200,CTG,Y
+Verify api get info IA single external case get by tcbsId,tcbsid,0001738764,200,TCB,Y
+Verify api get info IA single external case value is invalid,tcbsid,105C738764,403,TCB,Y

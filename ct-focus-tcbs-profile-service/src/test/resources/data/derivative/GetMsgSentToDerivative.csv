@@ -1,0 +1,5 @@
+testCaseName|statusCode|tcbsId|errorMessage
+Verify get msg sent to derivative core api case valid request|200|10000000392 |null
+Verify get msg sent to derivative core api case user has no permission|403|10000000392 |Not Authorized
+Verify get msg sent to derivative core api case tcbsId does not have number format|400|abc@&|Wrong format of tcbsid
+Verify get msg sent to derivative core api case tcbsId does not exist|400|0001388896|Profile not found

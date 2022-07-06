@@ -1,0 +1,37 @@
+{
+  "personalInfo": {
+    "fullName": "Trinh Minh Thuy",
+    "email": "abcdjljl11111111@gmail.com",
+    "phoneNumber": "0973493997",
+    "gender": "FEMALE",
+    "birthday": "1997-10-16T00:00:00.000Z",
+    "contactAddress": "191 Ba Trieu Hai Ba Trung, Hà Nội",
+    "nationality": "VN",
+    "identityCard": {
+      "idNumber": "012546454",
+      "idPlace": "Ha Noi",
+      "idDate": "2015-11-12T00:00:00.000Z"
+    },
+    "province": "HA-NOI",
+    "referralCode": "",
+    "password": "Abc@1234"
+  },
+  "bankAccounts": [
+    {
+      "accountNo": "0243242242432",
+      "accountName": "Trinh Minh Thuy",
+      "bankCode": "01201001",
+      "bankName": "NH TMCP CONG THUONG VN (VIETINBANK)",
+      "bankProvince": null,
+      "branchCode": null,
+      "bankType": "CENTRALIZED_PAYMENT"
+    }
+  ],
+  "wealthPartnerInfo": {
+    "custodyCode": "",
+    "iwealthPartnerCode": "",
+    "iwealthPartnerChannel": ""
+  },
+  "receiveAdvertise": 1,
+  "pkVid": "d363234f4126327f1602839664dd58f0"
+}

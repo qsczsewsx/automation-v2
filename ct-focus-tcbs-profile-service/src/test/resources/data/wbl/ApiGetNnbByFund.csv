@@ -1,0 +1,8 @@
+testCaseName|statusCode|fundCode|errorMessage
+Verify api get NNB by Fund with fundCode not exist|200|9999999|""
+Verify api get NNB by Fund with missing fundCode param|400|""|Missing request parameter
+Verify api get NNB by Fund with fundCode is empty|200|""|""
+Verify api get NNB by Fund with x-api-key is incorrect|401||Invalid X-Api-Key
+Verify api get NNB by Fund with fundCode as TCBF|200|TCBF|
+Verify api get NNB by Fund with fundCode as TCFF|200|TCFF|
+Verify api get NNB by Fund with fundCode as TCEF|200|TCEF|

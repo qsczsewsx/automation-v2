@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
+        <property name="show_sql">false</property>
+        <property name="temp.use_jdbc_metadata_defaults">false</property>
+        <mapping class="com.tcbs.automation.ipartner.WpRelation"/>
+        <mapping class="com.tcbs.automation.ipartner.Wp"/>
+        <mapping class="com.tcbs.automation.ipartner.UserCampaign"/>
+        <mapping class="com.tcbs.automation.ipartner.aftype.AftypeAccountSpecial"/>
+        <mapping class="com.tcbs.automation.ipartner.aftype.AftypeConfig"/>
+        <mapping class="com.tcbs.automation.ipartner.aftype.AftypeConfigAction"/>
+        <mapping class="com.tcbs.automation.ipartner.aftype.SequenceActionHistory"/>
+        <mapping class="com.tcbs.automation.ipartner.aftype.SequenceConfigAction"/>
+        <mapping class="com.tcbs.automation.ipartner.iwp.TcbsEmployee"/>
+        <mapping class="com.tcbs.automation.ipartner.aftype.AftypeActionHistory"/>
+    </session-factory>
+</hibernate-configuration>

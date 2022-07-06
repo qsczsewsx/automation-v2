@@ -1,0 +1,10 @@
+testCaseName|statusCode|tcbsId|type|accountNo|accountName|bankCode|bankName|bankProvince|branchCode|bankType|autoTransfer|isIAPaid|action|isIA|message
+Verify sign contract api case 200 with valid action as CREATE|200|getTcbsId|1|232313121212|NGUYEN VAN A|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|Y|CREATE||true
+Verify sign contract api case 400 with account is already signed|400|10000016659|1|232313121212|NGUYEN VAN A|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|N|UPDATE||Profile not found
+Verify sign contract api case 400 with value of tcbsId as empty|400||1|232313121212|NGUYEN VAN A|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|N|UPDATE||Profile not found
+Verify sign contract api case 400 with value of tcbsId as null|400|null|1|232313121212|NGUYEN VAN A|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|N|UPDATE||Profile not found
+Verify sign contract api case 400 with value of tcbsId as invalid value|400|99999999999|1|232313121212|NGUYEN VAN A|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|N|UPDATE||Profile not found
+Verify sign contract api case 400 with value of tcbsId as contains text|400|tcbsId|1|232313121212|NGUYEN VAN A|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|N|UPDATE||Profile not found
+Verify sign contract api case 400 with value of tcbsId as contains special word|400|&@!!|1|232313121212|NGUYEN VAN A|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|N|UPDATE||Wrong format of tcbsid
+Verify sign contract api case 400 with valid action as CREATE and isIA as N|400|getTcbsId|1|232313121212|NGUYEN VAN A|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|Y|CREATE|N|Action đăng ký IA không chính xác
+Verify sign contract api case 400 with valid action as CREATE and isIA is invalid|400|getTcbsId|1|232313121212|NGUYEN VAN A|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|Y|CREATE|abc|Action đăng ký IA không chính xác

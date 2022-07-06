@@ -1,0 +1,7 @@
+testCaseName|statusCode|identifyCustodyCd
+Verify api get Rm Rbo identification information case 200 with valid request|200|105C121291
+Verify api get Rm Rbo identification information case 403 with user having no permission|403|105C121291
+Verify api get Rm Rbo identification information case 403 with identifyCustodyCd not exist|403|105C178390
+Verify api get Rm Rbo identification information case 403 with identifyCustodyCd containing special characters|403|@@@@
+Verify api get Rm Rbo identification information case 403 with identifyCustodyCd containing word characters|403|asdfQWERTYaSDFG
+Verify api get Rm Rbo identification information case 404 with identifyCustodyCd is empty|404|empty

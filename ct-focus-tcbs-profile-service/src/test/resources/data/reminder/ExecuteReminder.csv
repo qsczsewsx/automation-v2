@@ -1,0 +1,8 @@
+testCaseName|statusCode|errorMessage|reminderId|reminderStatus|reminderEndTime|tcbsId|sourceStatus
+Verify execute reminder api case valid request - inactive reminder|400|Inactive reminder|1|0|1|null|1
+Verify execute reminder api case valid request - expired reminder|400|Expired reminder|1|1|-1|null|1
+Verify execute reminder api case valid request - inactive source - create no schedule|200|null|1|1|1|0001100141|0
+Verify execute reminder api case valid request - active source - create schedule|200|null|1|1|1|0001100141|1
+Verify execute reminder api case valid request - expired reminder|400|Expired reminder|1|1|-1|null|1
+Verify execute reminder api case invalid x-api-key|401|Invalid X-Api-Key|1|1|1|null|1
+Verify execute reminder api case invalid reminderId|400|Invalid reminder id|1326333|1|1|null|1

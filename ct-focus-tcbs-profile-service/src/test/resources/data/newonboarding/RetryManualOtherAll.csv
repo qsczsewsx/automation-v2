@@ -1,0 +1,2 @@
+testCaseName
+Verify /profile/v1/bau/retry-manual-other-all api responses httpStatusCode as "200" and return number of total tasks and number of retry success

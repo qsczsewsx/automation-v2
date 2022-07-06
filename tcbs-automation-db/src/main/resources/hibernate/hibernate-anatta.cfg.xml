@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</property>
+        <property name="show_sql">false</property>
+        <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+
+        <mapping class="com.tcbs.automation.conditionalorder.ConditionalOrder"/>
+        <mapping class="com.tcbs.automation.conditionalorder.ConditionalOrderStDetail"/>
+        <mapping class="com.tcbs.automation.conditionalorder.ConditionalOrderLog"/>
+        <mapping class="com.tcbs.automation.conditionalorder.Action"/>
+        <mapping class="com.tcbs.automation.conditionalorder.ActionPostOrder"/>
+        <mapping class="com.tcbs.automation.conditionalorder.ActionNotify"/>
+        <mapping class="com.tcbs.automation.conditionalorder.EngineAssistance"/>
+        <mapping class="com.tcbs.automation.conditionalorder.DraftConditionalOrder"/>
+        <mapping class="com.tcbs.automation.conditionalorder.PreOrder"/>
+        <mapping class="com.tcbs.automation.conditionalorder.Relation"/>
+    </session-factory>
+</hibernate-configuration>

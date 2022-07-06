@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</property>
+        <property name="show_sql">false</property>
+        <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+
+        <mapping class="com.tcbs.automation.fundstation.entity.Account"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.Portfolio"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.PortfolioType"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.AssetBankAccount"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.Broker"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.CounterParty"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.Company"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.CompanyGroup"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.Conf"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.Coupon"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.ExChange"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.ExchangeAttr"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.ExchangeTax"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.FundWorkingDay"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.Instrument"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.Industry"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.Policy"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.Product"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.ProductAttr"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.ProductDetail"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.ProductGlobal"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.ProductInstrument"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.Transaction"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.TransactionDemo"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.TransactionAttr"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.TransactionFund"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.Underlying"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.UnderlyingDetail"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.UnderlyingType"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.UnderlyingTypeTransactionAction"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.UserAccount"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.UserAccountAuthorization"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.MktPrice"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.ReportBrokerFund"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.ReportPortfolioFund"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.ReportTransFund"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.RequestTransaction"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.InvestPortfolio"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.NetInFlow"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.CashFund"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.TSPlan"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.TSPlanDetail"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.TSPlanTransaction"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.TSPortfolio"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.TSPortfolioHistory"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.TSTransaction"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.TSChannel"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.Fee"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.ConfFee"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.TsBondTempHistory"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.ArVN30Ticker"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.ArConf"/>
+        <mapping class="com.tcbs.automation.fundstation.entity.ArPortfolioDetail"/>
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,16 @@
+testCaseName,tcbsId,accountNo,bankSource,statusCode,errorCode,autoTransfer,isIAPaid
+Verify api update IA from tci3 case token not permission with tcbsId,0001738764,100870080100,CTG,403,null,Y,Y
+Verify api update IA from tci3 case accountNo is null,10000022726,null,CTG,400,104043,Y,Y
+Verify api update IA from tci3 case accountNo is empty,10000022726,empty,CTG,400,104043,Y,Y
+Verify api update IA from tci3 case accountNo is invalid,10000022726,123xxxx,CTG,400,104172,Y,Y
+Verify api update IA from tci3 case bankSource is null,10000022726,012010013333,null,400,104043,Y,Y
+Verify api update IA from tci3 case bankSource is empty,10000022726,012010013333,empty,400,104027,Y,Y
+Verify api update IA from tci3 case bankSource is invalid,10000022726,012010013333,BID,400,104027,Y,Y
+Verify api update IA from tci3 case autoTransfer is null,10000022726,012010013333,CTG,400,104300,null,Y
+Verify api update IA from tci3 case autoTransfer is empty,10000022726,012010013333,CTG,400,104300,empty,Y
+Verify api update IA from tci3 case autoTransfer is invalid,10000022726,012010013333,CTG,400,104157,YYY,Y
+Verify api update IA from tci3 case isIAPaid is invalid,10000022726,012010013333,CTG,400,104157,Y,YYY
+Verify api update IA from tci3 case isIAPaid is null,10000022726,012010013333,CTG,400,104300,Y,null
+Verify api update IA from tci3 case isIAPaid is empty,10000022726,012010013333,CTG,400,104300,Y,empty
+Verify api update IA from tci3 case success,10000022726,012010013333,CTG,200,104043,Y,Y
+Verify api update IA from tci3 case IA status not active,10000022726,012010013333,CTG,200,104164,Y,Y

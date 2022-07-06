@@ -1,0 +1,5 @@
+testCaseName|statusCode|errorMessage|tcbsId|code105C
+Verify get client key api case success|200|null|0001663118|105CQUOCTH
+Verify get client key api case tcbsId not found|400|User not found|10000201900|empty
+Verify get client key api case clientKey in database is empty|400|Invalid input->Client key is not present|0001888811|105C888811
+Verify format of client key|200|null|0001888811|105C888811

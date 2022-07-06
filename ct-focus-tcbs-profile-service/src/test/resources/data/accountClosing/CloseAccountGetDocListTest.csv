@@ -1,0 +1,5 @@
+testCaseName|username|statusCode|errorMessage
+Verify get file list api case 200 with valid request|105K100122|200|null
+Verify get file list api case 400 with missing value in username||400|(userName) is required
+Verify get file list api case 400 with value in username as 9999999|999999|400|Profile not found
+Verify get file list api case 400 with value in username as special word|#$#|400|Profile not found

@@ -1,0 +1,11 @@
+testCaseName|statusCode|errorMessage|username|password
+Verify authen login api case user is customer|200|null|105C083456|abc123
+Verify authen login api case user has RM role|200|null|105C010890|abc123
+Verify authen login api case user has RBO role|200|null|105C888811|abc123
+Verify authen login api case missing BODY|400|Invalid format||
+Verify authen login api case param username is empty|400|One of username, email and phone must be present|empty|abc123
+Verify authen login api case param password is empty|400|Password must be not empty|105C083456|empty
+Verify authen login api case username not exist|400|Username and password are not matched|105C883322|abc123
+Verify authen login api case password is invalid|400|Username and password are not matched|105C083456|abc123456
+Verify authen login api case user is account locked|400|Account locked|105C158925|abc123
+Verify authen login api case user is account is lock waiting to close|400|Your account is being closed|105C063389|abc123

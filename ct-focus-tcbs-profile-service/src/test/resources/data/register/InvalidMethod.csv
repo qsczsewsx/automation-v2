@@ -1,0 +1,4 @@
+description |method
+Verify httpStatusCode 405 is getting when request has invalid method GET |GET
+Verify httpStatusCode 405 is getting when request has invalid method PUT |PUT
+Verify httpStatusCode 405 is getting when request has invalid method DELETE |DELETE

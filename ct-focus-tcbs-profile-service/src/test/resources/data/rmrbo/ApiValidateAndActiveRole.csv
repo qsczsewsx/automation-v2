@@ -1,0 +1,19 @@
+testCaseName|statusCode|tcbsId|emailTechcombank|inListHrm|passElearning|roleBefore|bankCodeBefore|errorMessage|expected
+Veryfy api with missing body|400|||||||Invalid parameter|
+Veryfy api with invalid x-api-key|401|||||||Invalid X-Api-Key|
+Verify api with tcbsId non-exist in system|200|0001177699274|||||||
+Verify api with tcbsId is RM in HRM list, pass Elearning but mail without @techcombank.com.vn|200|0000000004|false|RM|RM||||not insert into r3rd_user
+Verify api with tcbsId is RBO in HRM list, pass Elearning but mail without @techcombank.com.vn|200|0000000004|false|RBO|RBO||||not insert into r3rd_user
+Verify api with tcbsId is RM in HRM list, mail techcombank but not pass Elearning 1|200|0000000004|true|RM|||||not insert into r3rd_user
+Verify api with tcbsId is RBO in HRM list, mail techcombank but not pass Elearning 1|200|0000000004|true|RBO|||||not insert into r3rd_user
+Verify api with tcbsId pass RM Elearning, mail techcombank but not in HRM list|200|0000000004|true||RM||||not insert into r3rd_user
+Verify api with tcbsId pass RBO Elearning, mail techcombank but not in HRM list|200|0000000004|true||RBO||||not insert into r3rd_user
+Verify api with tcbsId is RM in HRM list, pass Elearning, mail techcombank but no record in r3rd_user|200|0000000004|true|RM|RM||||active in r3rd_user and wso2
+Verify api with tcbsId is RM in HRM list, pass Elearning, mail techcombank but is RBO in r3rd_user|200|0000000004|true|RM|RM|RBO|TCB||active in r3rd_user and wso2
+Verify api with tcbsId is RBO in HRM list, pass Elearning, mail techcombank but no record in r3rd_user|200|0000000004|true|RBO|RBO||||active in r3rd_user and wso2
+Verify api with tcbsId is RBO in HRM list, pass Elearning, mail techcombank but is RM in r3rd_user|200|0000000004|true|RBO|RBO|RM|TCB||active in r3rd_user and wso2
+Verify api not with tcbsId not in HRM list and is RM in r3rd_user|200|0000000004|true||RM|RM|TCB||inactive in r3rd_user and wso2
+Verify api not with tcbsId not in HRM list and is RBO in r3rd_user|200|0000000004|true||RBO|RBO|TCB||inactive in r3rd_user and wso2
+Verify api not with tcbsId not in HRM list and is HRM in r3rd_user|200|0000000004|true||RM|HRM|TCB||inactive in r3rd_user and wso2
+Verify api not with tcbsId not in HRM list and is SuperRM in r3rd_user|200|0000000004|true||RM|SRM|TCB||not inactive in r3rd_user and wso2
+Verify api not with tcbsId with the AnI agency sends to a different agency of the existing roles|200|0000000004|true|RM|RM|RM|TCB||active in r3rd_user and update agency in r3rd_user

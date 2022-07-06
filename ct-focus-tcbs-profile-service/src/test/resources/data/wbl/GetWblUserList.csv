@@ -1,0 +1,14 @@
+testCaseName|statusCode|errorMessage|keySearch|valueSearch|policyCode
+Verify get wbl user list api case missing key param when user has special role|200|null|null|null|null
+Verify get wbl user list api case value is empty when user has special role|200|null|idNumber|empty|NNB_NLQ.TCS
+Verify get wbl user list api case missing key param when user has normal role|400|"(idNumber|userName|fullName) is required"|null|null|NNB_NLQ.TCS
+Verify get wbl user list api case value is empty when user has normal role|400|"(idNumber|userName|fullName) is required"|idNumber|empty|NNB_NLQ.TCS
+Verify get wbl user list api case missing policyCode param when user has normal role|400|(policyCode) is required|idNumber|1788345531|null
+Verify get wbl user list api case user has no permission|403|Not Authorized|idNumber|628244470303|NNB_NLQ.TCS
+Verify get wbl user list api case key is idNumber and value is valid|200|null|idNumber|628244470303|NNB_NLQ.TCS
+Verify get wbl user list api case key is idNumber and value not exist|200|null|idNumber|62824447000|NNB_NLQ.TCS
+Verify get wbl user list api case key is userName and value is valid|200|null|userName|105C070303|NNB_NLQ.TCS
+Verify get wbl user list api case key is userName and value not exist|200|null|userName|105C249015|NNB_NLQ.TCS
+Verify get wbl user list api case key is fullName and value is valid|200|null|fullName|Nguyễn Trần Linh|NNB_NLQ.TCS
+Verify get wbl user list api case key is fullName and value not exist|200|null|fullName|Chu Văn Minh|NNB_NLQ.TCS
+Verify get wbl user list api case policyCode not exist|200|null|idNumber|1788345531|THGFTGVC

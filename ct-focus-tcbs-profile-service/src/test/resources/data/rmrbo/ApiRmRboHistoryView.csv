@@ -1,0 +1,6 @@
+testCaseName|statusCode|tcbsId|errorMessage
+Verify api rm rbo history view case 200 with tcbsId is valid and all data is returned|200|0001100067|""
+Verify api rm rbo history view case 200 with tcbsId is valid and no data is returned|200|10000025745|Not Authorized
+Verify api rm rbo history view case 200 with tcbsId is invalid|200|abc|No message available
+Verify api rm rbo history view case 200 with tcbsId non-exist|200|0001100065|""
+Verify api rm rbo history view case 403 with invalid token|403|0001100067|Not Authorized

@@ -1,0 +1,23 @@
+testCaseName|identityNo|issueDate|statusCode|errorMsg
+Verify get idPlace api case 200 with 9 digits and issueDate before 30062012 return data with provinceCode as first 2 digits of idNumber|193948858|2012-06-29T17:00:00.000Z|200|
+Verify get idPlace api case 200 with 9 digits and issueDate as 30062012 return data with provinceCode as first 2 digits of idNumber|193948858|2012-06-30T17:00:00.000Z|200|
+Verify get idPlace api case 200 with 9 digits and issueDate between 30062012 and 10102018 return data with provinceCode as first 2 digits of idNumber|193948858|2012-07-01T17:00:00.000Z|200|
+Verify get idPlace api case 200 with 9 digits and issueDate as 10102018 return data with provinceCode as first 2 digits of idNumber|193948858|2018-10-10T17:00:00.000Z|200|
+Verify get idPlace api case 200 with 9 digits and issueDate after 10102018 return data with provinceCode as first 2 digits of idNumber|193948858|2018-10-11T17:00:00.000Z|200|
+Verify get idPlace api case 200 with 12 digits and issueDate as 30062012 return data with provinceCode as AA0|002202434333|2012-06-30T17:00:00.000Z|200|
+Verify get idPlace api case 200 with 12 digits and issueDate between 30062012 and 10102018 return data with provinceCode as AA0|002202434333|2012-07-01T17:00:00.000Z|200|
+Verify get idPlace api case 200 with 12 digits and issueDate as 10102018 return data with provinceCode as AA0|002202434333|2018-10-10T17:00:00.000Z|200|
+Verify get idPlace api case 200 with 12 digits and issueDate after 10102018 return data with provinceCode as AA1|002202434333|2018-10-11T17:00:00.000Z|200|
+Verify get idPlace api case 200 with 12 digits and issueDate before 30062012 return all data from table|002202434333|2012-06-29T17:00:00.000Z|200|
+Verify get idPlace api case 200 with value in param identityNo as 999999999 return all data from table|999999999|2012-06-29T17:00:00.000Z|200|
+Verify get idPlace api case 200 with value in param identityNo as 999999999999 return all data from table|999999999999|2012-06-29T17:00:00.000Z|200|
+Verify get idPlace api case 400 with missing param identityNo||2018-10-10T17:00:00.000Z|400|Invalid get id place request
+Verify get idPlace api case 400 with missing value in param identityNo||2018-10-10T17:00:00.000Z|400|Invalid get id place request
+Verify get idPlace api case 200 with value in param identityNo not as 9 digits or 12 digits|00220243433|2018-10-10T17:00:00.000Z|200|
+Verify get idPlace api case 400 with value in param identityNo as text|identityNo|2018-10-10T17:00:00.000Z|400|Invalid get id place request
+Verify get idPlace api case 400 with value in param identityNo as special word|$#$|2018-10-10T17:00:00.000Z|400|Invalid get id place request
+Verify get idPlace api case 400 with missing param issueDate|002202434333||400|Invalid get id place request
+Verify get idPlace api case 400 with missing value in param issueDate|002202434333||400|Invalid get id place request
+Verify get idPlace api case 400 with value in param issueDate not as TimeStamp format|002202434333|30/07/2016|400|Invalid parameter
+Verify get idPlace api case 400 with value in param issueDate as text|002202434333|issueDate|400|Invalid parameter
+Verify get idPlace api case 400 with value in param issueDate as special word|002202434333|$#$|400|Invalid parameter

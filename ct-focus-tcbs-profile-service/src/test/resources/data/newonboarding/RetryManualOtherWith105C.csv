@@ -1,0 +1,11 @@
+testCaseName
+Verify /profile/v1/bau/retry-manual-other api responses httpStatusCode as "400" and return "invalid request body" message which is missing param code105C in BODY
+Verify /profile/v1/bau/retry-manual-other api responses httpStatusCode as "400" and return "invalid request body" message which is missing value of param code105C in BODY
+Verify /profile/v1/bau/retry-manual-other api responses httpStatusCode as "400" and return "invalid request body" message which is contained value of param code105C in BODY as special word
+Verify /profile/v1/bau/retry-manual-other api responses httpStatusCode as "400" and return "Page invalid" message which is value of params code105C BODY as "999999"
+Verify /profile/v1/bau/retry-manual-other api responses httpStatusCode as "400" and return "invalid request body" message which is missing param action in BODY
+Verify /profile/v1/bau/retry-manual-other api responses httpStatusCode as "400" and return "invalid request body" message which is missing value of param action in BODY
+Verify api responses httpStatusCode as "400" and return "Action invalid" message which is value of params "size" BODY not as "SYNC_TO_BOND","SYNC_TO_CRM","SYNC_TO_IWP","SET_DEFAULT_MARGIN","BLOCK_TRANSFER","UNBLOCK_TRANSFER","START_STP_PROCESS"
+Verify /profile/v1/bau/retry-manual-other api responses httpStatusCode as "400" and return "not found" message which is contained value of param "code105C" and "action" found but not match
+Verify /profile/v1/bau/retry-manual-other api responses httpStatusCode as "400" and return "Action invalid" message which is value of params "size" BODY as special word
+Verify /profile/v1/bau/retry-manual-other api responses httpStatusCode as "200" and STATUS column is updated as "COMPLETE", RETRY_COUNT column is +1 in OB_RETRY table

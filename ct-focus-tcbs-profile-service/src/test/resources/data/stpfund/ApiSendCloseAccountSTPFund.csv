@@ -1,0 +1,11 @@
+testcaseName|tcbsId|product|type|statusCode|errorMessage
+Verify Api send close account stp fund case 401 with invalid x-api-key|""|FUND|CLOSE|401|Invalid X-Api-Key
+Verify Api send close account stp fund case 400 with missing tcbsid|""|FUND|CLOSE|400|Invalid tcbsid
+Verify Api send close account stp fund case 400 with tcbsid non exist|3ddfg#@|FUND|CLOSE|400|Invalid tcbsid
+Verify Api send close account stp fund case 400 with missing product|10000206387||CLOSE|400|Invalid product
+Verify Api send close account stp fund case 400 with product non exist|10000206387|iStock|CLOSE|400|Invalid product
+Verify Api send close account stp fund case 400 with missing type|10000206387|FUND|""|400|Invalid type
+Verify Api send close account stp fund case 400 with type non exist|10000206387|FUND|PENDING|400|Invalid type
+Verify Api send close account stp fund case 400 with missing body||||400|Invalid parameter
+Verify Api send close account stp fund case 200 with type as CLOSE|10000026210|FUND|CLOSE|200|
+Verify Api send close account stp fund case 200 with type as OPEN|10000026210|FUND|OPEN|200|

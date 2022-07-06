@@ -1,0 +1,7 @@
+testCaseName|tcbsId|statusCode|erroMess
+Verify Get Proinvestor By TcbsId API Case 400 With Empty TcbsId||400|Profile not found
+Verify Get Proinvestor By TcbsId API Case 400 With Non-existed TcbsId|5244396|400|Profile not found
+Verify Get Proinvestor By TcbsId API Case 400 With TcbsId Containing Word Characters|00012217aa|400|Profile not found
+Verify Get Proinvestor By TcbsId API Case 400 With TcbsId Containing Special Characters|00012217@@|400|Profile not found
+Verify Get Proinvestor By TcbsId API Case 400 With User Has No Permission|0001221760|401|Invalid X-Api-Key
+Verify Get Proinvestor By TcbsId API Case 200 With Valid TcbsId|gen|200|

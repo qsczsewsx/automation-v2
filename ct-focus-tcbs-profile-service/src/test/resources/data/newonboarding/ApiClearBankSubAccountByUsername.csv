@@ -1,0 +1,4 @@
+testCaseName|code105C|statusCode|erroMsg
+Verify Get Bank SubAccount By UserName API case 200 with valid code105C has data|105C898989|200|true
+Verify Get Bank SubAccount By UserName API case 200 with valid code105C has no data|105C234304|200|true
+Verify Get Bank SubAccount By UserName API case 200 with invalid code105C |105C2343024|200|true

@@ -1,0 +1,7 @@
+testCaseName|statusCode|userName|errorMsg
+Verify get AMLOCK history api case valid request|200|105C261986|
+Verify get AMLOCK history api case missing param username|400|null|(username) is required
+Verify get AMLOCK history api case username is empty|400|empty|(username) is required
+Verify get AMLOCK history api case username is not found|200|105C999999|
+Verify get AMLOCK history api case username value is text|200|abc|
+Verify get AMLOCK history api case username value is special word|200|*#@|

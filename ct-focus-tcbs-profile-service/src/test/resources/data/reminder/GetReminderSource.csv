@@ -1,0 +1,3 @@
+testCaseName|statusCode|errorMessage|tcbsId
+Verify get reminder source api case valid request|200|null|0001693997
+Verify get reminder source api case user has no permission|403|Not Authorized|0001693997

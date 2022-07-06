@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</property>
+        <property name="show_sql">false</property>
+        <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+
+        <mapping class="com.tcbs.automation.coco.socialinvest.CopierAccountEntity"/>
+        <mapping class="com.tcbs.automation.coco.socialinvest.AccountEntity"/>
+        <mapping class="com.tcbs.automation.coco.socialinvest.AccountRelationEntity"/>
+        <mapping class="com.tcbs.automation.coco.socialinvest.TraderAccountEntity"/>
+        <mapping class="com.tcbs.automation.coco.socialinvest.TraderDailySummaryEntity"/>
+        <mapping class="com.tcbs.automation.coco.socialinvest.RankEntity"/>
+        <mapping class="com.tcbs.automation.coco.socialinvest.CustomerRatingEntity"/>
+        <mapping class="com.tcbs.automation.coco.socialinvest.MessageReplyEntity"/>
+        <mapping class="com.tcbs.automation.coco.socialinvest.CriteriaInfo"/>
+        <mapping class="com.tcbs.automation.coco.socialinvest.CriteriaGroupInfo"/>
+        <mapping class="com.tcbs.automation.coco.socialinvest.WhitelistHistoryEntity"/>
+        <mapping class="com.tcbs.automation.coco.socialinvest.WhitelistTickerEntity"/>
+        <mapping class="com.tcbs.automation.coco.WhitelistTicker"/>
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,8 @@
+testCaseName|docId|statusCode|errorMsg
+Verify delete file api case 400 with missing param docId||400|Missing request parameter
+Verify delete file api case 400 with missing value in docId|""|400|(docId) is required
+Verify delete file api case 400 with value in docId as 999999|999999|400|(docEntityOpt) is required
+Verify delete file api case 400 with value in docId as docId|docId|400|Type mismatch request parameter
+Verify delete file api case 400 with value in docId as special word|#@$#|400|Type mismatch request parameter
+Verify delete file api case 200 with value in docId as valid value|#docId#|200|
+Verify delete file api case 400 with value in docId as deleted value|188|400|(docEntityOpt) is required

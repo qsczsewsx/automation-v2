@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</property>
+        <property name="show_sql">false</property>
+        <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+
+        <mapping class="com.tcbs.automation.otp_wt.OtpUserMapWT"/>
+        <mapping class="com.tcbs.automation.otp_wt.OtpUserDevicesWT"/>
+        <mapping class="com.tcbs.automation.otp_wt.TotpWT"/>
+        <mapping class="com.tcbs.automation.otp_wt.SmsExceptionInfoWT"/>
+        <mapping class="com.tcbs.automation.otp_wt.SmsLogWT"/>
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,7 @@
+testCaseName|statusCode|errorMessage|referralCode|campaignCode
+Verify inquiry referral code api case VinID code is valid|200|null|VINID-XJ3JH3|VINID_REFERRAL
+Verify inquiry referral code api case iWP code is valid|200|null|105C101988|WEALTH_PARTNER
+Verify inquiry referral code api case missing BODY|400|Invalid parameter|null|
+Verify inquiry referral code api case referralCode is empty|400|Mã giới thiệu không hợp lệ|empty|
+Verify inquiry referral code api case referralCode is invalid|400|Mã giới thiệu không hợp lệ|VINID-FJ6434|
+Verify inquiry referral code api case referralCode was used|400|Mã giới thiệu không hợp lệ|VINID-FJVR3T|

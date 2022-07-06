@@ -1,0 +1,11 @@
+testCasename|tcbsId|actor|statusCode|errMessage
+Verify open derivative account for organization API case 403 with unauthorized user|0001010153|unauthorized user|403|Not Authorized
+Verify open derivative account for organization API case 403 with empty tcbsId|null|amops|400|Profile not found
+Verify open derivative account for organization API case 400 with tcbsId containing special characters|0001010!@#|amops|400|Wrong format of tcbsid
+Verify open derivative account for organization API case 400 with tcbsId containing word characters|0001010ASD|amops|400|Profile not found
+Verify open derivative account for organization API case 400 with tcbsId being 10 word characters|ASDFGHJKLL|amops|400|Profile not found
+Verify open derivative account for organization API case 400 with tcbsId containing special and word charaters|0001ASD!@#|amops|400|Wrong format of tcbsid
+Verify open derivative account for organization API case 400 with non-existed tcbsId|1111111111|amops|400|Profile not found
+Verify open derivative account for organization API case 200 with valid tcbsId and valid authorization|0001010164|amops|200|Loi gui dien VSD.
+Verify open derivative account for organization API case 400 with customer whose vsd is not yet activated|0001636638|amops|200|Loi gui dien VSD.
+Verify open derivative account for organization API case 400 with customer whose is not organization|0001100099|amops|400|Trang thai TK tai VSD khong hop le!

@@ -1,0 +1,24 @@
+testCaseName|statusCode|pageSize|pageNumber|status|createdDate|flowOpenAccount|code105C|idNumber|errMess
+Verify Api get customer list case 403 with user having no permission|403||||||||Not Authorized
+Verify Api get customer list case 400 with pageSize smaller than 1|400|0|||||||Invalid page size
+Verify Api get customer list case 400 with pageSize containing word characters|400|A|||||||Type mismatch request parameter
+Verify Api get customer list case 400 with pageSize containing special characters|400|@|||||||Type mismatch request parameter
+Verify Api get customer list case 400 with pageSize is super big number|400|200000000000000000000000000000000000000000000000000000|||||||Type mismatch request parameter
+Verify Api get customer list case 400 with pageNumber smaller than 1|400||0||||||Invalid page number
+Verify Api get customer list case 400 with pageNumber containing word characters|400||X||||||Type mismatch request parameter
+Verify Api get customer list case 400 with pageNumber containing special characters|400||@@||||||Type mismatch request parameter
+Verify Api get customer list case 400 with pageNumber is super big number|400||200000000000000000000000000000000000000000000000000000||||||Type mismatch request parameter
+Verify Api get customer list case 400 with status which is not in RESIGN_STATUS range|400|||HOW_ARE_YOU|||||Invalid status
+Verify Api get customer list case 400 with status containing nummber|400|||1|||||Invalid status
+Verify Api get customer list case 400 with status is lower case|400|||wait_customer|||||Invalid status
+Verify Api get customer list case 400 with createdDate containing invalid date format |400||||1998/11/15||||Invalid format created date
+Verify Api get customer list case 400 with createdDate containing word characters|400||||aaaa/BB/Dd||||Invalid format created date
+Verify Api get customer list case 400 with createdDate containing special characters|400||||@@-@@_@@@@||||Invalid format created date
+Verify Api get customer list case 400 with flowOpenAccount containing word charaters|400|||||IA|||Type mismatch request parameter
+Verify Api get customer list case 400 with flowOpenAccount containing special charaters|400|||||@@|||Type mismatch request parameter
+Verify Api get customer list case 400 with flowOpenAccount is not in flowOpenAccount range|400|||||9|||Invalid flow open account
+Verify Api get customer list case 200 with unexisted code105C|200||||||105Z277456||
+Verify Api get customer list case 200 with invalid code105C|200||||||asDFGhjGHGHYU67@@@||
+Verify Api get customer list case 200 with unexisted idNumber|200|||||||443880000|
+Verify Api get customer list case 200 with invalid idNumber|200|||||||asDFGhjGHGHYU67@@@|
+Verify Api get customer list case 200 with all valid parameters|200||||||||

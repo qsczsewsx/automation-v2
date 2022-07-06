@@ -1,0 +1,4 @@
+testCaseName|xApiKey|statusCode|errMess
+Verify API sync subaccounts and connect IA case 200 valid|valid|200|
+Verify API sync subaccounts and connect IA case 401 with user having no permission|invalid|401|Invalid X-Api-Key
+Verify API sync subaccounts and connect IA case 401 with empty x_api_key|empty|401|No X-Api-Key in header

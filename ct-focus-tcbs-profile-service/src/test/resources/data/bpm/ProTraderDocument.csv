@@ -1,0 +1,5 @@
+testCaseName|statusCode|tcbsId|errorMessage|documentType
+Verify pro trader document api case valid request|200|0001014285|Add pro investor document success|FINANCIAL_COR
+Verify pro trader document api case missing BODY|400|0001014285|Invalid parameter|empty
+Verify pro trader document api case documentType does not exist|400|0001014285|Invalid document type|FINAN
+Verify pro trader document api case tcbsId does not exist|400|0001388896|Profile not found|FINANCIAL_COR

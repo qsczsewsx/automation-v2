@@ -1,0 +1,6 @@
+testCaseName|statusCode|errorMessage|actor|task
+Verify assign to actor api case valid request|200|null|maker|task
+Verify assign to actor api case actor has no permission handle this task|403|null|checker|task
+Verify assign to actor api case other actor is handling this task|400|Task not found|maker|1043
+Verify assign to actor api case taskID is not found|400|Task not found|maker|999999999
+Verify assign to actor api case taskID value is text|400|Type mismatch request parameter|maker|taskID

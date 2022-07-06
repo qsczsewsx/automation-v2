@@ -1,0 +1,10 @@
+testCaseName|statusCode|tcbsId|errorMessage|bookEmailRMUpload|bookManagerGroup|bookManagerUser|bookNote|bookReceivedDate|bookType|bookIdInput|bookStatus
+Verify update profile document by Id api case open account with status as 1|200|10000023693|null|dung.dao1@tcbs.com.vn|CS|Đào Thùy Dung|case add note|2020-10-28T00:00:00.000Z|OPEN|bookId|1
+Verify update profile document by Id api case open account with status as 0|200|10000023693|null|dung.dao1@tcbs.com.vn|CS|Đào Thùy Dung|case add note|2020-10-28T00:00:00.000Z|OPEN|bookId|0
+Verify update profile document by Id api case edit account with status as 1|200|10000023693|null|dung.dao1@tcbs.com.vn|CS|Đào Thùy Dung|case edit note|2020-10-28T00:00:00.000Z|EDIT|bookId|1
+Verify update profile document by Id api case edit account with status as 0|200|10000023693|null|dung.dao1@tcbs.com.vn|CS|Đào Thùy Dung|case edit note|2020-10-28T00:00:00.000Z|EDIT|bookId|0
+Verify update profile document by Id api case verify proInvestor with status as 1|200|10000023693|null|dung.dao1@tcbs.com.vn|CS|Đào Thùy Dung|case proInv note|2020-10-28T00:00:00.000Z|PROINV|bookId|1
+Verify update profile document by Id api case verify proInvestor with status as 0|200|10000023693|null|dung.dao1@tcbs.com.vn|CS|Đào Thùy Dung|case proInv note|2020-10-28T00:00:00.000Z|PROINV|bookId|0
+Verify update profile document by Id api case missing BODY|400|10000023693|Invalid parameter|empty|empty|empty|empty|empty|empty|empty|empty
+Verify update profile document by Id api case bookId does not exist|400|10000023692|Profile not found|dung.dao1@tcbs.com.vn|CS|Đào Thùy Dung|case add note|2020-10-28T00:00:00.000Z|OPEN|1923293|1
+Verify update profile document by Id api case bookId does not match with tcbsId|400|10000023692|Profile not found|dung.dao1@tcbs.com.vn|CS|Đào Thùy Dung|case add note|2020-10-28T00:00:00.000Z|OPEN|138519|1

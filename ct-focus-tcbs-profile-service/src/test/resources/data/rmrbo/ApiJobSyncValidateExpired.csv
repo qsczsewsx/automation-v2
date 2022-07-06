@@ -1,0 +1,7 @@
+testCaseName|statusCode|errorMessage|tcbsId|courseCode|expectStatus
+Verify api case with user passed 6 months and not in user >> expired elearning status|200||0001100066|EL0123123|0
+Verify api case with invalid x-api-key|401|Invalid X-Api-Key||EL0123123|
+Verify api case with user passed 6 months and active role in user >> not expired elearning status|200||0001177697|EL0123123|1
+Verify api case with user passed 6 months and inactive role in user > 6 months >> expired elearning status|200||0001067838|EL0123123|0
+Verify api case with user passed 6 months and inactive role in user < 6 months >> not expired elearning status|200||0001946668|EL0123123|1
+Verify api case with user passed 6 months and inactive role in user = 6 months >> expired elearning status|200||0001093600|EL0123123|0

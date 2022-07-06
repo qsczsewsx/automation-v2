@@ -1,0 +1,21 @@
+testCaseName|statusCode|errorMessage|tcbsId|reminderId|action|value|reminderStatus|key
+Verify update reminder source api case valid action is ADD, inactive reminder - create no source|200|null|0001693997|1|ADD|Test update reminder|0|$steps
+Verify update reminder source api case valid action is ADD, active reminder, active source - create no schedule|200|null|0001693997|1|ADD|empty|1|$steps
+Verify update reminder source api case valid action is ADD, active reminder, inactive source - create schedule|200|null|0001693997|1|ADD|Test update reminder|1|$steps
+Verify update reminder source api case valid action is UPDATE, active reminder, active source|200|null|0001693997|1|UPDATE|Test update reminder|1|$steps
+Verify update reminder source api case valid action is REMOVE|200|null|0001693997|1|REMOVE|Test update reminder|1|$steps
+Verify update reminder source api case valid action is ADD, value is empty|200|null|0001693997|1|ADD|empty|1|$steps
+Verify update reminder source api case user has no permission|403|Not Authorized|0001693997|1|ADD|Test update reminder|1|$steps
+Verify update reminder source api case missing BODY|400|Invalid parameter|0001693997|1|ADD|Test update reminder|1|$steps
+Verify update reminder source api case missing param tcbsId|400|Invalid tcbsId|null|1|ADD|Test update reminder|1|$steps
+Verify update reminder source api case missing param reminderIds|400|Invalid reminder id|0001693997|null|ADD|Test update reminder|1|$steps
+Verify update reminder source api case missing param action|400|Invalid action|0001693997|1|null|Test update reminder|1|$steps
+Verify update reminder source api case missing value of param tcbsId|400|Invalid tcbsId|empty|1|ADD|Test update reminder|1|$steps
+Verify update reminder source api case missing value of param reminderIds|400|Invalid reminder id|0001693997|empty|ADD|Test update reminder|1|$steps
+Verify update reminder source api case missing value of param action|400|Invalid action|0001693997|1|empty|Test update reminder|1|$steps
+Verify update reminder source api case action is invalid|400|Invalid action|0001693997|1|TURN|Test update reminder|1|$steps
+Verify update reminder source api case action is ADD and tcbsId does not exist|400|Invalid tcbsId|1111693999|1|ADD|Test update reminder|1|$steps
+Verify update reminder source api case reminderIds has size not equal than 1|400|Invalid reminder id|0001693997|1|ADD|Test update reminder|1|$steps
+Verify update reminder source api case action is ADD and reminderIds does not exist|400|Invalid reminder id|0001693997|9999|ADD|Test update reminder|1|$steps
+Verify update reminder source api case action is UPDATE and reminderIds does not exist|400|Invalid reminder id|0001693997|8888|UPDATE|Test update reminder|1|$steps
+Verify update reminder source api case action is REMOVE and reminderIds,tcbsId does not exist |400|No reminder for tcbsId|10000025718|3|REMOVE|Test update reminder|1|$steps

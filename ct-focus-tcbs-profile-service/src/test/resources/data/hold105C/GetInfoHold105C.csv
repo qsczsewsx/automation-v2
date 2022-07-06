@@ -1,0 +1,4 @@
+testCaseName|statusCode|errorMessage|username|expectHold105C|status
+Verify get info hold 105C api case username is in campaign and booked fancy 105C successfully|200|null|105C060980|1|1
+Verify get info hold 105C api case username is in campaign but did not book fancy 105C|200|null|105C043442|1|0
+Verify get info hold 105C api case username is not in hold 105C campaign|200|Quý khách không thuộc chương trình Tài khoản số đẹp cho bạn bè, người thân|105C268002|0|0

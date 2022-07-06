@@ -1,0 +1,8 @@
+testCaseName|code105C|fields|fieldsVal|statusCode|erroMsg
+Verify Get Bank SubAccount By UserName API case 200 with valid code105C has data|105C898989|fields|basicInfo,bankSubAccounts,personalInfo|200|
+Verify Get Bank SubAccount By UserName API case 200 with valid code105C has no data|105C234304|fields|basicInfo,bankSubAccounts,personalInfo|200|
+Verify Get Bank SubAccount By UserName API case 400 with invalid code105C |105C2343024|fields|basicInfo,bankSubAccounts,personalInfo|400|Profile not found
+Verify Get Bank SubAccount By UserName API case 200 with missing params|105C911126|||200|
+Verify Get Bank SubAccount By UserName API case 200 with invalid params|105C911126|fieldss|basicInfo,bankSubAccounts,personalInfo|200|
+Verify Get Bank SubAccount By UserName API case 200 with missing fieldsVal|105C911126|fields||200|
+Verify Get Bank SubAccount By UserName API case 400 with invalid fieldsVal|105C911126|fields|basicInfobankSubAccounts,personalInfo|400|Fields must be (basicInfo,personalBasicInfo,personalInfo,bankAccounts,accountStatus,systemUserInfo,rmRefInfo,bankSubAccounts)
