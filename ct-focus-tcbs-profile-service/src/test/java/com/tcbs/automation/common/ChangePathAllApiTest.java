@@ -12,8 +12,7 @@ import static com.tcbs.automation.config.rubik.H2hConfig.X_API_KEY;
 import static common.ProfileTools.TOKEN;
 import static net.serenitybdd.rest.SerenityRest.given;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.anyOf;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 
 @RunWith(SerenityParameterizedRunner.class)
 @UseTestDataFrom(value = "data/common/VerifyChangePathData.csv", separator = '|')
@@ -59,6 +58,9 @@ public class ChangePathAllApiTest {
         break;
     }
 
-    assertThat("Verify status code", response.getStatusCode(), anyOf(is(400), is(200), is(204), is(401), is(403)));
+    assertThat("Verify status code", response.getStatusCode(), anyOf(is(400), is(200), is(204), is(401), is(403), is(500)));
+    if (response.getStatusCode() == 500) {
+      assertThat("verify error code", response.jsonPath().getMap("").get("code").toString(), startsWith("104"));
+    }
   }
 }
