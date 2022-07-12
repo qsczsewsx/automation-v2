@@ -1,6 +1,7 @@
 package com.tcbs.automation.common;
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
+import com.tcbs.automation.config.Env;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
@@ -24,6 +25,9 @@ public class ChangePathAllApiTest {
   @TestCase(name = "Verify change path api #baseUrl")
   public void verifyAllApiChangePath() {
     System.out.println(method + " yolo " + baseUrl);
+    if (Env.get().getName().equalsIgnoreCase("uat")) {
+      baseUrl = baseUrl.replace("sit", "uat");
+    }
     Response response = null;
     RequestSpecification req = given()
       .baseUri(baseUrl.replace("{param}", "abc"));
