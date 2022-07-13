@@ -9,7 +9,7 @@ import net.thucydides.junit.annotations.UseTestDataFrom;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.tcbs.automation.config.rubik.H2hConfig.X_API_KEY;
+import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.API_KEY;
 import static common.ProfileTools.TOKEN;
 import static net.serenitybdd.rest.SerenityRest.given;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -32,9 +32,9 @@ public class ChangePathAllApiTest {
     RequestSpecification req = given()
       .baseUri(baseUrl.replace("{param}", "abc"));
 
-    if (baseUrl.contains("apiintsit")) {
-      req.header("x-api-key", X_API_KEY);
-    } else if (baseUrl.contains("apiextsit")) {
+    if (baseUrl.contains("apiint")) {
+      req.header("x-api-key", API_KEY);
+    } else if (baseUrl.contains("apiext")) {
       req.header("Authorization", "Bearer " + TOKEN);
     }
 
