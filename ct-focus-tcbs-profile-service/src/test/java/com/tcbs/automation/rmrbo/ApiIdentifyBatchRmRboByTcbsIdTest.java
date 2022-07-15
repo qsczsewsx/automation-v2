@@ -26,7 +26,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 /*
-  API Get identification information by multi TCBSID for Fund
+  API Get identification information by multi TCBSID (customer tcbsId)
 */
 
 @RunWith(SerenityParameterizedRunner.class)
@@ -39,9 +39,11 @@ public class ApiIdentifyBatchRmRboByTcbsIdTest {
   private int statusCode;
   private String tcbsIds;
   private String errMess;
+  private int items;
 
   @Before
   public void before() {
+    // customer tcbsIds
     if (tcbsIds.equalsIgnoreCase("gen")) {
       List<TcbsRelation> list105Code = TcbsRelation.getByStatus(1);
       for (int i = 0; i < 10; i++) {
@@ -74,28 +76,39 @@ public class ApiIdentifyBatchRmRboByTcbsIdTest {
 
     if (statusCode == 401) {
       assertEquals(errMess, response.jsonPath().get("message"));
-    } else if (statusCode == 200 && tcbsIds.equalsIgnoreCase("gen")) {
-
-      for (String s : tcbsIds_asList) {
-        TcbsUser tcbsUser = TcbsUser.getByUserName(s);
-        TcbsUserAdditionStatus tcbsAdditionStatus = TcbsUserAdditionStatus.getUserByTcbsId(tcbsUser.getTcbsid());
-        TcbsRelation tcbsRelation = TcbsRelation.getByCustodyCd(tcbsUser.getTcbsid());
-
-        //if account does not exist in table TCBS_ADDITION_STATUS
-        if (tcbsAdditionStatus == null) {
-          assertEquals(0, Integer.parseInt(response.jsonPath().get("totalCount").toString()));
-          assertThat(response.jsonPath().get("items"), is(nullValue()));
-        }
-
-        //if account does not exist in TCBS_RELATION but exists in TCBS_ADDITION_STATUS
-        //Bond and Fund return 1 as default
-        else if (tcbsRelation == null) {
-          assertEquals("1", response.jsonPath().get("items[:1].userSetting.viewAssetBond"));
-          assertEquals("1", response.jsonPath().get("items[:1].userSetting.viewAssetFund"));
-        }
-      }
     } else {
-      assertThat(response.jsonPath().get("items"), is(nullValue()));
+      if (items == 0) {
+        assertThat(response.jsonPath().get("items"), is(nullValue()));
+      } else if (items == 1) {
+        //if account does not exist in TCBS_RELATION and TCBS_USER_ADDITION_STATUS
+        //Bond and Fund return 1 as default
+        assertEquals("1", response.jsonPath().get("items[0].userSetting.viewAssetBond"));
+        assertEquals("1", response.jsonPath().get("items[0].userSetting.viewAssetFund"));
+      } else {
+        verifyDataRelationAndAdditionStatus(response);
+      }
     }
   }
+
+  private void verifyDataRelationAndAdditionStatus(Response response) {
+    for (String s : tcbsIds_asList) {
+      TcbsUser tcbsUser = TcbsUser.getByUserName(s);
+      TcbsUserAdditionStatus tcbsAdditionStatus = TcbsUserAdditionStatus.getUserByTcbsId(tcbsUser.getTcbsid());
+      TcbsRelation tcbsRelation = TcbsRelation.getByCustodyCd(tcbsUser.getTcbsid());
+
+      //if account does not exist in table TCBS_USER_ADDITION_STATUS
+      if (tcbsAdditionStatus == null) {
+        assertEquals(0, Integer.parseInt(response.jsonPath().get("totalCount").toString()));
+        assertThat(response.jsonPath().get("items"), is(nullValue()));
+      }
+
+      //if account does not exist in TCBS_RELATION but exists in TCBS_USER_ADDITION_STATUS
+      //Bond and Fund return 1 as default
+      else if (tcbsRelation == null) {
+        assertEquals("1", response.jsonPath().get("items[:1].userSetting.viewAssetBond"));
+        assertEquals("1", response.jsonPath().get("items[:1].userSetting.viewAssetFund"));
+      }
+    }
+  }
+
 }
