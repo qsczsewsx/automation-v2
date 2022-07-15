@@ -2,9 +2,6 @@ package com.tcbs.automation.newonboarding2022;
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.google.gson.Gson;
-import com.tcbs.automation.cas.TcbsBankAccount;
-import com.tcbs.automation.cas.TcbsIdentification;
-import com.tcbs.automation.cas.TcbsUser;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.Getter;
@@ -13,16 +10,13 @@ import net.serenitybdd.rest.RestRequests;
 import net.thucydides.core.annotations.Title;
 import net.thucydides.junit.annotations.UseTestDataFrom;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.*;
 
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.API_VALIDATE_PHONE_EMAIL;
-import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.REGISTER_VERIFICATION;
 import static com.tcbs.automation.tools.FormatUtils.syncData;
-import static net.serenitybdd.rest.SerenityRest.given;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SerenityParameterizedRunner.class)
@@ -83,14 +77,10 @@ public class ApiValidatePhoneEmailTest {
     if (statusCode == 200) {
       if (testCaseName.contains("success")) {
         assertEquals("true", response.jsonPath().get("isValid").toString());
-        assertEquals(errorMessage, response.jsonPath().get("message"));
       } else {
         assertEquals("false", response.jsonPath().get("isValid").toString());
-        assertEquals(errorMessage, response.jsonPath().get("message"));
       }
     }
-    if (statusCode == 400) {
-      assertEquals(errorMessage, response.jsonPath().get("message"));
-    }
+    assertEquals(errorMessage, response.jsonPath().get("message"));
   }
 }
