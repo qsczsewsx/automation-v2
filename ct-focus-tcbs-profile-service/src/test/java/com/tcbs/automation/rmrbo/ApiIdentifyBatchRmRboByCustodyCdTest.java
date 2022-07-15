@@ -26,7 +26,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 /*
-  API Get identification information by multi 105C for Bond
+  API Get identification information by multi 105C (rm rbo custodyCd)
 */
 @RunWith(SerenityParameterizedRunner.class)
 @UseTestDataFrom(value = "data/rmrbo/ApiIdentificationBatchRmRboByCustodyCd.csv", separator = '|')
@@ -44,7 +44,7 @@ public class ApiIdentifyBatchRmRboByCustodyCdTest {
     if (custodyCds.equalsIgnoreCase("gen")) {
       List<TcbsRelation> list105Code = TcbsRelation.getByStatus(1);
       for (int i = 0; i < 10; i++) {
-        custodyCd_asList.add(list105Code.get(i).getCustodyCd());
+        custodyCd_asList.add(list105Code.get(i).getIdentifyCustodyCd());
       }
     } else {
       custodyCd_asList.add(custodyCds);
@@ -79,13 +79,13 @@ public class ApiIdentifyBatchRmRboByCustodyCdTest {
         TcbsUserAdditionStatus tcbsAdditionStatus = TcbsUserAdditionStatus.getUserByTcbsId(tcbsUser.getTcbsid());
         TcbsRelation tcbsRelation = TcbsRelation.getByCustodyCd(tcbsUser.getTcbsid());
 
-        //if account does not exist in table TCBS_ADDITION_STATUS
+        //if account does not exist in table TCBS_USER_ADDITION_STATUS
         if (tcbsAdditionStatus == null) {
           assertEquals(0, Integer.parseInt(response.jsonPath().get("totalCount").toString()));
           assertThat(response.jsonPath().get("items"), is(nullValue()));
         }
 
-        //if account does not exist in TCBS_RELATION but exists in TCBS_ADDITION_STATUS
+        //if account does not exist in TCBS_RELATION but exists in TCBS_USER_ADDITION_STATUS
         //Bond and Fund return 1 as default
         else if (tcbsRelation == null) {
           assertEquals("1", response.jsonPath().get("items[:" + (j + 1) + "].userSetting.viewAssetBond"));

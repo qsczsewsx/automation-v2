@@ -323,5 +323,7 @@ public class TcbsProfileServiceConfig {
   //OTP Global Phone
   public static final String OTP_GET_LIST_PHONE_CODE = conf.getString("otpGlobalPhone.getListPhoneCode");
 
+  //new onboarding 2022
+  public static final String API_VALIDATE_PHONE_EMAIL = conf.getString("newonboarding2022.validatePhoneEmail");
 
 }
