@@ -352,4 +352,29 @@ public class CallApiUtils {
       .when()
       .post();
   }
+
+  public static Response callGenAuthenKeyApi() {
+    String body = fileTxtToString("src/test/resources/requestBody/GenAuthenKey.json");
+    Response response = given()
+      .baseUri(GEN_AUTHEN_KEY)
+      .contentType(APPLICATION_JSON)
+      .header(X_API_KEY, API_KEY)
+      .body(body)
+      .post();
+    assertThat(response.statusCode(), is(200));
+    return response;
+  }
+
+  public static Response callLoginApi(String loginKey) {
+    HashMap<String, Object> body = new HashMap<>();
+    body.put("login_key", loginKey);
+    Response response = given()
+      .baseUri(LOGIN_TO_TCI3)
+      .contentType(APPLICATION_JSON)
+      .body(body)
+      .post();
+    assertThat(response.statusCode(), is(200));
+    return response;
+  }
+
 }

@@ -1,0 +1,6 @@
+testCaseName|statusCode|errorMessage|authenKey
+Verify api gen login key success|200|Success|gen
+Verify api gen login key missing authenKey|400|Invalid authenKey|empty
+Verify api gen login key with invalid authenKey|400|Invalid authenKey|abc
+Verify api gen login key with authenKey expired|400|Invalid authenKey|c0283c16c9a31905c48ee0b04f6d29ef653a0afe13144a334af97e4e704127d4
+Verify api gen login key with missing body|400|Invalid format|
