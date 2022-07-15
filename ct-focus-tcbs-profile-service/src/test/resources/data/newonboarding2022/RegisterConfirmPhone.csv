@@ -1,0 +1,10 @@
+testCaseName|statusCode|errorMessage|phoneNumber|phoneCode|otp|otpId
+Verify api register confirm phone success case the first|200|Success|gen|+84|111111|3789098654335657
+Verify api register confirm phone success case authenKey expired|200|Success|gen|+84|111111|3789098654335657
+Verify api register confirm phone missing phoneNumber|400|Phone is invalid|empty|+84|111111|3789098654335657
+Verify api register confirm phone missing phoneCode|400|Phone is invalid|982310754|empty|111111|3789098654335657
+Verify api register confirm phone missing otp|400|Otp is invalid|982310754|+84|empty|3789098654335657
+Verify api register confirm phone missing otpId|400|Otp is invalid|982310754|+84|111111|empty
+Verify api register confirm phone with otp contains text|400|Verify OTP Fail Exception|0136404373|+84|aaaa|3789098654335657
+Verify api register confirm phone with invalid otp|400|Verify OTP Fail Exception|0136404373|+84|555555|3789098654335657
+Verify api register confirm phone with missing body|400|Invalid parameter||||
