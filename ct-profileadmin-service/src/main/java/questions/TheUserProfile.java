@@ -50,12 +50,12 @@ public class TheUserProfile {
       );
   }
 
-  public static Question<TcbsUserOpenaccountQueue> forAllAddressfromDB(String userId) {
+  public static Question<TcbsUserOpenAccountQueue> forAllAddressfromDB(String userId) {
     return Question.about("TCBS_USER_OPENACCOUNT_QUEUE from database")
       .answeredBy(
         actor -> {
-          TcbsUserOpenaccountQueue tcbsUserOpenaccountQueue = new TcbsUserOpenaccountQueue();
-          return tcbsUserOpenaccountQueue.getByTcbsUserOpenaccountQueue(userId);
+          TcbsUserOpenAccountQueue tcbsUserOpenaccountQueue = new TcbsUserOpenAccountQueue();
+          return tcbsUserOpenaccountQueue.getByTcbsUserOpenAccountQueue(userId);
         }
       );
   }

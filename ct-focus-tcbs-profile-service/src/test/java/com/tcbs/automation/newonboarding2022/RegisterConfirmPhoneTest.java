@@ -2,7 +2,7 @@ package com.tcbs.automation.newonboarding2022;
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.google.gson.Gson;
-import com.tcbs.automation.cas.TcbsUserOpenaccountQueue;
+import com.tcbs.automation.cas.TcbsUserOpenAccountQueue;
 import common.CommonUtils;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -89,7 +89,7 @@ public class RegisterConfirmPhoneTest {
     assertEquals(statusCode, response.getStatusCode());
     if (statusCode == 200) {
       assertNotNull(response.jsonPath().get("authenKey").toString());
-      assertEquals(TcbsUserOpenaccountQueue.getByPhone(phoneCode + phoneNumber).getReferenceid(), response.jsonPath().get("referenceId"));
+      assertEquals(TcbsUserOpenAccountQueue.getByPhone(phoneCode + phoneNumber).getReferenceid(), response.jsonPath().get("referenceId"));
     } else {
       assertEquals(errorMessage, response.jsonPath().get("message"));
     }
@@ -99,7 +99,7 @@ public class RegisterConfirmPhoneTest {
   public void clearData() {
     // Clear data
     if (statusCode == 200) {
-      TcbsUserOpenaccountQueue.deleteByPhone(phoneCode + phoneNumber);
+      TcbsUserOpenAccountQueue.deleteByPhone(phoneCode + phoneNumber);
     }
   }
 }

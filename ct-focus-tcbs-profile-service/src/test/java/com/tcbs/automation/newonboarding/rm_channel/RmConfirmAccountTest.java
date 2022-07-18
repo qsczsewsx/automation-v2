@@ -2,7 +2,7 @@ package com.tcbs.automation.newonboarding.rm_channel;
 
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
-import com.tcbs.automation.cas.TcbsUserOpenaccountQueue;
+import com.tcbs.automation.cas.TcbsUserOpenAccountQueue;
 import common.CallApiUtils;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -74,7 +74,7 @@ public class RmConfirmAccountTest {
       response = requestSpecification.post();
     } else {
       if (testCaseName.contains("valid request")) {
-        body = "referenceid=" + TcbsUserOpenaccountQueue.getByPhone(phone).getReferenceid();
+        body = "referenceid=" + TcbsUserOpenAccountQueue.getByPhone(phone).getReferenceid();
       } else {
         body = "referenceid=" + referenceId;
       }
