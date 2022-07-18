@@ -336,7 +336,7 @@ public class CommonUtils {
         TcbsIdentification.deleteByIdNumber(idNumber);
         TcbsNewOnboardingStatus.deleteByUserId(userId);
         TcbsUser.deleteByPhone(phoneNumber);
-        TcbsUserOpenaccountQueue.deleteByPhone(phoneNumber);
+        TcbsUserOpenAccountQueue.deleteByPhone(phoneNumber);
       }
     }
 
@@ -347,7 +347,7 @@ public class CommonUtils {
         TcbsIdentification.deleteByIdNumber(idNumber);
         TcbsNewOnboardingStatus.deleteByUserId(userId);
         TcbsUser.deleteByPhone(phone);
-        TcbsUserOpenaccountQueue.deleteByPhone(phone);
+        TcbsUserOpenAccountQueue.deleteByPhone(phone);
       }
     }
 
@@ -357,7 +357,7 @@ public class CommonUtils {
         TcbsIdentification.deleteByIdNumber(idNumber);
         TcbsNewOnboardingStatus.deleteByUserId(userId);
         TcbsUser.deleteByPhone(phoneNumber);
-        TcbsUserOpenaccountQueue.deleteByPhone(phoneNumber);
+        TcbsUserOpenAccountQueue.deleteByPhone(phoneNumber);
       }
 
     }

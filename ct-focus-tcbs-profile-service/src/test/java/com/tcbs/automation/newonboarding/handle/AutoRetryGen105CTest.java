@@ -5,7 +5,7 @@ import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.tcbs.automation.cas.TcbsIdentification;
 import com.tcbs.automation.cas.TcbsNewOnboardingStatus;
 import com.tcbs.automation.cas.TcbsUser;
-import com.tcbs.automation.cas.TcbsUserOpenaccountQueue;
+import com.tcbs.automation.cas.TcbsUserOpenAccountQueue;
 import com.tcbs.automation.tools.SerenityTools;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -103,7 +103,7 @@ public class AutoRetryGen105CTest {
     String userId = tcbsUser.getId().toString();
 
 //      Update user_id in TCBS_OpenAccountQueue
-    TcbsUserOpenaccountQueue.updateUserId(phoneNumber, userId);
+    TcbsUserOpenAccountQueue.updateUserId(phoneNumber, userId);
 
 //      Update statusValue
     if (statusValueGen105C.equals("OPEN_ACCOUNT")) {

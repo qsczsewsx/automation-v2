@@ -377,6 +377,20 @@ public class CallApiUtils {
     return response;
   }
 
+  public static String callRegisterConfirmPhoneApi(String referenceId) {
+    String body = fileTxtToString("src/test/resources/requestBody/RegisterConfirmPhone.json")
+      .replace("#phoneCode#", referenceId.substring(0,3))
+      .replace("#phoneNumber#", referenceId.substring(3,12))
+      .replace("#referenceId#", referenceId);
+    Response response = given()
+      .baseUri(REGISTER_CONFIRM_PHONE)
+      .contentType(APPLICATION_JSON)
+      .body(body)
+      .post();
+    assertThat(response.statusCode(), is(200));
+    return response.jsonPath().get("authenKey").toString();
+  }
+
 
   public static Response callConfirmOtpApi() {
     String body = fileTxtToString("src/test/resources/requestBody/RegisterConfirmOtp.json");
