@@ -15,6 +15,8 @@ import org.json.simple.parser.ParseException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -65,6 +67,15 @@ public class CommonUtils {
   private static final String ACCOUNT_TYPE = "accountType";
 
   private static final ObTask obTask = new ObTask();
+  private static Random rand = null;  // SecureRandom is preferred to Random
+
+  static {
+    try {
+      rand = SecureRandom.getInstanceStrong();
+    } catch (NoSuchAlgorithmException e) {
+      e.printStackTrace();
+    }
+  }
 
   public static String getUserType(String value) {
     String type;
@@ -1114,4 +1125,12 @@ public class CommonUtils {
     r3rdElearning.insert();
     return tcbsId;
   }
+
+  public static String genPhoneNumberByDateTime() {
+    List<String> givenList = Arrays.asList("3", "5", "7", "8", "9");
+    String randomElement = givenList.get(rand.nextInt(givenList.size()));
+    String prepareValue = String.valueOf(new Date().getTime());
+    return randomElement + prepareValue.substring(5);
+  }
+
 }
