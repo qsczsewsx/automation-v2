@@ -77,7 +77,6 @@ public class RegisterGetOcrDataTest {
       } else {
         assertThat(response.jsonPath().get("needUploadOther"), is(false));
       }
-
       Map<String, Object> mapOcrData = response.jsonPath().get("ocrData");
       OcrData ocrData = OcrData.getByTuoqId(TcbsUserOpenAccountQueue.getByPhone(referenceId.substring(0, 12)).getId().toString());
       assertEquals(ocrData.getFullName(), mapOcrData.get("fullName"));
@@ -88,7 +87,6 @@ public class RegisterGetOcrDataTest {
       assertEquals(ocrData.getExpireDate(), mapOcrData.get("expireDate"));
       assertEquals(ocrData.getNationality(), mapOcrData.get("nationality"));
       assertEquals(ocrData.getHometownAddress(), mapOcrData.get("hometownAddress"));
-
     } else if (statusCode == 400) {
       assertEquals(errorMessage, response.jsonPath().get("message"));
     }
