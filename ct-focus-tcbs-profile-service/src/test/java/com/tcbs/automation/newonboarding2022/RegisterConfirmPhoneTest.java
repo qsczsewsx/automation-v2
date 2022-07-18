@@ -3,6 +3,7 @@ package com.tcbs.automation.newonboarding2022;
 import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.google.gson.Gson;
 import com.tcbs.automation.cas.TcbsUserOpenaccountQueue;
+import common.CommonUtils;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.Getter;
@@ -14,7 +15,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.*;
+import java.util.HashMap;
 
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.REGISTER_CONFIRM_PHONE;
 import static com.tcbs.automation.tools.FormatUtils.syncData;
@@ -38,10 +39,7 @@ public class RegisterConfirmPhoneTest {
 
   @Before
   public void before() {
-    List<String> givenList = Arrays.asList("3", "5", "7", "8", "9");
-    String randomElement = givenList.get(new Random().nextInt(givenList.size()));
-    String prepareValue = String.valueOf(new Date().getTime());
-    String suffixPhone = randomElement + prepareValue.substring(5);
+    String suffixPhone = CommonUtils.genPhoneNumberByDateTime();
 
     if (phoneNumber.equalsIgnoreCase("gen")) {
       phoneNumber = suffixPhone;
