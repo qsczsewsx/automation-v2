@@ -88,4 +88,13 @@ public class OcrData {
     casConnection.getSession().getTransaction().commit();
   }
 
+  @Step
+  public static void getListData(String tuoqId) {
+    Query<TcbsUserOpenaccountQueueUpload> query = CAS.casConnection.getSession().createQuery(
+      "from TcbsUserOpenaccountQueueUpload a where a.tuoqId=:tuoqId", TcbsUserOpenaccountQueueUpload.class);
+    query.setParameter("tuoqId", tuoqId);
+    return query.getSingleResult();
+  }
+
+
 }

@@ -377,4 +377,16 @@ public class CallApiUtils {
     return response;
   }
 
+
+  public static Response callConfirmOtpApi() {
+    String body = fileTxtToString("src/test/resources/requestBody/RegisterConfirmOtp.json");
+    Response response = given()
+      .baseUri(REGISTER_CONFIRM_PHONE)
+      .contentType(APPLICATION_JSON)
+      .body(body)
+      .post();
+    assertThat(response.statusCode(), is(200));
+    return response;
+  }
+
 }
