@@ -1,0 +1,12 @@
+testCaseName|statusCode|errorMessage|referenceId|authenKey|file
+Verify api register upload other case success upload a file|200|Upload identity success|+84565980041F19072022174425|gen|1
+Verify api register upload other case success upload two files|200|Upload identity success|+84565980041F19072022174425|gen|2
+Verify api register upload other case missing referenceId|403|Forbidden|empty|ea3a50a99e5d202b889bdf2ffd93a318e0ecee3603adcdca544595444053ea8a|1
+Verify api register upload other case missing authenKey|403|Forbidden|+84565980041F19072022174425|empty|1
+Verify api register upload other with invalid referenceId|403|Forbidden|+84342345207F15072022163312|ea3a50a99e5d202b889bdf2ffd93a318e0ecee3603adcdca544595444053ea8a|1
+Verify api register upload other with invalid authenKey|403|Forbidden|+84565980041F19072022174425|ac3a50a99e5d202b889bdf2ffd93a31d3441233|1
+Verify api register upload other case authenKey expired|403|Forbidden|+84565980041F19072022174425|ea3a50a99e5d202b889bdf2ffd93a318e0ecee3603adcdca544595444053ea8a|1
+Verify api register upload other with missing body|400|Invalid parameter|||empty
+Verify api register upload other case upload file is empty|400|Nothing file select for upload|+84565980041F19072022174425|gen|empty
+Verify api register upload other case upload more than 2 files|400|Not allow to upload more than 2|+84565980041F19072022174425|gen|3
+Verify api register upload other case upload invalid file type|400|File 1 has invalid type|+84565980041F19072022174425|gen|abc

@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import net.thucydides.core.annotations.Step;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -156,11 +155,13 @@ public class TcbsUserOpenAccountQueue {
   @Column(name = "PHONE_CODE")
   private String phoneCode;
 
+  private static final String DATA_PHONE = "phone";
+
   @Step
   public static TcbsUserOpenAccountQueue getByPhone(String phone) {
     Query<TcbsUserOpenAccountQueue> query = CAS.casConnection.getSession().createQuery(
       "from TcbsUserOpenAccountQueue a where a.phone=:phone", TcbsUserOpenAccountQueue.class);
-    query.setParameter("phone", phone);
+    query.setParameter(DATA_PHONE, phone);
     return query.getSingleResult();
   }
 
@@ -180,7 +181,7 @@ public class TcbsUserOpenAccountQueue {
     org.hibernate.query.Query query = casConnection.getSession().createQuery(
       "Update TcbsUserOpenAccountQueue a set a.userid =:userId where a.phone=:phone");
     query.setParameter("userId", userId);
-    query.setParameter("phone", phone);
+    query.setParameter(DATA_PHONE, phone);
     query.executeUpdate();
     casConnection.getSession().getTransaction().commit();
   }
@@ -188,12 +189,14 @@ public class TcbsUserOpenAccountQueue {
   public static void deleteByPhone(String phone) {
     try {
       Session session = CAS.casConnection.getSession();
-      Transaction trans = session.beginTransaction();
-
+      session.clear();
+      if (!session.getTransaction().isActive()) {
+        session.beginTransaction();
+      }
       Query<?> query = session.createQuery("DELETE TcbsUserOpenAccountQueue WHERE phone=:phone");
-      query.setParameter("phone", phone);
+      query.setParameter(DATA_PHONE, phone);
       query.executeUpdate();
-      trans.commit();
+      session.getTransaction().commit();
     } catch (Exception e) {
       logger.info(e.getMessage());
     }
