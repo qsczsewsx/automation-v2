@@ -2,8 +2,7 @@ package com.tcbs.automation.newonboarding2022;
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.google.gson.Gson;
-import com.tcbs.automation.cas.TcbsUserOpenaccountQueue;
-import com.tcbs.automation.cas.TcbsUserOpenaccountQueueUpload;
+import com.tcbs.automation.cas.*;
 import common.CallApiUtils;
 import common.CommonUtils;
 import io.restassured.response.Response;
@@ -18,12 +17,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.HashMap;
+
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.REGISTER_UPLOAD_IDENTIFY;
 import static com.tcbs.automation.tools.ConvertUtils.fileTxtToString;
 import static com.tcbs.automation.tools.FormatUtils.syncData;
 import static net.serenitybdd.rest.SerenityRest.given;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.*;
 
 @RunWith(SerenityParameterizedRunner.class)
 @UseTestDataFrom(value = "data/newonboarding2022/ApiRegisterUploadIdentify.csv", separator = '|')
@@ -33,33 +34,28 @@ public class ApiRegisterUploadIdentifyTest {
   private String testCaseName;
   private int statusCode;
   private String errorMessage;
-  private String fontIdentity;
+  private String frontIdentity;
   private String backIdentity;
   private String referenceId;
   private String authenKey;
+  private String tuoqId;
   private HashMap<String, Object> body;
+
 
   @Before
   public void before() {
-
-    CallApiUtils.callConfirmOtpApi();
+    referenceId = syncData(referenceId);
     if (authenKey.equalsIgnoreCase("gen")) {
-      authenKey = CallApiUtils.callConfirmOtpApi().jsonPath().get("authenKey");
+      authenKey = CallApiUtils.callRegisterConfirmPhoneApi(referenceId);
     } else {
       authenKey = syncData(authenKey);
     }
 
-    if (referenceId.equalsIgnoreCase("gen")) {
-      referenceId = CallApiUtils.callConfirmOtpApi().jsonPath().get("referenceId");
-    } else {
-      authenKey = syncData(authenKey);
-    }
-
-    fontIdentity = getFileContents(fontIdentity);
-    backIdentity = getFileContents(backIdentity);
+    frontIdentity = CommonUtils.getFileContents(frontIdentity);
+    backIdentity = CommonUtils.getFileContents(backIdentity);
 
     body = new HashMap<>();
-    body.put("fontIdentity", fontIdentity);
+    body.put("frontIdentity", frontIdentity);
     body.put("backIdentity", backIdentity);
     body.put("referenceId", referenceId);
     body.put("authenKey", authenKey);
@@ -85,28 +81,26 @@ public class ApiRegisterUploadIdentifyTest {
 
     assertEquals(statusCode, response.getStatusCode());
     if (statusCode == 200) {
-//      assertNotNull(response.jsonPath().get("authenKey").toString());
-//      assertEquals(TcbsUserOpenaccountQueueUpload.getFileUploadIdentify().getReferenceid(), response.jsonPath().get("referenceId"));
-    } else {
-      assertEquals(errorMessage, response.jsonPath().get("message"));
+      tuoqId = TcbsUserOpenAccountQueue.getByReferenceId(referenceId).getId().toString();
+
+      assertThat("verify exist data queueUpload table", TcbsUserOpenAccountQueueUpload.getFileUploadIdentify(tuoqId).getId(), is(notNullValue()));
+      assertThat("verify exist data ocrData table", OcrData.getByTuoqId(tuoqId).getId(), is(notNullValue()));
+      assertThat("verify exist data ocrDataHis table", OcrDataHis.getByTuoqId(tuoqId).getId(), is(notNullValue()));
     }
+      if (statusCode ==400) {
+      assertEquals(errorMessage, response.jsonPath().get("message"));
+    } else {
+        assertEquals(statusCode, response.getStatusCode());
+      }
+
   }
 
   @After
   public void clearData() {
     // Clear data
     if (statusCode == 200) {
-      TcbsUserOpenaccountQueue.deleteByPhone(phoneCode + phoneNumber);
+      TcbsUserOpenAccountQueueUpload.deleteByTuoqID(tuoqId);
     }
-  }
-
-  public String getFileContents(String fileContents) {
-    if (fileContents.equalsIgnoreCase("front")) {
-      fileContents = fileTxtToString("src/test/resources/requestBody/FrontFileContent");
-    } else if (fileContents.equalsIgnoreCase("com/tcbs/automation/back")) {
-      fileContents = fileTxtToString("src/test/resources/requestBody/BackFileContent");
-    }
-    return fileContents;
   }
 
 
