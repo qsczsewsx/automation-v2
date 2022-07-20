@@ -48,7 +48,7 @@ public class TcbsUserOpenAccountQueueUpload {
       if (!session.getTransaction().isActive()) {
         session.beginTransaction();
       }
-      Query<?> query = session.createQuery("DELETE FROM TcbsUserOpenAccountQueue WHERE tuoqId =:tuoqId AND fileType =:fileType");
+      Query<?> query = session.createNativeQuery("DELETE FROM TCBS_USER_OPENACCOUNT_QUEUE_UPLOAD WHERE TUOQ_ID =:tuoqId AND FILE_TYPE =:fileType");
       query.setParameter("tuoqId", new BigDecimal(tuoqId));
       query.setParameter("fileType", fileType);
       query.executeUpdate();
