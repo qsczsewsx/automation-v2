@@ -73,6 +73,10 @@ public class OcrData {
   private BigDecimal status;
   @Column(name = "ISSUE_PLACE_CODE")
   private String issuePlaceCode;
+  @Column(name = "RETRY_COUNT")
+  private BigDecimal retryCount;
+  @Column(name = "TUOQ_ID")
+  private BigDecimal tuoqId;
 
   @Step
   public static void updateStatus(String refId, String status) {
@@ -86,6 +90,14 @@ public class OcrData {
     query.setParameter("status", status);
     query.executeUpdate();
     casConnection.getSession().getTransaction().commit();
+  }
+
+  public static OcrData getByTuoqId(String tuoqId) {
+    CAS.casConnection.getSession().clear();
+    Query<OcrData> query = casConnection.getSession().createQuery(
+      "from OcrData a where a.tuoqId =: tuoqId", OcrData.class);
+    query.setParameter("tuoqId", new BigDecimal(tuoqId));
+    return query.getSingleResult();
   }
 
 }

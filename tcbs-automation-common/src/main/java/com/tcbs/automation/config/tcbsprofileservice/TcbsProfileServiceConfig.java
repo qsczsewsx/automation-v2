@@ -207,6 +207,8 @@ public class TcbsProfileServiceConfig {
   public static final String AUTHEN_GET_CLIENT_KEY = conf.getString("tcbsprofile.authenGetClientKey");
   public static final String LOGIN_FROM_THIRD_PARTY = conf.getString("tcbsprofile.loginFromThirdParty");
   public static final String ADD_OTP = conf.getString("tcbsprofile.addOtp");
+  public static final String GEN_AUTHEN_KEY = conf.getString("tcbsprofile.genAuthenKey");
+  public static final String GEN_LOGIN_KEY = conf.getString("tcbsprofile.genLoginKey");
 
   //author
   public static final String LOGIN_TO_ISQUARE = conf.getString("tcbsprofile.loginToIsquare");
@@ -325,5 +327,7 @@ public class TcbsProfileServiceConfig {
 
   //new onboarding 2022
   public static final String API_VALIDATE_PHONE_EMAIL = conf.getString("newonboarding2022.validatePhoneEmail");
+  public static final String REGISTER_CONFIRM_PHONE = conf.getString("newonboarding2022.registerConfirmPhone");
+  public static final String REGISTER_OCR_GET_DATA = conf.getString("newonboarding2022.registerOcrGetData");
 
 }

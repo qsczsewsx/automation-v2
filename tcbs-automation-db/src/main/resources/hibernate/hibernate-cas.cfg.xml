@@ -12,7 +12,7 @@
 
         <mapping class="com.tcbs.automation.cas.TcbsUser"/>
         <mapping class="com.tcbs.automation.cas.TcbsAddress"/>
-        <mapping class="com.tcbs.automation.cas.TcbsUserOpenaccountQueue"/>
+        <mapping class="com.tcbs.automation.cas.TcbsUserOpenAccountQueue"/>
         <mapping class="com.tcbs.automation.cas.TcbsUserInstrument"/>
         <mapping class="com.tcbs.automation.cas.TcbsUserAccount"/>
         <mapping class="com.tcbs.automation.cas.TcbsIdentification"/>
