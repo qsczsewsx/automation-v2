@@ -12,9 +12,10 @@ import org.slf4j.LoggerFactory;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
-@Table(name = "TCBS_USER_OPENACCOUNT_QUEUE")
+@Table(name = "TCBS_USER_OPENACCOUNT_QUEUE_UPLOAD")
 @Getter
 @Setter
 public class TcbsUserOpenAccountQueueUpload {
@@ -34,20 +35,20 @@ public class TcbsUserOpenAccountQueueUpload {
   private String objectId;
 
   @Step
-  public static TcbsUserOpenAccountQueueUpload getFileUploadIdentify(String tuoqId) {
+  public static List<TcbsUserOpenAccountQueueUpload> getFileUploadIdentify(BigDecimal tuoqId) {
     Query<TcbsUserOpenAccountQueueUpload> query = CAS.casConnection.getSession().createQuery(
-      "from TcbsUserOpenaccountQueueUpload a where a.tuoqId=:tuoqId", TcbsUserOpenAccountQueueUpload.class);
-    query.setParameter("tuoqId", new BigDecimal(tuoqId));
-    return query.getSingleResult();
+      "from TcbsUserOpenAccountQueueUpload a where a.tuoqId=:tuoqId", TcbsUserOpenAccountQueueUpload.class);
+    query.setParameter("tuoqId", tuoqId);
+    return query.getResultList();
   }
 
-  public static void deleteByTuoqID(String tuoqId) {
+  public static void deleteByTuoqID(BigDecimal tuoqId) {
     try {
       Session session = CAS.casConnection.getSession();
       Transaction trans = session.beginTransaction();
 
       Query<?> query = session.createQuery("DELETE TcbsUserOpenAccountQueueUpload WHERE tuoqId=:tuoqId");
-      query.setParameter("tuoqId", new BigDecimal(tuoqId));
+      query.setParameter("tuoqId", tuoqId);
       query.executeUpdate();
       trans.commit();
     } catch (Exception e) {

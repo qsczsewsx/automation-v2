@@ -16,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.REGISTER_UPLOAD_IDENTIFY;
@@ -38,7 +39,7 @@ public class ApiRegisterUploadIdentifyTest {
   private String backIdentity;
   private String referenceId;
   private String authenKey;
-  private String tuoqId;
+  private BigDecimal tuoqId;
   private HashMap<String, Object> body;
 
 
@@ -81,11 +82,12 @@ public class ApiRegisterUploadIdentifyTest {
 
     assertEquals(statusCode, response.getStatusCode());
     if (statusCode == 200) {
-      tuoqId = TcbsUserOpenAccountQueue.getByReferenceId(referenceId).getId().toString();
+      tuoqId = TcbsUserOpenAccountQueue.getByReferenceId(referenceId).getId();
 
-      assertThat("verify exist data queueUpload table", TcbsUserOpenAccountQueueUpload.getFileUploadIdentify(tuoqId).getId(), is(notNullValue()));
-      assertThat("verify exist data ocrData table", OcrData.getByTuoqId(tuoqId).getId(), is(notNullValue()));
-      assertThat("verify exist data ocrDataHis table", OcrDataHis.getByTuoqId(tuoqId).getId(), is(notNullValue()));
+      assertThat("verify exist data queueUpload table: fontIdentity", TcbsUserOpenAccountQueueUpload.getFileUploadIdentify(tuoqId).get(0).getFileType(), is("SCAN_ID_IMAGE_FRONT"));
+      assertThat("verify exist data queueUpload table: backIdentity", TcbsUserOpenAccountQueueUpload.getFileUploadIdentify(tuoqId).get(1).getFileType(), is("SCAN_ID_IMAGE_BACK"));
+//      assertThat("verify exist data ocrData table", OcrData.getByTuoqId(tuoqId).getId(), is(notNullValue())); //OCR not apply env sit
+//      assertThat("verify exist data ocrDataHis table", OcrDataHis.getByTuoqId(tuoqId).getId(), is(notNullValue()));//OCR not apply env sit
     }
       if (statusCode ==400) {
       assertEquals(errorMessage, response.jsonPath().get("message"));
@@ -95,13 +97,13 @@ public class ApiRegisterUploadIdentifyTest {
 
   }
 
-  @After
-  public void clearData() {
-    // Clear data
-    if (statusCode == 200) {
-      TcbsUserOpenAccountQueueUpload.deleteByTuoqID(tuoqId);
-    }
-  }
+//  @After
+//  public void clearData() {
+//    // Clear data
+//    if (statusCode == 200) {
+//      TcbsUserOpenAccountQueueUpload.deleteByTuoqID(tuoqId);
+//    }
+//  }
 
 
 }
