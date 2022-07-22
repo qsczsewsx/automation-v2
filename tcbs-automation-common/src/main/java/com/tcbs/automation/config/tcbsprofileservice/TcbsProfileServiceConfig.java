@@ -160,6 +160,9 @@ public class TcbsProfileServiceConfig {
   public static final String REGISTER_VERIFICATION = conf.getString("tcbsprofile.registerVerification");
   public static final String UPDATE_PROFILE_TCI3 = conf.getString("tcbsprofile.updateProfileTci3");
 
+  public static final String MULTI_CONNECT_IA_ISAVE = conf.getString("tcbsprofile.multiConnectIsiSave");
+  public static final String MULTI_DISCONNECT_IA_ISAVE = conf.getString("tcbsprofile.multiDisconnectIsiSave");
+
   //thirty party
   public static final String FSS_SERVICE = conf.getString("tcbsprofile.fssService");
 
