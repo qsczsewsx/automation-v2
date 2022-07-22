@@ -17,6 +17,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -98,6 +100,8 @@ public class ObRegisterTest {
     // prepare email
     if (email.equalsIgnoreCase("autoGen")) {
       email = "tcbs.customer" + prepareValue + "@gmail.com";
+    } else if (email.equalsIgnoreCase("tcbMail")) {
+      email = "tcb_user_" + prepareValue + "@techcombank.com.vn";
     } else {
       email = syncData(email);
     }
@@ -223,6 +227,21 @@ public class ObRegisterTest {
     body.put("referenceId", referenceId);
     body.put("authenKey", authenKey);
 
+    // prepare for test case email of tcb user existed in system
+    if (testCaseName.contains("email of tcb user existed in system")) {
+      // Insert data in TCBS_USER (Rm user login through LDAP)
+      TcbsUser tcbsUser = new TcbsUser();
+      tcbsUser.setLastname("Hoàng Thu");
+      tcbsUser.setFirstname("Trang");
+      tcbsUser.setTcbsid(prepareValue.substring(1));
+      tcbsUser.setEmail(email);
+      tcbsUser.setGender(BigDecimal.valueOf(1));
+      tcbsUser.setCustype(BigDecimal.valueOf(0));
+      tcbsUser.setBirthday(Timestamp.valueOf(
+        LocalDateTime.parse(birthday,
+          DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS+07:00"))));
+      tcbsUser.insert();
+    }
   }
 
   @Test
@@ -242,7 +261,7 @@ public class ObRegisterTest {
     }
 
     assertThat("verify status code", response.getStatusCode(), is(statusCode));
-    if (statusCode != 403) {
+    if (statusCode == 400) {
       assertThat("verify error message", response.jsonPath().get("message"), is(errorMessage));
     }
 
@@ -251,14 +270,13 @@ public class ObRegisterTest {
       assertThat(response.jsonPath().get("custodyCode"), is(code105C));
       String userId = TcbsUser.getByPhoneNumber(phoneConfirm).getId().toString();
       assertThat(userId, is(notNullValue()));
-      assertThat(TcbsUserOpenAccountQueue.getByPhone(phoneConfirm).getUserId(), is(userId));
+      assertThat(TcbsUserOpenAccountQueue.getByPhone(phoneConfirm).getUserId().toString(), is(userId));
       assertThat(TcbsIdentification.getByUserId(userId).getIdNumber(), is(idNumber));
       assertThat(TcbsAddress.getByTcbsAddress(userId).getAddress(), is(contactAddress));
       assertThat(TcbsBankAccount.getBank(userId).getBankAccountNo(), is(accountNo));
       assertThat(TcbsApplicationUser.getByTcbsApplicationUserAppId2(userId, "2"), is(notNullValue()));
-      assertThat(TcbsNewOnboardingStatus.getByUserIdAndStatusKey(userId, "ID_STATUS"), is("WAIT_FOR_VERIFY"));
+      assertThat(TcbsNewOnboardingStatus.getByUserIdAndStatusKey(userId, "ID_STATUS").getStatusValue(), is("WAIT_FOR_VERIFY"));
     }
 
   }
-
 }
