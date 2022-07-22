@@ -89,11 +89,11 @@ public class ApiRegisterUploadIdentifyTest {
 //      assertThat("verify exist data ocrData table", OcrData.getByTuoqId(tuoqId).getId(), is(notNullValue())); //OCR not apply env sit
 //      assertThat("verify exist data ocrDataHis table", OcrDataHis.getByTuoqId(tuoqId).getId(), is(notNullValue()));//OCR not apply env sit
     }
-      if (statusCode ==400) {
+    if (statusCode == 400) {
       assertEquals(errorMessage, response.jsonPath().get("message"));
     } else {
-        assertEquals(statusCode, response.getStatusCode());
-      }
+      assertEquals(statusCode, response.getStatusCode());
+    }
 
   }
 
@@ -104,6 +104,4 @@ public class ApiRegisterUploadIdentifyTest {
       TcbsUserOpenAccountQueueUpload.deleteByTuoqID(tuoqId);
     }
   }
-
-
 }
