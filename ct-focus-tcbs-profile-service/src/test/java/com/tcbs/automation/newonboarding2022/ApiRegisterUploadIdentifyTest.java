@@ -97,13 +97,13 @@ public class ApiRegisterUploadIdentifyTest {
 
   }
 
-//  @After
-//  public void clearData() {
-//    // Clear data
-//    if (statusCode == 200) {
-//      TcbsUserOpenAccountQueueUpload.deleteByTuoqID(tuoqId);
-//    }
-//  }
+  @After
+  public void clearData() {
+    // Clear data
+    if (statusCode == 200) {
+      TcbsUserOpenAccountQueueUpload.deleteByTuoqID(tuoqId);
+    }
+  }
 
 
 }
