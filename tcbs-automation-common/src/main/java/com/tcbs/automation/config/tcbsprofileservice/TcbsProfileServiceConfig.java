@@ -337,5 +337,6 @@ public class TcbsProfileServiceConfig {
   public static final String REGISTER_VALIDATE_IDENTITY_INFO = conf.getString("newonboarding2022.registerValidateIdentityInfo");
   public static final String REGISTER_UPLOAD_IDENTIFY = conf.getString("newonboarding2022.registerUploadIdentify");
   public static final String REGISTER_UPLOAD_OTHER = conf.getString("newonboarding2022.registerUploadOther");
+  public static final String OB_REGISTER = conf.getString("newonboarding2022.obRegister");
 
 }

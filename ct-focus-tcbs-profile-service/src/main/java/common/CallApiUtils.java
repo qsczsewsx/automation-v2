@@ -379,8 +379,8 @@ public class CallApiUtils {
 
   public static String callRegisterConfirmPhoneApi(String referenceId) {
     String body = fileTxtToString("src/test/resources/requestBody/RegisterConfirmPhone.json")
-      .replace("#phoneCode#", referenceId.substring(0,3))
-      .replace("#phoneNumber#", referenceId.substring(3,12))
+      .replace("#phoneCode#", referenceId.substring(0, 3))
+      .replace("#phoneNumber#", referenceId.substring(3, 12))
       .replace("#referenceId#", referenceId);
     Response response = given()
       .baseUri(REGISTER_CONFIRM_PHONE)
@@ -391,5 +391,19 @@ public class CallApiUtils {
     return response.jsonPath().get("authenKey").toString();
   }
 
+  public static Response callGenRefIdAndConfirmPhoneApi(String phoneCode, String phoneNumber) {
+    HashMap<String, Object> body = new HashMap<>();
+    body.put("phoneNumber", phoneNumber);
+    body.put("phoneCode", phoneCode);
+    body.put("otpId", "4971c9bb-09c6-4a5d-94fc-b93c64209c3b");
+    body.put("otp", "111111");
+    Response response = given()
+      .baseUri(REGISTER_CONFIRM_PHONE)
+      .contentType(APPLICATION_JSON)
+      .body(body)
+      .post();
+    assertThat(response.statusCode(), is(200));
+    return response;
+  }
 
 }
