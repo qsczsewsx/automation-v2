@@ -100,4 +100,6 @@ public class OcrData {
     return query.getSingleResult();
   }
 
+
+
 }
