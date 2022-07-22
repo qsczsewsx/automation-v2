@@ -21,7 +21,7 @@ import java.util.List;
 public class TcbsUserOpenAccountQueueUpload {
   private static Logger logger = LoggerFactory.getLogger(TcbsUserOpenAccountQueueUpload.class);
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
   @NotNull
   @Column(name = "ID")
   private BigDecimal id;
@@ -35,6 +35,31 @@ public class TcbsUserOpenAccountQueueUpload {
   private String objectId;
 
   @Step
+  public static TcbsUserOpenAccountQueueUpload getByTuoqIdAndFileType(String tuoqId, String fileType) {
+    Query<TcbsUserOpenAccountQueueUpload> query = CAS.casConnection.getSession().createQuery(
+      "from TcbsUserOpenAccountQueueUpload a where a.tuoqId=:tuoqId and a.fileType=:fileType", TcbsUserOpenAccountQueueUpload.class);
+    query.setParameter("tuoqId", new BigDecimal(tuoqId));
+    query.setParameter("fileType", fileType);
+    return query.getSingleResult();
+  }
+
+  public static void deleteByTuoqIdAndFileType(String tuoqId, String fileType) {
+    try {
+      Session session = CAS.casConnection.getSession();
+      session.clear();
+      if (!session.getTransaction().isActive()) {
+        session.beginTransaction();
+      }
+      Query<?> query = session.createNativeQuery("DELETE FROM TCBS_USER_OPENACCOUNT_QUEUE_UPLOAD WHERE TUOQ_ID =:tuoqId AND FILE_TYPE =:fileType");
+      query.setParameter("tuoqId", new BigDecimal(tuoqId));
+      query.setParameter("fileType", fileType);
+      query.executeUpdate();
+      session.getTransaction().commit();
+    } catch (Exception e) {
+      logger.info(e.getMessage());
+    }
+  }
+
   public static List<TcbsUserOpenAccountQueueUpload> getFileUploadIdentify(BigDecimal tuoqId) {
     Query<TcbsUserOpenAccountQueueUpload> query = CAS.casConnection.getSession().createQuery(
       "from TcbsUserOpenAccountQueueUpload a where a.tuoqId=:tuoqId", TcbsUserOpenAccountQueueUpload.class);

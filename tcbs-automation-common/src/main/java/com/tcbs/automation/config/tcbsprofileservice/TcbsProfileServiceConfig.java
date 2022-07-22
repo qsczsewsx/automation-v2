@@ -160,6 +160,9 @@ public class TcbsProfileServiceConfig {
   public static final String REGISTER_VERIFICATION = conf.getString("tcbsprofile.registerVerification");
   public static final String UPDATE_PROFILE_TCI3 = conf.getString("tcbsprofile.updateProfileTci3");
 
+  public static final String MULTI_CONNECT_IA_ISAVE = conf.getString("tcbsprofile.multiConnectIsiSave");
+  public static final String MULTI_DISCONNECT_IA_ISAVE = conf.getString("tcbsprofile.multiDisconnectIsiSave");
+
   //thirty party
   public static final String FSS_SERVICE = conf.getString("tcbsprofile.fssService");
 
@@ -330,5 +333,6 @@ public class TcbsProfileServiceConfig {
   public static final String REGISTER_CONFIRM_PHONE = conf.getString("newonboarding2022.registerConfirmPhone");
   public static final String REGISTER_OCR_GET_DATA = conf.getString("newonboarding2022.registerOcrGetData");
   public static final String REGISTER_UPLOAD_IDENTIFY = conf.getString("newonboarding2022.registerUploadIdentify");
+  public static final String REGISTER_UPLOAD_OTHER = conf.getString("newonboarding2022.registerUploadOther");
 
 }
