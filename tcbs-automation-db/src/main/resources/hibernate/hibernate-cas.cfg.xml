@@ -79,5 +79,6 @@
         <mapping class="com.tcbs.automation.cas.R3RdSyncTcb"/>
         <mapping class="com.tcbs.automation.cas.TcbsRegion"/>
         <mapping class="com.tcbs.automation.cas.R3RdAuditLog"/>
+        <mapping class="com.tcbs.automation.cas.OcrDataHis"/>
     </session-factory>
 </hibernate-configuration>

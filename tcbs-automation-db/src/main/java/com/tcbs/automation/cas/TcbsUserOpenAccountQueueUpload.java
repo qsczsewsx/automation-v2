@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import net.thucydides.core.annotations.Step;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "TCBS_USER_OPENACCOUNT_QUEUE_UPLOAD")
@@ -53,6 +55,27 @@ public class TcbsUserOpenAccountQueueUpload {
       query.setParameter("fileType", fileType);
       query.executeUpdate();
       session.getTransaction().commit();
+    } catch (Exception e) {
+      logger.info(e.getMessage());
+    }
+  }
+
+  public static List<TcbsUserOpenAccountQueueUpload> getFileUploadIdentify(BigDecimal tuoqId) {
+    Query<TcbsUserOpenAccountQueueUpload> query = CAS.casConnection.getSession().createQuery(
+      "from TcbsUserOpenAccountQueueUpload a where a.tuoqId=:tuoqId", TcbsUserOpenAccountQueueUpload.class);
+    query.setParameter("tuoqId", tuoqId);
+    return query.getResultList();
+  }
+
+  public static void deleteByTuoqID(BigDecimal tuoqId) {
+    try {
+      Session session = CAS.casConnection.getSession();
+      Transaction trans = session.beginTransaction();
+
+      Query<?> query = session.createQuery("DELETE TcbsUserOpenAccountQueueUpload WHERE tuoqId=:tuoqId");
+      query.setParameter("tuoqId", tuoqId);
+      query.executeUpdate();
+      trans.commit();
     } catch (Exception e) {
       logger.info(e.getMessage());
     }
