@@ -2,7 +2,9 @@ package com.tcbs.automation.newfastmobile;
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.google.gson.Gson;
+import common.CommonUtils;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import lombok.Getter;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Title;
@@ -76,39 +78,33 @@ public class ApiSignContractTest {
 
     System.out.println("TestCaseName : " + testCaseName);
 
-    tcbsId = getTcbsId(tcbsId);
+    tcbsId = CommonUtils.getDesiredTcbsId(tcbsId, getTcbsIdAcc);
 
     LinkedHashMap<String, Object> body = getSignContractBody(testCaseName, tcbsId, type);
     Gson gson = new Gson();
 
-    Response response = given()
+    RequestSpecification requestSpecification = given()
       .baseUri(FMB_SIGN_CONTRACT)
       .header("x-api-key", FMB_X_API_KEY)
-      .contentType("application/json")
-      .body(gson.toJson(body))
-      .when()
-      .post();
+      .contentType("application/json");
+
+    Response response;
+
+    if (testCaseName.contains("missing BODY")) {
+      response = requestSpecification.post();
+    } else {
+      response = requestSpecification.body(gson.toJson(body)).post();
+    }
 
     assertThat(response.getStatusCode(), is(statusCode));
 
-    if (response.statusCode() == 200) {
+    if (statusCode == 200) {
       String getResponse = response.getBody().prettyPrint();
       assertEquals(getResponse, message);
 
-    } else if (response.statusCode() == 400) {
-      String actualMessage = response.jsonPath().get("message");
-      assertEquals(message, actualMessage);
-    }
-  }
-
-  private String getTcbsId(String tcbsId) {
-    String getTcbsId;
-    if (tcbsId.contains("getTcbsId")) {
-      getTcbsId = getTcbsIdAcc;
     } else {
-      getTcbsId = tcbsId;
+      assertEquals(message, response.jsonPath().get("message"));
     }
-    return getTcbsId;
   }
 
   public LinkedHashMap<String, Object> getSignContractBody(String testCaseName, String tcbsId, String type) {
@@ -130,9 +126,7 @@ public class ApiSignContractTest {
     regIA.put("isIAPaid", isIAPaid);
     regIA.put("isIA", isIA);
 
-    if (testCaseName.contains("missing Body")) {
-      body = new LinkedHashMap<>();
-    } else if (testCaseName.contains("missing param tcbsId")) {
+    if (testCaseName.contains("missing param tcbsId")) {
       body.put("type", type);
       body.put("iaBankAccount", bankAccounts);
       body.put("action", action);
@@ -142,6 +136,11 @@ public class ApiSignContractTest {
       body.put("iaBankAccount", bankAccounts);
       body.put("action", action);
       body.put("iaStatus", regIA);
+    } else if (testCaseName.contains("only TNC contract")) {
+      body.put("tcbsId", tcbsId);
+      body.put("type", type);
+      body.put("iaBankAccount", bankAccounts);
+      body.put("action", action);
     } else {
       body.put("tcbsId", tcbsId);
       body.put("type", type);

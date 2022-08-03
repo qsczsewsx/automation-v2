@@ -18,6 +18,7 @@ import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceCo
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.FMB_X_API_KEY;
 import static common.CommonUtils.*;
 import static net.serenitybdd.rest.SerenityRest.given;
+import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -55,15 +56,15 @@ public class ApiCheckAccountExistTest {
 
     assertThat(response.getStatusCode(), is(statusCode));
 
-    if (response.statusCode() == 200) {
+    if (statusCode == 200) {
 
       verifyOnboardingStatus(response, value);
       verifyFMBBasicInfo(response, "basicInfo", "userId", userId);
       verifyBankSource(response, "iaBankAccount", "userId", userId);
+      verifyTncStatus(response);
 
-    } else if (response.statusCode() == 400) {
-      String actualMessage = response.jsonPath().get("message");
-      assertEquals(erroMsg, actualMessage);
+    } else if (statusCode == 400) {
+      assertEquals(erroMsg, response.jsonPath().get("message"));
     }
   }
 
@@ -93,6 +94,10 @@ public class ApiCheckAccountExistTest {
       userId = TcbsUser.getByPhoneNumber(value).getId().toString();
     }
     verifyFMBOnboardingStatus(response, "accountStatus.onboardingStatus.", "userId", userId);
+  }
+
+  public void verifyTncStatus(Response response) {
+    assertThat(response.jsonPath().get("accountStatus.tncTcb"), anyOf(is("Y"), is("N")));
   }
 
 }

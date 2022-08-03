@@ -188,6 +188,15 @@ public class CommonUtils {
     return getData;
   }
 
+  public static String getDesiredTcbsId(String tcbsId, String getTcbsId) {
+    if (tcbsId.equalsIgnoreCase("getTcbsId")) {
+      tcbsId = getTcbsId;
+    } else {
+      tcbsId = syncData(tcbsId);
+    }
+    return tcbsId;
+  }
+
   public static String getPhoneOrCode105C(String key, Object value, String phonedata) {
     String data;
     String prepareData = String.valueOf(new Date().getTime());
