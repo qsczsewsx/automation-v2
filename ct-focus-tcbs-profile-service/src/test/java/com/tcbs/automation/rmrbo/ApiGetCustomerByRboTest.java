@@ -99,8 +99,6 @@ public class ApiGetCustomerByRboTest {
           assertEquals(rDB.getIdentifyCustodyCd(), rRes.get("identifyCustodyCd"));
         }
       }
-    } else if (statusCode == 401) {
-      assertTrue(response.jsonPath().get("errorMessage").toString().contains(errorMessage));
     } else {
       assertTrue(response.jsonPath().get("message").toString().contains(errorMessage));
     }
