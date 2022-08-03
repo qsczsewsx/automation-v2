@@ -339,4 +339,6 @@ public class TcbsProfileServiceConfig {
   public static final String REGISTER_UPLOAD_OTHER = conf.getString("newonboarding2022.registerUploadOther");
   public static final String OB_REGISTER = conf.getString("newonboarding2022.obRegister");
 
+  //partnership
+  public static final String PARTNER_CHECK_ACCOUNT_EXIST = conf.getString("partnership.checkAccountExist");
 }
