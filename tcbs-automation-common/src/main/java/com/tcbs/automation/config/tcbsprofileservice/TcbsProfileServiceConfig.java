@@ -324,6 +324,7 @@ public class TcbsProfileServiceConfig {
   public static final String EXPORT_ROLE_RM_RBO_TOKEN = conf.getString("tcbsprofile.exportRole-token");
   public static final String RM_RBO_HISTORY_VIEW = conf.getString("rmrbo.rmrbo-history-view");
   public static final String GET_NNB_BY_FUND = conf.getString("tcbsprofile.getNnbByFundList");
+  public static final String GET_CUSTOMER_BY_RBO = conf.getString("rmrbo.getCustomerByRbo");
 
   //OTP Global Phone
   public static final String OTP_GET_LIST_PHONE_CODE = conf.getString("otpGlobalPhone.getListPhoneCode");
