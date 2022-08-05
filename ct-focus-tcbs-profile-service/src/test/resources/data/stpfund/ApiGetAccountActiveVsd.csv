@@ -4,8 +4,7 @@ Verify api get account active vsd with missing param date|""|200|""|2|1|10|0
 Verify api get account active vsd with missing param appId|27-06-2017|400|Missing request parameter||1|10|
 Verify api get account active vsd with missing param pageNumber|27-06-2017|400|Missing request parameter|2|""|10|
 Verify api get account active vsd with missing param pageSize|27-06-2017|400|Missing request parameter|2|1||
-Verify api get account active vsd with date is invalid|32-06-2017|400|Missing request parameter||||
-Verify api get account active vsd with date is text|aaa|400|Missing request parameter||||
+Verify api get account active vsd with date DD as text|aa-06-2017|400|Format Date is invalid|2|1|10|
 Verify api get account active vsd with date is greater than current date|27-06-2056|200||2|1|10|0
 Verify api get account active vsd with appId not exsit|27-06-2017|200||5|1|10|0
 Verify api get account active vsd with pageNumber is invalid|27-06-2017|400|Input page is invalid|2|-1|10|
@@ -18,3 +17,6 @@ Verify api get account active vsd with pageNumber is greater than pageSize|27-06
 Verify api get account active vsd with pageSize is greater than pageNumber|27-06-2017|200||2|1|10|
 Verify api get account active vsd with appId as 4|27-06-2017|200||4|1|10|
 Verify api get account active vsd with form date as /|27/06/2017|400|Format Date is invalid|2|1|10|
+Verify api get account active vsd with date MM as text|27-bb-2017|400|Format Date is invalid|2|1|10|
+Verify api get account active vsd with date YYYT as text|27-06-yyyy|400|Format Date is invalid|2|1|10|
+Verify api get account active vsd with date as YYYY-MM-DD|2017-06-27|200||2|1|10|0

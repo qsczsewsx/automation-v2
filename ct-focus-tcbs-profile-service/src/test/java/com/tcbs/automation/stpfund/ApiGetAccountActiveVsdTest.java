@@ -8,7 +8,9 @@ import lombok.Getter;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Title;
 import net.thucydides.junit.annotations.UseTestDataFrom;
+import org.apache.commons.lang3.StringUtils;
 import org.hamcrest.MatcherAssert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -34,55 +36,42 @@ public class ApiGetAccountActiveVsdTest {
   private String pageNumber;
   private String pageSize;
   private String expectedData;
+  private HashMap<String, Object> params;
+
+  @Before
+  public void before() {
+    String PAGE_NUMBER = "pageNumber";
+    String PAGE_SIZE = "pageSize";
+    String APP_ID = "appId";
+    String DATE = "date";
+
+    params = new HashMap<>();
+    if (StringUtils.isNotEmpty(pageSize)) {
+      params.put(PAGE_SIZE, pageSize);
+    }
+    if (StringUtils.isNotEmpty(pageNumber)) {
+      params.put(PAGE_NUMBER, pageNumber);
+    }
+    if (StringUtils.isNotEmpty(date)) {
+      params.put(DATE, date);
+    }
+    if (StringUtils.isNotEmpty(appId)) {
+      params.put(APP_ID, appId);
+    }
+    System.out.println(params);
+  }
 
   @Test
   @TestCase(name = "#testcaseName")
   @Title("Verify API get account active vsd")
 
   public void ApiGetAccountActiveVsd() {
-    RequestSpecification requestSpecification = given()
+    Response response = given()
       .baseUri(GET_ACCOUNT_ACTIVE_VSD)
       .header("x-api-key", testCaseName.contains("x-api-key is invalid") ? FMB_X_API_KEY : MULTIIA_TCBSID_X_API_KEY)
-      .contentType("application/json");
-
-    Response response;
-    String PAGE_NUMBER = "pageNumber";
-    String PAGE_SIZE = "pageSize";
-    String APP_ID = "appId";
-    String DATE = "date";
-
-    if (testCaseName.contains("missing param pageSize")) {
-      response = requestSpecification
-        .param(PAGE_NUMBER, pageNumber)
-        .param(APP_ID, appId)
-        .param(DATE, date)
-        .get();
-    } else if (testCaseName.contains("missing param pageNumber")) {
-      response = requestSpecification
-        .param(PAGE_SIZE, pageSize)
-        .param(APP_ID, appId)
-        .param(DATE, date)
-        .get();
-    } else if (testCaseName.contains("missing param date")) {
-      response = requestSpecification
-        .param(PAGE_SIZE, pageSize)
-        .param(PAGE_NUMBER, pageNumber)
-        .param(APP_ID, appId)
-        .get();
-    } else if (testCaseName.contains("missing param appId")) {
-      response = requestSpecification
-        .param(PAGE_SIZE, pageSize)
-        .param(PAGE_NUMBER, pageNumber)
-        .param(DATE, date)
-        .get();
-    } else {
-      response = requestSpecification
-        .param(PAGE_NUMBER, pageNumber)
-        .param(PAGE_SIZE, pageSize)
-        .param(APP_ID, appId)
-        .param(DATE, date)
-        .get();
-    }
+      .contentType("application/json")
+      .params(params)
+      .get();
 
     assertThat("verify status", response.getStatusCode(), is(statusCode));
     if (statusCode == 200) {
