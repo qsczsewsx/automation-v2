@@ -343,5 +343,6 @@ public class TcbsProfileServiceConfig {
   //new onboarding partership
   public static final String PARTNERSHIP_ACCOUNT_LINK = conf.getString("newonboardingPartnerShip.partnerShipAccountLink");
   public static final String PARTNERSHIP_X_API_KEY = conf.getString("tcbsprofile.partnerShip-x-api-key");
+  public static final String PARTNERSHIP_ACCOUNT_UNLINK = conf.getString("newonboardingPartnerShip.partnerShipAccountUnLink");
 
 }

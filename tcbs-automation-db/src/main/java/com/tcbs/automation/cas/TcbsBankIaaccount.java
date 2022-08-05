@@ -150,4 +150,13 @@ public class TcbsBankIaaccount {
     query.setParameter("bankSource", bankSource);
     return query.getSingleResult().getStatus();
   }
+
+  public static TcbsBankIaaccount getpartnershipIALink(String accountNo) {
+    CAS.casConnection.getSession().clear();
+    Query<TcbsBankIaaccount> query = CAS.casConnection.getSession().createQuery(
+      "from TcbsBankIaaccount a where a.accountNo=:accountNo", TcbsBankIaaccount.class);
+    query.setParameter("accountNo", accountNo);
+    return query.getSingleResult();
+  }
+
 }
