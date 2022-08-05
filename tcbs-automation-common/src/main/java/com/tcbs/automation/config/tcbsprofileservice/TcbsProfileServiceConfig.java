@@ -342,4 +342,10 @@ public class TcbsProfileServiceConfig {
   public static final String REGISTER_UPLOAD_OTHER = conf.getString("newonboarding2022.registerUploadOther");
   public static final String OB_REGISTER = conf.getString("newonboarding2022.obRegister");
 
+
+  //new onboarding partership
+  public static final String PARTNERSHIP_ACCOUNT_LINK = conf.getString("newonboardingPartnerShip.partnerShipAccountLink");
+  public static final String PARTNERSHIP_X_API_KEY = conf.getString("tcbsprofile.partnerShip-x-api-key");
+  public static final String PARTNERSHIP_ACCOUNT_UNLINK = conf.getString("newonboardingPartnerShip.partnerShipAccountUnLink");
+
 }
