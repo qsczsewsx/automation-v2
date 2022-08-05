@@ -33,6 +33,7 @@ public class ApiGetAccountActiveVsdTest {
   private String appId;
   private String pageNumber;
   private String pageSize;
+  private String expectedData;
 
   @Test
   @TestCase(name = "#testcaseName")
@@ -85,7 +86,7 @@ public class ApiGetAccountActiveVsdTest {
 
     assertThat("verify status", response.getStatusCode(), is(statusCode));
     if (statusCode == 200) {
-      if (!(testCaseName.contains("param date") || testCaseName.contains("appId not exsit") || testCaseName.contains("date is greater") || testCaseName.contains("pageNumber is greater than 1000"))) {
+      if (!expectedData.contains("0")) {
         List<HashMap<String, Object>> responseList = response.jsonPath().getList("data.items");
         assertThat(responseList.size(), is(greaterThan(0)));
         MatcherAssert.assertThat("verify data in response",
@@ -101,3 +102,4 @@ public class ApiGetAccountActiveVsdTest {
     }
   }
 }
+
