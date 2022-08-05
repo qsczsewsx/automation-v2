@@ -52,6 +52,7 @@ public class TcbsPartnerShip {
 
   @Step
   public static TcbsPartnerShip getPartnerShip(String partnerAccountId) {
+    CAS.casConnection.getSession().clear();
     Query<TcbsPartnerShip> query = CAS.casConnection.getSession().createQuery(
       "from TcbsPartnerShip a where a.partnerAccountId=:partnerAccountId", TcbsPartnerShip.class);
     query.setParameter("partnerAccountId", partnerAccountId);

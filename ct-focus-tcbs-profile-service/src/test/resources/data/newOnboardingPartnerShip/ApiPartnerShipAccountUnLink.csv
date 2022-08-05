@@ -18,6 +18,6 @@ Verify partnership account unlink api case linkType is IA with missing value par
 Verify partnership account unlink api case linkType is IA with accountNo is incorrect|400|Invalid parameter|CTG|PH001A|IA|123
 Verify partnership account unlink api case linkType is IA with partnerAccountId has status not in (Verifying, Linked)|400|Trạng thái ngắt không hợp lệ|TCB|PH001114|IA|190341014667
 Verify partnership account unlink api case linkType is IA with partnerAccountId has money wait hold|400|not define|TCB|PH001112|IA|190341014666
-Verify partnership account unlink api case linkType is IA is not config|400|not define|MB|PH001A|IA|19036012022345
-Verify partnership account unlink api case linkType is ACCOUNT is not config|400|not define|MB|PH001A|ACCOUNT|19036012022345
+Verify partnership account unlink api case linkType is IA is not config|400|partnerId invalid|MB|PH001A|IA|19036012022345
+Verify partnership account unlink api case linkType is ACCOUNT is not config|400|partnerId invalid|MB|PH001A|ACCOUNT|19036012022345
 Verify partnership account unlink api case linkType is ACCOUNT with partnerAccountId has status not in (linked)|400|Trạng thái ngắt không hợp lệ|CTG|PH001111|ACCOUNT|19036012022345
