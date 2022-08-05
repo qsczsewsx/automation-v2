@@ -89,7 +89,6 @@ public class PartnerShipAccountUnLinkTest {
       } else if (testCaseName.contains("case linkType is IA")) {
         assertEquals("4", TcbsBankIaaccount.getpartnershipIALink(accountNo).getStatus().toString());
       }
-
     } else {
       assertEquals(errorMessage, response.jsonPath().get("message"));
     }
@@ -101,4 +100,5 @@ public class PartnerShipAccountUnLinkTest {
     }
   }
 }
+
 
