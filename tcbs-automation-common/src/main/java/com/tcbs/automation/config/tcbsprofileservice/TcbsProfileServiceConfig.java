@@ -256,6 +256,8 @@ public class TcbsProfileServiceConfig {
   public static final String SUPPORT_BY_ACTION = conf.getString("stpfund.complete-online-authentication");
   public static final String STP_FUND_CLOSE_ACCOUNT = conf.getString("stpfund.stpfund-close-account");
   public static final String STP_X_API_KEY = conf.getString("tcbsprofile.stp-fund-api-key");
+  public static final String GET_ACCOUNT_ACTIVE_VSD = conf.getString("stpfund.get-account-active-vsd");
+
 
   //Change Personal Info
   public static final String CHANGE_PERSONAL_INFO = conf.getString("tcbsprofile.changePersonalInfo");
