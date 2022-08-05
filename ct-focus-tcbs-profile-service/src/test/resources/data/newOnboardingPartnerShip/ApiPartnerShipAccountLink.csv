@@ -1,30 +1,30 @@
 testCaseName|statusCode|errorMessage|partnerId|partnerAccountId|code105C|idNumber|birthday|linkType|accountNo|accountName
-Verify partnership account link api case successful with valid request|200||CTG|PH001111|105C100066|5555|15/10/1980|ACCOUNT,IA|19036012022345|test THUY UAT
+Verify partnership account link api case successful with valid request|200||CTG|PH001110|105C100171|121471278|24/08/1989|ACCOUNT,IA|19036012022310|test TCBS84464261
 Verify partnership account link api case missing body|400|Invalid parameter||||||||
 Verify partnership account link api case invalid x-api-key|401|Invalid X-Api-Key|CTG|PH00888|105C100066|5555|15/10/1980|ACCOUNT,IA|19036012022345|test THUY UAT
-Verify partnership account link api case missing param partnerId|500||null|PH00888|105C100066|5555|15/10/1980|ACCOUNT,IA|19036012022345|test THUY UAT
+Verify partnership account link api case missing param partnerId|400|partnerId invalid|null|PH00888|105C100066|5555|15/10/1980|ACCOUNT,IA|19036012022345|test THUY UAT
 Verify partnership account link api case missing value param partnerId|400|partnerId invalid|empty|PH00888|105C100066|5555|15/10/1980|ACCOUNT,IA|19036012022345|test THUY UAT
 Verify partnership account link api case partnerId is not config in system|400|partnerId invalid|ACB|PH00888|105C100066|5555|15/10/1980|ACCOUNT,IA|19036012022345|test THUY UAT
 Verify partnership account link api case missing param partnerAccountId|400|partnerAccountId invalid|CTG|null|105C100066|5555|15/10/1980|ACCOUNT,IA|19036012022345|test THUY UAT
 Verify partnership account link api case missing value param partnerAccountId|400|partnerAccountId invalid|CTG|empty|105C100066|5555|15/10/1980|ACCOUNT,IA|19036012022345|test THUY UAT
-Verify partnership account link api case partnerAccountId contains special characters|400|not define|CTG|P00123@|105C100066|5555|15/10/1980|ACCOUNT,IA|19036012022345|test THUY UAT
+Verify partnership account link api case partnerAccountId contains special characters|400|partnerAccountId invalid|CTG|P00123@|105C100066|5555|15/10/1980|ACCOUNT,IA|19036012022345|test THUY UAT
 Verify partnership account link api case partnerAccountId is already existed in tcbs_partnership table|400|Tài khoản liên kết 2 bên không đúng|CTG|P3001265|105C100066|5555|15/10/1980|ACCOUNT,IA|19036012022345|test THUY UAT
 Verify partnership account link api case missing param code105C|400|Profile not found|CTG|PH00888|null|5555|15/10/1980|ACCOUNT,IA|19036012022345|test THUY UAT
 Verify partnership account link api case missing value param code105C|400|Profile not found|CTG|PH00888|empty|5555|15/10/1980|ACCOUNT,IA|19036012022345|test THUY UAT
-Verify partnership account link api case code105C is inactive|400|not define|CTG|PH00888|105C201910|2019201910|30/12/1999|ACCOUNT,IA|19036012022342|Minh Khang 10
-Verify partnership account link api case missing param idNumber|500|No value present|CTG|PH00888|105C100066|null|15/10/1980|ACCOUNT,IA|19036012022345|test THUY UAT
-Verify partnership account link api case missing value param idNumber|500|No value present|CTG|PH00888|105C100066|empty|15/10/1980|ACCOUNT,IA|19036012022345|test THUY UAT
+Verify partnership account link api case code105C is inactive|400|Tài khoản chưa được kích hoạt|CTG|PH00888|105C201910|2019201910|30/12/1999|ACCOUNT,IA|19036012022342|Minh Khang 10
+Verify partnership account link api case missing param idNumber|400|idNumber invalid|CTG|PH00888|105C100066|null|15/10/1980|ACCOUNT,IA|19036012022345|test THUY UAT
+Verify partnership account link api case missing value param idNumber|400|idNumber invalid|CTG|PH00888|105C100066|empty|15/10/1980|ACCOUNT,IA|19036012022345|test THUY UAT
 Verify partnership account link api case idNumber and birthday and 105C are not a pair in db|400|not define|CTG|PH00888|105C100066|66655|15/10/1999|ACCOUNT,IA|19036012022345|test THUY UAT
 Verify partnership account link api case missing param birthday|400|Profile not found|CTG|PH00888|105C100066|5555|null|ACCOUNT,IA|19036012022345|test THUY UAT
 Verify partnership account link api case missing value param birthday|400|Profile not found|CTG|PH00888|105C100066|5555|empty|ACCOUNT,IA|19036012022345|test THUY UAT
 Verify partnership account link api case birthday is wrong format|400|Profile not found|CTG|PH00888|105C100066|5555|1980/10/15|ACCOUNT,IA|19036012022345|test THUY UAT
 Verify partnership account link api case birthday is incorrect|400|Profile not found|CTG|PH00888|105C100066|5555|15/15/1980|ACCOUNT,IA|19036012022345|test THUY UAT
 Verify partnership account link api case invalid linkType missing param|500|not define|CTG|PH00888|105C100066|5555|15/10/1980|null|19036012022345|test THUY UAT
-Verify partnership account link api case invalid linkType missing value param|500|not define|CTG|PH00888|105C100066|5555|15/10/1980|empty|19036012022345|test THUY UAT
+Verify partnership account link api case invalid linkType missing value param|400|Invalid parameter|CTG|PH00888|105C100066|5555|15/10/1980|empty|19036012022345|test THUY UAT
 Verify partnership account link api case invalid linkType|400|Invalid parameter|CTG|PH00888|105C100066|5555|15/10/1980|ACCOUNTTTTT|19036012022345|test THUY UAT
-Verify partnership account link api case linkType is IA with missing param accountNo|400|not define|CTG|PH00888|105C100066|5555|15/10/1980|IA|null|test THUY UAT
-Verify partnership account link api case linkType is IA with missing value param accountNo|400|not define|CTG|PH00888|105C100066|5555|15/10/1980|IA|empty|test THUY UAT
-Verify partnership account link api case linkType is IA with accountNo is incorrect|400|not define|CTG|PH00888|105C100066|5555|15/10/1980|IA|123|test THUY UAT
+Verify partnership account link api case linkType is IA with missing param accountNo|400|accountNo invalid|CTG|PH00888|105C100066|5555|15/10/1980|IA|null|test THUY UAT
+Verify partnership account link api case linkType is IA with missing value param accountNo|400|accountNo invalid|CTG|PH00888|105C100066|5555|15/10/1980|IA|empty|test THUY UAT
+Verify partnership account link api case linkType is IA with accountNo is incorrect|400|accountNo invalid|CTG|PH00888|105C100066|5555|15/10/1980|IA|123|test THUY UAT
 Verify partnership account link api case linkType is IA with missing param accountName|400|Thông tin đăng kí IA không chính xác|CTG|PH00888|105C100066|5555|15/10/1980|IA|null|test THUY UAT
 Verify partnership account link api case linkType is IA with missing value param accountName|400|Thông tin đăng kí IA không chính xác|CTG|PH00888|105C100066|5555|15/10/1980|IA|empty|test THUY UAT
 Verify partnership account link api case linkType is IA with accountName is not same full name of 105C in db|400|Thông tin đăng kí IA không chính xác|CTG|PH00888|105C100066|5555|15/10/1980|IA|19036012022345|phuong test

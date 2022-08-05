@@ -8,6 +8,7 @@ import lombok.Getter;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Title;
 import net.thucydides.junit.annotations.UseTestDataFrom;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -91,6 +92,13 @@ public class PartnerShipAccountLinkTest {
       assertEquals(partnerAccountId, TcbsPartnerShip.getPartnerShip(partnerAccountId).getPartnerAccountId());
     } else {
       assertEquals(errorMessage, response.jsonPath().get("message"));
+    }
+  }
+
+  @After
+  public void clearData () {
+    if (statusCode==200) {
+      TcbsPartnerShip.deleteByPartnerAccountId(partnerAccountId);
     }
   }
 }
