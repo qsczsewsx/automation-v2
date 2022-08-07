@@ -212,6 +212,7 @@ public class TcbsProfileServiceConfig {
   public static final String ADD_OTP = conf.getString("tcbsprofile.addOtp");
   public static final String GEN_AUTHEN_KEY = conf.getString("tcbsprofile.genAuthenKey");
   public static final String GEN_LOGIN_KEY = conf.getString("tcbsprofile.genLoginKey");
+  public static final String OAUTH2_GET_AUTHORIZATION_CODE = conf.getString("tcbsprofile.authen.oauth2.getAuthorizationCode");
 
   //author
   public static final String LOGIN_TO_ISQUARE = conf.getString("tcbsprofile.loginToIsquare");
