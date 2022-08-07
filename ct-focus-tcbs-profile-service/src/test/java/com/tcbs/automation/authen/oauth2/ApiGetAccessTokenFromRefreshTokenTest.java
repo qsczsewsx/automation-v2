@@ -63,8 +63,8 @@ public class ApiGetAccessTokenFromRefreshTokenTest {
 
   @Test
   @TestCase(name = "#testCaseName")
-  @Title("Verify api get access token from authorization code")
-  public void verifyApiGetAccessTokenFromAuthorizationCode() {
+  @Title("Verify api get access token from refresh token")
+  public void verifyApiGetAccessTokenFromRefreshToken() {
     System.out.println("TestCaseName : " + testCaseName);
 
     Response response = callApiGetAccessTokenFromRefreshToken(clientId, refreshToken, grantType);
