@@ -214,6 +214,7 @@ public class TcbsProfileServiceConfig {
   public static final String GEN_LOGIN_KEY = conf.getString("tcbsprofile.genLoginKey");
   public static final String OAUTH2_GET_AUTHORIZATION_CODE = conf.getString("tcbsprofile.authen.oauth2.getAuthorizationCode");
   public static final String OAUTH2_GET_ACCESS_TOKEN_FROM_AUTHORIZATION_CODE = conf.getString("tcbsprofile.authen.oauth2.getAccessTokenFromAuthorizationCode");
+  public static final String OAUTH2_GET_ACCESS_TOKEN_FROM_REFRESH_TOKEN = conf.getString("tcbsprofile.authen.oauth2.getAccessTokenFromRefreshToken");
 
   //author
   public static final String LOGIN_TO_ISQUARE = conf.getString("tcbsprofile.loginToIsquare");
