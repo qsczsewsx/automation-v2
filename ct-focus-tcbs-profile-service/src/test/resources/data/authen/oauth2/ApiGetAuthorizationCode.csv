@@ -1,0 +1,17 @@
+testCaseName|statusCode|errorCode|errorMessage|clientId|username|password|codeChallenge|redirectUri
+Verify api get authorizationCode with empty clientId|400|203036|Invalid client|empty|105C065421|abc123|T2gzU-SiAM0hzU94QacQQRMFReCtE-OI-_h_1Uu4504|signintcinvest://callback
+Verify api get authorizationCode with clientId not exist|400|203036|Invalid client|343d5164-1638-11ed-861d|105C065421|abc123|T2gzU-SiAM0hzU94QacQQRMFReCtE-OI-_h_1Uu4504|signintcinvest://callback
+Verify api get authorizationCode with inactive clientId|400|203036|Invalid client|a35f28d0-163b-11ed-861d-0242ac120002|105C065421|abc123|T2gzU-SiAM0hzU94QacQQRMFReCtE-OI-_h_1Uu4504|signintcinvest://callback
+Verify api get authorizationCode with empty username|400|203011|Username must contain only letters and numbers|343d5164-1638-11ed-861d-0242ac120002|empty|abc123|T2gzU-SiAM0hzU94QacQQRMFReCtE-OI-_h_1Uu4504|signintcinvest://callback
+Verify api get authorizationCode with invalid username format|400|203011|Username must contain only letters and numbers|343d5164-1638-11ed-861d-0242ac120002|105C065421/`!|abc123|T2gzU-SiAM0hzU94QacQQRMFReCtE-OI-_h_1Uu4504|signintcinvest://callback
+Verify api get authorizationCode with beta user|400|203044|Your account is beta. Deny access|343d5164-1638-11ed-861d-0242ac120002|0199316500|abc123|T2gzU-SiAM0hzU94QacQQRMFReCtE-OI-_h_1Uu4504|signintcinvest://callback
+Verify api get authorizationCode with empty password|400|203014|Password must be not empty|343d5164-1638-11ed-861d-0242ac120002|105C065421|empty|T2gzU-SiAM0hzU94QacQQRMFReCtE-OI-_h_1Uu4504|signintcinvest://callback
+Verify api get authorizationCode with empty redirectUri|400|203038|Invalid redirect uri|343d5164-1638-11ed-861d-0242ac120002|105C065421|abc123|T2gzU-SiAM0hzU94QacQQRMFReCtE-OI-_h_1Uu4504|empty
+Verify api get authorizationCode with redirectUri not in database|400|203038|Invalid redirect uri|343d5164-1638-11ed-861d-0242ac120002|105C065421|abc123|T2gzU-SiAM0hzU94QacQQRMFReCtE-OI-_h_1Uu4504|signintcinvest://callback
+Verify api get authorizationCode with empty codeChallenge|400|203039|Invalid code challenge|343d5164-1638-11ed-861d-0242ac120002|105C065421|abc123|empty|signintcinvest://abc
+Verify api get authorizationCode with invalid codeChallenge format|400|203039|Invalid code challenge|343d5164-1638-11ed-861d-0242ac120002|105C065421|abc123|abc32424242242|signintcinvest://abc
+Verify api get authorizationCode with username not exist|400|203015|User not exist|343d5164-1638-11ed-861d-0242ac120002|105CCCCCCCCC|abc123|T2gzU-SiAM0hzU94QacQQRMFReCtE-OI-_h_1Uu4504|signintcinvest://callback
+Verify api get authorizationCode with inactive user|400|203032|Blocked Account. Please contact WS|343d5164-1638-11ed-861d-0242ac120002|105C011977|abc123|T2gzU-SiAM0hzU94QacQQRMFReCtE-OI-_h_1Uu4504|signintcinvest://callback
+Verify api get authorizationCode with blocked user|400|203032|Blocked Account. Please contact WS|343d5164-1638-11ed-861d-0242ac120002|105C021368|abc123|T2gzU-SiAM0hzU94QacQQRMFReCtE-OI-_h_1Uu4504|signintcinvest://callback
+Verify api get authorizationCode with user wait for close|400|203045|Your account is being closed|343d5164-1638-11ed-861d-0242ac120002|105C011298|abc123|T2gzU-SiAM0hzU94QacQQRMFReCtE-OI-_h_1Uu4504|signintcinvest://callback
+Verify api get authorizationCode with password not match|400|203004|Username and password are not matched|343d5164-1638-11ed-861d-0242ac120002|105C065421|tcbs@1234|T2gzU-SiAM0hzU94QacQQRMFReCtE-OI-_h_1Uu4504|signintcinvest://callback
