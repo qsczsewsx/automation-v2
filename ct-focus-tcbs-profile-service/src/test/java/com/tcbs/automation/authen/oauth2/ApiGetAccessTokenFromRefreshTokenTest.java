@@ -44,7 +44,7 @@ public class ApiGetAccessTokenFromRefreshTokenTest {
   private String refreshToken;
 
   @Before
-  public void setup() {
+  public void setup() throws Exception {
     clientId = syncData(clientId);
     refreshToken = syncData(refreshToken);
 

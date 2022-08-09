@@ -49,7 +49,7 @@ public class ApiGetAccessTokenFromAuthorizationCodeTest {
   private String authorizationCode;
 
   @Before
-  public void setup() {
+  public void setup() throws Exception {
     clientId = syncData(clientId);
     codeVerifier = syncData(codeVerifier);
     authorizationCode = syncData(authorizationCode);
@@ -75,7 +75,6 @@ public class ApiGetAccessTokenFromAuthorizationCodeTest {
       assertEquals("Bearer", response.jsonPath().get("token_type"));
       String accessToken = response.jsonPath().get("access_token");
       String refreshToken = response.jsonPath().get("refresh_token");
-      Integer expiresIn = response.jsonPath().get("expires_in");
       Map<String, Object> accessTokenClaims = CommonUtils.decodeToken(accessToken);
       Map<String, Object> refreshTokenClaims = CommonUtils.decodeToken(refreshToken);
       TcbsUser tcbsUser = TcbsUser.getByUserName(USERNAME_DEFAULT);
