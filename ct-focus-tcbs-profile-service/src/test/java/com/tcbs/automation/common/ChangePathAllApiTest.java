@@ -62,6 +62,7 @@ public class ChangePathAllApiTest {
         break;
     }
 
+    assert response != null;
     assertThat("Verify status code", response.getStatusCode(), anyOf(is(400), is(200), is(204), is(401), is(403), is(500)));
     if (response.getStatusCode() == 500) {
       assertThat("verify error code", response.jsonPath().getMap("").get("code").toString(), startsWith("104"));

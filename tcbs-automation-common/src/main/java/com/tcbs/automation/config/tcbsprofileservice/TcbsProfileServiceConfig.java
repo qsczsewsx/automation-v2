@@ -160,6 +160,9 @@ public class TcbsProfileServiceConfig {
   public static final String REGISTER_VERIFICATION = conf.getString("tcbsprofile.registerVerification");
   public static final String UPDATE_PROFILE_TCI3 = conf.getString("tcbsprofile.updateProfileTci3");
 
+  public static final String MULTI_CONNECT_IA_ISAVE = conf.getString("tcbsprofile.multiConnectIsiSave");
+  public static final String MULTI_DISCONNECT_IA_ISAVE = conf.getString("tcbsprofile.multiDisconnectIsiSave");
+
   //thirty party
   public static final String FSS_SERVICE = conf.getString("tcbsprofile.fssService");
 
@@ -207,6 +210,12 @@ public class TcbsProfileServiceConfig {
   public static final String AUTHEN_GET_CLIENT_KEY = conf.getString("tcbsprofile.authenGetClientKey");
   public static final String LOGIN_FROM_THIRD_PARTY = conf.getString("tcbsprofile.loginFromThirdParty");
   public static final String ADD_OTP = conf.getString("tcbsprofile.addOtp");
+  public static final String GEN_AUTHEN_KEY = conf.getString("tcbsprofile.genAuthenKey");
+  public static final String GEN_LOGIN_KEY = conf.getString("tcbsprofile.genLoginKey");
+  public static final String OAUTH2_GET_AUTHORIZATION_CODE = conf.getString("tcbsprofile.authen.oauth2.getAuthorizationCode");
+  public static final String OAUTH2_GET_ACCESS_TOKEN_FROM_AUTHORIZATION_CODE = conf.getString("tcbsprofile.authen.oauth2.getAccessTokenFromAuthorizationCode");
+  public static final String OAUTH2_GET_ACCESS_TOKEN_FROM_REFRESH_TOKEN = conf.getString("tcbsprofile.authen.oauth2.getAccessTokenFromRefreshToken");
+  public static final String OAUTH2_GET_SERVICE_TOKEN = conf.getString("tcbsprofile.authen.oauth2.getServiceToken");
 
   //author
   public static final String LOGIN_TO_ISQUARE = conf.getString("tcbsprofile.loginToIsquare");
@@ -251,6 +260,8 @@ public class TcbsProfileServiceConfig {
   public static final String SUPPORT_BY_ACTION = conf.getString("stpfund.complete-online-authentication");
   public static final String STP_FUND_CLOSE_ACCOUNT = conf.getString("stpfund.stpfund-close-account");
   public static final String STP_X_API_KEY = conf.getString("tcbsprofile.stp-fund-api-key");
+  public static final String GET_ACCOUNT_ACTIVE_VSD = conf.getString("stpfund.get-account-active-vsd");
+
 
   //Change Personal Info
   public static final String CHANGE_PERSONAL_INFO = conf.getString("tcbsprofile.changePersonalInfo");
@@ -319,11 +330,26 @@ public class TcbsProfileServiceConfig {
   public static final String EXPORT_ROLE_RM_RBO_TOKEN = conf.getString("tcbsprofile.exportRole-token");
   public static final String RM_RBO_HISTORY_VIEW = conf.getString("rmrbo.rmrbo-history-view");
   public static final String GET_NNB_BY_FUND = conf.getString("tcbsprofile.getNnbByFundList");
+  public static final String GET_CUSTOMER_BY_RBO = conf.getString("rmrbo.getCustomerByRbo");
 
   //OTP Global Phone
   public static final String OTP_GET_LIST_PHONE_CODE = conf.getString("otpGlobalPhone.getListPhoneCode");
 
   //new onboarding 2022
   public static final String API_VALIDATE_PHONE_EMAIL = conf.getString("newonboarding2022.validatePhoneEmail");
+  public static final String REGISTER_CONFIRM_PHONE = conf.getString("newonboarding2022.registerConfirmPhone");
+  public static final String REGISTER_OCR_GET_DATA = conf.getString("newonboarding2022.registerOcrGetData");
+  public static final String REGISTER_VALIDATE_PASSWORD = conf.getString("newonboarding2022.registerValidatePassWord");
+  public static final String REGISTER_VALIDATE_BANK_INFO = conf.getString("newonboarding2022.registerValidateBankInfo");
+  public static final String REGISTER_VALIDATE_IDENTITY_INFO = conf.getString("newonboarding2022.registerValidateIdentityInfo");
+  public static final String REGISTER_UPLOAD_IDENTIFY = conf.getString("newonboarding2022.registerUploadIdentify");
+  public static final String REGISTER_UPLOAD_OTHER = conf.getString("newonboarding2022.registerUploadOther");
+  public static final String OB_REGISTER = conf.getString("newonboarding2022.obRegister");
+
+
+  //new onboarding partership
+  public static final String PARTNERSHIP_ACCOUNT_LINK = conf.getString("newonboardingPartnerShip.partnerShipAccountLink");
+  public static final String PARTNERSHIP_X_API_KEY = conf.getString("tcbsprofile.partnerShip-x-api-key");
+  public static final String PARTNERSHIP_ACCOUNT_UNLINK = conf.getString("newonboardingPartnerShip.partnerShipAccountUnLink");
 
 }

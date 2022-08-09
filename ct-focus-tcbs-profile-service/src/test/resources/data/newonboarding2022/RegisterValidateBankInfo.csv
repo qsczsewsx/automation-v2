@@ -1,0 +1,22 @@
+testCaseName|statusCode|errorMessage|accountNo|accountName|bankCode|bankName|bankProvince|bankType|branchCode
+Verify bank info api case success with valid request|200|Success|190009898666601|Le Bao Nhi|01310001|NH TMCP KY THUONG VN|HA-NOI|CENTRALIZED_PAYMENT|NH TMCP KY THUONG VN HOI SO CHINH
+Verify bank info api case accountNo and bankCode are same as current value in DB |200|The bank account is already in use by another customer, please provide another bank account number|12345671239515|fullname01310001|01310001|NH TMCP KY THUONG VN|HA-NOI|CENTRALIZED_PAYMENT|NH TMCP KY THUONG VN HOI SO CHINH
+Verify bank info api case missing body|400|Invalid parameter|null|null|null|null|null|null|null
+Verify bank info api case missing param accountNo|200|BankAccountNumber is invalid|null|Le Bao Nhi|01310001|NH TMCP KY THUONG VN|HA-NOI|CENTRALIZED_PAYMENT|NH TMCP KY THUONG VN HOI SO CHINH
+Verify bank info api case accountNo more than 40 characters|200|BankAccountNumber is invalid|19000989866660211111111111111111111111111|Le Bao Nhi|01310001|NH TMCP KY THUONG VN|HA-NOI|CENTRALIZED_PAYMENT|NH TMCP KY THUONG VN HOI SO CHINH
+Verify bank info api case accountNo contains special characters|200|BankAccountNumber is invalid|19000989866660@|Le Bao Nhi|01310001|NH TMCP KY THUONG VN|HA-NOI|CENTRALIZED_PAYMENT|NH TMCP KY THUONG VN HOI SO CHINH
+Verify bank info api case missing value param accountNo|200|BankAccountNumber is invalid|empty|Le Bao Nhi|01310001|NH TMCP KY THUONG VN|HA-NOI|CENTRALIZED_PAYMENT|NH TMCP KY THUONG VN HOI SO CHINH
+Verify bank info api case missing param accountName|200|Bank account name is invalid|190009898666601|null|01310001|NH TMCP KY THUONG VN|HA-NOI|CENTRALIZED_PAYMENT|NH TMCP KY THUONG VN HOI SO CHINH
+Verify bank info api case accountName more than 200 characters|200|Bank account name is invalid|190009898666601|Le Bao NhiLe Bao NhiLe Bao NhiLe Bao NhiLe Bao NhiLe Bao NhiLe Bao NhiLe Bao NhiLe Bao NhiLe Bao NhiLe Bao NhiLe Bao NhiLe Bao NhiLe Bao NhiLe Bao NhiLe Bao NhiLe Bao NhiLe Bao NhiLe Bao NhiLe Bao Nhii|01310001|NH TMCP KY THUONG VN|HA-NOI|CENTRALIZED_PAYMENT|NH TMCP KY THUONG VN HOI SO CHINH
+Verify bank info api case missing value param accountName|200|Bank account name is invalid|190009898666601|empty|01310001|NH TMCP KY THUONG VN|HA-NOI|CENTRALIZED_PAYMENT|NH TMCP KY THUONG VN HOI SO CHINH
+Verify bank info api case missing param bankCode|200|BankCode is invalid|190009898666601|Le Bao Nhi|null|NH TMCP KY THUONG VN|HA-NOI|CENTRALIZED_PAYMENT|NH TMCP KY THUONG VN HOI SO CHINH
+Verify bank info api case bankCode not existed|200|BankCode is invalid|190009898666601|Le Bao Nhi|TestA|NH TMCP KY THUONG VN|HA-NOI|CENTRALIZED_PAYMENT|NH TMCP KY THUONG VN HOI SO CHINH
+Verify bank info api case missing value param bankCode|200|BankCode is invalid|190009898666601|Le Bao Nhi|empty|NH TMCP KY THUONG VN|HA-NOI|CENTRALIZED_PAYMENT|NH TMCP KY THUONG VN HOI SO CHINH
+Verify bank info api case success with missing param bankName|200|Success|190009898666601|Le Bao Nhi|01310001|null|HA-NOI|CENTRALIZED_PAYMENT|NH TMCP KY THUONG VN HOI SO CHINH
+Verify bank info api case success with missing value param bankName|200|Success|190009898666601|Le Bao Nhi|01310001|empty|HA-NOI|CENTRALIZED_PAYMENT|NH TMCP KY THUONG VN HOI SO CHINH
+Verify bank info api case success with missing param bankProvince|200|Success|190009898666601|Le Bao Nhi|01310001|NH TMCP KY THUONG VN|null|CENTRALIZED_PAYMENT|NH TMCP KY THUONG VN HOI SO CHINH
+Verify bank info api case success with missing value param bankProvince|200|Success|190009898666601|Le Bao Nhi|01310001|NH TMCP KY THUONG VN|empty|CENTRALIZED_PAYMENT|NH TMCP KY THUONG VN HOI SO CHINH
+Verify bank info api case success with missing param bankType|200|Success|190009898666601|Le Bao Nhi|01310001|NH TMCP KY THUONG VN|HA-NOI|null|NH TMCP KY THUONG VN HOI SO CHINH
+Verify bank info api case success with missing value param bankType|200|Success|190009898666601|Le Bao Nhi|01310001|NH TMCP KY THUONG VN|HA-NOI|empty|NH TMCP KY THUONG VN HOI SO CHINH
+Verify bank info api case success with missing param branchCode|200|Success|190009898666601|Le Bao Nhi|01310001|NH TMCP KY THUONG VN|HA-NOI|CENTRALIZED_PAYMENT|null
+Verify bank info api case success with missing value param branchCode|200|Success|190009898666601|Le Bao Nhi|01310001|NH TMCP KY THUONG VN|HA-NOI|CENTRALIZED_PAYMENT|empty

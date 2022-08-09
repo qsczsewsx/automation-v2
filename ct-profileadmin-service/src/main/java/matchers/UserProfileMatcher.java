@@ -14,12 +14,11 @@ import static com.tcbs.automation.publicmatcher.CombinableMatcher.all;
 import static com.tcbs.automation.publicmatcher.HashMapMatcher.has;
 import static com.tcbs.automation.publicmatcher.Verifier.verify;
 import static com.tcbs.automation.tools.DateTimeUtils.DATE_FORMAT_VN;
-import static com.tcbs.automation.tools.DateTimeUtils.ISO_STANDARD_DATE;
 import static org.hamcrest.Matchers.equalTo;
 
 public class UserProfileMatcher {
 
-  public static Matcher<HashMap<String, Object>> sameAs(TcbsUser tcbsUser, TcbsAddress tcbsAddress, TcbsUserOpenaccountQueue tcbsUserOpenaccountQueue, TcbsUserAccount tcbsUserAccount,
+  public static Matcher<HashMap<String, Object>> sameAs(TcbsUser tcbsUser, TcbsAddress tcbsAddress, TcbsUserOpenAccountQueue tcbsUserOpenaccountQueue, TcbsUserAccount tcbsUserAccount,
                                                         TcbsApplicationUser tcbsApplicationUsers2, TcbsApplicationUser tcbsApplicationUsers4, TcbsIdentification tcbsIdentification,
                                                         TcbsUserInstrument tcbsUserInstrument) {
     return new TypeSafeMatcher<HashMap<String, Object>>() {

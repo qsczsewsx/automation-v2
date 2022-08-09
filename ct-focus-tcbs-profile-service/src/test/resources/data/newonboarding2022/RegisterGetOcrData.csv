@@ -1,0 +1,9 @@
+testCaseName|statusCode|errorMessage|referenceId|authenKey
+Verify api register get ocr data case success do not need upload|200|Success|+84963493437F20072022154401|gen
+Verify api register get ocr data case success need upload other docs|200|Success|+84775493526F20072022154926|gen
+Verify api register get ocr data case missing referenceId|403|Forbidden|empty|ea3a50a99e5d202b889bdf2ffd93a318e0ecee3603adcdca544595444053ea8a
+Verify api register get ocr data case missing authenKey|403|Forbidden|+84963493437F20072022154401|empty
+Verify api register get ocr data with invalid referenceId|403|Forbidden|+84342345207F15072022163312|ea3a50a99e5d202b889bdf2ffd93a318e0ecee3603adcdca544595444053ea8a
+Verify api register get ocr data with invalid authenKey|403|Forbidden|+84963493437F20072022154401|ac3a50a99e5d202b889bdf2ffd93a31d3441233
+Verify api register get ocr data case authenKey expired|403|Forbidden|+84963493437F20072022154401|ea3a50a99e5d202b889bdf2ffd93a318e0ecee3603adcdca544595444053ea8a
+Verify api register get ocr data with missing body|400|Invalid parameter||

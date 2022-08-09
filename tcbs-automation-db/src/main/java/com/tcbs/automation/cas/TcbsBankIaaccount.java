@@ -63,12 +63,15 @@ public class TcbsBankIaaccount {
   @Column(name = "PARTNER_REGISTER_ID")
   private String partnerRegisterId;
 
+  private static final String PPUSERID = "userId";
+  private static final String PPSTATUS = "status";
+
   @Step
   public static List<TcbsBankIaaccount> getListBanks(String userId) {
     CAS.casConnection.getSession().clear();
     Query<TcbsBankIaaccount> query = CAS.casConnection.getSession().createQuery(
       "from TcbsBankIaaccount a where a.userId=:userId order by id desc", TcbsBankIaaccount.class);
-    query.setParameter("userId", new BigDecimal(userId));
+    query.setParameter(PPUSERID, new BigDecimal(userId));
     return query.getResultList();
   }
 
@@ -76,7 +79,7 @@ public class TcbsBankIaaccount {
     CAS.casConnection.getSession().clear();
     Query<TcbsBankIaaccount> query = CAS.casConnection.getSession().createQuery(
       "from TcbsBankIaaccount a where a.userId=:userId", TcbsBankIaaccount.class);
-    query.setParameter("userId", new BigDecimal(userId));
+    query.setParameter(PPUSERID, new BigDecimal(userId));
     return query.getSingleResult();
   }
 
@@ -84,7 +87,7 @@ public class TcbsBankIaaccount {
     Session session = CAS.casConnection.getSession();
     session.beginTransaction();
     session.createQuery("delete from TcbsBankIaaccount where userId =:userId")
-      .setParameter("userId", new BigDecimal(userId))
+      .setParameter(PPUSERID, new BigDecimal(userId))
       .executeUpdate();
     session.getTransaction().commit();
   }
@@ -93,7 +96,7 @@ public class TcbsBankIaaccount {
     Session session = CAS.casConnection.getSession();
     session.beginTransaction();
     session.createQuery("delete from TcbsBankIaaccount where userId in (:userId)")
-      .setParameter("userId", userIds)
+      .setParameter(PPUSERID, userIds)
       .executeUpdate();
     session.getTransaction().commit();
   }
@@ -105,8 +108,8 @@ public class TcbsBankIaaccount {
     }
     Query query = casConnection.getSession().createQuery(
       "Update TcbsBankIaaccount a set a.status =:status where a.userId=:userId");
-    query.setParameter("userId", new BigDecimal(userId));
-    query.setParameter("status", new BigDecimal(status));
+    query.setParameter(PPUSERID, new BigDecimal(userId));
+    query.setParameter(PPSTATUS, new BigDecimal(status));
     query.executeUpdate();
     casConnection.getSession().getTransaction().commit();
   }
@@ -119,7 +122,7 @@ public class TcbsBankIaaccount {
     Query query = casConnection.getSession().createQuery(
       "Update TcbsBankIaaccount a set a.status =:status where a.id=:id");
     query.setParameter("id", id);
-    query.setParameter("status", new BigDecimal(status));
+    query.setParameter(PPSTATUS, new BigDecimal(status));
     query.executeUpdate();
     casConnection.getSession().getTransaction().commit();
   }
@@ -132,11 +135,28 @@ public class TcbsBankIaaccount {
     Query query = casConnection.getSession().createNativeQuery(
       "Update TCBS_BANK_IAACCOUNT set status =:status, bank_Source=:bankSource where " +
         "id=(select id from (select id from TCBS_BANK_IAACCOUNT where user_Id=:userId order by id desc) where rownum = 1)");
-    query.setParameter("userId", new BigDecimal(userId));
-    query.setParameter("status", new BigDecimal(status));
+    query.setParameter(PPUSERID, new BigDecimal(userId));
+    query.setParameter(PPSTATUS, new BigDecimal(status));
     query.setParameter("bankSource", bankSource);
     query.executeUpdate();
     casConnection.getSession().getTransaction().commit();
+  }
+
+  public static BigDecimal getIaiSaveBank(String userId, String bankSource) {
+    CAS.casConnection.getSession().clear();
+    Query<TcbsBankIaaccount> query = CAS.casConnection.getSession().createQuery(
+      "from TcbsBankIaaccount a where a.userId=:userId and a.bankSource=:bankSource", TcbsBankIaaccount.class);
+    query.setParameter(PPUSERID, new BigDecimal(userId));
+    query.setParameter("bankSource", bankSource);
+    return query.getSingleResult().getStatus();
+  }
+
+  public static TcbsBankIaaccount getpartnershipIALink(String accountNo) {
+    CAS.casConnection.getSession().clear();
+    Query<TcbsBankIaaccount> query = CAS.casConnection.getSession().createQuery(
+      "from TcbsBankIaaccount a where a.accountNo=:accountNo", TcbsBankIaaccount.class);
+    query.setParameter("accountNo", accountNo);
+    return query.getSingleResult();
   }
 
 }

@@ -3,7 +3,7 @@ i validate Phone Email with missing body,400,Invalid parameter,,,,
 Verify api validate Phone Email with phoneCode is null,200,Phone is invalid,null,312345678,no_email_p12@tcbs.com.vn,
 Verify api validate Phone Email with phoneNumber is null,200,Phone is invalid,+84,null,no_email_p12@tcbs.com.vn,
 Verify api validate Phone Email with email is null,200,Email is invalid,+84,312345678,null,
-Verify api validate Phone Email success with phoneCode is other than +84 and already existed in table tcbs_region,200,Success,+374,genrandom,no_email_p12@tcbs.com.vn,
+Verify api validate Phone Email success with phoneCode is other than +84 and already existed in table tcbs_region,200,Success,+374,12345678901,no_email_p12@tcbs.com.vn,
 Verify api validate Phone Email with phoneCode is other than +84 and not existed in table tbcs_region,200,Phone is invalid,+888000,genrandom,no_email_p12@tcbs.com.vn,
 Verify api validate Phone Email with phoneCode is invalid and not existed table tcbs_reigon,200,Phone is invalid,+a12,genrandom,no_email_p12@tcbs.com.vn,
 Verify api validate Phone Email with (phoneCode + phoneNumber) is already existed table tcbs_user,200,Phone number existed in system,+65,0141192549,no_email_p12@tcbs.com.vn,
@@ -17,15 +17,13 @@ Verify api validate Phone Email with phoneCode is 084 and phoneNumber (starting 
 Verify api validate Phone Email with phoneCode is 84 and phoneNumber (starting with (3|5|7|8|9) and containing 9 digits),200,Phone is invalid,84,312345678,no_email_p12@tcbs.com.vn,
 Verify api validate Phone Email with phoneCode is 0 and phoneNumber (starting with (3|5|7|8|9) and containing 9 digits),200,Phone is invalid,0,312345678,no_email_p12@tcbs.com.vn,
 Verify api validate Phone Email success with phoneCode other than +84 and (phoneCode + foreign phoneNumber) containing 3 character (include: plus and digits),200,Success,+1,1,no_email_p12@tcbs.com.vn,
-Verify api validate Phone Email success with phoneCode other than +84 and (phoneCode + foreign phoneNumber) containing 18 characters (plus character and 17 digits),200,Success,+374,12345678901234,no_email_p12@tcbs.com.vn,
 Verify api validate Phone Email with phoneCode other than +84 and (phoneCode + foreign phoneNumber) containing 18 characters (minus character and 17 digits),200,Phone is invalid,-374,12345678901234,no_email_p12@tcbs.com.vn,
 Verify api validate Phone Email with phoneCode other than +84 and (phoneCode + foreign phoneNumber) containing 19 digits (plus and 18 digits),200,Phone is invalid,+374,123456789012345,no_email_p12@tcbs.com.vn,
-Verify api validate Phone Email success with phoneCode other than +84 and (phoneCode + foreign phoneNumber) containing 17 characters ( include: plus and digits),200,Success,+374,1234567890123,no_email_p12@tcbs.com.vn,
 "Verify api validate Phone Email with phoneCode other than +84 and (phoneCode + foreign phoneNumber) containing 18 characters ( plus, digits, word character, special characters)",200,Phone is invalid,+374,123456789012a@,no_email_p12@tcbs.com.vn,
 Verify api validate Phone Email with phoneCode is +84 and phoneNumber already existed in table tcbs_user format 84xxxxxxxxx,200,Phone number existed in system,+84,867712856,no_email_p12@tcbs.com.vn,
 Verify api validate Phone Email with phoneCode is +84 and phoneNumber already existed in table tcbs_user format 084xxxxxxxxx,200,Phone number existed in system,+84,349819201,no_email_p12@tcbs.com.vn,
 Verify api validate Phone Email with phoneCode is +84 and phoneNumber already existed in table tcbs_user format 0xxxxxxxxx,200,Phone number existed in system,+84,395865322,no_email_p12@tcbs.com.vn,valid
-Verify api validate Phone Email with phoneCode is +84 and phoneNumber already existed in table tcbs_user format +84xxxxxxxxx,200,Phone number existed in system,+84,570056179,no_email_p12@tcbs.com.vn,valid
+Verify api validate Phone Email with phoneCode is +84 and phoneNumber already existed in table tcbs_user format +84xxxxxxxxx,200,Phone number existed in system,+84,888872784,no_email_p12@tcbs.com.vn,valid
 Verify api validate Phone Email with wrong format email ,200,Email is invalid,+84,genrandom,no_email,
 Verify api validate Phone Email success with email valid has maxlength = 120 characters,200,Success,+84,genrandom,no_email_01012022abcd11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111@gmail.com,valid
 Verify api validate Phone Email with email valid but too maxlength = 121 characters,200,Email is invalid,+84,genrandom,no_email_01012022abcde11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111@gmail.com,
@@ -33,3 +31,8 @@ Verify api validate Phone Email success with email valid,200,Success,+84,genrand
 Verify api validate Phone Email with email is already existed in table tcbs_user,200,Email existed in system,+84,genrandom,no_email_42941686@tcbs.com.vn,email is not exist in system
 Verify api validate Phone Email success with phoneNumber and email is not existed in table tcbs_user,200,Success,+84,356666661,no_email_p12@tcbs.com.vn,validate successful
 Verify api validate Phone Email with Exist request in cache,400,There was an error processing your request. Please try again after 5 minutes...,+84,356666661,no_email_p12@tcbs.com.vn,
+Verify api validate Phone Email with email is techcombank existed db and phone is not null in db,200,Email existed in system,+84,genrandom,trangdth10@techcombank.com.vn,invalid
+Verify api validate Phone Email with email is techcombank existed db and phone is null and username is 105C in db,200,Email existed in system,+84,genrandom,chinhnm@techcombank.com.vn,invalid
+Verify api validate Phone Email with email is techcombank existed db and phone is null and usernamae+@techcombank difference email,200,Email existed in system,+84,genrandom,phuongtt12@techcombank.com.vn,invalid
+Verify api validate Phone Email success with email is techcombank existed db and phone is null and usernamae+@techcombank same email,200,Success,+84,genrandom,adds@techcombank.com.vn,valid
+Verify api validate Phone Email success with email is techcombank existed db and (phone and usernamae) is null,200,Success,+84,genrandom,no_email_105C710182@techcombank.com.vn,valid

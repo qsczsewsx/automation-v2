@@ -2,6 +2,7 @@ package com.tcbs.automation.newonboarding2022;
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.google.gson.Gson;
+import common.CommonUtils;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.*;
+import java.util.LinkedHashMap;
 
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.API_VALIDATE_PHONE_EMAIL;
 import static com.tcbs.automation.tools.FormatUtils.syncData;
@@ -35,12 +36,7 @@ public class ApiValidatePhoneEmailTest {
 
   @Before
   public void before() {
-    List<String> givenList = Arrays.asList("3", "5", "7", "8", "9");
-    String randomElement = givenList.get(new Random().nextInt(givenList.size()));
-
-    String prepareValue = String.valueOf(new Date().getTime());
-    System.out.println(prepareValue);
-    String suffixPhone = randomElement + prepareValue.substring(5);
+    String suffixPhone = CommonUtils.genPhoneNumberByDateTime();
 
     if (phoneNumber.equals("genrandom")) {
       phoneNumber = suffixPhone;

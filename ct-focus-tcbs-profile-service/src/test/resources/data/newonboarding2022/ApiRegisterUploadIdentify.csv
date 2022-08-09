@@ -1,0 +1,11 @@
+testCaseName|statusCode|errorMessage|frontIdentity|backIdentity|referenceId|authenKey
+Verify api upload identify with missing frontIdentity field|400|Front of identity is missing||back|+84386366017F21072022181203|gen
+Verify api upload identify with missing backIdentity field|400|Back of identity is missing|front||+84386366017F21072022181203|gen
+Verify api upload identify Forbidden missing referenceId field|403|Forbidden|front|back||af48fb8a65691889ebff03f13859e42048b9ae11e574aa1dbed51064e1e28b5d
+Verify api upload identify Forbidden wih referenceId invalid|403|Forbidden|front|back|abc123|af48fb8a65691889ebff03f13859e42048b9ae11e574aa1dbed51064e1e28b5d
+Verify api upload identify Forbidden wih referenceId valid but not exist in TCBS_USER_OPENACCOUNT_QUEUE table|403|Forbidden|front|back|+843863660171234567890|af48fb8a65691889ebff03f13859e42048b9ae11e574aa1dbed51064e1e28b5d
+Verify api upload identify Forbidden wih authenKey expired|403|Forbidden|front|back|+84386366017F21072022181203|77e0356cfabcdf865e4f85209dcaf5cf0b6105b41913228e176299b9f00b2ca7
+Verify api upload identify Forbidden wih missing authenKey field|403|Forbidden|front|back|+84386366017F21072022181203|
+Verify api upload identify wih missing body|400|Invalid parameter||||
+Verify api upload identify wih Upload identity success|200|Upload identity success|front|back|+84386366017F21072022181203|gen
+Verify api upload identify Forbidden wih authenKey invalid|403|Forbidden|front|back|+84386366017F21072022181203|abc123

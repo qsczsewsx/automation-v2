@@ -1,0 +1,9 @@
+testCaseName|statusCode|errorCode|errorMessage|clientId|grantType|clientSecret|scope
+Verify api get service token with invalid grantType|400|203040|Invalid grant type|343d5164-1638-11ed-861d-0242ac120002|abcxyz|FOCUS7bf7aad4-fba0-11ec-b939-0242ac12000207042022|bond,fund
+Verify api get service token with empty clientId|400|203036|Invalid client|empty|client_credentials|FOCUS7bf7aad4-fba0-11ec-b939-0242ac12000207042022|bond,fund
+Verify api get service token with clientId not exist|400|203036|Invalid client|343d5164-1638-11ed-861d|client_credentials|FOCUS7bf7aad4-fba0-11ec-b939-0242ac12000207042022|bond,fund
+Verify api get service token with inactive clientId|400|203036|Invalid client|a35f28d0-163b-11ed-861d-0242ac120002|client_credentials|FOCUS7bf7aad4-fba0-11ec-b939-0242ac12000207042022|bond,fund
+Verify api get service token with invalid clientSecret|400|203046|Invalid client secret|343d5164-1638-11ed-861d-0242ac120002|client_credentials|abc|bond,fund
+Verify api get service token with invalid scope|400|203047|Invalid client scope|343d5164-1638-11ed-861d-0242ac120002|client_credentials|FOCUS7bf7aad4-fba0-11ec-b939-0242ac12000207042022|stock
+Verify api get service token success 1|200|||343d5164-1638-11ed-861d-0242ac120002|client_credentials|FOCUS7bf7aad4-fba0-11ec-b939-0242ac12000207042022|bond
+Verify api get service token success 2|200|||343d5164-1638-11ed-861d-0242ac120002|client_credentials|FOCUS7bf7aad4-fba0-11ec-b939-0242ac12000207042022|empty
