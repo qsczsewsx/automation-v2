@@ -22,7 +22,7 @@ public class Oauth2RefreshToken {
   @javax.persistence.Id
   @NotNull
   @Column(name = "ID")
-  private BigDecimal Id;
+  private BigDecimal id;
 
   @Column(name = "SESSION_ID")
   private String sessionId;

@@ -20,7 +20,7 @@ public class Oauth2RegisteredClient {
   @Id
   @NotNull
   @Column(name = "ID")
-  private BigDecimal Id;
+  private BigDecimal id;
 
   @Column(name = "CLIENT_ID")
   private String clientId;
