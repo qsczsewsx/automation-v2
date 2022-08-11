@@ -333,7 +333,11 @@ public class TcbsProfileServiceConfig {
   public static final String GET_CUSTOMER_BY_RBO = conf.getString("rmrbo.getCustomerByRbo");
 
   //FORGOT PASSWORD
-  public static final String FORGOT_PASSWORD_REGISTRY = conf.getString("tcbsprofile.forgotPasswordRegistry");
+  public static final String FORGOT_PASSWORD_PHONE = conf.getString("tcbsprofile.forgotPasswordPhone");
+  public static final String FORGOT_PASSWORD_EMAIL = conf.getString("tcbsprofile.forgotPasswordEmail");
+  public static final String FORGOT_PASSWORD_NOTIFY = conf.getString("tcbsprofile.forgotPasswordNotify");
+  public static final String FORGOT_PASSWORD_CONFIRM_PHONE = conf.getString("tcbsprofile.forgotPasswordConfirmPhone");
+  public static final String FORGOT_PASSWORD_VALIDATE = conf.getString("tcbsprofile.forgotPasswordValidate");
 
   //OTP Global Phone
   public static final String OTP_GET_LIST_PHONE_CODE = conf.getString("otpGlobalPhone.getListPhoneCode");
