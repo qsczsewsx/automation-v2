@@ -332,6 +332,9 @@ public class TcbsProfileServiceConfig {
   public static final String GET_NNB_BY_FUND = conf.getString("tcbsprofile.getNnbByFundList");
   public static final String GET_CUSTOMER_BY_RBO = conf.getString("rmrbo.getCustomerByRbo");
 
+  //FORGOT PASSWORD
+  public static final String FORGOT_PASSWORD_REGISTRY = conf.getString("tcbsprofile.forgotPasswordRegistry");
+
   //OTP Global Phone
   public static final String OTP_GET_LIST_PHONE_CODE = conf.getString("otpGlobalPhone.getListPhoneCode");
 
