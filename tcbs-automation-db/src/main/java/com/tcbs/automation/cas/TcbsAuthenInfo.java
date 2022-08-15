@@ -32,6 +32,8 @@ public class TcbsAuthenInfo {
   private Timestamp loginTime;
   @Column(name = "USER_ID")
   private String userId;
+  @Column(name = "REGISTERED_CLIENT_ID")
+  private Integer registeredClientId;
 
   public static List<TcbsAuthenInfo> getSessionByUserId(String userId) {
     CAS.casConnection.getSession().clear();
@@ -39,5 +41,13 @@ public class TcbsAuthenInfo {
       "from TcbsAuthenInfo a where a.userId=:userId", TcbsAuthenInfo.class);
     query.setParameter("userId", userId);
     return query.getResultList();
+  }
+
+  public static TcbsAuthenInfo getBySessionId(String sessionId) {
+    CAS.casConnection.getSession().clear();
+    Query<TcbsAuthenInfo> query = CAS.casConnection.getSession().createNativeQuery(
+      "SELECT SESSION_ID, IP, DEVICE, LOGIN_TIME, USER_ID, REGISTERED_CLIENT_ID FROM TCBS_AUTHEN_INFO WHERE SESSION_ID = :sessionId", TcbsAuthenInfo.class);
+    query.setParameter("sessionId", sessionId);
+    return query.getSingleResult();
   }
 }

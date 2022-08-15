@@ -13,11 +13,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.ADD_BLACKLIST_X_API_KEY;
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.ADD_BLACK_LIST;
-import static com.tcbs.automation.tools.FormatUtils.syncData;
 import static net.serenitybdd.rest.SerenityRest.given;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
@@ -33,7 +33,6 @@ public class ApiAddToBlackListTest {
   private String sessionIDs;
   private int statusCode;
   private String errorMessage;
-  private LinkedHashMap<String, Object> body;
   private List<String> sessionIDList;
 
   @Before
@@ -47,7 +46,7 @@ public class ApiAddToBlackListTest {
   public void verifyApiAddToBlackListTest() {
 
     System.out.println("TestCaseName : " + testCaseName);
-    body = new LinkedHashMap<>();
+    LinkedHashMap<String, Object> body = new LinkedHashMap<>();
     body.put("sessionIDs", sessionIDList);
 
     RequestSpecification requestSpecification = given()

@@ -42,9 +42,6 @@ public class ApiUpgradeAdvanceTest {
   private String frontIdentity;
   private String backIdentity;
   private String message;
-  private LinkedHashMap<String, Object> body = new LinkedHashMap<>();
-  private String userId;
-  private String getTcbsId;
   private String tcbsId;
   private String idNumberVal;
 
@@ -67,9 +64,9 @@ public class ApiUpgradeAdvanceTest {
 
     System.out.println("TestCaseName : " + testCaseName);
 
-    getTcbsId = getDesiredData(testCaseName, "invalid tcbsid", "10000017565", tcbsId);
+    String getTcbsId = getDesiredData(testCaseName, "invalid tcbsid", "10000017565", tcbsId);
 
-    body = getUpgradeAdvancedBody(testCaseName);
+    LinkedHashMap<String, Object> body = getUpgradeAdvancedBody(testCaseName);
     Gson gson = new Gson();
 
     Response response = given()
@@ -118,7 +115,7 @@ public class ApiUpgradeAdvanceTest {
   }
 
   public void verifyOnboardingStatus(Response response, String tcbsId) {
-    userId = TcbsUser.getByTcbsId(tcbsId).getId().toString();
+    String userId = TcbsUser.getByTcbsId(tcbsId).getId().toString();
     verifyFMBOnboardingStatus(response, "accountStatus.onboardingStatus.", "userId", userId);
   }
 
@@ -140,6 +137,6 @@ public class ApiUpgradeAdvanceTest {
   public void afterTest() {
     deleteFMBRegisterBetaData("0985652565", idNumberVal, "nguyenvana@gmail.com");
     clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", "0985652565"), "x-api-key", TOKEN);
-    clearCache(CLEAR_CACHE, "x-api-key", API_KEY);
+    clearCache(DELETE_CACHE, "x-api-key", API_KEY);
   }
 }
