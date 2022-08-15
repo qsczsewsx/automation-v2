@@ -81,7 +81,7 @@ public class PartnerShipAccountLinkConfirmTest {
     assertEquals(statusCode, response.getStatusCode());
     if (statusCode == 200 && testCaseName.contains("case successful")) {
       assertTrue("true", response.jsonPath().get("data"));
-      assertThat("verify confirmId", dataConfirmId, is(nullValue()));
+      assertThat("verify confirmId", TcbsPartnerShip.getPartnerShip("PH00111111222").getConfirmId(), is(nullValue()));
     } else if (testCaseName.contains("invalid Authorization")) {
       assertEquals(statusCode, response.statusCode());
     } else {
@@ -96,16 +96,15 @@ public class PartnerShipAccountLinkConfirmTest {
 
   public static String creatConfirmID() {
     LinkedHashMap<String, Object> bodyLink = new LinkedHashMap<>();
-    String s = "ACCOUNT,IA";
-    ArrayList<String> listLinkType = new ArrayList<String>(Arrays.asList(s.split(",")));
-    Object[] listLinkType1 = listLinkType.toArray();
+    List<String> listLinkType = new ArrayList<>(Arrays.asList());
+    listLinkType.add("ACCOUNT");
 
     bodyLink.put("partnerId", "CTG");
     bodyLink.put("partnerAccountId", "PH00111111222");
     bodyLink.put("code105C", "105C189336");
     bodyLink.put("idNumber", "34567555333");
     bodyLink.put("birthday", "16/08/1996");
-    bodyLink.put("linkType", listLinkType1[0]);
+    bodyLink.put("linkType", listLinkType);
 
 
     Response response = given()
