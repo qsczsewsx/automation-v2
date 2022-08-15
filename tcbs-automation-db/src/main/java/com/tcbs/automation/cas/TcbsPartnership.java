@@ -1,10 +1,10 @@
 package com.tcbs.automation.cas;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import net.thucydides.core.annotations.Step;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,10 +20,8 @@ import static com.tcbs.automation.cas.CAS.casConnection;
 @Table(name = "TCBS_PARTNERSHIP")
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class TcbsPartnership {
-  private static Logger logger = LoggerFactory.getLogger(TcbsPartnership.class);
+public class TcbsPartnerShip {
+  private static Logger logger = LoggerFactory.getLogger(TcbsPartnerShip.class);
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   @NotNull
@@ -52,13 +50,50 @@ public class TcbsPartnership {
   @Column(name = "CONFIRM_ID")
   private String confirmId;
 
+  private static final String PARTNER_ACCOUNT_ID = "partnerAccountId";
+
   @Step
-  public static TcbsPartnership getByUserId(BigDecimal userId) {
+  public static TcbsPartnerShip getPartnerShip(String partnerAccountId) {
     CAS.casConnection.getSession().clear();
-    Query<TcbsPartnership> query = casConnection.getSession().createQuery(
-      "from TcbsPartnership a where a.userId =: userId", TcbsPartnership.class);
+    Query<TcbsPartnerShip> query = CAS.casConnection.getSession().createQuery(
+      "from TcbsPartnerShip a where a.partnerAccountId=:partnerAccountId", TcbsPartnerShip.class);
+    query.setParameter(PARTNER_ACCOUNT_ID, partnerAccountId);
+    return query.getSingleResult();
+  }
+
+  public static TcbsPartnerShip getByUserId(BigDecimal userId) {
+    CAS.casConnection.getSession().clear();
+    Query<TcbsPartnerShip> query = CAS.casConnection.getSession().createQuery(
+      "from TcbsPartnerShip a where a.userId=:userId", TcbsPartnerShip.class);
     query.setParameter("userId", userId);
     return query.getSingleResult();
+  }
+
+  public static void updatePartnerStatusLinkAcc(String partnerAccountId, String linkAccountStatus) {
+    casConnection.getSession().clear();
+    if (!casConnection.getSession().getTransaction().isActive()) {
+      casConnection.getSession().beginTransaction();
+    }
+    org.hibernate.query.Query query = casConnection.getSession().createNativeQuery(
+      "Update TCBS_PARTNERSHIP set LINK_ACCOUNT_STATUS =:linkAccountStatus where PARTNER_ACCOUNT_ID=:partnerAccountId");
+    query.setParameter(PARTNER_ACCOUNT_ID, partnerAccountId);
+    query.setParameter("linkAccountStatus", linkAccountStatus);
+    query.executeUpdate();
+    casConnection.getSession().getTransaction().commit();
+  }
+
+  public static void deleteByPartnerAccountId(String partnerAccountId) {
+    try {
+      Session session = CAS.casConnection.getSession();
+      Transaction trans = session.beginTransaction();
+
+      Query<?> query = session.createQuery("DELETE TcbsPartnerShip WHERE partnerAccountId=:partnerAccountId");
+      query.setParameter(PARTNER_ACCOUNT_ID, partnerAccountId);
+      query.executeUpdate();
+      trans.commit();
+    } catch (Exception e) {
+      logger.info(e.getMessage());
+    }
   }
 
 }

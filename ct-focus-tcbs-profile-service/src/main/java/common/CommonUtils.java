@@ -1135,23 +1135,23 @@ public class CommonUtils {
 
   public static String creatConfirmID(String partnerId, String partnerAccountId, String code105C, String idNumber, String birthday) {
     LinkedHashMap<String, Object> bodyLink = new LinkedHashMap<>();
-    List<String> listLinkType = new ArrayList<>(Arrays.asList());
+    List<String> listLinkType = new ArrayList<>(Collections.emptyList());
     listLinkType.add("ACCOUNT");
 
     bodyLink.put("partnerId", partnerId);
     bodyLink.put("partnerAccountId", partnerAccountId);
-    bodyLink.put("code105C", code105C);
-    bodyLink.put("idNumber", idNumber);
-    bodyLink.put("birthday", birthday);
+    bodyLink.put(CODE105C, code105C);
+    bodyLink.put(ID_NUMBER, idNumber);
+    bodyLink.put(BIRTHDAY, birthday);
     bodyLink.put("linkType", listLinkType);
 
-
-    Response response = given()
+    given()
       .baseUri(PARTNERSHIP_ACCOUNT_LINK)
       .header("x-api-key", PARTNERSHIP_X_API_KEY)
       .body(bodyLink)
       .post();
-    return  TcbsPartnerShip.getPartnerShip(partnerAccountId).getConfirmId();
+
+    return TcbsPartnerShip.getPartnerShip(partnerAccountId).getConfirmId();
   }
 
 }

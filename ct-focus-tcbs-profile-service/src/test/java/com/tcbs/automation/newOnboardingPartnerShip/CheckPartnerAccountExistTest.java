@@ -1,15 +1,17 @@
-package com.tcbs.automation.partnership;
+package com.tcbs.automation.newOnboardingPartnerShip;
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.google.gson.Gson;
 import com.tcbs.automation.cas.TcbsIdentification;
-import com.tcbs.automation.cas.TcbsPartnership;
+import com.tcbs.automation.cas.TcbsPartnerShip;
 import com.tcbs.automation.cas.TcbsUser;
+import common.CommonUtils;
 import io.restassured.response.Response;
 import lombok.Getter;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Title;
 import net.thucydides.junit.annotations.UseTestDataFrom;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +20,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.FMB_X_API_KEY;
+import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.PARTNERSHIP_X_API_KEY;
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.PARTNER_CHECK_ACCOUNT_EXIST;
 import static net.serenitybdd.rest.SerenityRest.given;
 import static org.hamcrest.Matchers.is;
@@ -26,7 +28,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom(value = "data/partnership/CheckPartnerAccountExist.csv", separator = '|')
+@UseTestDataFrom(value = "data/newOnboardingPartnerShip/CheckPartnerAccountExist.csv", separator = '|')
 public class CheckPartnerAccountExistTest {
 
   @Getter
@@ -37,12 +39,22 @@ public class CheckPartnerAccountExistTest {
   private String idNumber;
   private String birthday;
   private String errorMsg;
+  private final String partnerAccountId = "DV00111122223333";
+  private TcbsUser tcbsUser;
+  private String code105C;
   private HashMap<String, Object> body;
   Map<String, String> statusMap;
   Map<String, String> cusTypeMap;
 
   @Before
   public void setup() {
+    if (testCaseName.contains("case 200")) {
+      BigDecimal userId = TcbsIdentification.getByIdNumber(idNumber).getUserId();
+      tcbsUser = TcbsUser.getById(userId);
+      code105C = tcbsUser.getUsername();
+      CommonUtils.creatConfirmID(partnerId, partnerAccountId, code105C, idNumber, birthday);
+    }
+
     body = new HashMap<>();
     if (testCaseName.contains("missing BODY")) {
       body = null;
@@ -73,7 +85,7 @@ public class CheckPartnerAccountExistTest {
 
     Response response = given()
       .baseUri(PARTNER_CHECK_ACCOUNT_EXIST)
-      .header("x-api-key", FMB_X_API_KEY)
+      .header("x-api-key", PARTNERSHIP_X_API_KEY)
       .contentType("application/json")
       .body(gson.toJson(body))
       .when()
@@ -83,16 +95,21 @@ public class CheckPartnerAccountExistTest {
 
     if (statusCode == 200) {
       Map<String, Object> basicInfo = response.jsonPath().get("basicInfo");
-      BigDecimal userId = TcbsIdentification.getByIdNumber(idNumber).getUserId();
-      TcbsUser tcbsUser = TcbsUser.getById(userId);
-      assertThat("verify code 105C", basicInfo.get("code105C"), is(tcbsUser.getUsername()));
+      assertThat("verify code 105C", basicInfo.get("code105C"), is(code105C));
       assertThat("verify account status", statusMap.get(basicInfo.get("status").toString()), is(tcbsUser.getAccountStatus().toString()));
       assertThat("verify code 105C", cusTypeMap.get(basicInfo.get("type").toString()), is(tcbsUser.getCustype().toString()));
-      Map<String, Object> partnership = response.jsonPath().get("partnership");
-      TcbsPartnership tcbsPartnership = TcbsPartnership.getByUserId(userId);
-      assertThat("verify partnerAccountId", partnership.get("linkAccount.partnerAccountId"), is(tcbsPartnership.getPartnerAccountId()));
+      Map<String, Object> linkAccMap = response.jsonPath().get("partnership.linkAccount");
+      TcbsPartnerShip tcbsPartnerShip = TcbsPartnerShip.getByUserId(tcbsUser.getId());
+      assertThat("verify partnerAccountId", linkAccMap.get("partnerAccountId"), is(tcbsPartnerShip.getPartnerAccountId()));
     } else {
       assertEquals(errorMsg, response.jsonPath().get("message"));
+    }
+  }
+
+  @After
+  public void clearData() {
+    if (testCaseName.contains("case 200")) {
+      TcbsPartnerShip.deleteByPartnerAccountId(partnerAccountId);
     }
   }
 

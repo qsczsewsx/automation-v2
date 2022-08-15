@@ -6,7 +6,7 @@ import com.typesafe.config.Config;
 public class TcbsProfileServiceConfig {
   private static final Config conf = new ConfigImpl("tcbsprofileservice").getConf();
 
-  public static final String TCBSPROFILE_DOMAIN = conf.getString("tcbsprofile.domain");
+  public static final String TCBSPROFILE_DOMAIN = conf.getString("tcbsprofile.internal-api-v1");
   public static final String TCBSPROFILE_DEV_DOMAIN = conf.getString("tcbsprofile.dev.domain");
 
   public static final String TCBSPROFILE_PUB_API = conf.getString("tcbsprofile.pub-api");
@@ -347,7 +347,7 @@ public class TcbsProfileServiceConfig {
 
 
   //new onboarding partership
-  public static final String PARTNER_CHECK_ACCOUNT_EXIST = conf.getString("partnership.checkAccountExist");
+  public static final String PARTNER_CHECK_ACCOUNT_EXIST = conf.getString("newonboardingPartnerShip.checkAccountExist");
   public static final String PARTNERSHIP_ACCOUNT_LINK = conf.getString("newonboardingPartnerShip.partnerShipAccountLink");
   public static final String PARTNERSHIP_X_API_KEY = conf.getString("tcbsprofile.partnerShip-x-api-key");
   public static final String PARTNERSHIP_ACCOUNT_UNLINK = conf.getString("newonboardingPartnerShip.partnerShipAccountUnLink");

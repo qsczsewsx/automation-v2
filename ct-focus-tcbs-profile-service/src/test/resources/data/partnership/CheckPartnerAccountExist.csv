@@ -1,9 +1,0 @@
-testCaseName|statusCode|partnerId|idNumber|birthday|errorMsg
-Verify check partnership account exist case 200 with idNumber and birthday exist in CAS database|200|CTG|038197007618|05/10/1997|
-Verify check partnership account exist case 200 with birthday exist but idNumber does not exist in CAS database|200|CTG|164193718|05/10/1997|
-Verify check partnership account exist case 400 with idNumber exist but birthday does not exist in CAS database|400|CTG|038197007618|15/11/1988|Profile not found
-Verify check partnership account exist case 400 with invalid partnerId|400|ABC|038197007618|05/10/1997|partnerId invalid
-Verify check partnership account exist case 200 with idNumber is empty|200|CTG|empty|05/10/1997|
-Verify check partnership account exist case 400 with birthday is empty|400|CTG|038197007618|empty|Profile not found
-Verify check partnership account exist case 400 with partnerId is empty|400|empty|038197007618|05/10/1997|partnerId invalid
-Verify check partnership account exist case 400 missing BODY|400|empty|empty|empty|Invalid parameter
