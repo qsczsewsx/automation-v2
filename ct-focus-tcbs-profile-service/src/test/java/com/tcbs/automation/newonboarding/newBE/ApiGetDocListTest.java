@@ -60,7 +60,7 @@ public class ApiGetDocListTest {
 
     taskId = getTaskId(taskId);
 
-    clearCache(CLEAR_CACHE, "x-api-key", API_KEY);
+    clearCache(DELETE_CACHE, "x-api-key", API_KEY);
 
     Response response = given()
       .baseUri(GET_FILE_LIST)

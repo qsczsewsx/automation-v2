@@ -60,7 +60,6 @@ public class TcbsProfileServiceConfig {
   public static final String SIGN_CONTRACT_API = conf.getString("tcbsprofile.signContract");
   public static final String GET_ACCOUNT_STATUS_API = conf.getString("tcbsprofile.getAccountStatus");
   public static final String GET_CUSTOMER_INFO = conf.getString("tcbsprofile.getCustInfo");
-  public static final String CLEAR_CACHE = conf.getString("tcbsprofile.clearCache");
   public static final String API_KEY = conf.getString("tcbsprofile.api-key");
   public static final String GEN_FINAL_CONTRACT = conf.getString("tcbsprofile.genFinalContract");
   public static final String VIEW_CLOSE_ACCOUNT_CONTRACT = conf.getString("tcbsprofile.viewCloseAccountContract");
