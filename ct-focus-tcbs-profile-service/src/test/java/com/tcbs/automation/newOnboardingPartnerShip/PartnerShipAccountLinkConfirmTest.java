@@ -4,6 +4,7 @@ import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.tcbs.automation.cas.TcbsPartnerShip;
 import com.tcbs.automation.login.LoginApi;
 import com.tcbs.automation.login.TheUserInfo;
+import common.CommonUtils;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.Getter;
@@ -33,9 +34,8 @@ public class PartnerShipAccountLinkConfirmTest {
 
   private String errorMessage;
   private String confirmId;
-  private String custodyCode;
+  private String partnerAccountId;
   private String authoToken;
-  private String dataConfirmId;
   private HashMap<String, Object> body;
 
 
@@ -44,10 +44,17 @@ public class PartnerShipAccountLinkConfirmTest {
   public void setup() {
 
     Actor actor = Actor.named("logintoken");
-    LoginApi.withCredentials(custodyCode, "abc123").performAs(actor);
+    LoginApi.withCredentials("105C189336", "abc123").performAs(actor);
     authoToken = TheUserInfo.aboutLoginData().answeredBy(actor).getToken();
 
-    dataConfirmId = creatConfirmID();
+    if (confirmId.equals("genConfirmId")) {
+      confirmId = CommonUtils.creatConfirmID(partnerAccountId);
+    } else {
+      confirmId = syncData(confirmId);
+    }
+
+    body = new HashMap<>();
+    body.put("confirmId", confirmId);
 
   }
 
@@ -57,14 +64,6 @@ public class PartnerShipAccountLinkConfirmTest {
   public void partnerShipAccountLinkConfirm() {
     System.out.println("Test Case: " + testCaseName);
 
-    if (confirmId.equals("genConfirmId")) {
-      confirmId = dataConfirmId;
-    } else {
-      confirmId = syncData(confirmId);
-    }
-
-    body = new HashMap<>();
-    body.put("confirmId", confirmId);
 
     RequestSpecification requestSpecification = given()
       .baseUri(PARTNERSHIP_CONFIRM)
@@ -79,42 +78,18 @@ public class PartnerShipAccountLinkConfirmTest {
     }
 
     assertEquals(statusCode, response.getStatusCode());
-    if (statusCode == 200 && testCaseName.contains("case successful")) {
+    if (statusCode == 200) {
       assertTrue("true", response.jsonPath().get("data"));
-      assertThat("verify confirmId", TcbsPartnerShip.getPartnerShip("PH00111111222").getConfirmId(), is(nullValue()));
-    } else if (testCaseName.contains("invalid Authorization")) {
-      assertEquals(statusCode, response.statusCode());
-    } else {
+      assertThat("verify confirmId", TcbsPartnerShip.getPartnerShip(partnerAccountId).getConfirmId(), is(nullValue()));
+    } else if (statusCode == 400) {
       assertEquals(errorMessage, response.jsonPath().get("message"));
     }
   }
 
   @After
-  public void deleteByPartnerAccountId () {
-    TcbsPartnerShip.deleteByPartnerAccountId("PH00111111222");
-  };
-
-  public static String creatConfirmID() {
-    LinkedHashMap<String, Object> bodyLink = new LinkedHashMap<>();
-    List<String> listLinkType = new ArrayList<>(Arrays.asList());
-    listLinkType.add("ACCOUNT");
-
-    bodyLink.put("partnerId", "CTG");
-    bodyLink.put("partnerAccountId", "PH00111111222");
-    bodyLink.put("code105C", "105C189336");
-    bodyLink.put("idNumber", "34567555333");
-    bodyLink.put("birthday", "16/08/1996");
-    bodyLink.put("linkType", listLinkType);
-
-
-    Response response = given()
-      .baseUri(PARTNERSHIP_ACCOUNT_LINK)
-      .header("x-api-key", PARTNERSHIP_X_API_KEY)
-      .body(bodyLink)
-      .post();
-    return  TcbsPartnerShip.getPartnerShip("PH00111111222").getConfirmId();
+  public void deleteByPartnerAccountId() {
+    TcbsPartnerShip.deleteByPartnerAccountId(partnerAccountId);
   }
-
 }
 
 

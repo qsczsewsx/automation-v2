@@ -1133,5 +1133,25 @@ public class CommonUtils {
     return randomElement + prepareValue.substring(5);
   }
 
+  public static String creatConfirmID(String partnerAccountId) {
+    LinkedHashMap<String, Object> bodyLink = new LinkedHashMap<>();
+    List<String> listLinkType = new ArrayList<>(Arrays.asList());
+    listLinkType.add("ACCOUNT");
+
+    bodyLink.put("partnerId", "CTG");
+    bodyLink.put("partnerAccountId", partnerAccountId);
+    bodyLink.put("code105C", "105C189336");
+    bodyLink.put("idNumber", "34567555333");
+    bodyLink.put("birthday", "16/08/1996");
+    bodyLink.put("linkType", listLinkType);
+
+
+    Response response = given()
+      .baseUri(PARTNERSHIP_ACCOUNT_LINK)
+      .header("x-api-key", PARTNERSHIP_X_API_KEY)
+      .body(bodyLink)
+      .post();
+    return  TcbsPartnerShip.getPartnerShip(partnerAccountId).getConfirmId();
+  }
 
 }
