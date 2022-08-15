@@ -62,7 +62,7 @@ public class CallApiUtils {
       .when()
       .post();
 
-    assertEquals(response.statusCode(), 200);
+    assertThat(response.statusCode(), is(200));
     ObTask obTask = ObTask.getByTaskRefId(new BigDecimal(taskId));
     return obTask.getId().toString();
   }
@@ -292,7 +292,7 @@ public class CallApiUtils {
   }
 
   public static String prepareRegIA(String idNumberVal, String getPhoneNumber) {
-    CallApiUtils.clearCache(CLEAR_CACHE, X_API_KEY, API_KEY);
+    CallApiUtils.clearCache(DELETE_CACHE, X_API_KEY, API_KEY);
 
     LinkedHashMap<String, Object> bodyBeta = getFMBRegisterBetaBody(idNumberVal);
     Response response1 = getFMBRegisterBetaResponse(bodyBeta);

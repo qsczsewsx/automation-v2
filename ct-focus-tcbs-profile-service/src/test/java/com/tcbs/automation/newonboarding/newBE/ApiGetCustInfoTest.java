@@ -60,7 +60,7 @@ public class ApiGetCustInfoTest {
     System.out.println(testCaseName);
     taskId = getsTaskId(taskId);
 
-    clearCache(CLEAR_CACHE, "x-api-key", API_KEY);
+    clearCache(DELETE_CACHE, "x-api-key", API_KEY);
 
     Response response = given()
       .baseUri(GET_CUSTOMER_INFO.replace("{taskId}", taskId))
@@ -120,7 +120,7 @@ public class ApiGetCustInfoTest {
     tcbsUser = TcbsUser.getById(obTask.getUserId());
     if (TcbsApplicationUser.getByUserAppId(tcbsUser.getUsername(), "7").size() > 0) {
       TcbsApplicationUser tcbsApplicationUser = TcbsApplicationUser.getByUserAppId(tcbsUser.getUsername(), "7").get(0);
-      assertEquals(tcbsApplicationUser.getStatus(), getDerivativeActivationStatus(derivativeActivationStatus));
+      assertThat(tcbsApplicationUser.getStatus(), is(getDerivativeActivationStatus(derivativeActivationStatus)));
     } else {
       assertEquals("NOT_VSD_ACTIVATE_YET", derivativeActivationStatus);
     }

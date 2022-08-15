@@ -34,7 +34,6 @@ public class ApiViewContractTest {
   private String testCaseName;
   @Getter
   private int statusCode;
-  private String getTcbsId;
   private String typeValue;
   private String erroMsg;
 
@@ -57,7 +56,7 @@ public class ApiViewContractTest {
   public void verifyViewContractTest() {
 
     System.out.println("TestCaseName : " + testCaseName);
-    getTcbsId = getDesiredData(testCaseName, "tcbsId not exist in database", "10000017565", tcbsId);
+    String getTcbsId = getDesiredData(testCaseName, "tcbsId not exist in database", "10000017565", tcbsId);
     HashMap<String, Object> params = getViewContractApiParams(testCaseName, typeValue);
     Response response = callGetApiHasParams(FMB_VIEW_CONTRACT.replace("{tcbsId}", getTcbsId), "x-api-key", FMB_X_API_KEY, params);
 
