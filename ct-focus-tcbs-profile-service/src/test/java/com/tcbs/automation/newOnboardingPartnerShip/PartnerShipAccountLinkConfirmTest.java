@@ -34,7 +34,6 @@ public class PartnerShipAccountLinkConfirmTest {
 
   private String errorMessage;
   private String confirmId;
-  private String partnerAccountId;
   private String authoToken;
   private HashMap<String, Object> body;
 
@@ -48,7 +47,7 @@ public class PartnerShipAccountLinkConfirmTest {
     authoToken = TheUserInfo.aboutLoginData().answeredBy(actor).getToken();
 
     if (confirmId.equals("genConfirmId")) {
-      confirmId = CommonUtils.creatConfirmID(partnerAccountId);
+      confirmId = CommonUtils.creatConfirmID("CTG","PH00111111222","105C189336","34567555333", "16/08/1996");
     } else {
       confirmId = syncData(confirmId);
     }
@@ -80,7 +79,7 @@ public class PartnerShipAccountLinkConfirmTest {
     assertEquals(statusCode, response.getStatusCode());
     if (statusCode == 200) {
       assertTrue("true", response.jsonPath().get("data"));
-      assertThat("verify confirmId", TcbsPartnerShip.getPartnerShip(partnerAccountId).getConfirmId(), is(nullValue()));
+      assertThat("verify confirmId", TcbsPartnerShip.getPartnerShip("PH00111111222").getConfirmId(), is(nullValue()));
     } else if (statusCode == 400) {
       assertEquals(errorMessage, response.jsonPath().get("message"));
     }
@@ -88,7 +87,7 @@ public class PartnerShipAccountLinkConfirmTest {
 
   @After
   public void deleteByPartnerAccountId() {
-    TcbsPartnerShip.deleteByPartnerAccountId(partnerAccountId);
+    TcbsPartnerShip.deleteByPartnerAccountId("PH00111111222");
   }
 }
 

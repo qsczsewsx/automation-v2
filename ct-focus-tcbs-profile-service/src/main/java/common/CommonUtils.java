@@ -1133,16 +1133,16 @@ public class CommonUtils {
     return randomElement + prepareValue.substring(5);
   }
 
-  public static String creatConfirmID(String partnerAccountId) {
+  public static String creatConfirmID(String partnerId, String partnerAccountId, String code105C, String idNumber, String birthday) {
     LinkedHashMap<String, Object> bodyLink = new LinkedHashMap<>();
     List<String> listLinkType = new ArrayList<>(Arrays.asList());
     listLinkType.add("ACCOUNT");
 
-    bodyLink.put("partnerId", "CTG");
+    bodyLink.put("partnerId", partnerId);
     bodyLink.put("partnerAccountId", partnerAccountId);
-    bodyLink.put("code105C", "105C189336");
-    bodyLink.put("idNumber", "34567555333");
-    bodyLink.put("birthday", "16/08/1996");
+    bodyLink.put("code105C", code105C);
+    bodyLink.put("idNumber", idNumber);
+    bodyLink.put("birthday", birthday);
     bodyLink.put("linkType", listLinkType);
 
 
