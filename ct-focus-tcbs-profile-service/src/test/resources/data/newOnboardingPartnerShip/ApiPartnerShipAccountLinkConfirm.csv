@@ -1,0 +1,7 @@
+testCaseName|statusCode|errorMessage|confirmId|custodyCode
+Verify partnership account link confirm api case successful with confirmId valid|200||genConfirmId|105C189336
+Verify partnership account link confirm api case missing body|400|Invalid parameter||105C189336
+Verify partnership account link confirm api case missing value param confirmId|400|ConfirmID không tồn tại|empty|105C189336
+Verify partnership account link confirm api case confirmId is not exists|400|ConfirmID không tồn tại|529344803096a40-9753-4384|105C189336
+Verify partnership account link confirm api case confirmId has been used before|400|ConfirmID không tồn tại|529344803096a40-9753-4384-9bcc-71e6e87c3188|105C189336
+Verify partnership account link confirm api case invalid Authorization|401||genConfirmId|105C189336
