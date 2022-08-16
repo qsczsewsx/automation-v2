@@ -50,12 +50,22 @@ public class TcbsPartnerShip {
   @Column(name = "CONFIRM_ID")
   private String confirmId;
 
+  private static final String PARTNER_ACCOUNT_ID = "partnerAccountId";
+
   @Step
   public static TcbsPartnerShip getPartnerShip(String partnerAccountId) {
     CAS.casConnection.getSession().clear();
     Query<TcbsPartnerShip> query = CAS.casConnection.getSession().createQuery(
       "from TcbsPartnerShip a where a.partnerAccountId=:partnerAccountId", TcbsPartnerShip.class);
-    query.setParameter("partnerAccountId", partnerAccountId);
+    query.setParameter(PARTNER_ACCOUNT_ID, partnerAccountId);
+    return query.getSingleResult();
+  }
+
+  public static TcbsPartnerShip getByUserId(BigDecimal userId) {
+    CAS.casConnection.getSession().clear();
+    Query<TcbsPartnerShip> query = CAS.casConnection.getSession().createQuery(
+      "from TcbsPartnerShip a where a.userId=:userId", TcbsPartnerShip.class);
+    query.setParameter("userId", userId);
     return query.getSingleResult();
   }
 
@@ -66,12 +76,11 @@ public class TcbsPartnerShip {
     }
     org.hibernate.query.Query query = casConnection.getSession().createNativeQuery(
       "Update TCBS_PARTNERSHIP set LINK_ACCOUNT_STATUS =:linkAccountStatus where PARTNER_ACCOUNT_ID=:partnerAccountId");
-    query.setParameter("partnerAccountId", partnerAccountId);
+    query.setParameter(PARTNER_ACCOUNT_ID, partnerAccountId);
     query.setParameter("linkAccountStatus", linkAccountStatus);
     query.executeUpdate();
     casConnection.getSession().getTransaction().commit();
   }
-
 
   public static void deleteByPartnerAccountId(String partnerAccountId) {
     try {
@@ -79,7 +88,7 @@ public class TcbsPartnerShip {
       Transaction trans = session.beginTransaction();
 
       Query<?> query = session.createQuery("DELETE TcbsPartnerShip WHERE partnerAccountId=:partnerAccountId");
-      query.setParameter("partnerAccountId", partnerAccountId);
+      query.setParameter(PARTNER_ACCOUNT_ID, partnerAccountId);
       query.executeUpdate();
       trans.commit();
     } catch (Exception e) {
