@@ -12,9 +12,7 @@ import org.slf4j.LoggerFactory;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.List;
 
 import static com.tcbs.automation.cas.CAS.casConnection;
 
@@ -52,27 +50,50 @@ public class TcbsPartnerShip {
   @Column(name = "CONFIRM_ID")
   private String confirmId;
 
+  private static final String PARTNER_ACCOUNT_ID = "partnerAccountId";
+
   @Step
   public static TcbsPartnerShip getPartnerShip(String partnerAccountId) {
+    CAS.casConnection.getSession().clear();
     Query<TcbsPartnerShip> query = CAS.casConnection.getSession().createQuery(
       "from TcbsPartnerShip a where a.partnerAccountId=:partnerAccountId", TcbsPartnerShip.class);
-    query.setParameter("partnerAccountId", partnerAccountId);
+    query.setParameter(PARTNER_ACCOUNT_ID, partnerAccountId);
     return query.getSingleResult();
+  }
+
+  public static TcbsPartnerShip getByUserId(BigDecimal userId) {
+    CAS.casConnection.getSession().clear();
+    Query<TcbsPartnerShip> query = CAS.casConnection.getSession().createQuery(
+      "from TcbsPartnerShip a where a.userId=:userId", TcbsPartnerShip.class);
+    query.setParameter("userId", userId);
+    return query.getSingleResult();
+  }
+
+  public static void updatePartnerStatusLinkAcc(String partnerAccountId, String linkAccountStatus) {
+    casConnection.getSession().clear();
+    if (!casConnection.getSession().getTransaction().isActive()) {
+      casConnection.getSession().beginTransaction();
+    }
+    org.hibernate.query.Query query = casConnection.getSession().createNativeQuery(
+      "Update TCBS_PARTNERSHIP set LINK_ACCOUNT_STATUS =:linkAccountStatus where PARTNER_ACCOUNT_ID=:partnerAccountId");
+    query.setParameter(PARTNER_ACCOUNT_ID, partnerAccountId);
+    query.setParameter("linkAccountStatus", linkAccountStatus);
+    query.executeUpdate();
+    casConnection.getSession().getTransaction().commit();
   }
 
   public static void deleteByPartnerAccountId(String partnerAccountId) {
     try {
-      casConnection.getSession().clear();
-      if (!casConnection.getSession().getTransaction().isActive()) {
-        casConnection.getSession().beginTransaction();
-      }
+      Session session = CAS.casConnection.getSession();
+      Transaction trans = session.beginTransaction();
 
-      Query<?> query = casConnection.getSession().createNativeQuery("DELETE FROM TCBS_PARTNERSHIP WHERE PARTNER_ACCOUNT_ID=:partnerAccountId");
-      query.setParameter("partnerAccountId", partnerAccountId);
+      Query<?> query = session.createQuery("DELETE TcbsPartnerShip WHERE partnerAccountId=:partnerAccountId");
+      query.setParameter(PARTNER_ACCOUNT_ID, partnerAccountId);
       query.executeUpdate();
-      casConnection.getSession().getTransaction().commit();
+      trans.commit();
     } catch (Exception e) {
       logger.info(e.getMessage());
     }
   }
+
 }

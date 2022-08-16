@@ -34,12 +34,11 @@ public class ApiValidatonTokenTest {
   private String resource;
   private int statusCode;
   private String errorMessage;
-  private LinkedHashMap<String, Object> body;
 
   @Before
   public void before() {
     if (token.equalsIgnoreCase("token")) {
-      token = CommonUtils.getToken("105C081567");
+      token = CommonUtils.getToken("105C300126");
     } else {
       token = syncData(token);
     }
@@ -51,7 +50,7 @@ public class ApiValidatonTokenTest {
   public void verifyApiValidationTokenTest() {
 
     System.out.println("TestCaseName : " + testCaseName);
-    body = new LinkedHashMap<>();
+    LinkedHashMap<String, Object> body = new LinkedHashMap<>();
     body.put("token", token);
     body.put("action", action);
     body.put("resource", resource);
