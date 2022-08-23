@@ -405,4 +405,30 @@ public class CallApiUtils {
     return response;
   }
 
+  public static Response callForgotPasswordPhoneApi(String code105C, String birthday) {
+    HashMap<String, Object> body = new HashMap<>();
+    body.put("code105C", code105C);
+    body.put("birthday", birthday);
+    Response response = given()
+      .baseUri(FORGOT_PASSWORD_PHONE)
+      .contentType(APPLICATION_JSON)
+      .body(body)
+      .post();
+    assertThat(response.statusCode(), is(200));
+    return response;
+  }
+
+  public static Response callForgotPasswordNotifyApi(String transactionId, String token) {
+    HashMap<String, Object> body = new HashMap<>();
+    body.put("transactionId", transactionId);
+    body.put("token", token);
+    Response response = given()
+      .baseUri(FORGOT_PASSWORD_NOTIFY)
+      .contentType(APPLICATION_JSON)
+      .body(body)
+      .post();
+    assertThat(response.statusCode(), is(200));
+    return response;
+  }
+
 }
