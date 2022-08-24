@@ -121,4 +121,5 @@ public class ApiValidateIdentityInfoTest {
     }
     assertEquals(errorMessage, response.jsonPath().get("message"));
   }
+
 }
