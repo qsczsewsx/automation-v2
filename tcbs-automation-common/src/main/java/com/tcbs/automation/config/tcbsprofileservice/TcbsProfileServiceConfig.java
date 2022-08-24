@@ -354,5 +354,6 @@ public class TcbsProfileServiceConfig {
   public static final String PARTNERSHIP_VIEW_CONTRACT = conf.getString("newonboardingPartnerShip.partnerShipViewContract");
   public static final String PARTNERSHIP_SIGN_CONTRACT = conf.getString("newonboardingPartnerShip.partnerShipSignContract");
   public static final String PARTNERSHIP_CONFIRM = conf.getString("newonboardingPartnerShip.partnerShipConfirm");
+  public static final String GET_INFO_BY_USERNAME = conf.getString("newonboardingPartnerShip.getInfoByUsername");
 
 }
