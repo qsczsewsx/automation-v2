@@ -58,9 +58,15 @@ public class ApiReturnInfoForSociasTest {
     assertEquals(statusCode, response.getStatusCode());
     if (statusCode == 200) {
       if (testCaseName.contains("kycLevel <> 0")) {
-        assertThat("verify info", response.jsonPath().get("data.personalInfo.phoneNumber.editable"), is(true));
+        assertThat("verify return info", response.jsonPath().get("data.personalInfo.phoneNumber.editable"), is(true));
+        assertThat("verify return info", response.jsonPath().get("data.personalInfo.fullName.editable"), is(true));
+        assertThat("verify return info", response.jsonPath().get("data.personalInfo.birthday.editable"), is(true));
+        assertThat("verify return info", response.jsonPath().get("data.personalInfo.identityCard.idNumber.editable"), is(true));
       } else {
-        assertThat("verify info", response.jsonPath().get("data.personalInfo.phoneNumber.editable"), is(false));
+        assertThat("verify return info", response.jsonPath().get("data.personalInfo.phoneNumber.editable"), is(false));
+        assertThat("verify return info", response.jsonPath().get("data.personalInfo.fullName.editable"), is(false));
+        assertThat("verify return info", response.jsonPath().get("data.personalInfo.birthday.editable"), is(false));
+        assertThat("verify return info", response.jsonPath().get("data.personalInfo.identityCard.idNumber.editable"), is(false));
       }
       assertThat("verify info", response.jsonPath().get("data.partnerInfo.partnerId"), is(partnerId));
     } else {
@@ -79,10 +85,18 @@ public class ApiReturnInfoForSociasTest {
     connect.put("isIAPaid", isIAPaid);
     connect.put("iaBankAccount", iaBankAccount.isEmpty() ? null : iaBankAccount);
 
-    partnerInfo.put("partnerId", partnerId);
-    partnerInfo.put("kycLevel", kycLevel);
-    partnerInfo.put("connect", connect);
-    partnerInfo.put("partnerAccountId", partnerAccountId);
+    if (testCaseName.contains("add district field")) {
+      partnerInfo.put("partnerId", partnerId);
+      partnerInfo.put("kycLevel", kycLevel);
+      partnerInfo.put("connect", connect);
+      partnerInfo.put("partnerAccountId", partnerAccountId);
+      partnerInfo.put("district", "HN");
+    } else {
+      partnerInfo.put("partnerId", partnerId);
+      partnerInfo.put("kycLevel", kycLevel);
+      partnerInfo.put("connect", connect);
+      partnerInfo.put("partnerAccountId", partnerAccountId);
+    }
 
     LinkedHashMap<String, Object> personalInfo = new LinkedHashMap<>();
     LinkedHashMap<String, Object> identityCard = new LinkedHashMap<>();

@@ -15,3 +15,4 @@ Verify API return info for Socias with linkType is ACCOUNT|200||CTG|1903766774|0
 Verify API return info for Socias with linkType is IA|200||CTG|1903766774|0|IA|1111
 Verify API return info for Socias with linkType is IA and ACCOUNT and iaBankAccount null|400|linkType IA is required field iaBankAccount|CTG|1234|0|IA,ACCOUNT|
 Verify API return info for Socias with linkType is IA and ACCOUNT and iaBankAccount not null|200|""|CTG|1234|0|IA,ACCOUNT|1111
+Verify API return info for Socias with add district field|200||CTG|1233|0|IA|111
