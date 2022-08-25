@@ -65,7 +65,7 @@ public class ApiRegisterBetaTest {
   public void beforeTest() {
     String prepareValue = String.valueOf(new Date().getTime());
     idNumberVal = prepareValue.substring(0, 12);
-    getPhoneNumber = "0" + prepareValue.substring(3, 12);
+    getPhoneNumber = "05" + prepareValue.substring(4, 12);
     getEmail = "anhbui1" + prepareValue.substring(6, 12) + "@gmail.com";
     valid_bankAccount = "99" + idNumberVal;
     clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", getPhoneNumber), "x-api-key", TOKEN);
@@ -163,7 +163,7 @@ public class ApiRegisterBetaTest {
 
     TcbsUser tcbsUser = TcbsUser.getById(new BigDecimal(userId));
     if (testCaseName.contains("missing param email")) {
-      getEmail = "noemail_" + getPhoneNumber + "@tcbs.com.vn";
+      getEmail = "noemail_" + getPhoneNumber.substring(1) + "@tcbs.com.vn";
     }
     assertEquals(getEmail, tcbsUser.getEmail());
     assertEquals(fullName, tcbsUser.getLastname() + " " + tcbsUser.getFirstname());
