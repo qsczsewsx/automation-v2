@@ -57,7 +57,7 @@ public class ApiReturnInfoForSociasTest {
 
     assertEquals(statusCode, response.getStatusCode());
     if (statusCode == 200) {
-      if (!testCaseName.contains("kycLevel <> 1")) {
+      if (testCaseName.contains("kycLevel <> 0")) {
         assertThat("verify info", response.jsonPath().get("data.personalInfo.phoneNumber.editable"), is(true));
       } else {
         assertThat("verify info", response.jsonPath().get("data.personalInfo.phoneNumber.editable"), is(false));
@@ -71,10 +71,6 @@ public class ApiReturnInfoForSociasTest {
   public LinkedHashMap<String, Object> returnInfoForSociasBody() {
     LinkedHashMap<String, Object> fullbody = new LinkedHashMap<>();
     List<String> listLinkType = new ArrayList<>(Arrays.asList(linkType.split(",")));
-    LinkedHashMap<String, Object> value = new LinkedHashMap<>();
-    value.put("value", "1");
-    LinkedHashMap<String, Object> value1 = new LinkedHashMap<>();
-    value1.put("value", "2022-05-05");
 
     LinkedHashMap<String, Object> partnerInfo = new LinkedHashMap<>();
     LinkedHashMap<String, Object> connect = new LinkedHashMap<>();
@@ -91,31 +87,31 @@ public class ApiReturnInfoForSociasTest {
     LinkedHashMap<String, Object> personalInfo = new LinkedHashMap<>();
     LinkedHashMap<String, Object> identityCard = new LinkedHashMap<>();
 
-    identityCard.put("idNumber", value);
-    identityCard.put("idPlace", value);
-    identityCard.put("idDate", value1);
+    identityCard.put("idNumber", "174566211");
+    identityCard.put("idPlace", "CA Hà Nội");
+    identityCard.put("idDate", "2022-05-05");
 
-    personalInfo.put("fullName", value);
-    personalInfo.put("email", value);
-    personalInfo.put("phoneNumber", value);
-    personalInfo.put("phoneCode", value);
-    personalInfo.put("gender", value);
-    personalInfo.put("birthday", value1);
-    personalInfo.put("contactAddress", value);
-    personalInfo.put("permanentAddress", value);
-    personalInfo.put("nationality", value);
+    personalInfo.put("fullName", "Linh");
+    personalInfo.put("email", "linhtth@gmail.com");
+    personalInfo.put("phoneNumber", "0346737222");
+    personalInfo.put("phoneCode", "+84");
+    personalInfo.put("gender", "Nữ");
+    personalInfo.put("birthday", "2022-05-05");
+    personalInfo.put("contactAddress", "119 trần duy hưng");
+    personalInfo.put("permanentAddress", "119 trần duy hưng");
+    personalInfo.put("nationality", "VN");
     personalInfo.put("identityCard", identityCard);
-    personalInfo.put("province", value);
+    personalInfo.put("province", "Hà nội");
 
     List<LinkedHashMap<String, Object>> bankAccountsList = new ArrayList<>();
     LinkedHashMap<String, Object> bankAccounts = new LinkedHashMap<>();
 
-    bankAccounts.put("accountNo", value);
-    bankAccounts.put("accountName", value);
-    bankAccounts.put("bankCode", value);
-    bankAccounts.put("bankName", value);
-    bankAccounts.put("bankProvince", value);
-    bankAccounts.put("branchCode", value);
+    bankAccounts.put("accountNo", "1903232212");
+    bankAccounts.put("accountName", "Linh");
+    bankAccounts.put("bankCode", "130101");
+    bankAccounts.put("bankName", "TCB");
+    bankAccounts.put("bankProvince", "HN");
+    bankAccounts.put("branchCode", "CG");
     bankAccounts.put("bankType", bankType);
     bankAccountsList.add(bankAccounts);
 
