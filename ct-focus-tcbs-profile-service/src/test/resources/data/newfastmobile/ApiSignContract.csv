@@ -9,4 +9,4 @@ Verify sign contract api case 400 with value of tcbsId as contains special word|
 Verify sign contract api case 400 with valid action as CREATE and isIA as N|400|getTcbsId|1|232313121212|NGUYEN VAN A|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|Y|CREATE|N|Action đăng ký IA không chính xác
 Verify sign contract api case 400 with valid action as CREATE and isIA is invalid|400|getTcbsId|1|232313121212|NGUYEN VAN A|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|Y|CREATE|abc|Action đăng ký IA không chính xác
 Verify sign contract api case 400 missing BODY|400|getTcbsId|1|232313121212|NGUYEN VAN A|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|Y|CREATE|abc|Invalid parameter
-Verify sign contract api case 200 only TNC contract|200|10000025811|4|12055555094000|Lương Văn Vĩnh|01310001|NH TMCP KY THUONG VN|||CENTRALIZED_PAYMENT|Y|Y|CREATE||true
+Verify sign contract api case 200 only TNC contract|200|10000001240|4|empty|empty|empty|empty|||empty|empty|empty|empty||true

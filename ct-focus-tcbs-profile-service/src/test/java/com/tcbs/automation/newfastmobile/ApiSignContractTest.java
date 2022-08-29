@@ -2,6 +2,8 @@ package com.tcbs.automation.newfastmobile;
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.google.gson.Gson;
+import com.tcbs.automation.cas.TcbsUser;
+import com.tcbs.automation.cas.TcbsUserTnc;
 import common.CommonUtils;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -101,6 +103,9 @@ public class ApiSignContractTest {
     if (statusCode == 200) {
       String getResponse = response.getBody().prettyPrint();
       assertEquals(getResponse, message);
+      if (type.equalsIgnoreCase("4")) {
+        assertThat(TcbsUserTnc.getByUserId(TcbsUser.getByTcbsId(tcbsId).getId().toString()).getTncTcb(), is("Y"));
+      }
 
     } else {
       assertEquals(message, response.jsonPath().get("message"));
@@ -139,8 +144,6 @@ public class ApiSignContractTest {
     } else if (testCaseName.contains("only TNC contract")) {
       body.put("tcbsId", tcbsId);
       body.put("type", type);
-      body.put("iaBankAccount", bankAccounts);
-      body.put("action", action);
     } else {
       body.put("tcbsId", tcbsId);
       body.put("type", type);

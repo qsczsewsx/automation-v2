@@ -296,8 +296,8 @@ public class CommonUtils {
 
     personalInfo.put("nationality", "VN");
     personalInfo.put(FULL_NAME, "NGUYEN VAN A");
-    personalInfo.put(EMAIL, "anhbui" + idNumber.substring(6, 12) + "@gmail.com");
-    personalInfo.put(PHONE_NUMBER, "0" + idNumber.substring(3, 12));
+    personalInfo.put(EMAIL, "theanh28" + idNumber.substring(6, 12) + "@gmail.com");
+    personalInfo.put(PHONE_NUMBER, "03" + idNumber.substring(4, 12));
     personalInfo.put(BIRTHDAY, "1990-01-01T00:00:00.000Z");
     personalInfo.put(IDENTITY_CARD, identityCard);
 
