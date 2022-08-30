@@ -11,7 +11,6 @@ import lombok.Getter;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Title;
 import net.thucydides.junit.annotations.UseTestDataFrom;
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,10 +20,12 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.*;
-import static common.CallApiUtils.*;
-import static common.CommonUtils.*;
-import static common.ProfileTools.TOKEN;
+import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.FMB_SIGN_CONTRACT;
+import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.FMB_X_API_KEY;
+import static common.CallApiUtils.getFMBRegisterBetaResponse;
+import static common.CallApiUtils.getFMBUpgradeAdvanceResponse;
+import static common.CommonUtils.getFMBRegisterBetaBody;
+import static common.CommonUtils.getUpgradeAdvancedBody;
 import static net.serenitybdd.rest.SerenityRest.given;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
@@ -35,7 +36,6 @@ import static org.junit.Assert.assertThat;
 public class ApiSignContractTest {
 
   private static String getTcbsIdAcc;
-  private static String idNumberVal;
   @Getter
   private String testCaseName;
   @Getter
@@ -57,20 +57,13 @@ public class ApiSignContractTest {
 
   @BeforeClass
   public static void beforeTest() {
-    clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", "0985652565"), "x-api-key", TOKEN);
     String prepareValue = String.valueOf(new Date().getTime());
-    idNumberVal = prepareValue.substring(0, 12);
+    String idNumberVal = prepareValue.substring(0, 12);
     LinkedHashMap<String, Object> body = getFMBRegisterBetaBody(idNumberVal);
     Response response = getFMBRegisterBetaResponse(body);
     getTcbsIdAcc = response.jsonPath().getString("basicInfo.tcbsId");
     LinkedHashMap<String, Object> bodyAdvance = getUpgradeAdvancedBody();
     getFMBUpgradeAdvanceResponse(bodyAdvance, getTcbsIdAcc);
-  }
-
-  @AfterClass
-  public static void afterTest() {
-    deleteFMBRegisterBetaData("0985652565", idNumberVal, "nguyenvana@gmail.com");
-    clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", "0985652565"), "x-api-key", TOKEN);
   }
 
   @Test
