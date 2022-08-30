@@ -188,6 +188,15 @@ public class CommonUtils {
     return getData;
   }
 
+  public static String getDesiredTcbsId(String tcbsId, String getTcbsId) {
+    if (tcbsId.equalsIgnoreCase("getTcbsId")) {
+      tcbsId = getTcbsId;
+    } else {
+      tcbsId = syncData(tcbsId);
+    }
+    return tcbsId;
+  }
+
   public static String getPhoneOrCode105C(String key, Object value, String phonedata) {
     String data;
     String prepareData = String.valueOf(new Date().getTime());
@@ -287,8 +296,8 @@ public class CommonUtils {
 
     personalInfo.put("nationality", "VN");
     personalInfo.put(FULL_NAME, "NGUYEN VAN A");
-    personalInfo.put(EMAIL, "anhbui" + idNumber.substring(6, 12) + "@gmail.com");
-    personalInfo.put(PHONE_NUMBER, "0" + idNumber.substring(3, 12));
+    personalInfo.put(EMAIL, "theanh28" + idNumber.substring(6, 12) + "@gmail.com");
+    personalInfo.put(PHONE_NUMBER, "03" + idNumber.substring(4, 12));
     personalInfo.put(BIRTHDAY, "1990-01-01T00:00:00.000Z");
     personalInfo.put(IDENTITY_CARD, identityCard);
 
