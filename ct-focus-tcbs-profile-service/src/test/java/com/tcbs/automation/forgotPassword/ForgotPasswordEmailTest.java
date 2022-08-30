@@ -1,8 +1,6 @@
-package com.tcbs.automation.external;
+package com.tcbs.automation.forgotPassword;
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
-import com.google.gson.Gson;
-import common.CommonUtils;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.Getter;
@@ -13,64 +11,63 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.HashMap;
 
-import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.EXT_ADD_BLACK_LIST;
+import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.FORGOT_PASSWORD_EMAIL;
+import static com.tcbs.automation.tools.FormatUtils.syncData;
 import static net.serenitybdd.rest.SerenityRest.given;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom(value = "data/external/ExtAddToBlackList.csv", separator = '|')
-public class ExtAddToBlackListTest {
+@UseTestDataFrom(value = "data/forgotPassword/ForgotPasswordEmail.csv", separator = '|')
+public class ForgotPasswordEmailTest {
 
   @Getter
   private String testCaseName;
-  @Getter
-  private String sessionId;
-  private String token;
   private int statusCode;
   private String errorMessage;
-  private LinkedHashMap<String, Object> body;
-  private List<String> sessionIDList;
+  private String email;
+  HashMap<String, Object> body;
 
   @Before
   public void before() {
-    token = CommonUtils.getTokenAuthenSOtp("10000025745");
-    sessionIDList = CommonUtils.getSessionID(sessionId);
+    email = syncData(email);
+    body = new HashMap<>();
+
+    body.put("email", email);
   }
 
   @Test
   @TestCase(name = "#testCaseName")
-  @Title("Verify api add to black list")
-  public void verifyExtAddToBlackListTest() {
+  @Title("Verify api forgot password email")
+  public void verifyForgotPasswordEmailTest() {
 
     System.out.println("TestCaseName : " + testCaseName);
-    body = new LinkedHashMap<>();
-    body.put("sessionId", sessionIDList);
 
     RequestSpecification requestSpecification = given()
-      .baseUri(EXT_ADD_BLACK_LIST)
-      .header("Authorization", "Bearer " + token)
+      .baseUri(FORGOT_PASSWORD_EMAIL)
       .contentType("application/json");
 
     Response response;
-    Gson gson = new Gson();
-    if (testCaseName.contains("missing body")) {
+
+    if (!testCaseName.contains("missing param channel")) {
+      requestSpecification.queryParam("channel", "email");
+    }
+
+    if (testCaseName.contains("missing BODY")) {
       response = requestSpecification.post();
     } else {
-      response = requestSpecification.body(gson.toJson(body)).post();
+      response = requestSpecification.body(body).post();
     }
 
     assertThat(response.getStatusCode(), is(statusCode));
     if (statusCode == 200) {
-      assertThat("verify add black list", response.jsonPath().get(""), is(sessionIDList));
+      assertThat(response.jsonPath().get("transactionId"), is(notNullValue()));
     } else {
       assertThat("verify error message", response.jsonPath().get("message"), is(errorMessage));
     }
   }
-
 
 }

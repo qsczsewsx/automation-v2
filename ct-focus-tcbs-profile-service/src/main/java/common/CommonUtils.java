@@ -47,7 +47,7 @@ public class CommonUtils {
   private static final String ACCOUNT_NO = "accountNo";
   private static final String ACCOUNT_NAME = "accountName";
   private static final String PERSONAL_INFO = "personalInfo";
-  private static final String USERNAME = "105C081567";
+  private static final String USERNAME = "105C300126";
   private static final String AUTHORIZATION = "Authorization";
   private static final String BEARER = "Bearer ";
   private static final String TCBSID = "tcbsId";
@@ -1140,6 +1140,27 @@ public class CommonUtils {
     String randomElement = givenList.get(rand.nextInt(givenList.size()));
     String prepareValue = String.valueOf(new Date().getTime());
     return randomElement + prepareValue.substring(5);
+  }
+
+  public static String creatConfirmID(String partnerId, String partnerAccountId, String code105C, String idNumber, String birthday) {
+    LinkedHashMap<String, Object> bodyLink = new LinkedHashMap<>();
+    List<String> listLinkType = new ArrayList<>(Collections.emptyList());
+    listLinkType.add("ACCOUNT");
+
+    bodyLink.put("partnerId", partnerId);
+    bodyLink.put("partnerAccountId", partnerAccountId);
+    bodyLink.put(CODE105C, code105C);
+    bodyLink.put(ID_NUMBER, idNumber);
+    bodyLink.put(BIRTHDAY, birthday);
+    bodyLink.put("linkType", listLinkType);
+
+    given()
+      .baseUri(PARTNERSHIP_ACCOUNT_LINK)
+      .header("x-api-key", PARTNERSHIP_X_API_KEY)
+      .body(bodyLink)
+      .post();
+
+    return TcbsPartnerShip.getPartnerShip(partnerAccountId).getConfirmId();
   }
 
 }

@@ -74,7 +74,7 @@ public class ApiDisconnectIaiSaveTest {
   @After
   public void connectiSave() {
     given()
-      .baseUri(MULTI_CONNECT_IA_ISAVE.replace("{tcbsId}", "10000000865"))
+      .baseUri(MULTI_CONNECT_IA_ISAVE.replace("{tcbsId}", tcbsId))
       .header("Authorization", "Bearer " + token)
       .contentType("application/json")
       .post();

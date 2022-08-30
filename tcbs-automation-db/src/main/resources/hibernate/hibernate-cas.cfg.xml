@@ -81,5 +81,8 @@
         <mapping class="com.tcbs.automation.cas.R3RdAuditLog"/>
         <mapping class="com.tcbs.automation.cas.OcrDataHis"/>
         <mapping class="com.tcbs.automation.cas.TcbsUserTnc"/>
+        <mapping class="com.tcbs.automation.cas.TcbsPartnerShip"/>
+        <mapping class="com.tcbs.automation.cas.Oauth2RegisteredClient"/>
+        <mapping class="com.tcbs.automation.cas.Oauth2RefreshToken"/>
     </session-factory>
 </hibernate-configuration>

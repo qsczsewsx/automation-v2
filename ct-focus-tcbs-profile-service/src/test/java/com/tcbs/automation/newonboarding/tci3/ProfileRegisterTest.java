@@ -84,12 +84,16 @@ public class ProfileRegisterTest {
       phoneNumber = syncData(phoneNumber);
     }
     String phoneConfirm = phoneCode + phoneNumber;
-    email = "long.trinh" + prepareValue + "@gmail.com";
+    if (email.equalsIgnoreCase("autoGen")) {
+      email = "long.trinh" + prepareValue + "@gmail.com";
+    } else {
+      email = syncData(email);
+    }
     idNumber = prepareValue;
     String code105C = "105C" + prepareValue.substring(6, 11) + "V";
 
     // Call API confirm booking fancy 105C
-    if (!testCaseName.contains("missing BODY") && !testCaseName.contains("invalid phoneCode") && !testCaseName.contains("invalid phoneNumber")) {
+    if (!testCaseName.contains("missing BODY") && !testCaseName.contains("invalid phoneCode") && !testCaseName.contains("invalid phoneNumber") && !testCaseName.contains("invalid email")) {
       HashMap<String, Object> bodyFancy = CommonUtils.getConfirmBookingFancy105CBody(testCaseName, phoneConfirm, code105C);
       Response resFancy = callPostApiHasBody(CONFIRM_BOOKING_FANCY_105C, "", "", bodyFancy);
       assertThat(resFancy.getStatusCode(), is(200));

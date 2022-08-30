@@ -79,7 +79,7 @@ public class ApiRegisterIATest {
       TcbsNewOnboardingStatus.updateStatusValueByUserId(userId, "ID_STATUS", "VERIFIED");
       TcbsNewOnboardingStatus.updateStatusValueByUserId(userId, "ECONTRACT_STATUS", "VERIFIED");
       TcbsBankIaaccount.updateStatusByUserId(userId, "1");
-      CallApiUtils.clearCache(CLEAR_CACHE, "x-api-key", API_KEY);
+      CallApiUtils.clearCache(DELETE_CACHE, "x-api-key", API_KEY);
     } else {
       if (action.equalsIgnoreCase("CREATE")) {
         tcbsId = CallApiUtils.prepareRegIA(idNumberVal, getPhoneNumber);

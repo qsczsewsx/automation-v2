@@ -206,7 +206,7 @@ public class TcbsUserOpenAccountQueue {
     Query<TcbsUserOpenAccountQueue> query = CAS.casConnection.getSession().createQuery(
       "from TcbsUserOpenAccountQueue a where a.referenceid=:referenceid", TcbsUserOpenAccountQueue.class);
     query.setParameter("referenceid", referenceid);
-      return query.getSingleResult();
+    return query.getSingleResult();
   }
 
 }

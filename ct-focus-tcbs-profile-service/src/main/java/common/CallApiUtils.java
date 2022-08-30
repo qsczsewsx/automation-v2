@@ -7,8 +7,7 @@ import io.restassured.specification.RequestSpecification;
 
 import java.io.File;
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.*;
 
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.*;
 import static com.tcbs.automation.tools.ConvertUtils.fileTxtToString;
@@ -63,7 +62,7 @@ public class CallApiUtils {
       .when()
       .post();
 
-    assertEquals(response.statusCode(), 200);
+    assertThat(response.statusCode(), is(200));
     ObTask obTask = ObTask.getByTaskRefId(new BigDecimal(taskId));
     return obTask.getId().toString();
   }
@@ -293,7 +292,7 @@ public class CallApiUtils {
   }
 
   public static String prepareRegIA(String idNumberVal, String getPhoneNumber) {
-    CallApiUtils.clearCache(CLEAR_CACHE, X_API_KEY, API_KEY);
+    CallApiUtils.clearCache(DELETE_CACHE, X_API_KEY, API_KEY);
 
     LinkedHashMap<String, Object> bodyBeta = getFMBRegisterBetaBody(idNumberVal);
     Response response1 = getFMBRegisterBetaResponse(bodyBeta);
@@ -399,6 +398,32 @@ public class CallApiUtils {
     body.put("otp", "111111");
     Response response = given()
       .baseUri(REGISTER_CONFIRM_PHONE)
+      .contentType(APPLICATION_JSON)
+      .body(body)
+      .post();
+    assertThat(response.statusCode(), is(200));
+    return response;
+  }
+
+  public static Response callForgotPasswordPhoneApi(String code105C, String birthday) {
+    HashMap<String, Object> body = new HashMap<>();
+    body.put("code105C", code105C);
+    body.put("birthday", birthday);
+    Response response = given()
+      .baseUri(FORGOT_PASSWORD_PHONE)
+      .contentType(APPLICATION_JSON)
+      .body(body)
+      .post();
+    assertThat(response.statusCode(), is(200));
+    return response;
+  }
+
+  public static Response callForgotPasswordNotifyApi(String transactionId, String token) {
+    HashMap<String, Object> body = new HashMap<>();
+    body.put("transactionId", transactionId);
+    body.put("token", token);
+    Response response = given()
+      .baseUri(FORGOT_PASSWORD_NOTIFY)
       .contentType(APPLICATION_JSON)
       .body(body)
       .post();

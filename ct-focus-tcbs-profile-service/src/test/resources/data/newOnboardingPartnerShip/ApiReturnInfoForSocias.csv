@@ -1,0 +1,18 @@
+testCaseName|statusCode|errorMessage|partnerId|partnerAccountId|kycLevel|linkType|iaBankAccount
+Verify API return info for Socias with missing body|400|Invalid parameter|""|""|""|""|
+Verify API return info for Socias with missing partnerInfo|400|PartnerInfo must be not null|TCB|1903766774|1|IA|
+Verify API return info for Socias with invalid x-api-key|401|Invalid X-Api-Key|||||
+Verify API return info for Socias with partnerId empty|400|PartnerId is not exist!|""|1903766774|0|IA|
+Verify API return info for Socias with kycLevel empty|400|KycLevel is required|TCB|1903766774|""|IA|
+Verify API return info for Socias with partnerId not exist|400|PartnerId is not exist!|TCBSSS|1903766774|0|IA|
+Verify API return info for Socias with kycLevel is character|400|Invalid parameter|TCB|1903766774|aaaa|IA|
+Verify API return info for Socias with linkType not exist|400|IAAAA is not exist|TCB|1903766774|0|IAAAA|
+Verify API return info for Socias with partnerAccountId empty|200|""|CTG||0|IA|123
+Verify API return info for Socias with partner is not allow to open account|400|PartnerId is not exist!|ACB|1903766774|0|IA|
+Verify API return info for Socias with linkType IA and iaBankAccount null|400|linkType IA is required field iaBankAccount|TCB|123|0|IA|
+Verify API return info for Socias with kycLevel <> 0|200||CTG|1903766774|2|IA|123
+Verify API return info for Socias with linkType is ACCOUNT|200||CTG|1903766774|0|ACCOUNT|
+Verify API return info for Socias with linkType is IA|200||CTG|1903766774|0|IA|1111
+Verify API return info for Socias with linkType is IA and ACCOUNT and iaBankAccount null|400|linkType IA is required field iaBankAccount|CTG|1234|0|IA,ACCOUNT|
+Verify API return info for Socias with linkType is IA and ACCOUNT and iaBankAccount not null|200|""|CTG|1234|0|IA,ACCOUNT|1111
+Verify API return info for Socias with add district field|200||CTG|1233|0|IA|111
