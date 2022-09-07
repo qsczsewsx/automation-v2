@@ -371,4 +371,5 @@ public class TcbsProfileServiceConfig {
   public static final String GET_LIST_BANK_INFO = conf.getString("tcbsprofile.getListBankInfo");
   public static final String SEARCH_BY_CONDITION = conf.getString("tcbsprofile.searchByCondition");
   public static final String GET_INFO_BY_CONDITION = conf.getString("tcbsprofile.getInfoByCondition");
+  public static final String UPDATE_INFO_CUSTOMER = conf.getString("tcbsprofile.updateInfoCustomer");
 }
