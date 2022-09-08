@@ -103,6 +103,7 @@ public class TcbsProfileServiceConfig {
   public static final String BANKLIST_X_API_KEY = conf.getString("tcbsprofile.x-api-key-bankList");
   public static final String PROFILE_X_API_KEY = conf.getString("tcbsprofile.profile-x-api-key");
   public static final String LIST_PROVINCE_BE = conf.getString("tcbsprofile.listProvincesBE");
+  public static final String LIST_PROVINCE_INT = conf.getString("tcbsprofile.listProvincesInt");
   public static final String ADD_BLACKLIST_X_API_KEY = conf.getString("tcbsprofile.blacklist-x-api-key");
   public static final String VALIDATION_TOKEN_X_API_KEY = conf.getString("tcbsprofile.validation-token-x-api-key");
   public static final String MULTIIA_TCBSID_X_API_KEY = conf.getString("tcbsprofile.multi-tcbsid-x-api-key");
