@@ -24,7 +24,6 @@ import static common.CallApiUtils.clearCache;
 import static common.CommonUtils.*;
 import static common.DatesUtils.convertTimestampToString;
 import static common.DatesUtils.covertDateToString;
-import static common.ProfileTools.TOKEN;
 import static net.serenitybdd.rest.SerenityRest.given;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
@@ -69,7 +68,7 @@ public class ApiRegisterBetaTest {
     getPhoneNumber = "07" + prepareValue.substring(4, 12);
     getEmail = "vanquang123" + prepareValue.substring(6, 12) + "@gmail.com";
     valid_bankAccount = "99" + idNumberVal;
-    clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", getPhoneNumber), "x-api-key", TOKEN);
+    clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", getPhoneNumber), "x-api-key", API_KEY);
   }
 
   @Test
@@ -192,6 +191,6 @@ public class ApiRegisterBetaTest {
   @After
   public void afterTest() {
     deleteFMBRegisterBetaData(getPhoneNumber, idNumberVal, getEmail);
-    clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", getPhoneNumber), "x-api-key", TOKEN);
+    clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", getPhoneNumber), "x-api-key", API_KEY);
   }
 }

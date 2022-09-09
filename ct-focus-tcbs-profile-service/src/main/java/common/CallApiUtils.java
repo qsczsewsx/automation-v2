@@ -297,7 +297,7 @@ public class CallApiUtils {
     LinkedHashMap<String, Object> bodyBeta = getFMBRegisterBetaBody(idNumberVal);
     Response response1 = getFMBRegisterBetaResponse(bodyBeta);
     String tcbsId = response1.jsonPath().getString("basicInfo.tcbsId");
-    CallApiUtils.clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", getPhoneNumber), X_API_KEY, TOKEN);
+    CallApiUtils.clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", getPhoneNumber), X_API_KEY, API_KEY);
 
     LinkedHashMap<String, Object> bodyAdvance = getUpgradeAdvancedBody();
     getFMBUpgradeAdvanceResponse(bodyAdvance, tcbsId);
