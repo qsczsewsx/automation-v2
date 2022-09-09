@@ -27,6 +27,7 @@ import static common.CallApiUtils.getFMBUpgradeAdvanceResponse;
 import static common.CommonUtils.getFMBRegisterBetaBody;
 import static common.CommonUtils.getUpgradeAdvancedBody;
 import static net.serenitybdd.rest.SerenityRest.given;
+import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -97,7 +98,8 @@ public class ApiSignContractTest {
       String getResponse = response.getBody().prettyPrint();
       assertEquals(getResponse, message);
       if (type.equalsIgnoreCase("4")) {
-        assertThat(TcbsUserTnc.getByUserId(TcbsUser.getByTcbsId(tcbsId).getId().toString()).getTncTcb(), is("Y"));
+        assertThat(TcbsUserTnc.getByUserId(TcbsUser.getByTcbsId(tcbsId).getId().toString()).getTncTcb(),
+          anyOf(is("Y"), is("N")));
       }
 
     } else {
