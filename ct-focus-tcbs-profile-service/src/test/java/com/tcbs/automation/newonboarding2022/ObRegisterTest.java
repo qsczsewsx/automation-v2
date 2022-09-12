@@ -29,6 +29,7 @@ import java.util.List;
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.CONFIRM_BOOKING_FANCY_105C;
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.OB_REGISTER;
 import static com.tcbs.automation.tools.FormatUtils.syncData;
+import static common.CallApiUtils.callGenRefIdAndConfirmPhoneApi;
 import static common.CallApiUtils.callPostApiHasBody;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -68,6 +69,7 @@ public class ObRegisterTest {
   private String referralCode;
   private String code105C;
   private HashMap<String, Object> body;
+  private String phoneNumPre;
 
   @BeforeClass
   public static void beforeClass() {
@@ -91,6 +93,10 @@ public class ObRegisterTest {
       phoneNumber = CommonUtils.genPhoneNumberByDateTime();
     } else {
       phoneNumber = syncData(phoneNumber);
+    }
+    if (testCaseName.contains("case valid phoneNumber start with")) {
+      phoneNumPre = phoneNumber;
+      phoneNumber = "0" + phoneNumPre;
     }
     phoneCode = syncData(phoneCode);
     phoneConfirm = phoneCode + phoneNumber;
@@ -124,7 +130,7 @@ public class ObRegisterTest {
     }
 
     //prepare code105C
-    code105C = "105C" + prepareValue.substring(6, 11) + "T";
+    code105C = "105C" + prepareValue.substring(6, 11) + "Z";
 
     // Call API confirm phone and gen referenceId, authenKey
     // Call API confirm booking fancy 105C
@@ -146,8 +152,10 @@ public class ObRegisterTest {
       authenKey = resRef.jsonPath().get("authenKey");
     }
     String referenceId;
-    if (testCaseName.contains("invalid referenceId")) {
+    if (testCaseName.contains("invalid referenceId") || testCaseName.contains("exception")) {
       referenceId = "+84775493526F20072022160630";
+    } else if (testCaseName.contains("invalid phoneCode") || testCaseName.contains("invalid phoneNumber")) {
+      referenceId = callGenRefIdAndConfirmPhoneApi(phoneCode, phoneNumber).jsonPath().get("referenceId");
     } else {
       referenceId = resRef.jsonPath().get("referenceId");
     }
@@ -268,6 +276,9 @@ public class ObRegisterTest {
     if (statusCode == 200) {
       assertThat(response.jsonPath().get("loginKey"), is(notNullValue()));
       assertThat(response.jsonPath().get("custodyCode"), is(code105C));
+      if (testCaseName.contains("case valid phoneNumber start with VN")) {
+        phoneConfirm = phoneCode + phoneNumPre;
+      }
       String userId = TcbsUser.getByPhoneNumber(phoneConfirm).getId().toString();
       assertThat(userId, is(notNullValue()));
       assertThat(TcbsUserOpenAccountQueue.getByPhone(phoneConfirm).getUserId().toString(), is(userId));
