@@ -235,6 +235,7 @@ public class TcbsProfileServiceConfig {
 
   //BPM GetCustomerInformation
   public static final String GET_CUSTOMER_INFORMATION = conf.getString("tcbsprofile.getCustomerInformation");
+  public static final String TRIGGER_UPDATE_INFO = conf.getString("tcbsprofile.triggerUpdateInfo");
 
   //Profile Upload File
   public static final String UPLOAD_FILE = conf.getString("tcbsprofile.uploadFile");
