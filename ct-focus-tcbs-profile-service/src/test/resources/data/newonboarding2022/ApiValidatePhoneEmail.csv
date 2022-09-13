@@ -36,6 +36,6 @@ Verify api validate Phone Email success with phoneNumber and email is not existe
 Verify api validate Phone Email with Exist request in cache,400,There was an error processing your request. Please try again after 5 minutes...,+84,356666661,no_email_p12@tcbs.com.vn,
 Verify api validate Phone Email with email is techcombank existed db and phone is not null in db,200,Email existed in system,+84,genrandom,trangdth10@techcombank.com.vn,invalid
 Verify api validate Phone Email with email is techcombank existed db and phone is null and username is 105C in db,200,Email existed in system,+84,genrandom,chinhnm@techcombank.com.vn,invalid
-Verify api validate Phone Email with email is techcombank existed db and phone is null and username+@techcombank difference email,200,Email existed in system,+84,genrandom,vanphuong1712@techcombank.com.vn,invalid
-Verify api validate Phone Email success with email is techcombank existed db and phone is null and username+@techcombank same email,200,Success,+84,genrandom,adds@techcombank.com.vn,valid
-Verify api validate Phone Email success with email is techcombank existed db and (phone and usernamae) is null,200,Success,+84,genrandom,no_email_105C710182@techcombank.com.vn,valid
+Verify api validate Phone Email with email is techcombank existed db and phone is null and username is different from prefix email,200,Email existed in system,+84,genrandom,lanvt1356@techcombank.com.vn,invalid
+Verify api validate Phone Email success with email is techcombank existed db and phone is null and username is same to prefix email,200,Success,+84,genrandom,thuytt1111132@techcombank.com.vn,valid
+Verify api validate Phone Email success with email is techcombank existed db and (phone and username) is null,200,Success,+84,genrandom,tcb_user_166297011664@techcombank.com.vn,valid
