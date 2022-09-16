@@ -8,7 +8,6 @@ import lombok.Getter;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Title;
 import net.thucydides.junit.annotations.UseTestDataFrom;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,11 +16,10 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.*;
-import static common.CallApiUtils.clearCache;
+import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.FMB_UPGRADE_ADVANCED;
+import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.FMB_X_API_KEY;
 import static common.CallApiUtils.getFMBRegisterBetaResponse;
 import static common.CommonUtils.*;
-import static common.ProfileTools.TOKEN;
 import static net.serenitybdd.rest.SerenityRest.given;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
@@ -42,21 +40,15 @@ public class ApiUpgradeAdvanceTest {
   private String frontIdentity;
   private String backIdentity;
   private String message;
-  private LinkedHashMap<String, Object> body = new LinkedHashMap<>();
-  private String userId;
-  private String getTcbsId;
   private String tcbsId;
-  private String idNumberVal;
 
   @Before
   public void beforeTest() {
-    clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", "0985652565"), "x-api-key", TOKEN);
     String prepareValue = String.valueOf(new Date().getTime());
-    idNumberVal = prepareValue.substring(0, 12);
+    String idNumberVal = prepareValue.substring(0, 12);
     LinkedHashMap<String, Object> body = getFMBRegisterBetaBody(idNumberVal);
     Response response = getFMBRegisterBetaResponse(body);
     tcbsId = response.jsonPath().getString("basicInfo.tcbsId");
-    clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", "0985652565"), "x-api-key", TOKEN);
 
   }
 
@@ -67,9 +59,9 @@ public class ApiUpgradeAdvanceTest {
 
     System.out.println("TestCaseName : " + testCaseName);
 
-    getTcbsId = getDesiredData(testCaseName, "invalid tcbsid", "10000017565", tcbsId);
+    String getTcbsId = getDesiredData(testCaseName, "invalid tcbsid", "10000017565", tcbsId);
 
-    body = getUpgradeAdvancedBody(testCaseName);
+    LinkedHashMap<String, Object> body = getUpgradeAdvancedBody(testCaseName);
     Gson gson = new Gson();
 
     Response response = given()
@@ -118,7 +110,7 @@ public class ApiUpgradeAdvanceTest {
   }
 
   public void verifyOnboardingStatus(Response response, String tcbsId) {
-    userId = TcbsUser.getByTcbsId(tcbsId).getId().toString();
+    String userId = TcbsUser.getByTcbsId(tcbsId).getId().toString();
     verifyFMBOnboardingStatus(response, "accountStatus.onboardingStatus.", "userId", userId);
   }
 
@@ -134,12 +126,5 @@ public class ApiUpgradeAdvanceTest {
     assertEquals(type, getResponse.get("type"));
     String accountType = getAccountType(tcbsUser.getUsername());
     assertEquals(accountType, getResponse.get("accountType"));
-  }
-
-  @After
-  public void afterTest() {
-    deleteFMBRegisterBetaData("0985652565", idNumberVal, "nguyenvana@gmail.com");
-    clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", "0985652565"), "x-api-key", TOKEN);
-    clearCache(CLEAR_CACHE, "x-api-key", API_KEY);
   }
 }

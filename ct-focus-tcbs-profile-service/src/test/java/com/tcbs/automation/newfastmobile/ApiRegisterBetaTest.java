@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.tcbs.automation.cas.TcbsBankAccount;
 import com.tcbs.automation.cas.TcbsIdentification;
 import com.tcbs.automation.cas.TcbsUser;
+import com.tcbs.automation.cas.TcbsUserTnc;
 import io.restassured.response.Response;
 import lombok.Getter;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
@@ -23,7 +24,6 @@ import static common.CallApiUtils.clearCache;
 import static common.CommonUtils.*;
 import static common.DatesUtils.convertTimestampToString;
 import static common.DatesUtils.covertDateToString;
-import static common.ProfileTools.TOKEN;
 import static net.serenitybdd.rest.SerenityRest.given;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
@@ -65,10 +65,10 @@ public class ApiRegisterBetaTest {
   public void beforeTest() {
     String prepareValue = String.valueOf(new Date().getTime());
     idNumberVal = prepareValue.substring(0, 12);
-    getPhoneNumber = "0" + prepareValue.substring(3, 12);
-    getEmail = "anhbui1" + prepareValue.substring(6, 12) + "@gmail.com";
+    getPhoneNumber = "07" + prepareValue.substring(4, 12);
+    getEmail = "vanquang123" + prepareValue.substring(6, 12) + "@gmail.com";
     valid_bankAccount = "99" + idNumberVal;
-    clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", getPhoneNumber), "x-api-key", TOKEN);
+    clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", getPhoneNumber), "x-api-key", API_KEY);
   }
 
   @Test
@@ -96,6 +96,7 @@ public class ApiRegisterBetaTest {
       verifyFMBBasicInfo(response, "basicInfo", "userId", userId);
       verifyInputAndOutput(userId);
       verifyRegIAStatus(response);
+      verifyTncStatus(response);
 
     } else if (response.statusCode() == 400) {
 
@@ -152,6 +153,11 @@ public class ApiRegisterBetaTest {
     assertNull(getResponse);
   }
 
+  public void verifyTncStatus(Response response) {
+    Map<String, Object> getResponse = response.jsonPath().get("accountStatus");
+    assertEquals(TcbsUserTnc.getByUserId(userId).getTncTcb(), getResponse.get("tncTcb").toString());
+  }
+
   public void verifyInputAndOutput(String userId) {
 
     TcbsIdentification tcbsIdentification = TcbsIdentification.getByUserId(userId);
@@ -163,7 +169,7 @@ public class ApiRegisterBetaTest {
 
     TcbsUser tcbsUser = TcbsUser.getById(new BigDecimal(userId));
     if (testCaseName.contains("missing param email")) {
-      getEmail = "noemail_" + getPhoneNumber + "@tcbs.com.vn";
+      getEmail = "noemail_" + getPhoneNumber.substring(1) + "@tcbs.com.vn";
     }
     assertEquals(getEmail, tcbsUser.getEmail());
     assertEquals(fullName, tcbsUser.getLastname() + " " + tcbsUser.getFirstname());
@@ -185,6 +191,6 @@ public class ApiRegisterBetaTest {
   @After
   public void afterTest() {
     deleteFMBRegisterBetaData(getPhoneNumber, idNumberVal, getEmail);
-    clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", getPhoneNumber), "x-api-key", TOKEN);
+    clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", getPhoneNumber), "x-api-key", API_KEY);
   }
 }

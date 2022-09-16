@@ -24,14 +24,11 @@ public class GetCustomerInformationTest {
   private String totalElements;
   private String errorMess;
 
-  private String userid;
-  private String tcbsid_filter;
-
   @Test
   @TestCase(name = "#testcaseName#")
   @Title("Verify API Get Customer Information")
   public void getCustomerInformation() {
-    tcbsid_filter = "tcbsIds:[%22".concat(tcbsId.concat("%22]"));
+    String tcbsid_filter = "tcbsIds:%5B%22".concat(tcbsId.concat("%22%5D"));
 
     System.out.println("Testcase name: " + testcaseName);
     Response response = given()

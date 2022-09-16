@@ -1,0 +1,4 @@
+testCaseName|statusCode|errorMsg|countryCode
+Verify api get list province with countryCode as VN|200|""|VN
+Verify api get list province with countryCode have no data|400|Provinces not found|US
+Verify api get list province with missing countryCode param|200||

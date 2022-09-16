@@ -38,7 +38,7 @@ public class ApiAddSOtpTest {
 
   @Before
   public void before() {
-    token = CommonUtils.getToken("105C081567");
+    token = CommonUtils.getToken("105C300126");
   }
 
   @Test

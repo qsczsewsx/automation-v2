@@ -7,8 +7,7 @@ import io.restassured.specification.RequestSpecification;
 
 import java.io.File;
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.*;
 
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.*;
 import static com.tcbs.automation.tools.ConvertUtils.fileTxtToString;
@@ -63,7 +62,7 @@ public class CallApiUtils {
       .when()
       .post();
 
-    assertEquals(response.statusCode(), 200);
+    assertThat(response.statusCode(), is(200));
     ObTask obTask = ObTask.getByTaskRefId(new BigDecimal(taskId));
     return obTask.getId().toString();
   }
@@ -293,12 +292,12 @@ public class CallApiUtils {
   }
 
   public static String prepareRegIA(String idNumberVal, String getPhoneNumber) {
-    CallApiUtils.clearCache(CLEAR_CACHE, X_API_KEY, API_KEY);
+    CallApiUtils.clearCache(DELETE_CACHE, X_API_KEY, API_KEY);
 
     LinkedHashMap<String, Object> bodyBeta = getFMBRegisterBetaBody(idNumberVal);
     Response response1 = getFMBRegisterBetaResponse(bodyBeta);
     String tcbsId = response1.jsonPath().getString("basicInfo.tcbsId");
-    CallApiUtils.clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", getPhoneNumber), X_API_KEY, TOKEN);
+    CallApiUtils.clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", getPhoneNumber), X_API_KEY, API_KEY);
 
     LinkedHashMap<String, Object> bodyAdvance = getUpgradeAdvancedBody();
     getFMBUpgradeAdvanceResponse(bodyAdvance, tcbsId);

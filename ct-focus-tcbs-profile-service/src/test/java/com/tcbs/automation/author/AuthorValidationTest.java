@@ -131,7 +131,7 @@ public class AuthorValidationTest {
         pushTypeStep(STEP_UP_EXP);
       }
       if ("sotp".equals(type) || "".equals(type)) {
-        pushTypeSotp(STEP_UP_EXP);
+        pushTypeSotp(STEP_UP_EXP, token);
       }
       Response response = getResponse();
       Map<String, Object> getResponse = response.jsonPath().getMap("");
@@ -154,7 +154,7 @@ public class AuthorValidationTest {
     }
   }
 
-  private void pushTypeSotp(String STEP_UP_EXP) {
+  private void pushTypeSotp(String STEP_UP_EXP, String token) {
     body.put(STEP_UP_EXP, 0);
     if (testCaseName.contains("expired sotp_sign")) {
       body.put(S_OTP_SIGN, "abc");

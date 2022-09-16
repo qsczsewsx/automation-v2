@@ -30,7 +30,7 @@ public class RetryOtpRegisterIaTest {
 
   @Before
   public void before() {
-    token = CommonUtils.getToken("105C081567");
+    token = CommonUtils.getToken("105C300126");
     tcbsId = syncData(tcbsId);
   }
 

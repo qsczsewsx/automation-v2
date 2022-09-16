@@ -11,6 +11,7 @@ import lombok.Getter;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Title;
 import net.thucydides.junit.annotations.UseTestDataFrom;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -34,7 +35,8 @@ public class LoginToIsquareTest {
   private String password;
   private String token;
   private String errorMessage;
-  private HashMap<String, Object> body;
+  private String userId;
+  private String sessionId;
 
   @Test
   @TestCase(name = "#testCaseName")
@@ -46,7 +48,7 @@ public class LoginToIsquareTest {
     username = syncData(username);
     password = syncData(password);
 
-    body = new HashMap<>();
+    HashMap<String, Object> body = new HashMap<>();
     body.put("username", username);
     body.put("password", password);
 
@@ -66,13 +68,16 @@ public class LoginToIsquareTest {
       Map<String, Object> getResponse = response.jsonPath().getMap("");
       Map<String, Object> claims = CommonUtils.decodeToken((String) getResponse.get("token"));
       Optional<UmUserEntity> umUserEntity = UmUserEntity.getUserByUsername(username);
-      String userId = "";
-      if (umUserEntity.isPresent()) {
-        userId = umUserEntity.get().getId().toString();
-      }
-      assertThat(claims.get("sessionID"), is(IsAuthenInfoEntity.getListBySessionId(userId).get(0).getSessionId()));
+      umUserEntity.ifPresent(userEntity -> userId = userEntity.getId().toString());
+      sessionId = IsAuthenInfoEntity.getListBySessionId(userId).get(0).getSessionId();
+      assertThat(claims.get("sessionID"), is(sessionId));
     } else {
       assertThat("verify error message", response.jsonPath().get("message"), is(errorMessage));
     }
+  }
+
+  @After
+  public void clearData() {
+    IsAuthenInfoEntity.deleteByUserIdAndSessionId(userId, sessionId);
   }
 }

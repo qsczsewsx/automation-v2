@@ -47,7 +47,7 @@ public class CommonUtils {
   private static final String ACCOUNT_NO = "accountNo";
   private static final String ACCOUNT_NAME = "accountName";
   private static final String PERSONAL_INFO = "personalInfo";
-  private static final String USERNAME = "105C081567";
+  private static final String USERNAME = "105C300126";
   private static final String AUTHORIZATION = "Authorization";
   private static final String BEARER = "Bearer ";
   private static final String TCBSID = "tcbsId";
@@ -188,6 +188,15 @@ public class CommonUtils {
     return getData;
   }
 
+  public static String getDesiredTcbsId(String tcbsId, String getTcbsId) {
+    if (tcbsId.equalsIgnoreCase("getTcbsId")) {
+      tcbsId = getTcbsId;
+    } else {
+      tcbsId = syncData(tcbsId);
+    }
+    return tcbsId;
+  }
+
   public static String getPhoneOrCode105C(String key, Object value, String phonedata) {
     String data;
     String prepareData = String.valueOf(new Date().getTime());
@@ -287,8 +296,8 @@ public class CommonUtils {
 
     personalInfo.put("nationality", "VN");
     personalInfo.put(FULL_NAME, "NGUYEN VAN A");
-    personalInfo.put(EMAIL, "anhbui" + idNumber.substring(6, 12) + "@gmail.com");
-    personalInfo.put(PHONE_NUMBER, "0" + idNumber.substring(3, 12));
+    personalInfo.put(EMAIL, "theanh28" + idNumber.substring(6, 12) + "@gmail.com");
+    personalInfo.put(PHONE_NUMBER, "03" + idNumber.substring(4, 12));
     personalInfo.put(BIRTHDAY, "1990-01-01T00:00:00.000Z");
     personalInfo.put(IDENTITY_CARD, identityCard);
 
@@ -1131,6 +1140,27 @@ public class CommonUtils {
     String randomElement = givenList.get(rand.nextInt(givenList.size()));
     String prepareValue = String.valueOf(new Date().getTime());
     return randomElement + prepareValue.substring(5);
+  }
+
+  public static String creatConfirmID(String partnerId, String partnerAccountId, String code105C, String idNumber, String birthday) {
+    LinkedHashMap<String, Object> bodyLink = new LinkedHashMap<>();
+    List<String> listLinkType = new ArrayList<>(Collections.emptyList());
+    listLinkType.add("ACCOUNT");
+
+    bodyLink.put("partnerId", partnerId);
+    bodyLink.put("partnerAccountId", partnerAccountId);
+    bodyLink.put(CODE105C, code105C);
+    bodyLink.put(ID_NUMBER, idNumber);
+    bodyLink.put(BIRTHDAY, birthday);
+    bodyLink.put("linkType", listLinkType);
+
+    given()
+      .baseUri(PARTNERSHIP_ACCOUNT_LINK)
+      .header("x-api-key", PARTNERSHIP_X_API_KEY)
+      .body(bodyLink)
+      .post();
+
+    return TcbsPartnerShip.getPartnerShip(partnerAccountId).getConfirmId();
   }
 
 }

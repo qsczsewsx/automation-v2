@@ -6,7 +6,7 @@ import com.typesafe.config.Config;
 public class TcbsProfileServiceConfig {
   private static final Config conf = new ConfigImpl("tcbsprofileservice").getConf();
 
-  public static final String TCBSPROFILE_DOMAIN = conf.getString("tcbsprofile.domain");
+  public static final String TCBSPROFILE_DOMAIN = conf.getString("tcbsprofile.internal-api-v1");
   public static final String TCBSPROFILE_DEV_DOMAIN = conf.getString("tcbsprofile.dev.domain");
 
   public static final String TCBSPROFILE_PUB_API = conf.getString("tcbsprofile.pub-api");
@@ -60,7 +60,6 @@ public class TcbsProfileServiceConfig {
   public static final String SIGN_CONTRACT_API = conf.getString("tcbsprofile.signContract");
   public static final String GET_ACCOUNT_STATUS_API = conf.getString("tcbsprofile.getAccountStatus");
   public static final String GET_CUSTOMER_INFO = conf.getString("tcbsprofile.getCustInfo");
-  public static final String CLEAR_CACHE = conf.getString("tcbsprofile.clearCache");
   public static final String API_KEY = conf.getString("tcbsprofile.api-key");
   public static final String GEN_FINAL_CONTRACT = conf.getString("tcbsprofile.genFinalContract");
   public static final String VIEW_CLOSE_ACCOUNT_CONTRACT = conf.getString("tcbsprofile.viewCloseAccountContract");
@@ -104,6 +103,7 @@ public class TcbsProfileServiceConfig {
   public static final String BANKLIST_X_API_KEY = conf.getString("tcbsprofile.x-api-key-bankList");
   public static final String PROFILE_X_API_KEY = conf.getString("tcbsprofile.profile-x-api-key");
   public static final String LIST_PROVINCE_BE = conf.getString("tcbsprofile.listProvincesBE");
+  public static final String LIST_PROVINCE_INT = conf.getString("tcbsprofile.listProvincesInt");
   public static final String ADD_BLACKLIST_X_API_KEY = conf.getString("tcbsprofile.blacklist-x-api-key");
   public static final String VALIDATION_TOKEN_X_API_KEY = conf.getString("tcbsprofile.validation-token-x-api-key");
   public static final String MULTIIA_TCBSID_X_API_KEY = conf.getString("tcbsprofile.multi-tcbsid-x-api-key");
@@ -235,6 +235,7 @@ public class TcbsProfileServiceConfig {
 
   //BPM GetCustomerInformation
   public static final String GET_CUSTOMER_INFORMATION = conf.getString("tcbsprofile.getCustomerInformation");
+  public static final String TRIGGER_UPDATE_INFO = conf.getString("tcbsprofile.triggerUpdateInfo");
 
   //Profile Upload File
   public static final String UPLOAD_FILE = conf.getString("tcbsprofile.uploadFile");
@@ -355,8 +356,24 @@ public class TcbsProfileServiceConfig {
 
 
   //new onboarding partership
+  public static final String PARTNER_CHECK_ACCOUNT_EXIST = conf.getString("newonboardingPartnerShip.checkAccountExist");
   public static final String PARTNERSHIP_ACCOUNT_LINK = conf.getString("newonboardingPartnerShip.partnerShipAccountLink");
   public static final String PARTNERSHIP_X_API_KEY = conf.getString("tcbsprofile.partnerShip-x-api-key");
   public static final String PARTNERSHIP_ACCOUNT_UNLINK = conf.getString("newonboardingPartnerShip.partnerShipAccountUnLink");
+  public static final String PARTNERSHIP_VIEW_CONTRACT = conf.getString("newonboardingPartnerShip.partnerShipViewContract");
+  public static final String PARTNERSHIP_SIGN_CONTRACT = conf.getString("newonboardingPartnerShip.partnerShipSignContract");
+  public static final String PARTNERSHIP_CONFIRM = conf.getString("newonboardingPartnerShip.partnerShipConfirm");
+  public static final String GET_INFO_BY_USERNAME = conf.getString("newonboardingPartnerShip.getInfoByUsername");
+  public static final String RETURN_INFO_SOCIAS = conf.getString("newonboardingPartnerShip.returnInfoForSocias");
+  public static final String PARTNERSHIP_GET_HISTORY_IA = conf.getString("newonboardingPartnerShip.partnerShipGetHistoryIa");
+  public static final String PARTNERSHIP_GET_DETAIL = conf.getString("newonboardingPartnerShip.partnerShipGetDetail");
 
+  //Additional API
+  public static final String SUGGEST_ID_PLACE = conf.getString("tcbsprofile.suggestIdPlace");
+  public static final String GET_LIST_COUNTRY = conf.getString("tcbsprofile.getListCountry");
+  public static final String GET_LIST_PROVINCE_BY_COUNTRY = conf.getString("tcbsprofile.getListProvinceByCountryCode");
+  public static final String GET_LIST_BANK_INFO = conf.getString("tcbsprofile.getListBankInfo");
+  public static final String SEARCH_BY_CONDITION = conf.getString("tcbsprofile.searchByCondition");
+  public static final String GET_INFO_BY_CONDITION = conf.getString("tcbsprofile.getInfoByCondition");
+  public static final String UPDATE_INFO_CUSTOMER = conf.getString("tcbsprofile.updateInfoCustomer");
 }

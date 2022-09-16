@@ -8,6 +8,7 @@ import lombok.Getter;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Title;
 import net.thucydides.junit.annotations.UseTestDataFrom;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -88,9 +89,23 @@ public class PartnerShipAccountLinkTest {
 
     assertEquals(statusCode, response.getStatusCode());
     if (statusCode == 200) {
-      assertEquals(partnerAccountId, TcbsPartnerShip.getPartnerShip(partnerAccountId).getPartnerAccountId());
+      assertEquals("true", response.jsonPath().get("data").toString());
+      assertEquals(partnerId, TcbsPartnerShip.getPartnerShip(partnerAccountId).getPartnerId());
+      if (testCaseName.contains("linkType is ACCOUNT") || testCaseName.contains("linkType ACCOUNT and IA")) {
+        assertEquals("P", TcbsPartnerShip.getPartnerShip(partnerAccountId).getLinkAccountStatus());
+      } else if (testCaseName.contains("linkType is IA") || testCaseName.contains("linkType ACCOUNT and IA")) {
+        assertEquals("P", TcbsPartnerShip.getPartnerShip(partnerAccountId).getLinkIaStatus());
+      }
     } else {
       assertEquals(errorMessage, response.jsonPath().get("message"));
     }
   }
+
+  @After
+  public void clearData() {
+    if (statusCode == 200) {
+      TcbsPartnerShip.deleteByPartnerAccountId(partnerAccountId);
+    }
+  }
 }
+

@@ -1,11 +1,13 @@
-testCaseName|statusCode|typeValue|erroMsg
-Verify view contract api case 200 with valid request|200|1|
-Verify view contract api case 400 with tcbsId not exist in database|400|1|Profile not found
-Verify view contract api case 200 with missing param typeValue|200||Profile not found
-Verify view contract api case 200 with value of typeValue as empty|200||Profile not found
-Verify view contract api case 200 with value of typeValue as null|200||Profile not found
-Verify view contract api case 200 with value of typeValue as text|200|type|Profile not found
-Verify view contract api case 200 with value of typeValue as special word|200|@#$|Profile not found
-Verify view contract api case 200 with value of typeValue as 0|200|0|Profile not found
-Verify view contract api case 200 with value of typeValue as 2|200|2|Profile not found
-Verify view contract api case 200 with value of typeValue as 3|200|3|Profile not found
+testCaseName|statusCode|typeValue|errorMsg|tcbsId
+Verify view contract api case 200 with onboarding contract|200|1||getTcbsId
+Verify view contract api case 400 with tcbsId not exist in database|400|1|Cannot get information of user|10000017565
+Verify view contract api case 200 with missing param typeValue|200||Profile not found|getTcbsId
+Verify view contract api case 200 with value of typeValue as empty|200||Profile not found|getTcbsId
+Verify view contract api case 200 with value of typeValue as null|200||Profile not found|getTcbsId
+Verify view contract api case 400 with value of typeValue as text|400|type|Generate contract fail exception|getTcbsId
+Verify view contract api case 400 with value of typeValue as special word|400|@#$|Generate contract fail exception|getTcbsId
+Verify view contract api case 400 with value of typeValue as 0|400|0|Generate contract fail exception|getTcbsId
+Verify view contract api case 400 with value of typeValue as 2|400|2|Generate contract fail exception|getTcbsId
+Verify view contract api case 400 with value of typeValue as 3|400|3|Generate contract fail exception|getTcbsId
+Verify view contract api case 200 with TNC contract|200|4||10000001240
+Verify view contract api case 200 with both onboarding and TNC contract|200|1,4||getTcbsId

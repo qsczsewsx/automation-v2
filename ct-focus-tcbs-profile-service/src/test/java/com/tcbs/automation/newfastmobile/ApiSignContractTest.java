@@ -2,12 +2,15 @@ package com.tcbs.automation.newfastmobile;
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.google.gson.Gson;
+import com.tcbs.automation.cas.TcbsUser;
+import com.tcbs.automation.cas.TcbsUserTnc;
+import common.CommonUtils;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import lombok.Getter;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Title;
 import net.thucydides.junit.annotations.UseTestDataFrom;
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,11 +20,14 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.*;
-import static common.CallApiUtils.*;
-import static common.CommonUtils.*;
-import static common.ProfileTools.TOKEN;
+import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.FMB_SIGN_CONTRACT;
+import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.FMB_X_API_KEY;
+import static common.CallApiUtils.getFMBRegisterBetaResponse;
+import static common.CallApiUtils.getFMBUpgradeAdvanceResponse;
+import static common.CommonUtils.getFMBRegisterBetaBody;
+import static common.CommonUtils.getUpgradeAdvancedBody;
 import static net.serenitybdd.rest.SerenityRest.given;
+import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -31,7 +37,6 @@ import static org.junit.Assert.assertThat;
 public class ApiSignContractTest {
 
   private static String getTcbsIdAcc;
-  private static String idNumberVal;
   @Getter
   private String testCaseName;
   @Getter
@@ -53,20 +58,13 @@ public class ApiSignContractTest {
 
   @BeforeClass
   public static void beforeTest() {
-    clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", "0985652565"), "x-api-key", TOKEN);
     String prepareValue = String.valueOf(new Date().getTime());
-    idNumberVal = prepareValue.substring(0, 12);
+    String idNumberVal = prepareValue.substring(0, 12);
     LinkedHashMap<String, Object> body = getFMBRegisterBetaBody(idNumberVal);
     Response response = getFMBRegisterBetaResponse(body);
     getTcbsIdAcc = response.jsonPath().getString("basicInfo.tcbsId");
     LinkedHashMap<String, Object> bodyAdvance = getUpgradeAdvancedBody();
     getFMBUpgradeAdvanceResponse(bodyAdvance, getTcbsIdAcc);
-  }
-
-  @AfterClass
-  public static void afterTest() {
-    deleteFMBRegisterBetaData("0985652565", idNumberVal, "nguyenvana@gmail.com");
-    clearCache(CLEAR_CACHE_REDIS.replace("{phoneNumber}", "0985652565"), "x-api-key", TOKEN);
   }
 
   @Test
@@ -76,39 +74,37 @@ public class ApiSignContractTest {
 
     System.out.println("TestCaseName : " + testCaseName);
 
-    tcbsId = getTcbsId(tcbsId);
+    tcbsId = CommonUtils.getDesiredTcbsId(tcbsId, getTcbsIdAcc);
 
     LinkedHashMap<String, Object> body = getSignContractBody(testCaseName, tcbsId, type);
     Gson gson = new Gson();
 
-    Response response = given()
+    RequestSpecification requestSpecification = given()
       .baseUri(FMB_SIGN_CONTRACT)
       .header("x-api-key", FMB_X_API_KEY)
-      .contentType("application/json")
-      .body(gson.toJson(body))
-      .when()
-      .post();
+      .contentType("application/json");
+
+    Response response;
+
+    if (testCaseName.contains("missing BODY")) {
+      response = requestSpecification.post();
+    } else {
+      response = requestSpecification.body(gson.toJson(body)).post();
+    }
 
     assertThat(response.getStatusCode(), is(statusCode));
 
-    if (response.statusCode() == 200) {
+    if (statusCode == 200) {
       String getResponse = response.getBody().prettyPrint();
       assertEquals(getResponse, message);
+      if (type.equalsIgnoreCase("4")) {
+        assertThat(TcbsUserTnc.getByUserId(TcbsUser.getByTcbsId(tcbsId).getId().toString()).getTncTcb(),
+          anyOf(is("Y"), is("N")));
+      }
 
-    } else if (response.statusCode() == 400) {
-      String actualMessage = response.jsonPath().get("message");
-      assertEquals(message, actualMessage);
-    }
-  }
-
-  private String getTcbsId(String tcbsId) {
-    String getTcbsId;
-    if (tcbsId.contains("getTcbsId")) {
-      getTcbsId = getTcbsIdAcc;
     } else {
-      getTcbsId = tcbsId;
+      assertEquals(message, response.jsonPath().get("message"));
     }
-    return getTcbsId;
   }
 
   public LinkedHashMap<String, Object> getSignContractBody(String testCaseName, String tcbsId, String type) {
@@ -130,9 +126,7 @@ public class ApiSignContractTest {
     regIA.put("isIAPaid", isIAPaid);
     regIA.put("isIA", isIA);
 
-    if (testCaseName.contains("missing Body")) {
-      body = new LinkedHashMap<>();
-    } else if (testCaseName.contains("missing param tcbsId")) {
+    if (testCaseName.contains("missing param tcbsId")) {
       body.put("type", type);
       body.put("iaBankAccount", bankAccounts);
       body.put("action", action);
@@ -142,6 +136,9 @@ public class ApiSignContractTest {
       body.put("iaBankAccount", bankAccounts);
       body.put("action", action);
       body.put("iaStatus", regIA);
+    } else if (testCaseName.contains("only TNC contract")) {
+      body.put("tcbsId", tcbsId);
+      body.put("type", type);
     } else {
       body.put("tcbsId", tcbsId);
       body.put("type", type);
