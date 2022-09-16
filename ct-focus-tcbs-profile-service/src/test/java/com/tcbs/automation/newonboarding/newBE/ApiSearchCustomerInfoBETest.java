@@ -55,10 +55,10 @@ public class ApiSearchCustomerInfoBETest {
     assertThat(response.getStatusCode(), is(statusCode));
 
     if (response.statusCode() == 200) {
-      if (testCaseName.contains("with valid")) {
-        verifyContractTrustDtoField(response, params, paramValue);
-        verifyKycHistoryDtosField(response, params, paramValue);
-      }
+//      if (testCaseName.contains("with valid")) {
+//        verifyContractTrustDtoField(response, params, paramValue);
+//        verifyKycHistoryDtosField(response, params, paramValue);
+//      }
       verifyProfileDtoField(response, params, paramValue);
       if (fields != null) {
         for (String item : fields.split(",", -1)) {
@@ -170,15 +170,18 @@ public class ApiSearchCustomerInfoBETest {
 //    List<HashMap<String, Object>> bankSubAccounts = response.jsonPath().get("profileDto.bankSubAccounts");
     HashMap<String, Object> accountStatus = response.jsonPath().get("profileDto.accountStatus");
     HashMap<String, Object> personalInfo = response.jsonPath().get("profileDto.personalInfo");
+    HashMap<String, Object> closeInfo = response.jsonPath().get("profileDto.closeInfo");
     tcbsUser = getTcbsUser(params, paramValue);
 
     if (testCaseName.contains("account is opened via NFM")) {
       assertThat(personalInfo.get("subFlowOpenAccount"), is(notNullValue()));
     } else if (testCaseName.contains("is VSD activated")) {
-      assertThat(accountStatus.get("derivativeActivationDate"), is(notNullValue()));
+      assertThat(accountStatus.get("derivativeActivationStatus"), is(notNullValue()));
     } else if (testCaseName.contains("has task with status CANCELED")) {
       assertThat(personalInfo.get("flowOpenAccount"), is(2));
       assertThat(accountStatus.get("subFlowOpenAccount"), is(nullValue()));
+    } else if (testCaseName.contains("closeInfo")) {
+      assertThat(closeInfo.get("channel"), is(notNullValue()));
     }
 //    } else {
 //      tcbsBankAccounts = TcbsBankAccount.getListBanks(tcbsUser.getId().toString());
