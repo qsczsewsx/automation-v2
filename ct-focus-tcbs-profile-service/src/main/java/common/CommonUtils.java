@@ -65,6 +65,7 @@ public class CommonUtils {
   private static final String STR_CREATE = "CREATE";
   private static final String STATUS = "status";
   private static final String ACCOUNT_TYPE = "accountType";
+  private static final String ACCOUNT ="ACCOUNT";
 
   private static final ObTask obTask = new ObTask();
   private static Random rand = null;  // SecureRandom is preferred to Random
@@ -1145,7 +1146,7 @@ public class CommonUtils {
   public static String creatConfirmID(String partnerId, String partnerAccountId, String code105C, String idNumber, String birthday) {
     LinkedHashMap<String, Object> bodyLink = new LinkedHashMap<>();
     List<String> listLinkType = new ArrayList<>(Collections.emptyList());
-    listLinkType.add("ACCOUNT");
+    listLinkType.add(ACCOUNT);
 
     bodyLink.put("partnerId", partnerId);
     bodyLink.put("partnerAccountId", partnerAccountId);
@@ -1163,4 +1164,25 @@ public class CommonUtils {
     return TcbsPartnerShip.getPartnerShip(partnerAccountId).getConfirmId();
   }
 
+  public static String tcbsCreateConfirmID(String partnerId, String partnerAccountId) {
+    LinkedHashMap<String, Object> bodyLink = new LinkedHashMap<>();
+    List<String> listLinkType = new ArrayList<>(Collections.emptyList());
+    listLinkType.add(ACCOUNT);
+
+    bodyLink.put("partnerId", partnerId);
+    bodyLink.put("partnerAccountId", partnerAccountId);
+    bodyLink.put("linkType", listLinkType);
+
+    Actor actor = Actor.named("logintoken");
+    LoginApi.withCredentials("105C066114", "abc123").performAs(actor);
+    String token = TheUserInfo.aboutLoginData().answeredBy(actor).getToken();
+
+    given()
+      .baseUri(TCBS_ACCOUNT_LINK)
+      .header(AUTHORIZATION, BEARER + token)
+      .body(bodyLink)
+      .post();
+
+    return TcbsPartnerShipConfirm.getConfirmIdByPartnerAndType(TcbsPartnerShip.getPartnerShip(partnerAccountId).getId(),ACCOUNT).getValue();
+  }
 }
