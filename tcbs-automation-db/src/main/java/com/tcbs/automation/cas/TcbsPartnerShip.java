@@ -96,4 +96,14 @@ public class TcbsPartnerShip {
     }
   }
 
+  @Step
+  public static TcbsPartnerShip getByPartnerAccountIdAndPartnerId(String partnerId,String partnerAccountId) {
+    CAS.casConnection.getSession().clear();
+    Query<TcbsPartnerShip> query = CAS.casConnection.getSession().createQuery(
+      "from TcbsPartnerShip a where a.partnerId=:partnerId and a.partnerAccountId=:partnerAccountId", TcbsPartnerShip.class);
+    query.setParameter(PARTNER_ACCOUNT_ID, partnerAccountId);
+    query.setParameter("partnerId", partnerId);
+    return query.getSingleResult();
+  }
+
 }

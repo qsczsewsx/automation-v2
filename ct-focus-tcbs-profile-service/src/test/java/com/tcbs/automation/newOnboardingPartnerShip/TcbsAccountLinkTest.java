@@ -72,7 +72,6 @@ public class TcbsAccountLinkTest {
 
     body.put("partnerId", partnerId);
     body.put("partnerAccountId", partnerAccountId);
-    body.put("code105C", code105C);
     body.put("linkType", listLinkType);
 
     if (!testCaseName.contains("ACCOUNT only")) {
@@ -100,12 +99,10 @@ public class TcbsAccountLinkTest {
 
     assertEquals(statusCode, response.getStatusCode());
     if (statusCode == 200) {
-      assertEquals("true", response.jsonPath().get("data").toString());
-      assertEquals(partnerId, TcbsPartnerShip.getPartnerShip(partnerAccountId).getPartnerId());
       if (testCaseName.contains("linkType is ACCOUNT") || testCaseName.contains("linkType ACCOUNT and IA")) {
-        assertEquals("P", TcbsPartnerShip.getPartnerShip(partnerAccountId).getLinkAccountStatus());
+        assertEquals("P", TcbsPartnerShip.getByPartnerAccountIdAndPartnerId(partnerId,partnerAccountId).getLinkAccountStatus());
       } else if (testCaseName.contains("linkType is IA") || testCaseName.contains("linkType ACCOUNT and IA")) {
-        assertEquals("P", TcbsPartnerShip.getPartnerShip(partnerAccountId).getLinkIaStatus());
+        assertEquals("N", TcbsPartnerShip.getByPartnerAccountIdAndPartnerId(partnerId,partnerAccountId).getLinkIaStatus());
       }
     } else {
       assertEquals(errorMessage, response.jsonPath().get("message"));
