@@ -58,7 +58,11 @@ public class TcbsPartnerShip {
     Query<TcbsPartnerShip> query = CAS.casConnection.getSession().createQuery(
       "from TcbsPartnerShip a where a.partnerAccountId=:partnerAccountId", TcbsPartnerShip.class);
     query.setParameter(PARTNER_ACCOUNT_ID, partnerAccountId);
-    return query.getSingleResult();
+    try {
+      return query.getSingleResult();
+    } catch (Exception e) {
+      return new TcbsPartnerShip();
+    }
   }
 
   public static TcbsPartnerShip getByUserId(BigDecimal userId) {
