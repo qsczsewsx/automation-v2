@@ -59,7 +59,6 @@ public class ApiRegisterUploadIdentifyTest {
     body.put("frontIdentity", frontIdentity);
     body.put("backIdentity", backIdentity);
     body.put("referenceId", referenceId);
-    body.put("authenKey", authenKey);
   }
 
   @Test
@@ -70,7 +69,7 @@ public class ApiRegisterUploadIdentifyTest {
     RequestSpecification requestSpecification = given()
       .baseUri(REGISTER_UPLOAD_IDENTIFY)
       .contentType("application/json")
-      .when();
+      .header("Authorization", "Bearer " + authenKey);
 
     Response response;
     Gson gson = new Gson();
@@ -102,6 +101,7 @@ public class ApiRegisterUploadIdentifyTest {
     // Clear data
     if (statusCode == 200) {
       TcbsUserOpenAccountQueueUpload.deleteByTuoqID(tuoqId);
+      OcrData.deleteByTuoqId(tuoqId);
     }
   }
 }

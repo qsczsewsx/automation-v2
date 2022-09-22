@@ -46,7 +46,6 @@ public class RegisterGetOcrDataTest {
       authenKey = syncData(authenKey);
     }
     body = new HashMap<>();
-    body.put("authenKey", authenKey);
     body.put("referenceId", referenceId);
   }
 
@@ -60,7 +59,7 @@ public class RegisterGetOcrDataTest {
     RequestSpecification requestSpecification = given()
       .baseUri(REGISTER_OCR_GET_DATA)
       .contentType("application/json")
-      .when();
+      .header("Authorization", "Bearer " + authenKey);
 
     Response response;
     Gson gson = new Gson();
@@ -78,7 +77,7 @@ public class RegisterGetOcrDataTest {
         assertThat(response.jsonPath().get("needUploadOther"), is(false));
       }
       Map<String, Object> mapOcrData = response.jsonPath().get("ocrData");
-      OcrData ocrData = OcrData.getByTuoqId(TcbsUserOpenAccountQueue.getByPhone(referenceId.substring(0, 12)).getId().toString());
+      OcrData ocrData = OcrData.getByTuoqId(TcbsUserOpenAccountQueue.getByPhone(referenceId.substring(0, 12)).getId().toString()).get(0);
       assertEquals(ocrData.getFullName(), mapOcrData.get("fullName"));
       assertEquals(ocrData.getDob(), mapOcrData.get("dob"));
       assertEquals(ocrData.getIdNumber(), mapOcrData.get("idNumber"));

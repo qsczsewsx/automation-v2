@@ -39,3 +39,5 @@ Verify api validate Phone Email with email is techcombank existed db and phone i
 Verify api validate Phone Email with email is techcombank existed db and phone is null and username is different from prefix email,200,Email existed in system,+84,genrandom,lanvt1356@techcombank.com.vn,invalid
 Verify api validate Phone Email success with email is techcombank existed db and phone is null and username is same to prefix email,200,Success,+84,genrandom,thuytt1111132@techcombank.com.vn,valid
 Verify api validate Phone Email success with email is techcombank existed db and (phone and username) is null,200,Success,+84,genrandom,tcb_user_166297011664@techcombank.com.vn,valid
+Verify api validate Phone Email with email is used by another user edit information,200,Your information has been used by other users in the process of changing information,+84,genrandom,hoai.linh14ty@gmail.com,invalid
+Verify api validate Phone Email with phoneNumber is used by another user edit information,200,Your information has been used by other users in the process of changing information,+84,757894911,no_email_p12@tcbs.com.vn,invalid

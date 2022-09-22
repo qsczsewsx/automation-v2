@@ -70,6 +70,7 @@ public class ObRegisterTest {
   private String code105C;
   private HashMap<String, Object> body;
   private String phoneNumPre;
+  private String authenKey;
 
   @BeforeClass
   public static void beforeClass() {
@@ -145,7 +146,6 @@ public class ObRegisterTest {
       resRef = CallApiUtils.callGenAuthenKeyApi();
     }
 
-    String authenKey;
     if (testCaseName.contains("invalid authenKey")) {
       authenKey = "e399d12a30dfae9e4d1bc7f8c85bc7fde5aa4a5c6c6ceddb1f50fd2ed7e73669";
     } else {
@@ -233,7 +233,6 @@ public class ObRegisterTest {
     body.put("receiveAdvertise", 1);
     body.put("pkVid", "");
     body.put("referenceId", referenceId);
-    body.put("authenKey", authenKey);
 
     // prepare for test case email of tcb user existed in system
     if (testCaseName.contains("email of tcb user existed in system")) {
@@ -259,7 +258,8 @@ public class ObRegisterTest {
     System.out.println(testCaseName);
     RequestSpecification requestSpecification = SerenityRest.given()
       .baseUri(OB_REGISTER)
-      .contentType("application/json");
+      .contentType("application/json")
+      .header("Authorization", "Bearer " + authenKey);
 
     Response response;
     if (testCaseName.contains("missing BODY")) {
