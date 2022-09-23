@@ -378,4 +378,8 @@ public class TcbsProfileServiceConfig {
   public static final String SEARCH_BY_CONDITION = conf.getString("tcbsprofile.searchByCondition");
   public static final String GET_INFO_BY_CONDITION = conf.getString("tcbsprofile.getInfoByCondition");
   public static final String UPDATE_INFO_CUSTOMER = conf.getString("tcbsprofile.updateInfoCustomer");
+
+  //BAU Tool
+  public static final String BAU_SEARCH_BANK_IA_INFO = conf.getString("BauTool.searchBankIaInfo");
+  public static final String BAU_AUTHORIZATION_TOKEN = conf.getString("tcbsprofile.bau-authorization-token");
 }
