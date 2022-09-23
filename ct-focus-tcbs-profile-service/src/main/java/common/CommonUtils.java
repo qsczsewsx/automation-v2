@@ -1185,4 +1185,31 @@ public class CommonUtils {
 
     return TcbsPartnerShipConfirm.getConfirmIdByPartnerAndType(TcbsPartnerShip.getPartnerShip(partnerAccountId).getId(),ACCOUNT).getValue();
   }
+
+  public static String getStatusBankIA(String value) {
+    String status;
+    switch (value) {
+      case "0":
+        status = "CLOSE";
+        break;
+      case "1":
+        status = "ACTIVE";
+        break;
+      case "2":
+        status = "WAIT_APPROVE";
+        break;
+      case "3":
+        status = "WAIT_KYC";
+        break;
+      case "4":
+        status = "WAIT_CLOSE";
+        break;
+      case "5":
+        status = "WAIT_CHANGE";
+        break;
+      default:
+        status = null;
+    }
+    return status;
+  }
 }

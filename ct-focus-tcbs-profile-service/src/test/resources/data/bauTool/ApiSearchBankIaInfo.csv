@@ -1,4 +1,4 @@
-testCaseName,statusCode,errorMessage,actionKey,code105c
+testCaseName,statusCode,errorMessage,actionKey,username
 Verify search bank info by 105C api with code105c and actionKey params valid,200,,FORCE_UPDATE_BANK_IAACCOUNT,105C898251
 Verify search bank info by 105C api with missing param actionKey and code105c,400,Missing request parameter,,
 Verify search bank info by 105C api with missing value actionKey param,400,action key is invalid,"",105C898251

@@ -4,6 +4,7 @@ package com.tcbs.automation.bauTool;
 import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.tcbs.automation.cas.TcbsBankIaaccount;
 import com.tcbs.automation.cas.TcbsUser;
+import common.CommonUtils;
 import io.restassured.response.Response;
 import lombok.Getter;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
@@ -32,7 +33,7 @@ public class ApiSearchBankIaInfoTest {
   private int statusCode;
   private String errorMessage;
   private String actionKey;
-  private String code105c;
+  private String username;
   private HashMap<String, Object> params;
 
   @Before
@@ -40,7 +41,7 @@ public class ApiSearchBankIaInfoTest {
     params = new HashMap<>();
     if (!testCaseName.contains("missing param")) {
       params.put("actionKey", actionKey);
-      params.put("code105c", code105c);
+      params.put("username", username);
     }
     System.out.println(params);
   }
@@ -61,7 +62,7 @@ public class ApiSearchBankIaInfoTest {
 
     Assert.assertThat(response.getStatusCode(), is(statusCode));
     if (statusCode == 200) {
-      List<TcbsBankIaaccount> dataDB = TcbsBankIaaccount.getListBanks(TcbsUser.getByUserName(code105c).getId().toString());
+      List<TcbsBankIaaccount> dataDB = TcbsBankIaaccount.getListBanks(TcbsUser.getByUserName(username).getId().toString());
       List<HashMap> dataRes = response.jsonPath().getList("data");
       for (TcbsBankIaaccount bankIa : dataDB) {
         boolean hasBankIa = false;
@@ -71,7 +72,7 @@ public class ApiSearchBankIaInfoTest {
             assertEquals(bankIa.getAccountNo(), data.get("bankAccountNo"));
             assertEquals(bankIa.getAccountName(), data.get("bankAccountName"));
             assertEquals(bankIa.getBankSource(), data.get("bankSource"));
-            assertEquals(bankIa.getStatus(), data.get("status"));
+            assertEquals(CommonUtils.getStatusBankIA(bankIa.getStatus().toString()), data.get("status"));
             assertEquals(bankIa.getAutoTransfer(), data.get("autoTransfer"));
             assertEquals(bankIa.getIsIaPaid(), data.get("isIaPaid"));
             break;
