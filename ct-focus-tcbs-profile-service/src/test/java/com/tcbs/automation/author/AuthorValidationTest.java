@@ -16,6 +16,7 @@ import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.thucydides.core.annotations.Title;
 import net.thucydides.junit.annotations.UseTestDataFrom;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -49,16 +50,18 @@ public class AuthorValidationTest {
   private HashMap<String, Object> body;
   private final String S_OTP_SIGN = "sotp_sign";
 
+  private final String HB = "HB";
+
+  private final String WT = "WT";
+
+  private final String IS_ALLOWED = "is_allowed";
+
+
   @Before
   public void before() {
     action = syncData(action);
     resource = syncData(resource);
     token = getTokenCaseByCase(token);
-
-    body = new HashMap<>();
-    body.put("token", token);
-    body.put("action", action);
-    body.put("resource", resource);
   }
 
   @Test
@@ -67,13 +70,38 @@ public class AuthorValidationTest {
   public void validationTest() {
     System.out.println("TestcaseName : " + testCaseName);
 
+    Response response = callApi();
+    if (testCaseName.contains("case success")) {
+      assertThat("verify is_allowed", response.jsonPath().get(IS_ALLOWED).toString().trim(), is("false"));
+      assertThat("verify X-Author", response.getHeader("X-Author"), is(type));
+      assertThat("verify X-Otp-Source", response.getHeader("X-Otp-Source"), is(otpSource));
+      token = getTokenCaseByCase("success");
+      response = callApi();
+      assertThat("verify status code", response.getStatusCode(), is(statusCode));
+      assertThat("verify is_allowed", response.jsonPath().get(IS_ALLOWED).toString().trim(), is("true"));
+    } else {
+      assertThat("verify status code", response.getStatusCode(), is(statusCode));
+      if (statusCode == 400) {
+        assertThat("verify error message", response.jsonPath().get("message").toString().trim(), is(errorMessage));
+      } else {
+        assertThat("verify is_allowed", response.jsonPath().get(IS_ALLOWED).toString().trim(), is("false"));
+        assertThat("verify X-Author", response.getHeader("X-Author"), is(type));
+      }
+    }
+  }
+
+  private Response callApi() {
     RequestSpecification requestSpecification = given()
-      .baseUri(AUTHOR_VALIDATION)
-      .header("x-api-key", TCBSPROFILE_INQUIRYGROUPINFOKEY)
-      .contentType("application/json");
+            .baseUri(AUTHOR_VALIDATION)
+            .header("x-api-key", TCBSPROFILE_INQUIRYGROUPINFOKEY)
+            .contentType("application/json");
 
     Response response;
 
+    body = new HashMap<>();
+    body.put("token", token);
+    body.put("action", action);
+    body.put("resource", resource);
     Gson gson = new Gson();
     if (testCaseName.contains("missing BODY")) {
       response = requestSpecification.post();
@@ -81,29 +109,23 @@ public class AuthorValidationTest {
       response = requestSpecification.body(gson.toJson(body)).post();
     }
     System.out.println(gson.toJson(body));
-    assertThat("verify status code", response.getStatusCode(), is(statusCode));
-    if (statusCode == 200) {
-      assertThat("verify is_allowed", response.jsonPath().get("is_allowed").toString().trim(), is("true"));
-    } else if (statusCode == 400) {
-      assertThat("verify error message", response.jsonPath().get("message").toString().trim(), is(errorMessage));
-    } else {
-      assertThat("verify is_allowed", response.jsonPath().get("is_allowed").toString().trim(), is("false"));
-    }
+    return response;
   }
 
   private String getSotpSign(String token) {
-    String domain;
-    if ("HB".equals(otpSource)) {
-      domain = OTP_HB_DOMAIN;
-    } else if ("WT".equals(otpSource)) {
-      domain = OTP_WT_DOMAIN;
-    } else {
-      domain = IOTP_DATAPOWER_DOMAIN;
-    }
     HashMap<String, Object> authenInfo = new HashMap<>();
     authenInfo.put("otp", otp);
     authenInfo.put("otpTypeName", otpType);
     authenInfo.put("tcbsId", "0001693997");
+    String domain;
+    if (HB.equals(otpSource)) {
+      domain = OTP_HB_DOMAIN;
+      authenInfo.put("source", StringUtils.lowerCase(HB));
+    } else if (WT.equals(otpSource)) {
+      domain = OTP_WT_DOMAIN;
+    } else {
+      domain = IOTP_DATAPOWER_DOMAIN;
+    }
 
     Response resp = given()
       .baseUri(domain + IOTP_AUTHEN)
@@ -125,18 +147,27 @@ public class AuthorValidationTest {
 
       body = new HashMap<>();
       body.put("token", token);
+      if (HB.equals(otpSource)) {
+        body.put("source", StringUtils.lowerCase(HB));
+      } else if (WT.equals(otpSource)) {
+        body.put("source", StringUtils.lowerCase(WT));
+      }
       String STEP_UP_EXP = "stepup_exp";
 
-      if ("stepup".equals(type)) {
+      if ("stepup_required".equals(type)) {
         pushTypeStep(STEP_UP_EXP);
       }
-      if ("sotp".equals(type) || "".equals(type)) {
+      if ("sotp_required".equals(type) || "".equals(type)) {
         pushTypeSotp(STEP_UP_EXP, token);
       }
       Response response = getResponse();
       Map<String, Object> getResponse = response.jsonPath().getMap("");
       token = (String) getResponse.get("token");
 
+    } else if (token.equalsIgnoreCase("default")) {
+      Actor actor = Actor.named("haihv");
+      LoginApi.withCredentials("105C793997", "abc123").performAs(actor);
+      token = TheUserInfo.aboutLoginData().answeredBy(actor).getToken();
     } else {
       token = syncData(token);
     }
@@ -165,9 +196,9 @@ public class AuthorValidationTest {
 
   private Response getResponse() {
     Response response;
-    if ("HB".equals(otpSource)) {
+    if (HB.equals(otpSource)) {
       response = AuthenSessionHBTest.callApiUpdateSessionHB(body, testCaseName);
-    } else if ("WT".equals(otpSource)) {
+    } else if (WT.equals(otpSource)) {
       response = AuthenSessionWTTest.callApiUpdateSessionWT(body, testCaseName);
     } else {
       response = AuthenSessionTest.callApiUpdateSession(body, testCaseName);

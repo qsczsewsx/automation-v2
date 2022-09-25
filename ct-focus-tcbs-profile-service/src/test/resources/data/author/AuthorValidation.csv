@@ -1,21 +1,172 @@
 testCaseName|statusCode|errorMessage|token|type|otp|otpType|otpSource|action|resource
-Verify author validation api case success 1 otpSource TCINVEST|200|null|success|stepup|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all
-Verify author validation api case success 2 otpSource TCINVEST|200|null|success|sotp|111111|SMS|TCINVEST|rest:POST|/tcbs-h2h-gw-biz/v1/stock/withdraw
-Verify author validation api case success 3 otpSource HB|200|null|success|stepup|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/create-sell-order
-Verify author validation api case success 4 otpSource WT|200|null|success|stepup|111111|TOTP|WT|rest:POST|/wealth-lending/v1/pawn/sign/223
 Verify author validation api case missing BODY|400|invalid format|||||||
-Verify author validation api case token has wrong format|400|invalid input->token contains an invalid number of segments|suer|stepup|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all
-Verify author validation api case token is expired|400|invalid input->token is expried|eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzaXRfYXV0aGVuX3NlcnZpY2UiLCJleHAiOjE2NDc2NzIzODMsImp0aSI6IiIsImlhdCI6MTY0NzY2MTU4Mywic3ViIjoiMDAwMTY5Mzk5NyIsImN1c3RvZHlJRCI6IjEwNUM3OTM5OTciLCJlbWFpbCI6InR5dWk1NDY3QGdtYWlsLmNvbSIsInJvbGVzIjpbImN1c3RvbWVyIl0sInN0ZXB1cF9leHAiOjAsInNvdHBfc2lnbiI6IiIsImNsaWVudF9rZXkiOiJvN0kxaFR2QW5Wa3MwOUZBWXRrYzF3WldyTGx5N01wNSIsInNlc3Npb25JRCI6ImRjNDY5NzJjLTliMDAtNDU4NS04ODNmLTFkZDNkMWE3ZTdlZSIsImFjY291bnRfc3RhdHVzIjoiMSIsIm90cCI6IiIsIm90cFR5cGUiOiIiLCJvdHBTb3VyY2UiOiJUQ0lOVkVTVCJ9.uc-wByNMrg-kbl0fq2ltUb4_SQdxz0dEAzVWUDRqBAKd-DfxA74n8slEfSO6jsWLeehowlSmd6JbiDdaiOzz3Pj4aiKlhhuXqswCa7R-ueo0CygTmgL0VAnkAYfTK9LHjyTeksdYKEDK26d3k8UXeeu_7wNacsMon1EUb6vKGaPLIGqyKZmryrVgMU4yhuOPDuK8kAZgweaR1uMcBAqBvTlk_c8lTrhRDywCreeVKOO65zbbwlhMJAAm81S5Ky1pKdN6oNt0Y9XMPsNjCgYk0owadoXLVA7oqygGw18rmTyLuNZMDkwaopBU3sLlTlCvRUj5lZFQVv27NQ3v5LSnvw|stepup|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all
-Verify author validation api case token is empty|400|invalid input->require at least subjects or token in the request body|empty|stepup|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all
-Verify author validation api case token has expired stepup_exp|403||success|stepup|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all
-Verify author validation api case token has expired sotp_sign 1|403||success|sotp|111111|SMS|TCINVEST|rest:POST|/tcbs-h2h-gw-biz/v1/stock/withdraw
-Verify author validation api case token has expired sotp_sign 2|403||success|sotp|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/register-with-authorized-firm
-Verify author validation api case token has otpSource HB and resource does not match|403||success|stepup|111111|SMS|HB|rest:POST|/iftrading/v2/order/cancel/all
-Verify author validation api case token has otpSource HB and resource does not match 2|403||success|stepup|111111|SMS|HB|rest:POST|/wealth-lending/v1/pawn/prepayment
-Verify author validation api case token has otpSource TCINVEST and resource does not match|403||success|stepup|111111|SMS|TCINVEST|rest:POST|/cd-trading/v2/orders/cds/create-sell-order
-Verify author validation api case token has otpSource TCINVEST and resource does not match 2|403||success|stepup|111111|SMS|TCINVEST|rest:POST|/wealth-lending/v1/pawn/prepayment
-Verify author validation api case token has otpSource WT and resource does not match|403||success|stepup|111111|SMS|WT|rest:POST|/cd-trading/v2/orders/cds/create-sell-order
-Verify author validation api case token has otpSource WT and resource does not match 2|403||success|stepup|111111|SMS|WT|rest:POST|/iftrading/v2/order/cancel/all
-Verify author validation api case action is empty|400|invalid input->action is required|success|stepup|111111|SMS|TCINVEST|empty|/iftrading/v2/order/cancel/all
-Verify author validation api case resource is empty|400|invalid input->resource is required|success|stepup|111111|SMS|TCINVEST|rest:POST|empty
-Verify author validation api case token has stepup_exp as negative digit|403||success|stepup|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all
+Verify author validation api case action is empty|400|invalid input->action is required|success|stepup_required|111111|SMS|TCINVEST|empty|/iftrading/v2/order/cancel/all
+Verify author validation api case resource is empty|400|invalid input->resource is required|success|stepup_required|111111|SMS|TCINVEST|rest:POST|empty
+Verify author validation api case token has stepup_exp as negative digit|403||success|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all
+Verify author validation api case token has otpSource HB and resource does not match|403||success|stepup_required|111111|SMS|HB|rest:POST|/iftrading/v2/order/cancel/all
+Verify author validation api case token has otpSource HB and resource does not match 2|403||success|stepup_required|111111|SMS|HB|rest:POST|/wealth-lending/v1/pawn/prepayment
+Verify author validation api case token has otpSource TCINVEST and resource does not match|403||success|sotp_required|111111|SMS|TCINVEST|rest:POST|/cd-trading/v2/orders/cds/create-sell-order
+Verify author validation api case token has otpSource TCINVEST and resource does not match 2|403||success|stepup_required|111111|SMS|TCINVEST|rest:POST|/wealth-lending/v1/pawn/prepayment
+Verify author validation api case token has otpSource WT and resource does not match|403||success|sotp_required|111111|SMS|WT|rest:POST|/cd-trading/v2/orders/cds/create-sell-order
+Verify author validation api case token has otpSource WT and resource does not match 2|403||success|stepup_required|111111|SMS|WT|rest:POST|/iftrading/v2/order/cancel/all
+Verify author validation api case token has wrong format|400|invalid input->token contains an invalid number of segments|suer|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all
+Verify author validation api case token is expired|400|invalid input->token is expried|eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzaXRfYXV0aGVuX3NlcnZpY2UiLCJleHAiOjE2NDc2NzIzODMsImp0aSI6IiIsImlhdCI6MTY0NzY2MTU4Mywic3ViIjoiMDAwMTY5Mzk5NyIsImN1c3RvZHlJRCI6IjEwNUM3OTM5OTciLCJlbWFpbCI6InR5dWk1NDY3QGdtYWlsLmNvbSIsInJvbGVzIjpbImN1c3RvbWVyIl0sInN0ZXB1cF9leHAiOjAsInNvdHBfc2lnbiI6IiIsImNsaWVudF9rZXkiOiJvN0kxaFR2QW5Wa3MwOUZBWXRrYzF3WldyTGx5N01wNSIsInNlc3Npb25JRCI6ImRjNDY5NzJjLTliMDAtNDU4NS04ODNmLTFkZDNkMWE3ZTdlZSIsImFjY291bnRfc3RhdHVzIjoiMSIsIm90cCI6IiIsIm90cFR5cGUiOiIiLCJvdHBTb3VyY2UiOiJUQ0lOVkVTVCJ9.uc-wByNMrg-kbl0fq2ltUb4_SQdxz0dEAzVWUDRqBAKd-DfxA74n8slEfSO6jsWLeehowlSmd6JbiDdaiOzz3Pj4aiKlhhuXqswCa7R-ueo0CygTmgL0VAnkAYfTK9LHjyTeksdYKEDK26d3k8UXeeu_7wNacsMon1EUb6vKGaPLIGqyKZmryrVgMU4yhuOPDuK8kAZgweaR1uMcBAqBvTlk_c8lTrhRDywCreeVKOO65zbbwlhMJAAm81S5Ky1pKdN6oNt0Y9XMPsNjCgYk0owadoXLVA7oqygGw18rmTyLuNZMDkwaopBU3sLlTlCvRUj5lZFQVv27NQ3v5LSnvw|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all
+Verify author validation api case token is empty|400|invalid input->require at least subjects or token in the request body|empty|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all
+Verify author validation api case token has expired stepup_exp 1|403||success|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all
+Verify author validation api case token has expired stepup_exp 2|403||success|stepup_required|111111|SMS|WT|rest:POST|/wealth-lending/v1/pawn/sign/123
+Verify author validation api case token has expired sotp_sign 1|403||success|sotp_required|111111|SMS|TCINVEST|rest:POST|/profile/v2/set_status_view_asset/123456789
+Verify author validation api case token has expired sotp_sign 2|403||success|sotp_required|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/create-sell-order
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/istock/v1/accounts/123/orders
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/istock/v1/accounts/123/ciTransfers
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/bpm/v1/startChangeMarginLimit
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:PUT|/profile/v1/profiles/123/p6d
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:PUT|/ifund/v1/orders/update
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:PUT|/ifund/v1/orders/cancel
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:PUT|/istock/v1/accounts/123/orders
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/istock/v1/accounts/123/orderConditions
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/istock/v1/accounts/123/advancePayments/123
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/istock/v1/accounts/123/seRetails
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/istock/v1/accounts/123/purchaseRights
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/bpm/v1/startExtendMarginLoan
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/ipro/v1/subscriptions/123/active
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/ifund/v1/orders
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:PUT|/ifund/v1/orders/changeProduct
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/ipro/v1/subscriptions/123/repush
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/ipro/v1/subscriptions
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:PUT|/ipro/v1/subscriptions/123/cancel
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/bond-trading/v1/orders/123/sign
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/otp/v1/common/totp/deconfig
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/iplan/v1/stable-income/save
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:PUT|/iplan/v1/stable-income/123
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:PUT|/iplan/v1/customers/plans/123
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:PUT|/iplan/v1/customers/plan/123/timeline/events
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/bpm/v1/jwtClient/startExtendMarginLoan
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/authen/v1/fingerprint/regist
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/iplan/v1/cbf
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:PUT|/iplan/v1/cbf/123/RUNNING
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/ifund/v2/tc3/orders
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:PUT|/ifund/v2/tc3/orders/changeProduct
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:PUT|/ifund/v2/tc3/orders/update
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:PUT|/ifund/v2/tc3/orders/cancel
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:PUT|/ifund/v2/tc3/orders/sip/stop
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:PUT|/ifund/v2/tc3/orders/sip/changeDate
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/iplan/v1/vlag/save
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/evoting/v1/votings/123/start
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/ipartner/v1/survey/portal/surveys/123/start
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/istock/v1/customers/123/unregIA
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/istock/v1/customers/123/changebankinfo
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/bpm/v1/jwtClient/DMPCreateDeliveryOrderWithOTP
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/tcbs-trading/v1/tradings/bff/partner-orders
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/excelltrade/v1/123/excel/upload
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/bpm-composite/v1/tci3/tci3SendMailInbox
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/tcbs-trading/v1/tradings/bff/bond/orders/123/sign
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/wealth/v1/execute
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:PUT|/iplan/v1/tcwealth/123
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:GET|/otp/v1/dummy/need_otp
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/anatta/v1/orders/stop
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/anatta/v1/orders/stop/123
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/ifund/v2/tc3/orders/multiple
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/ca/v1/register
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/ironman/v1/cashservices/exchange
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:DELETE|/iplan/v1/tcwealth/123
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/ironman/v1/partner/vinid/saleTransaction
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:DELETE|/istock/v1/accounts/123/orders
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:DELETE|/istock/v1/accounts/123/orderConditions
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:DELETE|/anatta/v1/orders/stop/123
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:DELETE|/anatta/v1/orders/multi-condition/123
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:DELETE|/istock-order-service/v1/PTOrders/123
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/istock-order-service/v1/PTOrders/123
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:PUT|/istock-order-service/v1/PTOrders/123
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:PUT|/tcbs-trading/v1/tradings/bff/bond/orders/123/cancel
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/anatta/v1/orders/multi-condition
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:PUT|/anatta/v1/orders/multi-condition/123
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/ifund/v2/tc3/orders/allocation
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/ipartnerj/v1/relation-cancel
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:PUT|/ipartnerj/v1/subscriber/123/relation/123/confirm
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:PUT|/asset-hub/v1/deposit/permission
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:PUT|/ifund/v2/tc3/orders/group/update
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/ifund/v2/tc3/orders/group/cancel
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/tcbs-trading/v1/tradings/bff/bond/normalized-orders/123/sign
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:PUT|/tcbs-trading/v1/tradings/bff/bond/normalized-orders/123/cancel
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:PUT|/iplan/v1/customers/fund-life-plan/auto-sell-fund
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/rounding-engine/v1/account/subscribe
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/rounding-engine/v1/account/unsubscribe
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/anatta/v1/orders/preorder
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:DELETE|/anatta/v1/orders/preorder/123
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:PUT|/investing-bundle/v1/orders/123/confirm
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:PUT|/investing-bundle/v1/orders/123/reject
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/icopy/relation/v1/traders/register
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/icopy/relation/v1/copiers/copy
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/icopy/relation/v1/copy/123/stop-copy
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/icopy/relation/v1/copy/123/topup
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/icopy/relation/v1/copy/123/withdraw
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/stock-gate/v1/market-orders/activate
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/ironman/v1/config-plan/create
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/ironman/v1/config-plan/change-status
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/ironman/v1/fund-order/buy
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/icopy/relation/v1/copy/123/topup-purchase-rights
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:PUT|/wealth/v1/wealths/123
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/rounding-engine/v1/miprofile/update-by-otp
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v1/order
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/ipwbiz-front/v1/account/isave
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v1/order/close/code
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v1/order/cancel
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v1/order/cancel/all
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v1/order/place
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v1/order/change
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v1/order/condition/cancel
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/icopy/relation/v1/traders/123/stop-trader
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v1/order/place/close/position
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v1/order/place/revert/position
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/ifund/v3/fund-plan/capital/create
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:PUT|/ifund/v3/fund-plan/capital/change
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:PUT|/ifund/v3/fund-plan/capital/cancel
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/bpm-composite/v1/depository/history
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v1/order/condition/change
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/bpm-composite/v1/statement/tci3/create-account-statement/hard
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v1/order/cancel-multi
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/tcbs-trading/v1/tradings/bff/bond/0001011809/orders/123/sign
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/ironman/v1/transfer-ixu
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/tcbs-h2h-gw-biz/v1/stock/withdraw$
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/profile/v2/set_status_view_asset/123
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/condition/change
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/iplan/v1/change/cbf
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:PUT|/iplan/v1/cbf/123/state
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/profile/v1/profiles/bank-ia-account/disconnect/123
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/profile/v1/profiles/bank-ia-account/update/123
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:PUT|/bpm-composite/v1/transference/123
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/survey/v1/123/start
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v1/order/condition/place
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/fcopy/relation/v1/copiers/copy
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/fcopy/relation/v1/copiers/123/top-up
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/fcopy/relation/v1/copiers/123/withdraw
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/fcopy/relation/v1/copiers/123/stop-copy
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/fcopy/relation/v1/traders/register
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/fcopy/relation/v1/traders/stop
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/profile/v2/session
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/flexguard-write/v1/accounts/123/loan-package-sub
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|WT|rest:POST|/wealth-lending/v1/pawn/sign/123
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|WT|rest:POST|/wealth-lending/v1/pawn/prepayment
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:GET|/isocias-gate/v1/tcinvest/getAccInfo
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/profile/v2/account-close/contract/sign
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/moka/v1/accounts/123/orders
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:PUT|/moka/v1/accounts//orders/123
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:PUT|/moka/v1/accounts/123/cancel-orders
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/profile/v1/profiles/bank-ia-account/isave/connect/123
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/moka/v1/accounts/123/advancePayments
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|WT|rest:POST|/tcbs-trading/v1/tradings/bff/tcwbond/orders/123/sign
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|WT|rest:POST|/tcbs-trading/v1/tradings/bff/tcwbond/orders/123/cancel
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/buy-personal-authorized
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/buy-direct-authorized
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/create-sell-order
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/register-with-authorized-firm
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|HB|rest:PUT|/cd-trading/v2/orders/cds/reject-order-in-authorized-flow
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/sell-cd-toolbox
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/create-direct-buy-order-toolbox
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/unregister-with-authorized-firm
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/register-sweeping
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/update-sweeping-info
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/cancel-register-sweeping
+Verify author validation api case success|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/place
+Verify author validation api case success|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/profile/v1/profiles/contract/sign/123
