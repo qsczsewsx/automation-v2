@@ -69,7 +69,7 @@ public class SearchBauHistoryTest {
     RequestSpecification requestSpecification = given()
       .baseUri(SEARCH_BAU_HISTORY)
       .header("Authorization", "Bearer " +
-        (testCaseName.contains("no permission") ? TCBSPROFILE_AUTHORIZATION : BACK_TOOL_BAU_KEY));
+        (testCaseName.contains("no permission") ? TCBSPROFILE_AUTHORIZATION : BAU_AUTHORIZATION_TOKEN));
 
     Response response;
 
