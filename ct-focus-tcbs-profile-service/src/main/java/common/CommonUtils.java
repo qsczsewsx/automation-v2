@@ -66,6 +66,9 @@ public class CommonUtils {
   private static final String STATUS = "status";
   private static final String ACCOUNT_TYPE = "accountType";
   private static final String ACCOUNT ="ACCOUNT";
+  private static final String START_DATETIME = "startDatetime";
+  private static final String ADDRESS = "address";
+  private static final String ACTOR = "actor";
 
   private static final ObTask obTask = new ObTask();
   private static Random rand = null;  // SecureRandom is preferred to Random
@@ -662,8 +665,8 @@ public class CommonUtils {
         assertEquals(covertDateToString(obTaskList.get(i).getCreatedDatetime()), convertTimestampToString(getResponseList.get(i).get("createdDatetime").toString()));
         assertEquals(obTaskList.get(i).getStatus(), getResponseList.get(i).get(STATUS));
         assertEquals(obTaskList.get(i).getKycStatus(), getResponseList.get(i).get("kycStatus"));
-        assertEquals(obTaskList.get(i).getActor(), getResponseList.get(i).get("actor"));
-        assertEquals(covertDateToString(obTaskList.get(i).getStartDatetime()), convertTimestampToString(getResponseList.get(i).get("startDatetime").toString()));
+        assertEquals(obTaskList.get(i).getActor(), getResponseList.get(i).get(ACTOR));
+        assertEquals(covertDateToString(obTaskList.get(i).getStartDatetime()), convertTimestampToString(getResponseList.get(i).get(START_DATETIME).toString()));
         if (getResponseList.get(i).get(END_DATETIME) != null) {
           assertEquals(covertTimeStampToStringDate(obTaskList.get(i).getEndDatetime()), convertTimestampToStringWithFormat(getResponseList.get(i).get(END_DATETIME), "dd/MM/yyyy HH:mm:ss"));
         }
@@ -754,7 +757,7 @@ public class CommonUtils {
     List<HashMap<String, Object>> policyItems = new ArrayList<>();
     LinkedHashMap<String, Object> policyItem1 = new LinkedHashMap<>();
     policyItem1.put("businessTitle", "Giám đốc điều hành");
-    policyItem1.put("startDatetime", startDatetime);
+    policyItem1.put(START_DATETIME, startDatetime);
     policyItem1.put(END_DATETIME, endDatetime);
     policyItem1.put("actions", actions);
     policyItem1.put(BE_ACTION, STR_CREATE);
@@ -775,7 +778,7 @@ public class CommonUtils {
     LinkedHashMap<String, Object> stakeHolder1 = new LinkedHashMap<>();
     stakeHolder1.put("companyName", "Công ty chứng khoán" + prepareValue.substring(4));
     stakeHolder1.put("companyIdNumber", "GPKD" + prepareValue);
-    stakeHolder1.put("address", "312 Bà Triệu, HBT");
+    stakeHolder1.put(ADDRESS, "312 Bà Triệu, HBT");
     stakeHolder1.put("capitalRatio", "51%");
     stakeHolder1.put("fromDate", "2021-08-30");
     stakeHolder1.put(BE_ACTION, STR_CREATE);
@@ -783,7 +786,7 @@ public class CommonUtils {
 
     HashMap<String, Object> hashMapBody = new HashMap<>();
     hashMapBody.put(FULL_NAME, fullName);
-    hashMapBody.put("address", address);
+    hashMapBody.put(ADDRESS, address);
     if (!testCaseName.contains("missing param identifications")) {
       hashMapBody.put("identifications", identifications);
     }
@@ -1211,5 +1214,49 @@ public class CommonUtils {
         status = null;
     }
     return status;
+  }
+  public static HashMap<String, Object> prepareDataAddUserToWblByFund(String fullName,
+                                                                      String address, String idNumber, String fundCode, String note,
+                                                                      String actor, String startDatetime, String endDatetime) {
+
+    List<HashMap<String, Object>> wblUsers = new ArrayList<>();
+    LinkedHashMap<String, Object> wblUser1 = new LinkedHashMap<>();
+    wblUser1.put(FULL_NAME, fullName);
+    wblUser1.put(ADDRESS, address);
+    wblUser1.put(ID_NUMBER, idNumber);
+    wblUser1.put("fundCode", fundCode);
+    wblUser1.put("note", note);
+    wblUser1.put(START_DATETIME, startDatetime);
+    wblUser1.put(END_DATETIME, endDatetime);
+    wblUsers.add(wblUser1);
+
+    HashMap<String, Object> hashMapBody = new HashMap<>();
+    hashMapBody.put(ACTOR, actor);
+    hashMapBody.put("wblUsers", wblUsers);
+
+    return hashMapBody;
+  }
+
+  public static HashMap<String, Object> prepareDataUpdateUserToWblByFund(String fullName,
+                                                                         String address, String idNumber, String fundCode, String note,
+                                                                         String actor, String startDatetime, String endDatetime, String wblUserId) {
+
+    List<HashMap<String, Object>> wblUsers = new ArrayList<>();
+    LinkedHashMap<String, Object> wblUser1 = new LinkedHashMap<>();
+    wblUser1.put(FULL_NAME, fullName);
+    wblUser1.put(ADDRESS, address);
+    wblUser1.put(ID_NUMBER, idNumber);
+    wblUser1.put("fundCode", fundCode);
+    wblUser1.put("note", note);
+    wblUser1.put(START_DATETIME, startDatetime);
+    wblUser1.put(END_DATETIME, endDatetime);
+    wblUser1.put("wblUserId", wblUserId);
+    wblUsers.add(wblUser1);
+
+    HashMap<String, Object> hashMapBody = new HashMap<>();
+    hashMapBody.put(ACTOR, actor);
+    hashMapBody.put("wblUsers", wblUsers);
+
+    return hashMapBody;
   }
 }
