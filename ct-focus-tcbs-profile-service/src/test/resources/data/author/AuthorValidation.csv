@@ -157,7 +157,7 @@ Verify author validation api case success policy moka 3|200|null|default|stepup_
 Verify author validation api case success policy profile 7|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/profile/v1/profiles/bank-ia-account/isave/connect/123
 Verify author validation api case success policy moka 4|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/moka/v1/accounts/123/advancePayments
 Verify author validation api case success policy tcbs-trading 7|200|null|default|sotp_required|111111|SMS|WT|rest:POST|/tcbs-trading/v1/tradings/bff/tcwbond/orders/123/sign
-Verify author validation api case success policy tcbs-trading 8|200|null|default|sotp_required|111111|SMS|WT|rest:POST|/tcbs-trading/v1/tradings/bff/tcwbond/orders/123/cancel
+Verify author validation api case success policy tcbs-trading 8|200|null|default|sotp_required|111111|SMS|WT|rest:PUT|/tcbs-trading/v1/tradings/bff/tcwbond/orders/123/cancel
 Verify author validation api case success policy cd-trading 1|200|null|default|sotp_required|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/buy-personal-authorized
 Verify author validation api case success policy cd-trading 2|200|null|default|sotp_required|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/buy-direct-authorized
 Verify author validation api case success policy cd-trading 3|200|null|default|sotp_required|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/create-sell-order
