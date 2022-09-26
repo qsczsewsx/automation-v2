@@ -3,6 +3,7 @@ package com.tcbs.automation.bauTool;
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.tcbs.automation.cas.TcbsUser;
+import com.tcbs.automation.cas.TcbsUserBook;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.Getter;
@@ -23,8 +24,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 @RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom(value = "data/bauTool/UpdateCustomerTypeBau.csv", separator = '|')
-public class UpdateCustomerTypeBauTest {
+@UseTestDataFrom(value = "data/bauTool/UpdateNoNumberBau.csv", separator = '|')
+public class UpdateNoNumberBauTest {
   @Getter
   private String testCaseName;
   private int statusCode;
@@ -32,23 +33,23 @@ public class UpdateCustomerTypeBauTest {
   private String actionKey;
   private String data;
   private String username;
-  private String cusType;
+  private String noNumber;
   private String note;
+  private String userId;
   private HashMap<String, Object> body;
-
 
   @Before
   public void setup() {
     actionKey = syncData(actionKey);
     data = syncData(data);
     username = syncData(username);
-    cusType = syncData(cusType);
+    noNumber = syncData(noNumber);
     note = syncData(note);
 
-    String str = "{\"username\":\"#username#\", \"cusType\":#cusType#}";
+    String str = "{\"username\":\"#username#\", \"noNumber\":\"#noNumber#\"}";
 
     if (!data.isEmpty()) {
-      data = str.replace("#username#", username).replace("#cusType#", cusType);
+      data = str.replace("#username#", username).replace("#noNumber#", noNumber);
     }
 
     body = new HashMap<>();
@@ -80,7 +81,8 @@ public class UpdateCustomerTypeBauTest {
     assertThat("verify status code", response.getStatusCode(), is(statusCode));
 
     if (testCaseName.contains("case valid")) {
-      assertThat("verify status", TcbsUser.getByUserName(username).getCustype().toString(), is("1"));
+      userId = TcbsUser.getByUserName(username).getId().toString();
+      assertThat("verify status", TcbsUserBook.getByUserIdAndType(userId, "OPEN").get(0).getNoNumber(), is(noNumber));
     } else if (statusCode == 403) {
       assertThat("verify error message", response.jsonPath().get("errorMessage"), is(errorMessage));
     } else {
@@ -91,7 +93,7 @@ public class UpdateCustomerTypeBauTest {
   @After
   public void teardown() {
     if (testCaseName.contains("case valid")) {
-      TcbsUser.updateCusType("0", username);
+      TcbsUserBook.updateNoNumber("Q80_37", userId, "OPEN");
     }
   }
 }
