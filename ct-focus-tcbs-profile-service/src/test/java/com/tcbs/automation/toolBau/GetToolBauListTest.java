@@ -34,8 +34,7 @@ public class GetToolBauListTest {
     Response response = given()
       .baseUri(GET_TOOL_BAU_LIST)
       .header("Authorization", "Bearer " +
-        (testCaseName.contains("no permission") ? TCBSPROFILE_AUTHORIZATION : BACK_TOOL_BAU_KEY))
-      .when()
+        (testCaseName.contains("no permission") ? TCBSPROFILE_AUTHORIZATION : BAU_AUTHORIZATION_TOKEN))
       .get();
 
     assertThat("verify status code", response.getStatusCode(), is(statusCode));

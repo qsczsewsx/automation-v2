@@ -7,7 +7,10 @@ import io.restassured.specification.RequestSpecification;
 
 import java.io.File;
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.*;
 import static com.tcbs.automation.tools.ConvertUtils.fileTxtToString;
@@ -431,4 +434,51 @@ public class CallApiUtils {
     return response;
   }
 
+  public static void callDeleteUserFromWblByFundApi(String wblUserId) {
+    HashMap<String, Object> body = new HashMap<>();
+    List<HashMap<String, Object>> wblUsers = new ArrayList<>();
+    LinkedHashMap<String, Object> wblUserId1 = new LinkedHashMap<>();
+    wblUserId1.put("wblUserId", wblUserId);
+    wblUsers.add(wblUserId1);
+    body.put("actor", "test");
+    body.put("wblUsers", wblUsers);
+    Response response = given()
+      .baseUri(DELETE_USER_FROM_WBL_LIST_FUND)
+      .contentType(APPLICATION_JSON)
+      .header(X_API_KEY, STP_X_API_KEY)
+      .body(body)
+      .post();
+
+    assertThat("verify status code", response.getStatusCode(), is(200));
+  }
+
+  public static void callAddUserToWblListFundApi(String fullName,
+                                                 String address, String idNumber, String fundCode, String note,
+                                                 String actor, String startDatetime, String endDatetime) {
+
+    HashMap<String, Object> body = CommonUtils.prepareDataAddUserToWblByFund(fullName, address, idNumber, fundCode,
+      note, actor, startDatetime, endDatetime);
+
+    Response response = given()
+      .baseUri(ADD_USER_TO_WBL_LIST_FUND)
+      .contentType(APPLICATION_JSON)
+      .header(X_API_KEY, STP_X_API_KEY)
+      .body(body)
+      .post();
+
+    assertThat(response.getStatusCode(), is(200));
+  }
+
+  public static void callPrepareUserToWblListFundApi() {
+    String body = fileTxtToString("src/test/resources/requestBody/PrepareUpdateUserToWblListFund.json");
+
+    Response response = given()
+      .baseUri(ADD_USER_TO_WBL_LIST_FUND)
+      .contentType(APPLICATION_JSON)
+      .header(X_API_KEY, STP_X_API_KEY)
+      .body(body)
+      .post();
+
+    assertThat(response.getStatusCode(), is(200));
+  }
 }
