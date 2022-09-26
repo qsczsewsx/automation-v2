@@ -383,5 +383,6 @@ public class TcbsProfileServiceConfig {
   //Backend Tool Bau
   public static final String GET_TOOL_BAU_LIST = conf.getString("tcbsprofile.getToolBauList");
   public static final String SEARCH_BAU_HISTORY = conf.getString("tcbsprofile.searchBauHistory");
+  public static final String UPDATE_CUSTOMER_TYPE = conf.getString("tcbsprofile.updateCustomerType");
 
 }

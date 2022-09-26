@@ -398,6 +398,24 @@ public class TcbsUser {
     }
   }
 
+  public static void updateCusType(String custype, String username) {
+    try {
+      Session session = CAS.casConnection.getSession();
+      session.clear();
+      if (!session.getTransaction().isActive()) {
+        session.beginTransaction();
+      }
+
+      Query<?> query = session.createQuery("UPDATE TcbsUser a SET a.custype=:custype WHERE a.username=:username");
+      query.setParameter("custype", new BigDecimal(custype));
+      query.setParameter(DATA_USERNAME, username);
+      query.executeUpdate();
+      session.getTransaction().commit();
+    } catch (Exception e) {
+      logger.info(e.getMessage());
+    }
+  }
+
   public String getFullName() {
     return lastname + " " + firstname;
   }
