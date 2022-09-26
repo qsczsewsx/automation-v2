@@ -2,7 +2,7 @@ testCaseName|params|paramValue|statusCode|errorMsg|fields
 Verify search customer info BE api case 200 with valid phone|phone|01292968616|200|""|null
 Verify search customer info BE api case 200 with valid 105c|code105c|105C088854|200|""|null
 Verify search customer info BE api case 200 with valid email|email|no_email_571260960@tcbs.com.vn|200|""|null
-Verify search customer info BE api case 200 with valid idNumber|idNumber|179522153|200|""|null
+Verify search customer info BE api case 200 with valid idNumber|idNumber|179522154|200|""|null
 Verify search customer info BE api case 200 with valid tcbsId|tcbsId|0001088854|200|""|null
 Verify search customer info BE api case 400 with missing param|paramNull|01292968616|400|Profile not found|null
 Verify search customer info BE api case 400 with param not as phone code105c email tcbsId or idNumber|phoneemail|01292968616|400|Profile not found|null
@@ -20,8 +20,9 @@ Verify search customer info BE api case 400 with value in param idNumber as spec
 Verify search customer info BE api case 400 with value in param tcbsId as 10000017777|tcbsId|10000017777|400|User's info not found|null
 Verify search customer info BE api case 400 with value in param tcbsId as text|tcbsId|tcbsId|400|User's info not found|null
 Verify search customer info BE api case 400 with value in param tcbsId as special words|tcbsId|#$#|400|User's info not found|null
-Verify search customer info BE api case 200 with account derivative is VSD activated|code105c|105C000082|200|return derivativeActivationDate|null
-Verify search customer info BE api case 200 with account is opened via NFM|code105c|105C041901|200|""|null
+Verify search customer info BE api case 200 with account derivative is VSD activated|code105c|105C000309|200|return derivativeActivationDate|null
+Verify search customer info BE api case 200 with account is opened via NFM|code105c|105C055653|200|""|null
 Verify search customer info BE api case 200 with account has task with status CANCELED|code105c|105C366217|200|""|null
 Verify search customer info BE api case 400 with fields is invalid|code105c|105C366217|500|""|abc
 Verify search customer info BE api case 200 with fields is basicInfo|code105c|105C088854|200|""|basicInfo
+Verify search customer info BE api case 200 with fields is basicInfo,personalInfo,bankSubAccounts,accountStatus,books,closeInfo|code105c|105C066294|200|""|basicInfo,personalInfo,bankSubAccounts,accountStatus,books,closeInfo

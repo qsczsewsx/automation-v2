@@ -368,6 +368,10 @@ public class TcbsProfileServiceConfig {
   public static final String PARTNERSHIP_CONFIRM = conf.getString("newonboardingPartnerShip.partnerShipConfirm");
   public static final String GET_INFO_BY_USERNAME = conf.getString("newonboardingPartnerShip.getInfoByUsername");
   public static final String RETURN_INFO_SOCIAS = conf.getString("newonboardingPartnerShip.returnInfoForSocias");
+  public static final String PARTNERSHIP_GET_HISTORY_IA = conf.getString("newonboardingPartnerShip.partnerShipGetHistoryIa");
+  public static final String PARTNERSHIP_GET_DETAIL = conf.getString("newonboardingPartnerShip.partnerShipGetDetail");
+  public static final String TCBS_ACCOUNT_CONFIRM = conf.getString("newonboardingPartnerShip.tcbsConfirmId");
+  public static final String TCBS_ACCOUNT_LINK = conf.getString("newonboardingPartnerShip.tcbsAccountLink");
 
   //Additional API
   public static final String SUGGEST_ID_PLACE = conf.getString("tcbsprofile.suggestIdPlace");
@@ -377,4 +381,8 @@ public class TcbsProfileServiceConfig {
   public static final String SEARCH_BY_CONDITION = conf.getString("tcbsprofile.searchByCondition");
   public static final String GET_INFO_BY_CONDITION = conf.getString("tcbsprofile.getInfoByCondition");
   public static final String UPDATE_INFO_CUSTOMER = conf.getString("tcbsprofile.updateInfoCustomer");
+
+  //BAU Tool
+  public static final String BAU_SEARCH_BANK_IA_INFO = conf.getString("BauTool.searchBankIaInfo");
+  public static final String BAU_AUTHORIZATION_TOKEN = conf.getString("tcbsprofile.bau-authorization-token");
 }
