@@ -55,7 +55,6 @@ public class TcbsProfileServiceConfig {
   public static final String MULTI_GET_BY_USERNAME = conf.getString("tcbsprofile.multiGetByUsername");
   public static final String MULTI_GET_ON_PROFILE_R = conf.getString("tcbsprofile.multiGetOnProfileR");
   public static final String GET_BANK_LIST_KYC_TASK = conf.getString("tcbsprofile.getBankListKycTask");
-  public static final String BACK_TOOL_BAU_KEY = conf.getString("tcbsprofile.backToolBau");
 
   public static final String GEN_CONTRACT_API = conf.getString("tcbsprofile.genContract");
   public static final String SIGN_CONTRACT_API = conf.getString("tcbsprofile.signContract");
@@ -384,8 +383,8 @@ public class TcbsProfileServiceConfig {
   public static final String UPDATE_INFO_CUSTOMER = conf.getString("tcbsprofile.updateInfoCustomer");
 
   //BAU Tool
-  public static final String BAU_SEARCH_BANK_IA_INFO = conf.getString("BauTool.searchBankIaInfo");
   public static final String BAU_AUTHORIZATION_TOKEN = conf.getString("tcbsprofile.bau-authorization-token");
-  public static final String GET_TOOL_BAU_LIST = conf.getString("tcbsprofile.getToolBauList");
+  public static final String BAU_SEARCH_BANK_IA_INFO = conf.getString("bauTool.searchBankIaInfo");
+  public static final String GET_TOOL_BAU_LIST = conf.getString("bauTool.getToolBauList");
 
 }
