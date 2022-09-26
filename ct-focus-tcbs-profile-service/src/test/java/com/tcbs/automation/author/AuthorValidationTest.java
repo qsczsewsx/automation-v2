@@ -54,8 +54,6 @@ public class AuthorValidationTest {
 
   private final String WT = "WT";
 
-  private final String IS_ALLOWED = "is_allowed";
-
 
   @Before
   public void before() {
@@ -71,6 +69,7 @@ public class AuthorValidationTest {
     System.out.println("TestcaseName : " + testCaseName);
 
     Response response = callApi();
+    String IS_ALLOWED = "is_allowed";
     if (testCaseName.contains("case success")) {
       assertThat("verify is_allowed", response.jsonPath().get(IS_ALLOWED).toString().trim(), is("false"));
       assertThat("verify X-Author", response.getHeader("X-Author"), is(type));
