@@ -1,4 +1,4 @@
-package com.tcbs.automation.toolBau;
+package com.tcbs.automation.bauTool;
 
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
@@ -23,7 +23,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 @RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom(value = "data/toolBau/UpdateCustomerTypeBau.csv", separator = '|')
+@UseTestDataFrom(value = "data/bauTool/UpdateCustomerTypeBau.csv", separator = '|')
 public class UpdateCustomerTypeBauTest {
   @Getter
   private String testCaseName;
@@ -67,7 +67,7 @@ public class UpdateCustomerTypeBauTest {
     RequestSpecification requestSpecification = given()
       .baseUri(UPDATE_CUSTOMER_TYPE)
       .header("Authorization", "Bearer " +
-        (testCaseName.contains("no permission") ? TCBSPROFILE_AUTHORIZATION : BACK_TOOL_BAU_KEY));
+        (testCaseName.contains("no permission") ? TCBSPROFILE_AUTHORIZATION : BAU_AUTHORIZATION_TOKEN));
 
     Response response;
 

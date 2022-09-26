@@ -1,4 +1,4 @@
-package com.tcbs.automation.toolBau;
+package com.tcbs.automation.bauTool;
 
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
@@ -23,7 +23,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 @RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom(value = "data/toolBau/SearchBauHistory.csv", separator = '|')
+@UseTestDataFrom(value = "data/bauTool/SearchBauHistory.csv", separator = '|')
 public class SearchBauHistoryTest {
   @Getter
   private String testCaseName;
