@@ -383,6 +383,10 @@ public class TcbsProfileServiceConfig {
   public static final String UPDATE_INFO_CUSTOMER = conf.getString("tcbsprofile.updateInfoCustomer");
 
   //BAU Tool
-  public static final String BAU_SEARCH_BANK_IA_INFO = conf.getString("BauTool.searchBankIaInfo");
   public static final String BAU_AUTHORIZATION_TOKEN = conf.getString("tcbsprofile.bau-authorization-token");
+  public static final String BAU_SEARCH_BANK_IA_INFO = conf.getString("bauTool.searchBankIaInfo");
+  public static final String GET_TOOL_BAU_LIST = conf.getString("bauTool.getToolBauList");
+  public static final String SEARCH_BAU_HISTORY = conf.getString("bauTool.searchBauHistory");
+  public static final String UPDATE_CUSTOMER_TYPE = conf.getString("bauTool.updateCustomerType");
+
 }
