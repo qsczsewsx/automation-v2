@@ -1,5 +1,6 @@
 testCaseName|statusCode|errorMessage|token|type|otp|otpType|otpSource|action|resource
 Verify author validation api case missing BODY|400|invalid format|||||||
+Verify author validation api case upper path|403|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/profile/v1/profiles/Contract/Sign/123
 Verify author validation api case action is empty|400|invalid input->action is required|success|stepup_required|111111|SMS|TCINVEST|empty|/iftrading/v2/order/cancel/all
 Verify author validation api case resource is empty|400|invalid input->resource is required|success|stepup_required|111111|SMS|TCINVEST|rest:POST|empty
 Verify author validation api case token has stepup_exp as negative digit|403||success|stepup_required|111111|SMS|TCINVEST|rest:POST|/iftrading/v2/order/cancel/all
