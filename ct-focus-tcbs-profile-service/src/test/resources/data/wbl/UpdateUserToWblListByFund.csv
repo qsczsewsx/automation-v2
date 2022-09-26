@@ -1,31 +1,32 @@
 testCaseName|statusCode|errorMessage|fullName|address|idNumber|fundCode|note|actor|startDatetime|endDatetime|wblUserId
-Verify update user to wbl list fund case for valid request|200|null|fullName|address|idNumber|fundCode|note|actor|startDatetime|endDatetime|wblUserId
+Verify update user to wbl list fund case for valid request|200|null|Trịnh Thị Hoài Linh|Thanh Xuân, Hà Nội| Hà Nội|fundCode|note|actor|startDatetime|endDatetime|wblUserId
 Verify update user to wbl list fund case invalid x-api-key|401|Invalid X-Api-Key|""|""|""|""|""|""|""|""|""
 Verify update user to wbl list fund case missing body|400|Invalid parameter|""|""|""|""|""|""|""|""|""
-Verify update user to wbl list fund case missing wblUserId |400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|2021-09-01|2022-09-30|""
-Verify update user to wbl list fund case missing idNumber |400|wblUser not found|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|""|TCBF|empty|bpm|2021-09-01|2022-09-30|1638
-Verify update user to wbl list fund case missing fullName |400|Invalid parameter|""|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|2021-09-01|2022-09-30|1638
-Verify update user to wbl list fund case missing address |400|Invalid parameter|Hồ Thủy Anh|""|idNumber|TCBF|NNB_NLQ.TCS|bpm|2021-09-01|2022-09-30|1638
-Verify update user to wbl list fund case missing fundCode |400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|""|NNB_NLQ.TCS|bpm|2021-09-01|2022-09-30|1638
-Verify update user to wbl list fund case missing startDatetime |400|(startDateTime, endDateTime) is required|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|#@|bpm|""|2022-09-30|1638
-Verify update user to wbl list fund case missing endDatetime |400|(startDateTime, endDateTime) is required|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCC99|bpm|2021-09-01|""|1638
-Verify update user to wbl list fund case wblUserId not exsit|400|wblUser not found|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|2021-09-01|2022-09-30|18221111
-Verify update user to wbl list fund case startDatetime as text|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|ghj|2022-09-30|1638
-Verify update user to wbl list fund case startDatetime as special word|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|%^|2022-09-30|1638
-Verify update user to wbl list fund case startDatetime as D/M/YY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|3/2/21|2022-09-30|1638
-Verify update user to wbl list fund case startDatetime as D/M/YYYY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|3/2/2021|2022-09-30|1638
-Verify update user to wbl list fund case startDatetime as DD/MM/YY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|25/02/21|2022-09-30|1638
-Verify update user to wbl list fund case startDatetime as DD/MM/YYYY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|25/02/2021|2022-09-30|1638
-Verify update user to wbl list fund case startDatetime as MM/DD/YY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|02/25/21|2022-09-30|1638
-Verify update user to wbl list fund case startDatetime as MM/DD/YYYY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|02/25/2021|2022-09-30|1638
-Verify update user to wbl list fund case startDatetime as YYYY/MM/DD|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|2021/02/25|2022-09-30|1638
-Verify update user to wbl list fund case endDatetime as text|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|2021-09-01|iop|1638
-Verify update user to wbl list fund case endDatetime as special word|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|2021-09-01|%^|1638
-Verify update user to wbl list fund case endDatetime as D/M/YY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|2021-09-01|3/7/21|1638
-Verify update user to wbl list fund case endDatetime as D/M/YYYY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|2021-09-01|3/7/2021|1638
-Verify update user to wbl list fund case endDatetime as DD/MM/YY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|2021-09-01|25/07/21|1638
-Verify update user to wbl list fund case endDatetime as DD/MM/YYYY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|2021-09-01|25/07/2021|1638
-Verify update user to wbl list fund case endDatetime as MM/DD/YY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|2021-09-01|07/25/21|1638
-Verify update user to wbl list fund case endDatetime as MM/DD/YYYY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|2021-09-01|07/25/2021|1638
-Verify update user to wbl list fund case endDatetime as YYYY/MM/DD|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|2021-09-01|2021/07/25|1638
-Verify update user to wbl list fund case startDatetime is greater than endDatetime|400|startDateTime, endDateTime|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCS|bpm|2021-09-01|2022-09-30|1638
+Verify update user to wbl list fund case missing wblUserId |200|wblUserId invalid|Trần Xuân Hải|Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|2021-09-01|2022-09-30|""
+Verify update user to wbl list fund case missing idNumber |200|wblUser not found|Trần Xuân Hải|Thanh Xuân, Hà Nội|""|TCBF|empty|bpm|2021-09-01|2022-09-30|2128
+Verify update user to wbl list fund case missing fullName |200|Invalid parameter|""|Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|2021-09-01|2022-09-30|2128
+Verify update user to wbl list fund case missing address |200|Invalid parameter|Trần Xuân Hải|""|idNumber|TCBF|test|bpm|2021-09-01|2022-09-30|2128
+Verify update user to wbl list fund case missing fundCode |200|fundCode invalid|Trần Xuân Hải|Thanh Xuân, Hà Nội|idNumber|""|test|bpm|2021-09-01|2022-09-30|2128
+Verify update user to wbl list fund case missing startDatetime |200|(startDateTime, endDateTime) is required|Trần Xuân Hải|Thanh Xuân, Hà Nội|idNumber|TCBF|#@|bpm|""|2022-09-30|2128
+Verify update user to wbl list fund case missing endDatetime |200|(startDateTime, endDateTime) is required|Trần Xuân Hải|Thanh Xuân, Hà Nội|idNumber|TCBF|NNB_NLQ.TCC99|bpm|2021-09-01|""|2128
+Verify update user to wbl list fund case wblUserId not exsit|200|fundCode invalid|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|2021-09-01|2022-09-30|18221111
+Verify update user to wbl list fund case startDatetime as text|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|ghj|2022-09-30|2128
+Verify update user to wbl list fund case startDatetime as special word|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|%^|2022-09-30|2128
+Verify update user to wbl list fund case startDatetime as D/M/YY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|3/2/21|2022-09-30|2128
+Verify update user to wbl list fund case startDatetime as D/M/YYYY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|3/2/2021|2022-09-30|2128
+Verify update user to wbl list fund case startDatetime as DD/MM/YY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|25/02/21|2022-09-30|2128
+Verify update user to wbl list fund case startDatetime as DD/MM/YYYY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|25/02/2021|2022-09-30|2128
+Verify update user to wbl list fund case startDatetime as MM/DD/YY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|02/25/21|2022-09-30|2128
+Verify update user to wbl list fund case startDatetime as MM/DD/YYYY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|02/25/2021|2022-09-30|2128
+Verify update user to wbl list fund case startDatetime as YYYY/MM/DD|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|2021/02/25|2022-09-30|2128
+Verify update user to wbl list fund case endDatetime as text|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|2021-09-01|iop|2128
+Verify update user to wbl list fund case endDatetime as special word|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|2021-09-01|%^|2128
+Verify update user to wbl list fund case endDatetime as D/M/YY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|2021-09-01|3/7/21|2128
+Verify update user to wbl list fund case endDatetime as D/M/YYYY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|2021-09-01|3/7/2021|2128
+Verify update user to wbl list fund case endDatetime as DD/MM/YY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|2021-09-01|25/07/21|2128
+Verify update user to wbl list fund case endDatetime as DD/MM/YYYY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|2021-09-01|25/07/2021|2128
+Verify update user to wbl list fund case endDatetime as MM/DD/YY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|2021-09-01|07/25/21|2128
+Verify update user to wbl list fund case endDatetime as MM/DD/YYYY|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|2021-09-01|07/25/2021|2128
+Verify update user to wbl list fund case endDatetime as YYYY/MM/DD|400|Invalid parameter|Hồ Thủy Anh|18 Nguyễn Tuân, Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|2021-09-01|2021/07/25|2128
+Verify update user to wbl list fund case startDatetime is greater than endDatetime|200|startDateTime, endDateTime|Trần Xuân Hải|Thanh Xuân, Hà Nội|idNumber|TCBF|test|bpm|2022-09-01|2021-09-30|2128
+Verify update user to wbl list fund case idNumber is exsited|200|idNumber existed|Trần Xuân Hải|Thanh Xuân, Hà Nội|263745658729|TCBF|test|fund|2021-09-01|2022-09-30|2128

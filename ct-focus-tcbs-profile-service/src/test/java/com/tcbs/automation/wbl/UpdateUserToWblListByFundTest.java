@@ -2,7 +2,6 @@ package com.tcbs.automation.wbl;
 
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
-import com.tcbs.automation.cas.WblPolicyUser;
 import com.tcbs.automation.cas.WblUser;
 import com.tcbs.automation.cas.WblUserIdentification;
 import common.CallApiUtils;
@@ -21,6 +20,8 @@ import org.junit.runner.RunWith;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.*;
 import static com.tcbs.automation.tools.ConvertUtils.fileTxtToString;
@@ -75,7 +76,7 @@ public class UpdateUserToWblListByFundTest {
 
       validBody = fileTxtToString("src/test/resources/requestBody/UpdateUserToWblListFund.json")
         .replaceAll("#wblUserId1#", String.valueOf(wblUserIdDecimal))
-        .replaceAll("#idNumber1#", "2" + idNumber.substring(1));
+        .replaceAll("#idNumber1#", idNumber);
 
     } else {
       hashMapBody = CommonUtils.prepareDataUpdateUserToWblByFund(fullName, address, idNumber, fundCode,
@@ -107,11 +108,14 @@ public class UpdateUserToWblListByFundTest {
     assertThat("verify status code", response.getStatusCode(), is(statusCode));
 
     if (statusCode == 200) {
-      if (!testCaseName.contains("case for valid request")) {
+      if (testCaseName.contains("case for valid request")) {
         WblUser wblUser = WblUser.getByIdNumber(idNumber);
         assertThat(wblUser.getFullName(), is(fullName));
         assertThat(wblUser.getAddress(), is(address));
         assertThat(WblUserIdentification.getByWblUserId(wblUser.getId()).get(0).getIdNumber(), is(idNumber));
+      } else {
+        List<Map<String, Object>> result = response.jsonPath().get("");
+        assertThat("verify error message", result.get(0).get("errorMessage").toString(), is(containsString(errorMessage)));
       }
     } else {
       assertThat("verify error message", response.jsonPath().get("message"), is(containsString(errorMessage)));

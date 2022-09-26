@@ -1,7 +1,8 @@
 package com.tcbs.automation.wbl;
 
-
 import com.adaptavist.tm4j.junit.annotation.TestCase;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tcbs.automation.cas.WblPolicyUser;
 import com.tcbs.automation.cas.WblUser;
 import com.tcbs.automation.cas.WblUserIdentification;
@@ -9,7 +10,7 @@ import common.CallApiUtils;
 import common.CommonUtils;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import lombok.Getter;
+import lombok.*;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Title;
 import net.thucydides.junit.annotations.UseTestDataFrom;
@@ -21,8 +22,7 @@ import org.junit.runner.RunWith;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.*;
 
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.*;
 import static com.tcbs.automation.tools.ConvertUtils.fileTxtToString;
@@ -50,10 +50,11 @@ public class AddUserToWblListByFundTest {
   private HashMap<String, Object> hashMapBody;
   private String validBody;
   private String prepareValue;
+  private List<WblUserData> users;
 
   @Before
-  public void setup() {
-
+  public void setup() throws JsonProcessingException {
+    users = new ArrayList<>();
     actor = syncData(actor);
     fundCode = syncData(fundCode);
     note = syncData(note);
@@ -73,9 +74,20 @@ public class AddUserToWblListByFundTest {
       validBody = fileTxtToString("src/test/resources/requestBody/AddUserToWblListByFund.json")
         .replaceAll("#idNumber1#", idNumber)
         .replaceAll("#idNumber2#", "2" + idNumber.substring(1));
+      ObjectMapper mapper = new ObjectMapper();
+      users = mapper.readValue(validBody, WblUserInput.class).getWblUsers();
     } else {
       hashMapBody = CommonUtils.prepareDataAddUserToWblByFund(fullName, address, idNumber, fundCode,
         note, actor, startDatetime, endDatetime);
+      users.add(WblUserData.builder()
+        .idNumber(idNumber)
+        .address(address)
+        .fullName(fullName)
+        .fundCode(fundCode)
+        .note(note)
+        .startDatetime(startDatetime)
+        .endDatetime(endDatetime)
+        .build());
     }
   }
 
@@ -102,18 +114,22 @@ public class AddUserToWblListByFundTest {
     assertThat("verify status code", response.getStatusCode(), is(statusCode));
 
     if (statusCode == 200) {
-      if (!testCaseName.contains("by fund with valid request")) {
-        WblUser wblUser = WblUser.getByIdNumber(idNumber);
-        WblPolicyUser wblPolicyUser = WblPolicyUser.getByWblUserId(wblUser.getId());
-        assertThat(wblPolicyUser.getStartDatetime(), is(Timestamp.valueOf(
-          LocalDateTime.parse(startDatetime + " 00:00",
-            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))));
-        assertThat(wblPolicyUser.getEndDatetime(), is(Timestamp.valueOf(
-          LocalDateTime.parse(endDatetime + " 00:00",
-            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))));
-        assertThat(wblUser.getFullName(), is(fullName));
-        assertThat(wblUser.getAddress(), is(address));
-        assertThat(WblUserIdentification.getByWblUserId(wblUser.getId()).get(0).getIdNumber(), is(idNumber));
+      if (errorMessage.equalsIgnoreCase("null")) {
+        for (WblUserData user : users) {
+          WblUser wblUser = WblUser.getByIdNumber(user.getIdNumber());
+          WblPolicyUser wblPolicyUser = WblPolicyUser.getByWblUserId(wblUser.getId());
+          assertThat(wblPolicyUser.getStartDatetime(), is(Timestamp.valueOf(
+            LocalDateTime.parse(user.getStartDatetime() + " 00:00",
+              DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))));
+          assertThat(wblPolicyUser.getEndDatetime(), is(Timestamp.valueOf(
+            LocalDateTime.parse(user.getEndDatetime() + " 00:00",
+              DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))));
+          assertThat(wblUser.getFullName(), is(user.getFullName()));
+          assertThat(WblUserIdentification.getByWblUserId(wblUser.getId()).get(0).getIdNumber(), is(user.getIdNumber()));
+        }
+      } else {
+        List<Map<String, Object>> result = response.jsonPath().get("");
+        assertThat("verify error message", result.get(0).get("errorMessage").toString(), is(containsString(errorMessage)));
       }
     } else {
       assertThat("verify error message", response.jsonPath().get("message"), is(containsString(errorMessage)));
@@ -122,8 +138,33 @@ public class AddUserToWblListByFundTest {
 
   @After
   public void clearData() {
-    if (statusCode == 200) {
+    if (statusCode == 200 && errorMessage.equalsIgnoreCase("null")) {
       CallApiUtils.callDeleteUserFromWblByFundApi(WblUserIdentification.getByIdNumber(idNumber).getWbluserId().toString());
     }
   }
+}
+
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+class WblUserInput {
+  private String actor;
+  private List<WblUserData> wblUsers;
+}
+
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+class WblUserData {
+  private String idNumber;
+  private String fullName;
+  private String address;
+  private String fundCode;
+  private String startDatetime;
+  private String endDatetime;
+  private String note;
 }
