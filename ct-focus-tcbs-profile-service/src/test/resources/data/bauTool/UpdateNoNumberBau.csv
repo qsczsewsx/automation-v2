@@ -5,5 +5,6 @@ Verify update no number api case data is empty|200|Body data is invalid|UPDATE_N
 Verify update no number api case invalid actionKey|400|action key is invalid|ABCXYZ|valid|105C423022|Q9999_01|update fail
 Verify update no number api case username is empty|200|username is required|UPDATE_NUMBER_BOOK_SAVE|invalid|empty|Q9999_01|update fail
 Verify update no number api case invalid username|200|Profile not found!|UPDATE_NUMBER_BOOK_SAVE|invalid|105C111LLL|Q9999_01|update fail
+Verify update no number api case noNumber is empty|200|noNumber is required|UPDATE_NUMBER_BOOK_SAVE|invalid|105C423022|empty|update fail
 Verify update no number api case missing BODY|400|Invalid parameter|empty|empty|empty|empty|update fail
 Verify update no number api case user has no permission|403|Not Authorized|UPDATE_NUMBER_BOOK_SAVE|valid|105C423022|Q9999_01|update fail
