@@ -77,5 +77,4 @@ public class GetListIaApprovedBauTest {
       assertThat("verify error message", response.jsonPath().get("message"), is(errorMessage));
     }
   }
-
 }
