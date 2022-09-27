@@ -60,7 +60,7 @@ public class UpdateNoNumberBauTest {
 
   @Test
   @TestCase(name = "#testCaseName")
-  @Title("Verify api update customer type")
+  @Title("Verify api update no number")
   public void performTest() {
 
     System.out.println("Test case name: " + testCaseName);
@@ -82,7 +82,7 @@ public class UpdateNoNumberBauTest {
 
     if (testCaseName.contains("case valid")) {
       userId = TcbsUser.getByUserName(username).getId().toString();
-      assertThat("verify status", TcbsUserBook.getByUserIdAndType(userId, "OPEN").get(0).getNoNumber(), is(noNumber));
+      assertThat("verify noNumber", TcbsUserBook.getByUserIdAndType(userId, "OPEN").get(0).getNoNumber(), is(noNumber));
     } else if (statusCode == 403) {
       assertThat("verify error message", response.jsonPath().get("errorMessage"), is(errorMessage));
     } else {
