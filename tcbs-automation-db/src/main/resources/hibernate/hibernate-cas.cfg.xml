@@ -84,5 +84,6 @@
         <mapping class="com.tcbs.automation.cas.TcbsPartnerShip"/>
         <mapping class="com.tcbs.automation.cas.Oauth2RegisteredClient"/>
         <mapping class="com.tcbs.automation.cas.Oauth2RefreshToken"/>
+        <mapping class="com.tcbs.automation.cas.TcbsPartnerShipConfirm"/>
     </session-factory>
 </hibernate-configuration>

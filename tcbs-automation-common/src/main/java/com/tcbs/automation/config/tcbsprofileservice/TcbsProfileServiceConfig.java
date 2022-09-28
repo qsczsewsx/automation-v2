@@ -140,6 +140,9 @@ public class TcbsProfileServiceConfig {
   public static final String GET_ACTION_ORG_LIST = conf.getString("tcbsprofile.getActionOrgList");
   public static final String GET_WBL_USER_DETAIL = conf.getString("tcbsprofile.getWblUserDetail");
   public static final String GET_WBL_USER_LIST = conf.getString("tcbsprofile.getWblUserList");
+  public static final String ADD_USER_TO_WBL_LIST_FUND = conf.getString("tcbsprofile.addUserToWblListFund");
+  public static final String DELETE_USER_FROM_WBL_LIST_FUND = conf.getString("tcbsprofile.deleteUserFromWblListFund");
+  public static final String UPDATE_USER_TO_WBL_LIST_FUND = conf.getString("tcbsprofile.updateUserToWblListFund");
 
   public static final String TCBSPROFILE_SPECIALWBLKEY = conf.getString("tcbsprofile.specialWblKey");
   public static final String TCBSPROFILE_NORMALWBLKEY = conf.getString("tcbsprofile.normalWblKey");
@@ -367,6 +370,8 @@ public class TcbsProfileServiceConfig {
   public static final String RETURN_INFO_SOCIAS = conf.getString("newonboardingPartnerShip.returnInfoForSocias");
   public static final String PARTNERSHIP_GET_HISTORY_IA = conf.getString("newonboardingPartnerShip.partnerShipGetHistoryIa");
   public static final String PARTNERSHIP_GET_DETAIL = conf.getString("newonboardingPartnerShip.partnerShipGetDetail");
+  public static final String TCBS_ACCOUNT_CONFIRM = conf.getString("newonboardingPartnerShip.tcbsConfirmId");
+  public static final String TCBS_ACCOUNT_LINK = conf.getString("newonboardingPartnerShip.tcbsAccountLink");
 
   //Additional API
   public static final String SUGGEST_ID_PLACE = conf.getString("tcbsprofile.suggestIdPlace");
@@ -376,4 +381,8 @@ public class TcbsProfileServiceConfig {
   public static final String SEARCH_BY_CONDITION = conf.getString("tcbsprofile.searchByCondition");
   public static final String GET_INFO_BY_CONDITION = conf.getString("tcbsprofile.getInfoByCondition");
   public static final String UPDATE_INFO_CUSTOMER = conf.getString("tcbsprofile.updateInfoCustomer");
+
+  //BAU Tool
+  public static final String BAU_SEARCH_BANK_IA_INFO = conf.getString("BauTool.searchBankIaInfo");
+  public static final String BAU_AUTHORIZATION_TOKEN = conf.getString("tcbsprofile.bau-authorization-token");
 }
