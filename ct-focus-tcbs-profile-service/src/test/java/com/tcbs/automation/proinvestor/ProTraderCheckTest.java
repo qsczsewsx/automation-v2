@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.PRO_TRADER_CHECK;
@@ -89,6 +90,11 @@ public class ProTraderCheckTest {
       Map<String, Object> result = response.jsonPath().get();
       for (String item : str.split(",", -1)) {
         assertThat(result.keySet(), hasItem(item));
+      }
+      assertThat(result.get("isProTrader"), anyOf(is("0"), is("1")));
+      if (result.get("isProTrader").equals("1")) {
+        List<String> proTraderType = response.jsonPath().get("proTraderType");
+        assertThat(proTraderType.size(), greaterThan(0));
       }
     } else if (statusCode == 400) {
       assertThat("verify error message", response.jsonPath().get("message"), containsString(errorMessage));
