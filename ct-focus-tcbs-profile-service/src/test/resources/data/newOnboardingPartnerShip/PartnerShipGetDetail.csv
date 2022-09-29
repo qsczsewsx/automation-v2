@@ -1,0 +1,6 @@
+testCaseName|statusCode|username|errorMsg
+Verify partnership get detail case 200 valid|200|105C165717|
+Verify partnership get detail case 403 user has no permission|403|105C165717|Not Authorized
+Verify partnership get detail case 400 missing param username|400|null|Missing request parameter
+Verify partnership get detail case 400 username is empty|400|empty|Profile not found
+Verify partnership get detail case 200 with username is invalid|200|105C999999|Profile not found

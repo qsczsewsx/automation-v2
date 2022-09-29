@@ -1,0 +1,9 @@
+testCaseName|statusCode|tcbsId|errorMessage|changeType
+Verify api bpm trigger update info with invalid x-api-key|401|""|Invalid X-Api-Key|""
+Verify api bpm trigger update info with missing body|400|""|Invalid parameter|""
+Verify api bpm trigger update info with missing tcbsId|200|""|""|bankAccounts
+Verify api bpm trigger update info with missing changeType|200|0001802899|""|""
+Verify api bpm trigger update info with tcbsId not exsit|200|0001802899876|""|bankAccounts
+Verify api bpm trigger update info with changeType not exsit|200|0001802899|""|bankfffAccounts
+Verify api bpm trigger update info with multi changeType|200|0001802899|""|bankAccounts,phoneNumber
+Verify api bpm trigger update info with tcbsId is text|200|aaa|""|bankAccounts
