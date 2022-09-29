@@ -101,14 +101,14 @@ public class RegisterUploadOtherTest {
     }
 
     assertEquals(statusCode, response.getStatusCode());
-    if (statusCode != 403) {
-      assertEquals(errorMessage, response.jsonPath().get("message"));
-      if (statusCode == 200) {
-        tuoqId = TcbsUserOpenAccountQueue.getByPhone(referenceId.substring(0, 12)).getId().toString();
-        for (int i = 0; i < fileList.size(); i++) {
-          assertThat(TcbsUserOpenAccountQueueUpload.getByTuoqIdAndFileType(tuoqId, "SCAN_OTHER_ID_IMAGE_FRONT").get(i).getId(), is(notNullValue()));
-        }
+
+    if (statusCode == 200) {
+      tuoqId = TcbsUserOpenAccountQueue.getByPhone(referenceId.substring(0, 12)).getId().toString();
+      for (int i = 0; i < fileList.size(); i++) {
+        assertThat(TcbsUserOpenAccountQueueUpload.getByTuoqIdAndFileType(tuoqId, "SCAN_OTHER_ID_IMAGE_FRONT").get(i).getId(), is(notNullValue()));
       }
+    } else {
+      assertEquals(errorMessage, response.jsonPath().get("message"));
     }
   }
 

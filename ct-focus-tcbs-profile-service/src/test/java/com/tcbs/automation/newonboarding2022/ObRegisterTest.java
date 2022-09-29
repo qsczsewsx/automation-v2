@@ -269,9 +269,6 @@ public class ObRegisterTest {
     }
 
     assertThat("verify status code", response.getStatusCode(), is(statusCode));
-    if (statusCode == 400) {
-      assertThat("verify error message", response.jsonPath().get("message"), is(errorMessage));
-    }
 
     if (statusCode == 200) {
       assertThat(response.jsonPath().get("loginKey"), is(notNullValue()));
@@ -287,6 +284,8 @@ public class ObRegisterTest {
       assertThat(TcbsBankAccount.getBank(userId).getBankAccountNo(), is(accountNo));
       assertThat(TcbsApplicationUser.getByTcbsApplicationUserAppId2(userId, "2"), is(notNullValue()));
       assertThat(TcbsNewOnboardingStatus.getByUserIdAndStatusKey(userId, "ID_STATUS").getStatusValue(), is("WAIT_FOR_VERIFY"));
+    } else {
+      assertThat("verify error message", response.jsonPath().get("message"), is(errorMessage));
     }
 
   }

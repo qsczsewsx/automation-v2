@@ -3,10 +3,10 @@ Verify api register upload other case success upload a file|200|Upload identity 
 Verify api register upload other case success upload two files|200|Upload identity success|+84565980041F20072022145154|gen|2
 Verify api register upload other case success upload four files|200|Upload identity success|+84565980041F20072022145154|gen|4
 Verify api register upload other case missing referenceId|400|RefId is invalid|empty|ea3a50a99e5d202b889bdf2ffd93a318e0ecee3603adcdca544595444053ea8a|1
-Verify api register upload other case missing authenKey|403|Forbidden|+84565980041F20072022145154|empty|1
-Verify api register upload other with invalid referenceId|400|RefId is invalid|+84342345207F15072022163312|ea3a50a99e5d202b889bdf2ffd93a318e0ecee3603adcdca544595444053ea8a|1
-Verify api register upload other with invalid authenKey|400|RefId is invalid|+84565980041F20072022145154|ac3a50a99e5d202b889bdf2ffd93a31d3441233|1
-Verify api register upload other case authenKey expired|403|Forbidden|+84565980041F20072022145154|ea3a50a99e5d202b889bdf2ffd93a318e0ecee3603adcdca544595444053ea8a|1
+Verify api register upload other case missing authenKey|403|Invalid authen key. Please verify otp again|+84565980041F20072022145154|empty|1
+Verify api register upload other with invalid referenceId|403|Invalid authen key. Please verify otp again|+84342345207F15072022163312|ea3a50a99e5d202b889bdf2ffd93a318e0ecee3603adcdca544595444053ea8a|1
+Verify api register upload other with invalid authenKey|403|Invalid authen key. Please verify otp again|+84565980041F20072022145154|ac3a50a99e5d202b889bdf2ffd93a31d3441233|1
+Verify api register upload other case authenKey expired|403|Invalid authen key. Please verify otp again|+84565980041F20072022145154|ea3a50a99e5d202b889bdf2ffd93a318e0ecee3603adcdca544595444053ea8a|1
 Verify api register upload other with missing body|400|Invalid parameter|||empty
 Verify api register upload other case upload file is empty|400|Nothing file select for upload|+84565980041F20072022145154|gen|empty
 Verify api register upload other case upload more than 5 files|400|Not allow to upload more than 5|+84565980041F20072022145154|gen|6

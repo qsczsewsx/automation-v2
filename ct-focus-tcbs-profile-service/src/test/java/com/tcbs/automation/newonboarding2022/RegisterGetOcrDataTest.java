@@ -86,7 +86,7 @@ public class RegisterGetOcrDataTest {
       assertEquals(ocrData.getExpireDate(), mapOcrData.get("expireDate"));
       assertEquals(ocrData.getNationality(), mapOcrData.get("nationality"));
       assertEquals(ocrData.getHometownAddress(), mapOcrData.get("hometownAddress"));
-    } else if (statusCode == 400) {
+    } else {
       assertEquals(errorMessage, response.jsonPath().get("message"));
     }
   }
