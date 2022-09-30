@@ -18,7 +18,6 @@ Verify author validation api case token has expired stepup_exp 2|403||success|st
 Verify author validation api case token has expired sotp_sign 1|403||success|sotp_required|111111|SMS|TCINVEST|rest:POST|/profile/v2/set_status_view_asset/123456789
 Verify author validation api case token has expired sotp_sign 2|403||success|sotp_required|111111|SMS|HB|rest:POST|/cd-trading/v2/orders/cds/create-sell-order
 Verify author validation api case success policy istock 1|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/istock/v1/accounts/123/orders
-Verify author validation api case success policy istock 2|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:POST|/istock/v1/accounts/123/ciTransfers
 Verify author validation api case success policy bpm 1|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:POST|/bpm/v1/startChangeMarginLimit
 Verify author validation api case success policy profile 1|200|null|default|stepup_required|111111|SMS|TCINVEST|rest:PUT|/profile/v1/profiles/123/p6d
 Verify author validation api case success policy ifund 1|200|null|default|sotp_required|111111|SMS|TCINVEST|rest:PUT|/ifund/v1/orders/update
