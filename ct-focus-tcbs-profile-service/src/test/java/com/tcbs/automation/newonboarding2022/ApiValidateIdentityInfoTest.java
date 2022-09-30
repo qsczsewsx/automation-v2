@@ -58,8 +58,7 @@ public class ApiValidateIdentityInfoTest {
 
     if (gender.equalsIgnoreCase("genGender")) {
       List<String> givenList = Arrays.asList("MALE", "FEMALE");
-      String randomGender = givenList.get(new Random().nextInt(givenList.size()));
-      gender = randomGender;
+      gender = givenList.get(new Random().nextInt(givenList.size()));
     } else {
       gender =syncData(gender);
     }

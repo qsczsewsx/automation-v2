@@ -1,43 +1,52 @@
 package com.tcbs.automation.cas;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.List;
 
 import static com.tcbs.automation.cas.CAS.casConnection;
 
 @Entity
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
 @Table(name = "TCBS_USER_CHANGE_INFOR_RECORD")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserChangeInforRecordEntity {
+  private static Logger logger = LoggerFactory.getLogger(UserChangeInforRecordEntity.class);
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @NotNull
   @Column(name = "ID")
-  private Long id;
-
+  private BigDecimal id;
+  @NotNull
   @Column(name = "TCBSID")
   private String tcbsId;
-
+  @NotNull
   @Column(name = "STATUS")
-  private Integer status;
-
+  private BigDecimal status;
+  @Column(name = "UPDATED_DATE")
+  private Timestamp updatedDate;
+  @Column(name = "CREATED_DATE")
+  private Timestamp createdDate;
   @Column(name = "PROCESS_INSTANCE_ID")
   private String processInstanceId;
-
-  @Column(name = "CREATED_DATE")
-  private Date createdDate;
-
-  @Column(name = "UPDATED_DATE")
-  private Date updatedDate;
+  @Column(name = "TYPE")
+  private String type;
+  @Column(name = "NEW_PHONE")
+  private String newPhone;
+  @Column(name = "NEW_EMAIL")
+  private String newEmail;
+  @Column(name = "NEW_IDENTITY_NO")
+  private String newIdentityNo;
 
   private static Session getSession() {
     casConnection.getSession().clear();
@@ -71,6 +80,30 @@ public class UserChangeInforRecordEntity {
     query.setParameter(2, status);
     query.executeUpdate();
     session.getTransaction().commit();
+  }
+
+  public static List<UserChangeInforRecordEntity> getListByTcbsIdAndType(String tcbsId, String type) {
+    Query<UserChangeInforRecordEntity> query = CAS.casConnection.getSession().createQuery(
+      "from UserChangeInforRecordEntity a where a.tcbsId=:tcbsId and a.type=:type order by id desc ", UserChangeInforRecordEntity.class);
+    query.setParameter("tcbsId", tcbsId);
+    query.setParameter("type", type);
+    return query.getResultList();
+
+  }
+
+  public static void deleteByTcbsIdAndType(String tcbsId, String type) {
+    try {
+      Session session = CAS.casConnection.getSession();
+      Transaction trans = session.beginTransaction();
+
+      Query<?> query = session.createQuery("DELETE UserChangeInforRecordEntity WHERE tcbsId=:tcbsId AND type=:type");
+      query.setParameter("tcbsId", tcbsId);
+      query.setParameter("type", type);
+      query.executeUpdate();
+      trans.commit();
+    } catch (Exception e) {
+      logger.info(e.getMessage());
+    }
   }
 
 }

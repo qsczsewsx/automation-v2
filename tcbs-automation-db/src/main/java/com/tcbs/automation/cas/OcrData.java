@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import net.thucydides.core.annotations.Step;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +15,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import static com.tcbs.automation.cas.CAS.casConnection;
 
@@ -84,7 +87,7 @@ public class OcrData {
     if (!casConnection.getSession().getTransaction().isActive()) {
       casConnection.getSession().beginTransaction();
     }
-    Query query = casConnection.getSession().createQuery(
+    Query<?> query = casConnection.getSession().createQuery(
       "Update OcrData a set a.status=:status where a.refId=:refId");
     query.setParameter("refId", refId);
     query.setParameter("status", status);
@@ -92,14 +95,27 @@ public class OcrData {
     casConnection.getSession().getTransaction().commit();
   }
 
-  public static OcrData getByTuoqId(String tuoqId) {
+  public static List<OcrData> getByTuoqId(String tuoqId) {
     CAS.casConnection.getSession().clear();
     Query<OcrData> query = casConnection.getSession().createQuery(
-      "from OcrData a where a.tuoqId =: tuoqId", OcrData.class);
+      "from OcrData a where a.tuoqId =: tuoqId order by id desc", OcrData.class);
     query.setParameter("tuoqId", new BigDecimal(tuoqId));
-    return query.getSingleResult();
+    return query.getResultList();
   }
 
+  public static void deleteByTuoqId(BigDecimal tuoqId) {
+    try {
+      Session session = CAS.casConnection.getSession();
+      Transaction trans = session.beginTransaction();
+
+      Query<?> query = session.createQuery("DELETE OcrData WHERE tuoqId=:tuoqId");
+      query.setParameter("tuoqId", tuoqId);
+      query.executeUpdate();
+      trans.commit();
+    } catch (Exception e) {
+      logger.info(e.getMessage());
+    }
+  }
 
 
 }

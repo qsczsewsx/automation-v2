@@ -29,6 +29,7 @@ import java.util.List;
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.CONFIRM_BOOKING_FANCY_105C;
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.OB_REGISTER;
 import static com.tcbs.automation.tools.FormatUtils.syncData;
+import static common.CallApiUtils.callGenRefIdAndConfirmPhoneApi;
 import static common.CallApiUtils.callPostApiHasBody;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -68,6 +69,8 @@ public class ObRegisterTest {
   private String referralCode;
   private String code105C;
   private HashMap<String, Object> body;
+  private String phoneNumPre;
+  private String authenKey;
 
   @BeforeClass
   public static void beforeClass() {
@@ -91,6 +94,10 @@ public class ObRegisterTest {
       phoneNumber = CommonUtils.genPhoneNumberByDateTime();
     } else {
       phoneNumber = syncData(phoneNumber);
+    }
+    if (testCaseName.contains("case valid phoneNumber start with")) {
+      phoneNumPre = phoneNumber;
+      phoneNumber = "0" + phoneNumPre;
     }
     phoneCode = syncData(phoneCode);
     phoneConfirm = phoneCode + phoneNumber;
@@ -124,7 +131,7 @@ public class ObRegisterTest {
     }
 
     //prepare code105C
-    code105C = "105C" + prepareValue.substring(6, 11) + "T";
+    code105C = "105C" + prepareValue.substring(6, 11) + "Z";
 
     // Call API confirm phone and gen referenceId, authenKey
     // Call API confirm booking fancy 105C
@@ -139,15 +146,16 @@ public class ObRegisterTest {
       resRef = CallApiUtils.callGenAuthenKeyApi();
     }
 
-    String authenKey;
     if (testCaseName.contains("invalid authenKey")) {
       authenKey = "e399d12a30dfae9e4d1bc7f8c85bc7fde5aa4a5c6c6ceddb1f50fd2ed7e73669";
     } else {
       authenKey = resRef.jsonPath().get("authenKey");
     }
     String referenceId;
-    if (testCaseName.contains("invalid referenceId")) {
+    if (testCaseName.contains("invalid referenceId") || testCaseName.contains("exception")) {
       referenceId = "+84775493526F20072022160630";
+    } else if (testCaseName.contains("invalid phoneCode") || testCaseName.contains("invalid phoneNumber")) {
+      referenceId = callGenRefIdAndConfirmPhoneApi(phoneCode, phoneNumber).jsonPath().get("referenceId");
     } else {
       referenceId = resRef.jsonPath().get("referenceId");
     }
@@ -225,7 +233,6 @@ public class ObRegisterTest {
     body.put("receiveAdvertise", 1);
     body.put("pkVid", "");
     body.put("referenceId", referenceId);
-    body.put("authenKey", authenKey);
 
     // prepare for test case email of tcb user existed in system
     if (testCaseName.contains("email of tcb user existed in system")) {
@@ -251,7 +258,8 @@ public class ObRegisterTest {
     System.out.println(testCaseName);
     RequestSpecification requestSpecification = SerenityRest.given()
       .baseUri(OB_REGISTER)
-      .contentType("application/json");
+      .contentType("application/json")
+      .header("Authorization", "Bearer " + authenKey);
 
     Response response;
     if (testCaseName.contains("missing BODY")) {
@@ -261,13 +269,13 @@ public class ObRegisterTest {
     }
 
     assertThat("verify status code", response.getStatusCode(), is(statusCode));
-    if (statusCode == 400) {
-      assertThat("verify error message", response.jsonPath().get("message"), is(errorMessage));
-    }
 
     if (statusCode == 200) {
       assertThat(response.jsonPath().get("loginKey"), is(notNullValue()));
       assertThat(response.jsonPath().get("custodyCode"), is(code105C));
+      if (testCaseName.contains("case valid phoneNumber start with VN")) {
+        phoneConfirm = phoneCode + phoneNumPre;
+      }
       String userId = TcbsUser.getByPhoneNumber(phoneConfirm).getId().toString();
       assertThat(userId, is(notNullValue()));
       assertThat(TcbsUserOpenAccountQueue.getByPhone(phoneConfirm).getUserId().toString(), is(userId));
@@ -276,6 +284,8 @@ public class ObRegisterTest {
       assertThat(TcbsBankAccount.getBank(userId).getBankAccountNo(), is(accountNo));
       assertThat(TcbsApplicationUser.getByTcbsApplicationUserAppId2(userId, "2"), is(notNullValue()));
       assertThat(TcbsNewOnboardingStatus.getByUserIdAndStatusKey(userId, "ID_STATUS").getStatusValue(), is("WAIT_FOR_VERIFY"));
+    } else {
+      assertThat("verify error message", response.jsonPath().get("message"), is(errorMessage));
     }
 
   }
