@@ -3,6 +3,7 @@ package com.tcbs.automation.cas;
 import lombok.Getter;
 import lombok.Setter;
 import net.thucydides.core.annotations.Step;
+import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,9 +52,11 @@ public class TcbsProInvestorDocument {
   @Column(name = "IN_ACTIVE_DATE")
   private Timestamp inActiveDate;
 
+  private static final String DATA_USERID = "userId";
+  private static final String DATA_STATUS = "status";
+
   @Step
   public static TcbsProInvestorDocument getProinvestorById(BigDecimal id) {
-    CAS.casConnection.getSession().clear();
     Query<TcbsProInvestorDocument> query = CAS.casConnection.getSession().createQuery(
       "from TcbsProInvestorDocument a where a.id =: id", TcbsProInvestorDocument.class
     );
@@ -66,11 +69,22 @@ public class TcbsProInvestorDocument {
   }
 
   public static TcbsProInvestorDocument getProinvestorByUserId(String userId) {
-    CAS.casConnection.getSession().clear();
     Query<TcbsProInvestorDocument> query = CAS.casConnection.getSession().createQuery(
       "from TcbsProInvestorDocument a where a.userId =: userId", TcbsProInvestorDocument.class
     );
-    query.setParameter("userId", new BigDecimal(userId));
+    query.setParameter(DATA_USERID, new BigDecimal(userId));
+    try {
+      return query.getSingleResult();
+    } catch (Exception e) {
+      return new TcbsProInvestorDocument();
+    }
+  }
+
+  public static TcbsProInvestorDocument getProInvestorByUserIdAndStatus(String userId, String status) {
+    Query<TcbsProInvestorDocument> query = CAS.casConnection.getSession().createQuery(
+      "from TcbsProInvestorDocument a where a.userId =: userId and a.status =: status", TcbsProInvestorDocument.class);
+    query.setParameter(DATA_USERID, new BigDecimal(userId));
+    query.setParameter(DATA_STATUS, status);
     try {
       return query.getSingleResult();
     } catch (Exception e) {
@@ -79,12 +93,11 @@ public class TcbsProInvestorDocument {
   }
 
   public static List<TcbsProInvestorDocument> getListOfProInvestorByStatus(String status) {
-    CAS.casConnection.getSession().clear();
     Query<TcbsProInvestorDocument> query = CAS.casConnection.getSession().createQuery(
       "from TcbsProInvestorDocument a where a.status =: status and a.userId!=null", TcbsProInvestorDocument.class
     );
 
-    query.setParameter("status", status);
+    query.setParameter(DATA_STATUS, status);
     return query.getResultList();
   }
 
@@ -93,12 +106,25 @@ public class TcbsProInvestorDocument {
     if (!casConnection.getSession().getTransaction().isActive()) {
       casConnection.getSession().beginTransaction();
     }
-    org.hibernate.query.Query query = casConnection.getSession().createQuery(
+    Query <?> query = casConnection.getSession().createQuery(
       "Update TcbsProInvestorDocument a set a.endDate =:endDate, a.status=:status where a.userId=:userId");
     query.setParameter("endDate", Timestamp.valueOf(LocalDateTime.parse(endDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))));
-    query.setParameter("status", status);
-    query.setParameter("userId", new BigDecimal(userId));
+    query.setParameter(DATA_STATUS, status);
+    query.setParameter(DATA_USERID, new BigDecimal(userId));
     query.executeUpdate();
     casConnection.getSession().getTransaction().commit();
+  }
+
+  public static void deleteProInvestorByUserIdAndStatus(String userId, String status) {
+    Session session = CAS.casConnection.getSession();
+    session.clear();
+    if (!session.getTransaction().isActive()) {
+      session.beginTransaction();
+    }
+    Query<?> query = session.createQuery("DELETE TcbsProInvestorDocument WHERE userId=:userId and status=:status");
+    query.setParameter(DATA_USERID, new BigDecimal(userId));
+    query.setParameter(DATA_STATUS, status);
+    query.executeUpdate();
+    session.getTransaction().commit();
   }
 }
