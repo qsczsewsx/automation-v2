@@ -195,6 +195,7 @@ public class TcbsProfileServiceConfig {
   public static final String GET_PROINVESTOR_PROFILE_BY_105C = conf.getString("tcbsprofile.getProinvestorprofileBy105code");
   public static final String GET_PROINVESTOR_END_DATE = conf.getString("tcbsprofile.getProInvestorEndDate");
   public static final String PRO_TRADER_CHECK = conf.getString("tcbsprofile.proTraderCheck");
+  public static final String SYNC_PROINVESTOR_FROM_ANI = conf.getString("tcbsprofile.syncProInvestorFromAni");
 
 
   //RMRBO
