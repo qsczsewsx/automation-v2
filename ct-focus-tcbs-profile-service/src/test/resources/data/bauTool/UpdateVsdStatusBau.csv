@@ -1,0 +1,19 @@
+testCaseName|statusCode|errorMessage|actionKey|data|username|statusKey|statusValue|note
+Verify update vsd status api case valid statusKey as 2 VSD Stock|200|null|UPDATE_VSD_STATUS|valid|105C904482|2|3|update vsd status success
+Verify update vsd status api case valid statusKey as 4 VSD Fund|200|null|UPDATE_VSD_STATUS|valid|105C904482|4|5|update vsd status success
+Verify update vsd status api case valid statusKey as 7 VSD Derivative|200|null|UPDATE_VSD_STATUS|valid|105C904482|7|9|update vsd status success
+Verify update vsd status api case actionKey is empty|400|(actionKey) is required|empty|valid|105C904482|2|2|update fail
+Verify update vsd status api case data is empty|200|Body data is invalid|UPDATE_VSD_STATUS|empty|empty|empty|empty|update fail
+Verify update vsd status api case invalid actionKey|400|action key is invalid|ABC|valid|105C904482|2|2|update fail
+Verify update vsd status api case username is empty|200|username is required|UPDATE_VSD_STATUS|invalid|empty|2|2|update fail
+Verify update vsd status api case statusKey is empty|200|statusKey is required|UPDATE_VSD_STATUS|invalid|105C904482|empty|2|update fail
+Verify update vsd status api case statusValue is empty|200|statusValue is required|UPDATE_VSD_STATUS|invalid|105C904482|2|empty|update fail
+Verify update vsd status api case invalid username|200|Profile not found!|UPDATE_VSD_STATUS|invalid|105C111LLL|2|2|update fail
+Verify update vsd status api case invalid statusKey|200|statusKey is not supported|UPDATE_VSD_STATUS|invalid|105C904482|001|2|update fail
+Verify update vsd status api case invalid statusValue|200|statusValue is invalid|UPDATE_VSD_STATUS|invalid|105C904482|2|00243|update fail
+Verify update vsd status api case statusKey as 1 BOND|200|statusKey is not supported|UPDATE_VSD_STATUS|valid|105C904482|1|0|update fail
+Verify update vsd status api case statusKey as 2 and statusValue as 1|200|statusValue is invalid|UPDATE_VSD_STATUS|valid|105C904482|2|1|update fail
+Verify update vsd status api case statusKey as 4 and statusValue as 1|200|statusValue is invalid|UPDATE_VSD_STATUS|valid|105C904482|4|1|update fail
+Verify update vsd status api case statusKey as 7 and statusValue as 1|200|statusValue is invalid|UPDATE_VSD_STATUS|valid|105C904482|7|1|update fail
+Verify update vsd status api case missing BODY|400|Invalid parameter|empty|empty|empty|empty|empty|update fail
+Verify update vsd status api case user has no permission|403|Not Authorized|UPDATE_VSD_STATUS|valid|105C904482|2|2|update fail

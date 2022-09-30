@@ -42,12 +42,15 @@ public class TcbsApplicationUser {
   @Column(name = "CREATED_DATE")
   private Date createdDate;
 
+  private static final String DATA_USER_ID = "userId";
+  private static final String DATA_APP_ID = "appId";
+
   @Step
   public static TcbsApplicationUser getByTcbsApplicationUserAppId2(String userId, String appId) {
     Query<TcbsApplicationUser> query = CAS.casConnection.getSession().createQuery(
       "from TcbsApplicationUser a where a.userId=:userId and a.appId=:appId", TcbsApplicationUser.class);
-    query.setParameter("userId", new BigDecimal(userId));
-    query.setParameter("appId", new BigDecimal(appId));
+    query.setParameter(DATA_USER_ID, new BigDecimal(userId));
+    query.setParameter(DATA_APP_ID, new BigDecimal(appId));
     return query.getSingleResult();
   }
 
@@ -55,14 +58,14 @@ public class TcbsApplicationUser {
     Query<TcbsApplicationUser> query = CAS.casConnection.getSession().createQuery(
       "from TcbsApplicationUser a where a.userAppId=:userAppId and a.appId=:appId", TcbsApplicationUser.class);
     query.setParameter("userAppId", userAppId);
-    query.setParameter("appId", new BigDecimal(appId));
+    query.setParameter(DATA_APP_ID, new BigDecimal(appId));
     return query.getResultList();
   }
 
   public static List<TcbsApplicationUser> getByAppIdAndStatus(String appId, String status) {
     Query<TcbsApplicationUser> query = CAS.casConnection.getSession().createQuery(
       "from TcbsApplicationUser a where a.appId=:appId and a.status=:status", TcbsApplicationUser.class);
-    query.setParameter("appId", new BigDecimal(appId));
+    query.setParameter(DATA_APP_ID, new BigDecimal(appId));
     query.setParameter("status", new BigDecimal(status));
     return query.getResultList();
   }
@@ -73,10 +76,10 @@ public class TcbsApplicationUser {
     if (!casConnection.getSession().getTransaction().isActive()) {
       casConnection.getSession().beginTransaction();
     }
-    Query query = casConnection.getSession().createQuery(
+    Query<?> query = casConnection.getSession().createQuery(
       "Update TcbsApplicationUser a set a.status =:status where a.userId=:userId and a.appId =:appId ");
-    query.setParameter("userId", new BigDecimal(userId));
-    query.setParameter("appId", new BigDecimal(appId));
+    query.setParameter(DATA_USER_ID, new BigDecimal(userId));
+    query.setParameter(DATA_APP_ID, new BigDecimal(appId));
     query.setParameter("status", new BigDecimal(status));
     query.executeUpdate();
     casConnection.getSession().getTransaction().commit();
@@ -103,7 +106,7 @@ public class TcbsApplicationUser {
     if (!casConnection.getSession().getTransaction().isActive()) {
       casConnection.getSession().beginTransaction();
     }
-    Query query = casConnection.getSession().createNativeQuery(
+    Query<?> query = casConnection.getSession().createNativeQuery(
       "UPDATE TCBS_APPLICATION_USER SET STATUS = ?1 WHERE APP_ID = ?2 AND USER_ID IN (SELECT ID FROM TCBS_USER WHERE USERNAME IN (?3))");
     query.setParameter(1, new BigDecimal(status));
     query.setParameter(2, new BigDecimal(appId));
@@ -128,7 +131,7 @@ public class TcbsApplicationUser {
   public static List<TcbsApplicationUser> getByUserId(String userId) {
     Query<TcbsApplicationUser> query = CAS.casConnection.getSession().createQuery(
       "from TcbsApplicationUser a where a.userId=:userId", TcbsApplicationUser.class);
-    query.setParameter("userId", new BigDecimal(userId));
+    query.setParameter(DATA_USER_ID, new BigDecimal(userId));
 
     return query.getResultList();
   }

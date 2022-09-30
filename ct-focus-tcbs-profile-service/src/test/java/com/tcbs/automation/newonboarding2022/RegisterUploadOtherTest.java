@@ -62,8 +62,11 @@ public class RegisterUploadOtherTest {
       case "2":
         fileList = new ArrayList<>(Arrays.asList(frontFile, backFile));
         break;
-      case "3":
-        fileList = new ArrayList<>(Arrays.asList(frontFile, backFile, frontFile));
+      case "4":
+        fileList = new ArrayList<>(Arrays.asList(frontFile, backFile, frontFile, backFile));
+        break;
+      case "6":
+        fileList = new ArrayList<>(Arrays.asList(frontFile, backFile, frontFile, backFile, frontFile, backFile));
         break;
       case "abc":
         fileList = new ArrayList<>(Collections.singletonList("abc"));
@@ -73,7 +76,6 @@ public class RegisterUploadOtherTest {
     }
 
     body = new HashMap<>();
-    body.put("authenKey", authenKey);
     body.put("referenceId", referenceId);
     body.put("files", fileList);
   }
@@ -88,7 +90,7 @@ public class RegisterUploadOtherTest {
     RequestSpecification requestSpecification = given()
       .baseUri(REGISTER_UPLOAD_OTHER)
       .contentType("application/json")
-      .when();
+      .header("Authorization", "Bearer " + authenKey);
 
     Response response;
     Gson gson = new Gson();
@@ -99,15 +101,14 @@ public class RegisterUploadOtherTest {
     }
 
     assertEquals(statusCode, response.getStatusCode());
-    if (statusCode != 403) {
-      assertEquals(errorMessage, response.jsonPath().get("message"));
-      if (statusCode == 200) {
-        tuoqId = TcbsUserOpenAccountQueue.getByPhone(referenceId.substring(0, 12)).getId().toString();
-        assertThat(TcbsUserOpenAccountQueueUpload.getByTuoqIdAndFileType(tuoqId, "SCAN_OTHER_ID_IMAGE_FRONT").getId(), is(notNullValue()));
-        if (file.equalsIgnoreCase("2")) {
-          assertThat(TcbsUserOpenAccountQueueUpload.getByTuoqIdAndFileType(tuoqId, "SCAN_OTHER_ID_IMAGE_BACK").getId(), is(notNullValue()));
-        }
+
+    if (statusCode == 200) {
+      tuoqId = TcbsUserOpenAccountQueue.getByPhone(referenceId.substring(0, 12)).getId().toString();
+      for (int i = 0; i < fileList.size(); i++) {
+        assertThat(TcbsUserOpenAccountQueueUpload.getByTuoqIdAndFileType(tuoqId, "SCAN_OTHER_ID_IMAGE_FRONT").get(i).getId(), is(notNullValue()));
       }
+    } else {
+      assertEquals(errorMessage, response.jsonPath().get("message"));
     }
   }
 
@@ -116,9 +117,6 @@ public class RegisterUploadOtherTest {
     // Clear data
     if (statusCode == 200) {
       TcbsUserOpenAccountQueueUpload.deleteByTuoqIdAndFileType(tuoqId, "SCAN_OTHER_ID_IMAGE_FRONT");
-      if (file.equalsIgnoreCase("2")) {
-        TcbsUserOpenAccountQueueUpload.deleteByTuoqIdAndFileType(tuoqId, "SCAN_OTHER_ID_IMAGE_BACK");
-      }
     }
   }
 }

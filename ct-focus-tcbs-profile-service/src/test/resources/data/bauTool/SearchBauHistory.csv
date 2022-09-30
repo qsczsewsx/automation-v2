@@ -1,0 +1,15 @@
+testCaseName|statusCode|errorMessage|action|username|userAction|fromDate|toDate|pageNumber|pageSize|countElements
+Verify search bau history api case missing all params|200|null||||||||0
+Verify search bau history api case valid return only a record|200|null|UPDATE_CUSTOMER_TYPE|105C066103|wso2isadmin|2022-09-19|2022-09-22|1|10|1
+Verify search bau history api case valid return two records|200|null|UPDATE_CUSTOMER_TYPE|105C066103|wso2isadmin|2022-09-19|2022-09-23|1|10|2
+Verify search bau history api case returns no any record with invalid action|200|No record found|CLEAR_CACHE|105C066103|wso2isadmin|2022-09-19|2022-09-22|1|10|0
+Verify search bau history api case returns no any record with invalid username|200|No record found|UPDATE_CUSTOMER_TYPE|105C666111|wso2isadmin|2022-09-19|2022-09-22|1|10|0
+Verify search bau history api case returns no any record with invalid userAction|200|No record found|UPDATE_CUSTOMER_TYPE|105C066103|maker|2022-09-19|2022-09-22|1|10|0
+Verify search bau history api case returns no any record with invalid a period time|200|No record found|UPDATE_CUSTOMER_TYPE|105C066103|wso2isadmin|2022-09-19|2022-09-20|1|10|0
+Verify search bau history api case invalid fromDate has wrong format|400|Type mismatch request parameter|UPDATE_CUSTOMER_TYPE|105C066103|wso2isadmin|19/09/2022|2022-09-22|1|10|0
+Verify search bau history api case invalid toDate has wrong format|400|Type mismatch request parameter|UPDATE_CUSTOMER_TYPE|105C066103|wso2isadmin|2022-09-19|22/09/2022|1|10|0
+Verify search bau history api case pageNumber is text|400|Type mismatch request parameter|UPDATE_CUSTOMER_TYPE|105C066103|wso2isadmin|2022-09-19|2022-09-22|abc|10|0
+Verify search bau history api case pageNumber < 0|400|Input page is invalid|UPDATE_CUSTOMER_TYPE|105C066103|wso2isadmin|2022-09-19|2022-09-22|-1|10|0
+Verify search bau history api case pageSize is text|400|Type mismatch request parameter|UPDATE_CUSTOMER_TYPE|105C066103|wso2isadmin|2022-09-19|2022-09-22|1|abc|0
+Verify search bau history api case pageSize < 0|400|Input page is invalid|UPDATE_CUSTOMER_TYPE|105C066103|wso2isadmin|2022-09-19|2022-09-22|1|-1|0
+Verify search bau history api case user has no permission|403|Not Authorized||||||||0

@@ -34,13 +34,15 @@ public class TcbsUserOpenAccountQueueUpload {
   @Column(name = "OBJECT_ID")
   private String objectId;
 
+  private static final String DATA_TUOQID = "tuoqId";
+
   @Step
-  public static TcbsUserOpenAccountQueueUpload getByTuoqIdAndFileType(String tuoqId, String fileType) {
+  public static List<TcbsUserOpenAccountQueueUpload> getByTuoqIdAndFileType(String tuoqId, String fileType) {
     Query<TcbsUserOpenAccountQueueUpload> query = CAS.casConnection.getSession().createQuery(
       "from TcbsUserOpenAccountQueueUpload a where a.tuoqId=:tuoqId and a.fileType=:fileType", TcbsUserOpenAccountQueueUpload.class);
-    query.setParameter("tuoqId", new BigDecimal(tuoqId));
+    query.setParameter(DATA_TUOQID, new BigDecimal(tuoqId));
     query.setParameter("fileType", fileType);
-    return query.getSingleResult();
+    return query.getResultList();
   }
 
   public static void deleteByTuoqIdAndFileType(String tuoqId, String fileType) {
@@ -51,7 +53,7 @@ public class TcbsUserOpenAccountQueueUpload {
         session.beginTransaction();
       }
       Query<?> query = session.createNativeQuery("DELETE FROM TCBS_USER_OPENACCOUNT_QUEUE_UPLOAD WHERE TUOQ_ID =:tuoqId AND FILE_TYPE =:fileType");
-      query.setParameter("tuoqId", new BigDecimal(tuoqId));
+      query.setParameter(DATA_TUOQID, new BigDecimal(tuoqId));
       query.setParameter("fileType", fileType);
       query.executeUpdate();
       session.getTransaction().commit();
@@ -63,7 +65,7 @@ public class TcbsUserOpenAccountQueueUpload {
   public static List<TcbsUserOpenAccountQueueUpload> getFileUploadIdentify(BigDecimal tuoqId) {
     Query<TcbsUserOpenAccountQueueUpload> query = CAS.casConnection.getSession().createQuery(
       "from TcbsUserOpenAccountQueueUpload a where a.tuoqId=:tuoqId", TcbsUserOpenAccountQueueUpload.class);
-    query.setParameter("tuoqId", tuoqId);
+    query.setParameter(DATA_TUOQID, tuoqId);
     return query.getResultList();
   }
 
@@ -73,7 +75,7 @@ public class TcbsUserOpenAccountQueueUpload {
       Transaction trans = session.beginTransaction();
 
       Query<?> query = session.createQuery("DELETE TcbsUserOpenAccountQueueUpload WHERE tuoqId=:tuoqId");
-      query.setParameter("tuoqId", tuoqId);
+      query.setParameter(DATA_TUOQID, tuoqId);
       query.executeUpdate();
       trans.commit();
     } catch (Exception e) {

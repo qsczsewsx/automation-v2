@@ -39,8 +39,6 @@ public class WblPolicyUser {
   private String createdBy;
   @Column(name = "CREATED_DATETIME")
   private Timestamp createdDatetime;
-  @Column(name = "APPROVED_BY")
-  private String approvedBy;
   @Column(name = "APPROVED_DATETIME")
   private Timestamp approvedDatetime;
   @Column(name = "UPDATED_DATETIME")
@@ -61,8 +59,6 @@ public class WblPolicyUser {
   private String note;
   @Column(name = "BUSINESS_TITLE")
   private String businessTitle;
-  @Column(name = "CAPITAL_RATIO")
-  private String capitalRatio;
   @Column(name = "WBLUSER_ID")
   private BigDecimal wbluserId;
   @Column(name = "REF_WBLUSER_ID")
@@ -75,5 +71,19 @@ public class WblPolicyUser {
     query.setParameter("wbluserId", wbluserId);
     query.setParameter("policyId", policyId);
     return query.getResultList();
+  }
+
+  @Step
+  public static WblPolicyUser getByWblUserId(BigDecimal wbluserId) {
+    CAS.casConnection.getSession().clear();
+    Query<WblPolicyUser> query = CAS.casConnection.getSession().createQuery(
+      "from WblPolicyUser a where a.wbluserId=:wbluserId", WblPolicyUser.class);
+    query.setParameter("wbluserId", wbluserId);
+    try {
+      return query.getSingleResult();
+    } catch (Exception e) {
+      e.printStackTrace();
+      return new WblPolicyUser();
+    }
   }
 }
