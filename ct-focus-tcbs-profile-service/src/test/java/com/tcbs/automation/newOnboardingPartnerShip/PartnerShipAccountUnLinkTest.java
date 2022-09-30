@@ -3,6 +3,7 @@ package com.tcbs.automation.newOnboardingPartnerShip;
 import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.tcbs.automation.cas.TcbsBankIaaccount;
 import com.tcbs.automation.cas.TcbsPartnerShip;
+import com.tcbs.automation.cas.TcbsUser;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.Getter;
@@ -36,6 +37,7 @@ public class PartnerShipAccountUnLinkTest {
   private String errorMessage;
   private String partnerId;
   private String partnerAccountId;
+  private String code105C;
   private String linkType;
   private String accountNo;
   private HashMap<String, Object> body;
@@ -57,6 +59,7 @@ public class PartnerShipAccountUnLinkTest {
 
     body.put("partnerId", partnerId);
     body.put("partnerAccountId", partnerAccountId);
+    body.put("code105C", code105C);
     body.put("linkType", listLinkType);
 
     if (!testCaseName.contains("case linkType is ACCOUNT")) {
@@ -85,7 +88,7 @@ public class PartnerShipAccountUnLinkTest {
     if (statusCode == 200) {
       assertEquals("true", response.jsonPath().get("data").toString());
       if (testCaseName.contains("case linkType is ACCOUNT")) {
-        assertEquals("N", TcbsPartnerShip.getPartnerShip(partnerAccountId).getLinkAccountStatus());
+        assertEquals("0", TcbsPartnerShip.getPartnerShip(partnerAccountId).getLinkAccountStatus());
       } else if (testCaseName.contains("case linkType is IA")) {
         assertEquals("4", TcbsBankIaaccount.getpartnershipIALink(accountNo).getStatus().toString());
       }
@@ -95,8 +98,9 @@ public class PartnerShipAccountUnLinkTest {
   }
   @After
   public void resetData() {
-    if (testCaseName.contains("case linkType is ACCOUNT with partnerAccountId has status not in (linked)")) {
-      TcbsPartnerShip.updatePartnerStatusLinkAcc(partnerAccountId, "Y");
+    if (statusCode == 200) {
+      TcbsPartnerShip.updatePartnerStatusLinkAcc(partnerAccountId, "1","1");
+      TcbsBankIaaccount.updateStatusByUserId(TcbsUser.getByUserName(code105C).getId().toString(),"1");
     }
   }
 }

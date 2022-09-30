@@ -73,15 +73,16 @@ public class TcbsPartnerShip {
     return query.getSingleResult();
   }
 
-  public static void updatePartnerStatusLinkAcc(String partnerAccountId, String linkAccountStatus) {
+  public static void updatePartnerStatusLinkAcc(String partnerAccountId, String linkAccountStatus, String linkIaStatus) {
     casConnection.getSession().clear();
     if (!casConnection.getSession().getTransaction().isActive()) {
       casConnection.getSession().beginTransaction();
     }
     org.hibernate.query.Query query = casConnection.getSession().createNativeQuery(
-      "Update TCBS_PARTNERSHIP set LINK_ACCOUNT_STATUS =:linkAccountStatus where PARTNER_ACCOUNT_ID=:partnerAccountId");
+      "Update TCBS_PARTNERSHIP set LINK_ACCOUNT_STATUS =:linkAccountStatus, LINK_IA_STATUS=:linkIaStatus where PARTNER_ACCOUNT_ID=:partnerAccountId");
     query.setParameter(PARTNER_ACCOUNT_ID, partnerAccountId);
     query.setParameter("linkAccountStatus", linkAccountStatus);
+    query.setParameter("linkIaStatus", linkIaStatus);
     query.executeUpdate();
     casConnection.getSession().getTransaction().commit();
   }

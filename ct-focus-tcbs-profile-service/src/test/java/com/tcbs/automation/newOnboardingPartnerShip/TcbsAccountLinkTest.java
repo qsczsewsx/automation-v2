@@ -1,7 +1,9 @@
 package com.tcbs.automation.newOnboardingPartnerShip;
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
+import com.tcbs.automation.cas.TcbsBankIaaccount;
 import com.tcbs.automation.cas.TcbsPartnerShip;
+import com.tcbs.automation.cas.TcbsUser;
 import com.tcbs.automation.login.LoginApi;
 import com.tcbs.automation.login.TheUserInfo;
 import io.restassured.response.Response;
@@ -100,9 +102,9 @@ public class TcbsAccountLinkTest {
     assertEquals(statusCode, response.getStatusCode());
     if (statusCode == 200) {
       if (testCaseName.contains("linkType is ACCOUNT") || testCaseName.contains("linkType ACCOUNT and IA")) {
-        assertEquals("P", TcbsPartnerShip.getByPartnerAccountIdAndPartnerId(partnerId,partnerAccountId).getLinkAccountStatus());
+        assertEquals("2", TcbsPartnerShip.getByPartnerAccountIdAndPartnerId(partnerId,partnerAccountId).getLinkAccountStatus());
       } else if (testCaseName.contains("linkType is IA") || testCaseName.contains("linkType ACCOUNT and IA")) {
-        assertEquals("N", TcbsPartnerShip.getByPartnerAccountIdAndPartnerId(partnerId,partnerAccountId).getLinkIaStatus());
+        assertEquals("2", TcbsPartnerShip.getByPartnerAccountIdAndPartnerId(partnerId,partnerAccountId).getLinkIaStatus());
       }
     } else {
       assertEquals(errorMessage, response.jsonPath().get("message"));
@@ -113,6 +115,7 @@ public class TcbsAccountLinkTest {
   public void clearData() {
     if (statusCode == 200) {
       TcbsPartnerShip.deleteByPartnerAccountId(partnerAccountId);
+      TcbsBankIaaccount.deleteByUserId("5294023");
     }
   }
 }
