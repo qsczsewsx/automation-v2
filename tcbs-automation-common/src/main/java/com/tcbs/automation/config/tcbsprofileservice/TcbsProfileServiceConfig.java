@@ -195,6 +195,7 @@ public class TcbsProfileServiceConfig {
   public static final String GET_PROINVESTOR_PROFILE_BY_105C = conf.getString("tcbsprofile.getProinvestorprofileBy105code");
   public static final String GET_PROINVESTOR_END_DATE = conf.getString("tcbsprofile.getProInvestorEndDate");
   public static final String PRO_TRADER_CHECK = conf.getString("tcbsprofile.proTraderCheck");
+  public static final String SYNC_PROINVESTOR_FROM_ANI = conf.getString("tcbsprofile.syncProInvestorFromAni");
 
 
   //RMRBO
@@ -239,6 +240,7 @@ public class TcbsProfileServiceConfig {
   //BPM GetCustomerInformation
   public static final String GET_CUSTOMER_INFORMATION = conf.getString("tcbsprofile.getCustomerInformation");
   public static final String TRIGGER_UPDATE_INFO = conf.getString("tcbsprofile.triggerUpdateInfo");
+  public static final String START_TASK_CUS_CHANGE_INFOR = conf.getString("tcbsprofile.startTaskCusChangeInfor");
 
   //Profile Upload File
   public static final String UPLOAD_FILE = conf.getString("tcbsprofile.uploadFile");
@@ -383,6 +385,10 @@ public class TcbsProfileServiceConfig {
   public static final String UPDATE_INFO_CUSTOMER = conf.getString("tcbsprofile.updateInfoCustomer");
 
   //BAU Tool
-  public static final String BAU_SEARCH_BANK_IA_INFO = conf.getString("BauTool.searchBankIaInfo");
   public static final String BAU_AUTHORIZATION_TOKEN = conf.getString("tcbsprofile.bau-authorization-token");
+  public static final String BAU_SEARCH_BANK_IA_INFO = conf.getString("bauTool.searchBankIaInfo");
+  public static final String GET_TOOL_BAU_LIST = conf.getString("bauTool.getToolBauList");
+  public static final String SEARCH_BAU_HISTORY = conf.getString("bauTool.searchBauHistory");
+  public static final String ACTION_TOOL_BAU = conf.getString("bauTool.actionToolBau");
+
 }

@@ -5,7 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import net.thucydides.core.annotations.Step;
+import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -22,7 +25,7 @@ import static com.tcbs.automation.cas.CAS.casConnection;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TcbsUserBook {
-
+  private static Logger logger = LoggerFactory.getLogger(TcbsUserBook.class);
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   @NotNull
@@ -56,6 +59,8 @@ public class TcbsUserBook {
   @Column(name = "OLD_INFO")
   private String oldInfo;
 
+  private static final String DATA_USER_ID = "userId";
+
   @Step
   public static TcbsUserBook getById(String id) {
     CAS.casConnection.getSession().clear();
@@ -69,7 +74,7 @@ public class TcbsUserBook {
   public static List<TcbsUserBook> getByUserIdAndType(String userId, String type) {
     Query<TcbsUserBook> query = CAS.casConnection.getSession().createQuery(
       "from TcbsUserBook a where a.userId=:userId and a.type=:type order by id desc", TcbsUserBook.class);
-    query.setParameter("userId", new BigDecimal(userId));
+    query.setParameter(DATA_USER_ID, new BigDecimal(userId));
     query.setParameter("type", type);
     return query.getResultList();
   }
@@ -80,11 +85,30 @@ public class TcbsUserBook {
     if (!casConnection.getSession().getTransaction().isActive()) {
       casConnection.getSession().beginTransaction();
     }
-    org.hibernate.query.Query query = casConnection.getSession().createQuery(
+    Query<?> query = casConnection.getSession().createQuery(
       "Delete from TcbsUserBook a where a.userId=:userId and a.type=:type");
-    query.setParameter("userId", new BigDecimal(userId));
+    query.setParameter(DATA_USER_ID, new BigDecimal(userId));
     query.setParameter("type", type);
     query.executeUpdate();
     casConnection.getSession().getTransaction().commit();
   }
+
+  public static void updateNoNumber(String noNumber, String userId, String type) {
+    try {
+      Session session = CAS.casConnection.getSession();
+      session.clear();
+      if (!session.getTransaction().isActive()) {
+        session.beginTransaction();
+      }
+      Query<?> query = session.createQuery("UPDATE TcbsUserBook a SET a.noNumber=:noNumber WHERE a.userId=:userId and a.type=:type");
+      query.setParameter("noNumber", noNumber);
+      query.setParameter(DATA_USER_ID, new BigDecimal(userId));
+      query.setParameter("type", type);
+      query.executeUpdate();
+      session.getTransaction().commit();
+    } catch (Exception e) {
+      logger.info(e.getMessage());
+    }
+  }
+
 }

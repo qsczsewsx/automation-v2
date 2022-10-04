@@ -1,0 +1,6 @@
+testCaseName|statusCode|errorMessage|actionKey|data|note
+Verify get list approved api case valid|200|null|GET_LIST_IA_APPROVED|""|get success
+Verify get list approvede api case actionKey is empty|400|(actionKey) is required|empty|""|get fail
+Verify get list approved api case invalid actionKey|400|action key is invalid|ABC|""|get fail
+Verify get list approved api case missing BODY|400|Invalid parameter|empty|empty|get fail
+Verify get list approved api case user has no permission|403|Not Authorized|GET_LIST_IA_APPROVED|valid|get fail
