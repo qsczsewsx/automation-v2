@@ -28,15 +28,22 @@ public class PartnerShipApiGetInfoByUsernameTest {
   private String testCaseName;
   private int statusCode;
   private String errorMessage;
-  private String partnerId;
+  private String linkAccountStatus;
   private String username;
+  private String tcbsId;
   private HashMap<String, Object> params;
 
   @Before
   public void setup() {
     params = new HashMap<>();
-    if (StringUtils.isNotEmpty(partnerId)) {
-      params.put("partnerId", partnerId);
+    if (StringUtils.isNotEmpty(linkAccountStatus)) {
+      params.put("linkAccountStatus", linkAccountStatus);
+    }
+    if (StringUtils.isNotEmpty(tcbsId)) {
+      params.put("tcbsId", tcbsId);
+    }
+    if (StringUtils.isNotEmpty(username)) {
+      params.put("username", username);
     }
   }
 
@@ -46,7 +53,7 @@ public class PartnerShipApiGetInfoByUsernameTest {
   public void getInfoPartnerShipByUsername() {
     System.out.println("Test Case: " + testCaseName);
     Response response = given()
-      .baseUri(GET_INFO_BY_USERNAME.replace("{username}", username))
+      .baseUri(GET_INFO_BY_USERNAME)
       .header("x-api-key", testCaseName.contains("invalid x-api-key") ? FMB_X_API_KEY : PARTNERSHIP_X_API_KEY)
       .contentType("application/json")
       .params(params)
@@ -56,7 +63,7 @@ public class PartnerShipApiGetInfoByUsernameTest {
     if (statusCode == 200) {
       assertThat("verify", response.jsonPath().get("basicInfo.code105C"), is(username));
       assertThat("verify", response.jsonPath().get("accountStatus"), is(notNullValue()));
-      if (testCaseName.contains("partnerId not exist")) {
+      if (testCaseName.contains("linkAccountStatus <> 0")) {
         List<Map> listPartnerShip = response.jsonPath().get("partnerships");
         assertTrue("verify", listPartnerShip.isEmpty());
       }

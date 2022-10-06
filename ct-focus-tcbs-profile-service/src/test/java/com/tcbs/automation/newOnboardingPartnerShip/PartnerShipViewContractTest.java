@@ -14,7 +14,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.*;
 import static com.tcbs.automation.tools.FormatUtils.syncData;
@@ -33,7 +36,7 @@ public class PartnerShipViewContractTest {
 
   private String errorMessage;
   private String partnerId;
-  private String tcbsId;
+  private String linkType;
   private String custodyCode;
   private String authoToken;
   private HashMap<String, Object> body;
@@ -47,12 +50,13 @@ public class PartnerShipViewContractTest {
     LoginApi.withCredentials(custodyCode, "abc123").performAs(actor);
     authoToken = TheUserInfo.aboutLoginData().answeredBy(actor).getToken();
 
+    linkType = syncData(linkType);
+    List<String> listLinkType = new ArrayList<>(Arrays.asList(linkType.split(",")));
     partnerId = syncData(partnerId);
-    tcbsId = syncData(tcbsId);
     body = new HashMap<>();
 
     body.put("partnerId", partnerId);
-    body.put("tcbsId", tcbsId);
+    body.put("linkType", listLinkType);
   }
 
   @Test

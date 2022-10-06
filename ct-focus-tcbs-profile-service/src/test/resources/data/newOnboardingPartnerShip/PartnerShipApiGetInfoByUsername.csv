@@ -1,8 +1,9 @@
-testCaseName|statusCode|errorMessage|partnerId|username
-Verify get partnership by username with missing param partnerId|200||""|105C065764
-Verify get partnership by username with param partnerId as CTG|200||CTG|105C065764
-Verify get partnership by username with param partnerId as TCB there is IA but no account link|200|""|TCB|105C065764
-Verify get partnership by username with invalid x-api-key|401|Invalid X-Api-Key|CTG|105C065764
-Verify get partnership by username with username not exist|400|Profile not found|CTG|105C0108847799
-Verify get partnership by username with partnerId not exist|200|""|CTGGGG|105C065764
-Verify get partnership by username with param partnerId as MBB there is account link but no IA|200||MBB|105C065764
+testCaseName|statusCode|errorMessage|tcbsId|username|linkAccountStatus
+Verify get partnership by username with missing param tcbsId|200||""|105C065764|0
+Verify get partnership by username with invalid x-api-key|401|Invalid X-Api-Key|10000001014|105C065764|
+Verify get partnership by username with username not exist|400|Profile not found|10000001014|105C0108847799|0
+Verify get partnership by username with tcbsId not exist|400|Profile not found|10000001018884|""|0
+Verify get partnership by username with missing param linkAccountStatus|200||10000001014|105C065764|
+Verify get partnership by username with tcbsId not match with usernam|200|""|10000003014|105C065764|0
+Verify get partnership by username with linkAccountStatus <> 0 |200|||105C065764|2
+Verify get partnership by username with missing param username and tcbsId|400|username or tcbsId must be not bank|||0
