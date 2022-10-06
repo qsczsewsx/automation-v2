@@ -13,6 +13,7 @@ import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.thucydides.core.annotations.Title;
 import net.thucydides.junit.annotations.UseTestDataFrom;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -76,7 +77,7 @@ public class TcbsAccountLinkTest {
     body.put("partnerAccountId", partnerAccountId);
     body.put("linkType", listLinkType);
 
-    if (!testCaseName.contains("ACCOUNT only")) {
+    if (linkType.contains("IA")) {
       body.put("iaBankAccount", iaBankAccount);
     }
   }
