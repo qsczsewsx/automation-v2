@@ -1,4 +1,4 @@
-package com.tcbs.automation.newfastmobile;
+package com.tcbs.automation.corporate;
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.google.gson.Gson;
@@ -13,18 +13,17 @@ import org.junit.runner.RunWith;
 
 import java.util.LinkedHashMap;
 
-import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.FMB_CHECK_ACCOUNT_EXIST;
+import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.CORPORATE_CHECK_ACCOUNT_EXIST;
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.FMB_X_API_KEY;
 import static common.CommonUtils.*;
 import static net.serenitybdd.rest.SerenityRest.given;
-import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom(value = "data/newfastmobile/ApiCheckAccountExist.csv", separator = '|')
-public class ApiCheckAccountExistTest {
+@UseTestDataFrom(value = "data/corporate/CheckAccountExistCorp.csv", separator = '|')
+public class CheckAccountExistCorpTest {
 
   @Getter
   private String testCaseName;
@@ -32,24 +31,23 @@ public class ApiCheckAccountExistTest {
   private int statusCode;
   private String keys;
   private String value;
-  private String erroMsg;
+  private String errorMsg;
 
   @Test
   @TestCase(name = "#testCaseName")
-  @Title("Verify api Check Account Exist")
-  public void verifyCheckAccountExistTest() {
+  @Title("Verify api Check Account Exist Corporate")
+  public void verifyCheckAccountExistCorpTest() {
 
     System.out.println("TestCaseName : " + testCaseName);
 
-    LinkedHashMap<String, Object> body = getCheckAccountExistBody(testCaseName, keys, value);
+    LinkedHashMap<String, Object> body = getCheckAccountCorpExistBody(testCaseName, keys, value);
     Gson gson = new Gson();
 
     Response response = given()
-      .baseUri(FMB_CHECK_ACCOUNT_EXIST)
+      .baseUri(CORPORATE_CHECK_ACCOUNT_EXIST)
       .header("x-api-key", FMB_X_API_KEY)
       .contentType("application/json")
       .body(gson.toJson(body))
-      .when()
       .post();
 
     assertThat(response.getStatusCode(), is(statusCode));
@@ -59,33 +57,26 @@ public class ApiCheckAccountExistTest {
       verifyFMBOnboardingStatus(response, "accountStatus.onboardingStatus.", "userId", userId);
       verifyFMBBasicInfo(response, "basicInfo", "userId", userId);
       verifyBankSource(response, "iaBankAccount", "userId", userId);
-      verifyTncStatus(response);
     } else if (statusCode == 400) {
-      assertEquals(erroMsg, response.jsonPath().get("message"));
+      assertEquals(errorMsg, response.jsonPath().get("message"));
     }
 
   }
 
-  public LinkedHashMap<String, Object> getCheckAccountExistBody(String testCaseName, String keys, String value) {
+  public LinkedHashMap<String, Object> getCheckAccountCorpExistBody(String testCaseName, String keys, String value) {
 
     LinkedHashMap<String, Object> body = new LinkedHashMap<>();
-    if (testCaseName.contains("missing Body ")) {
+    if (testCaseName.contains("missing body")) {
       body = null;
     } else if (testCaseName.contains("missing param key")) {
       body.put("value", value);
     } else if (testCaseName.contains("missing param keysValue")) {
-      String[] keysValue = keys.split(",");
-      body.put("keys", keysValue);
+      body.put("keys", keys);
     } else {
-      String[] keysValue = keys.split(",");
-      body.put("keys", keysValue);
+      body.put("keys", keys);
       body.put("value", value);
     }
     return body;
-  }
-
-  public void verifyTncStatus(Response response) {
-    assertThat(response.jsonPath().get("accountStatus.tncTcb"), anyOf(is("Y"), is("N")));
   }
 
 }
