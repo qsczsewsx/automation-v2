@@ -337,6 +337,8 @@ public class TcbsProfileServiceConfig {
   public static final String RM_RBO_HISTORY_VIEW = conf.getString("rmrbo.rmrbo-history-view");
   public static final String GET_NNB_BY_FUND = conf.getString("tcbsprofile.getNnbByFundList");
   public static final String GET_CUSTOMER_BY_RBO = conf.getString("rmrbo.getCustomerByRbo");
+  public static final String GET_HISTORY_ACTIVE_INACTIVE = conf.getString("rmrbo.getHistoryActiveInactive");
+  public static final String ADD_HISTORY_ACTIVE_INACTIVE_IWP = conf.getString("rmrbo.addHistoryActiveInactiveIwp");
 
   //FORGOT PASSWORD
   public static final String FORGOT_PASSWORD_PHONE = conf.getString("tcbsprofile.forgotPasswordPhone");
