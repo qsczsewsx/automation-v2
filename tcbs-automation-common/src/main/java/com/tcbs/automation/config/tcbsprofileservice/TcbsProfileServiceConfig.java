@@ -374,6 +374,7 @@ public class TcbsProfileServiceConfig {
   public static final String PARTNERSHIP_GET_DETAIL = conf.getString("newonboardingPartnerShip.partnerShipGetDetail");
   public static final String TCBS_ACCOUNT_CONFIRM = conf.getString("newonboardingPartnerShip.tcbsConfirmId");
   public static final String TCBS_ACCOUNT_LINK = conf.getString("newonboardingPartnerShip.tcbsAccountLink");
+  public static final String OPEN_ACCOUNT_PARTNER_VIEW_CONTRACT = conf.getString("newonboardingPartnerShip.openAccountPartnerViewContract");
 
   //Additional API
   public static final String SUGGEST_ID_PLACE = conf.getString("tcbsprofile.suggestIdPlace");
