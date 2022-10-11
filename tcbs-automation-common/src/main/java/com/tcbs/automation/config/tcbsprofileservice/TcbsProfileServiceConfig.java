@@ -109,6 +109,7 @@ public class TcbsProfileServiceConfig {
   public static final String MULTIIA_TCBSID_X_API_KEY = conf.getString("tcbsprofile.multi-tcbsid-x-api-key");
   public static final String MULTIIA_USERNAME_X_API_KEY = conf.getString("tcbsprofile.multi-username-x-api-key");
   public static final String MULTIIA_PROFILE_R_X_API_KEY = conf.getString("tcbsprofile.multi-on-profile-r-x-api-key");
+  public static final String CORPORATE_CHECK_ACCOUNT_EXIST = conf.getString("tcbsprofile.corpCheckAccountExist");
 
   public static final String OPEN_DERIVATIVE_ACCOUNT = conf.getString("tcbsprofile.openDerivativeAccount");
   public static final String STATUS_DERIVATIVE_ACCOUNT = conf.getString("tcbsprofile.statusDerivativeAccount");
