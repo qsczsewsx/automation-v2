@@ -1,0 +1,7 @@
+testCaseName|statusCode|errorMessage|code105c|status
+Verify api add history active and inactive iwp with invalid x-api-key|401|Invalid X-Api-Key||
+Verify api add history active and inactive iwp with missing body|400|Invalid parameter||
+Verify api add history active and inactive iwp with missing coe105c|200|""|""|1
+Verify api add history active and inactive iwp with coe105c invalid|200|""|105C0000035656|1
+Verify api add history active and inactive iwp with valid information|200|""|105C000003|1
+Verify api add history active and inactive iwp with missing status|400|(status) is required|105C000003|
