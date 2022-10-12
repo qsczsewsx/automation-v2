@@ -224,6 +224,10 @@ public class PartnerShipRegisterBetaTest {
       .when()
       .post();
 
+
+
+
+
     assertThat("verify status code", response.getStatusCode(), is(statusCode));
 
 //    if(statusCode == 200){
