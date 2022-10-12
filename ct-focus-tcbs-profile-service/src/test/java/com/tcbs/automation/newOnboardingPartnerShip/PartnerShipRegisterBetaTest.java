@@ -188,8 +188,8 @@ public class PartnerShipRegisterBetaTest {
     falcaInfo.put("haveUSFundTransfer", "YES");
     falcaInfo.put("usResident", "YES");
 
-    if(testCaseName.contains("Additional info is invalid")){
-      additionalInfo.put("additionalInfo",additionalInfo);
+    if(testCaseName.contains("Additional")){
+      additionalInfo.put("additionalInfo",null);
     }
     else {
       additionalInfo.put("registeredFund",registeredFund);
@@ -223,10 +223,6 @@ public class PartnerShipRegisterBetaTest {
       .body(gson.toJson(body))
       .when()
       .post();
-
-
-
-
 
     assertThat("verify status code", response.getStatusCode(), is(statusCode));
 
