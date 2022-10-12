@@ -248,5 +248,7 @@ public class PartnerShipRegisterBetaTest {
 //      assertThat("verify error message", response.jsonPath().get("message"), is(errorMessage));
 //    }
   }
+
+
 }
 
