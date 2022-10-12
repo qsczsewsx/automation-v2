@@ -69,10 +69,6 @@ public class PartnerShipRegisterBetaTest {
 
   @Before
   public void before() throws Exception {
-    Actor actor = Actor.named("logintoken");
-    LoginApi.withCredentials("105C189336", "abc123").performAs(actor);
-    authoToken = TheUserInfo.aboutLoginData().answeredBy(actor).getToken();
-
     testCaseName = syncData(testCaseName);
     HashMap<String, Object> personalInfo = new HashMap<>();
     HashMap<String, Object> identityCard = new HashMap<>();
@@ -190,9 +186,9 @@ public class PartnerShipRegisterBetaTest {
     falcaInfo.put("haveUSAuthority", "YES");
     falcaInfo.put("haveUSFundTransfer", "YES");
     falcaInfo.put("usResident", "YES");
+
     if(testCaseName.contains("Additional info is invalid")){
       additionalInfo.put("additionalInfo",additionalInfo);
-
     }
     else {
       additionalInfo.put("registeredFund",registeredFund);
@@ -205,15 +201,6 @@ public class PartnerShipRegisterBetaTest {
       additionalInfo.put("relatedPublicCompanys",relatedPublicCompanys);
       additionalInfo.put("falcaInfo",falcaInfo);
     }
-//    additionalInfo.put("registeredFund",registeredFund);
-//    additionalInfo.put("individualTrustorInfo",individualTrustorInfo);
-//    additionalInfo.put("institutionalTrustorInfo",institutionalTrustorInfo);
-//    additionalInfo.put("investmentKnowledge",investmentKnowledge);
-//    additionalInfo.put("otherSecuritiesAccounts",otherSecuritiesAccounts);
-//    additionalInfo.put("managedPublicCompanys",managedPublicCompanys);
-//    additionalInfo.put("ownedPublicCompanys",ownedPublicCompanys);
-//    additionalInfo.put("relatedPublicCompanys",relatedPublicCompanys);
-//    additionalInfo.put("falcaInfo",falcaInfo);
 
     body.put("personalInfo", personalInfo);
     body.put("enterpriseInfo", enterpriseInfo);
