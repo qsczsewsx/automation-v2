@@ -93,6 +93,7 @@ public class PartnerShipRegisterBetaTest {
     identityCard.put("idPlace", idPlace);
     identityCard.put("idDate", idDate);
 
+    
     HashMap<String, Object> enterpriseInfo = new HashMap<>();
     HashMap<String, Object> representativePersons= new HashMap<>();
     List<Map<String, Object>> listRepresentativePersons = new ArrayList<>();
