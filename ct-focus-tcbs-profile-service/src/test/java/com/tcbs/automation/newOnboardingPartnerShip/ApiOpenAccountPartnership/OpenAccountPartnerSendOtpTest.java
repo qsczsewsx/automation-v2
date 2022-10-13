@@ -1,13 +1,10 @@
 package com.tcbs.automation.newOnboardingPartnerShip.ApiOpenAccountPartnership;
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
-import com.tcbs.automation.login.LoginApi;
-import com.tcbs.automation.login.TheUserInfo;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.Getter;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
-import net.serenitybdd.screenplay.Actor;
 import net.thucydides.core.annotations.Title;
 import net.thucydides.junit.annotations.UseTestDataFrom;
 import org.junit.Before;
@@ -25,8 +22,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom(value = "data/newOnboardingPartnerShip/ApiOpenAccountPartnership/ApiOpenAccountPartnerViewContract.csv", separator = '|')
-public class OpenAccountPartnerViewContractTest {
+@UseTestDataFrom(value = "data/newOnboardingPartnerShip/ApiOpenAccountPartnership/ApiOpenAccountPartnerSendOtp.csv", separator = '|')
+public class OpenAccountPartnerSendOtpTest {
   @Getter
   private String testCaseName;
   private int statusCode;
@@ -51,11 +48,11 @@ public class OpenAccountPartnerViewContractTest {
 
   @Test
   @TestCase(name = "#testCaseName")
-  @Title("Verify open account partnership view contract")
-  public void partnerShipViewContract() {
+  @Title("Verify open account partnership send otp")
+  public void partnerShipSendOtp() {
     System.out.println("Test Case: " + testCaseName);
     RequestSpecification requestSpecification = given()
-      .baseUri(OPEN_ACCOUNT_PARTNER_VIEW_CONTRACT)
+      .baseUri(OPEN_ACCOUNT_PARTNER_SEND_OTP)
       .header("x-api-key", (testCaseName.contains("invalid x-api-key") ? FMB_X_API_KEY : PARTNERSHIP_X_API_KEY));
 
     Response response;
@@ -68,8 +65,8 @@ public class OpenAccountPartnerViewContractTest {
 
     assertEquals(statusCode, response.getStatusCode());
     if (statusCode == 200) {
-      assertThat("verify onboarding contract", response.jsonPath().get("onboarding"), is(notNullValue()));
-      assertThat("verify derivative_account contract", response.jsonPath().get("derivative_account"), is(notNullValue()));
+      assertThat("verify otpId", response.jsonPath().get("otpId"), is(notNullValue()));
+
     }  else {
       assertEquals(errorMessage, response.jsonPath().get("message"));
     }
