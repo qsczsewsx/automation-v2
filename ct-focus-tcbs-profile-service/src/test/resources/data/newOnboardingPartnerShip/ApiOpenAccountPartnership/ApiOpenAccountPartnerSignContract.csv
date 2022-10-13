@@ -1,0 +1,21 @@
+testCaseName|statusCode|errorMessage|partnerId|code105C|otp|otpId
+Verify open account partnership sign contract api case successful with open account have account link and IA link|200||MBB|autogen|111111|3969e066-887c-4d79-9177-6842b12ffadd
+Verify open account partnership sign contract api case successful with only account link and not IA link|200||MBB|autogen|111111|3969e066-887c-4d79-9177-6842b12ffadd
+Verify open account partnership sign contract api case successful with not account link and not IA link|200||MBB|autogen|111111|3969e066-887c-4d79-9177-6842b12ffadd
+Verify open account partnership sign contract api case account only IA link and not account link|200||MBB|autogen|111111|3969e066-887c-4d79-9177-6842b12ffadd
+Verify open account partnership sign contract api case missing body|400|Invalid parameter|||111111|3969e066-887c-4d79-9177-6842b12ffadd
+Verify open account partnership sign contract api case missing param partnerId|400|partnerId invalid|null|105C155508|111111|3969e066-887c-4d79-9177-6842b12ffadd
+Verify open account partnership sign contract api case missing value param partnerId|400|partnerId invalid|empty|105C155508|111111|3969e066-887c-4d79-9177-6842b12ffadd
+Verify open account partnership sign contract api case invalid param partnerId|400|partnerId invalid|AAA|105C155508|111111|3969e066-887c-4d79-9177-6842b12ffadd
+Verify open account partnership sign contract api case missing param code105C|400|code105C invalid|MBB|null|111111|3969e066-887c-4d79-9177-6842b12ffadd
+Verify open account partnership sign contract api case missing value param code105C|400|code105C invalid|MBB|empty|111111|3969e066-887c-4d79-9177-6842b12ffadd
+Verify open account partnership sign contract api case not exists code105C|400|Profile not found|MBB|105CPP222|111111|3969e066-887c-4d79-9177-6842b12ffadd
+Verify open account partnership sign contract api case partnerId and tcbsId are not a pair in tcbs_partnership table|400|Tài khoản 105C155508 của quý khác được mở từ đối tác MBB. Quý khách không thể ký hợp đồng từ đối tác TCB|TCB|105C155508|111111|3969e066-887c-4d79-9177-6842b12ffadd
+Verify open account partnership sign contract api case partnerId and tcbsId are not a pair in tcbs_user table|400|Tài khoản 105C155508 của quý khác được mở từ đối tác MBB. Quý khách không thể ký hợp đồng từ đối tác TCB|TCB|105C155508|111111|3969e066-887c-4d79-9177-6842b12ffadd
+Verify open account partnership sign contract api case invalid x-api-key|401|Invalid X-Api-Key|MBB|105C155508|111111|3969e066-887c-4d79-9177-6842b12ffadd
+Verify open account partnership sign contract api case missing param otp|400|Otp is invalid|MBB|105C155508|null|3969e066-887c-4d79-9177-6842b12ffadd
+Verify open account partnership sign contract api case missing value param otp|400|Otp is invalid|MBB|105C155508|empty|3969e066-887c-4d79-9177-6842b12ffadd
+Verify open account partnership sign contract api case invalid param otp|400|Otp is invalid|MBB|105C155508|22222|3969e066-887c-4d79-9177-6842b12ffadd
+Verify open account partnership sign contract api case missing param otpId|400|Otp is invalid|MBB|105C155508|111111|null
+Verify open account partnership sign contract api case missing value param otpId|400|Otp is invalid|MBB|105C155508|111111|empty
+Verify open account partnership sign contract api case has signed a contract|400|The contract has already been signed. Please reload the page|MBB|105C155507|111111|3969e066-887c-4d79-9177-6842b12ffadd
