@@ -1,12 +1,12 @@
-testCaseName|statusCode|errorMessage|partnerId|tcbsId|custodyCode
-Verify partnership view contract api case successful with account link and IA link|200||CTG|0001300126|105C300126
-Verify partnership view contract api case successful with only account link and not IA link|200||CTG|0001010884|105C010884
+testCaseName|statusCode|errorMessage|partnerId|linkType|custodyCode
+Verify partnership view contract api case successful with account link and IA link|200||CTG|IA,ACCOUNT|105C300126
+Verify partnership view contract api case successful with only account link and not IA link|200||CTG|ACCOUNT|105C010884
 Verify partnership view contract api case missing body|400|Invalid parameter|||105C010884
-Verify partnership view contract api case missing param partnerId|400|partnerId invalid|null|0001010884|105C010884
-Verify partnership view contract api case missing value param partnerId|400|partnerId invalid|empty|0001010884|105C010884
-Verify partnership view contract api case missing param tcbsId|400|Profile not found|CTG|null|105C010884
-Verify partnership view contract api case missing value param tcbsId|400|Profile not found|CTG|empty|105C010884
-Verify partnership view contract api case account has signed a contract|400|Không tìm thấy thông tin hợp đồng|CTG|10000001015|105C065765
-Verify partnership view contract api case account only IA link|400|Không tìm thấy thông tin hợp đồng|CTG|0001000001|105C000001
-Verify partnership view contract api case partnerId and tcbsId are not a pair in tcbs_partnership table|400|Không tìm thấy thông tin hợp đồng|TCB|0001300126|105C300126
-Verify partnership view contract api case invalid Authorization|401||CTG|0001300126|105C300126
+Verify partnership view contract api case missing param partnerId|400|partnerId invalid|null|ACCOUNT|105C010884
+Verify partnership view contract api case missing value param partnerId|400|partnerId invalid|empty|ACCOUNT|105C010884
+Verify partnership view contract api case missing param linkType|400|Invalid parameter|CTG|""|105C010884
+Verify partnership view contract api case missing value param linkType|400|Invalid parameter|CTG|empty|105C010884
+Verify partnership view contract api case account has signed a contract|400|Không tìm thấy thông tin hợp đồng|TCB|ACCOUNT|105C065765
+Verify partnership view contract api case account only IA link|200|""|CTG|IA|105C000001
+Verify partnership view contract api case partnerId and tcbsId are not a pair in tcbs_partnership table|400|Không tìm thấy partnership|TCB|ACCOUNT|105C300126
+Verify partnership view contract api case invalid Authorization|401||CTG|ACCOUNT|105C300126

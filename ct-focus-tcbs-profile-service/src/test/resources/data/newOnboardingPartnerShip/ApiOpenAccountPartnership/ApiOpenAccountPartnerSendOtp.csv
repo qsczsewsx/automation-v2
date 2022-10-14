@@ -1,0 +1,11 @@
+testCaseName|statusCode|errorMessage|partnerId|code105C
+Verify open account partnership send otp api case successful|200||MBB|105C155504
+Verify open account partnership send otp api case missing body|400|Invalid parameter||
+Verify open account partnership send otp api case missing param partnerId|400|partnerId invalid|null|105C155504
+Verify open account partnership send otp api case missing value param partnerId|400|partnerId invalid|empty|105C155504
+Verify open account partnership send otp api case invalid param partnerId|400|partnerId invalid|AAA|105C155504
+Verify open account partnership send otp api case missing param code105C|400|code105C invalid|MBB|null
+Verify open account partnership send otp api case missing value param code105C|400|code105C invalid|MBB|empty
+Verify open account partnership send otp api case not exists code105C|400|Profile not found|MBB|105CPP222
+Verify open account partnership send otp api case partnerId and tcbsId are not a pair in tcbs_user table|400|partnerId invalid|TCB|105C255503
+Verify open account partnership send otp api case invalid x-api-key|401|Invalid X-Api-Key|MBB|105C155504

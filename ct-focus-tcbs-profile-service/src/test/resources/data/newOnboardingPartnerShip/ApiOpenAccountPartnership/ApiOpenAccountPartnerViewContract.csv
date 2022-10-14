@@ -1,0 +1,12 @@
+testCaseName|statusCode|errorMessage|partnerId|code105C
+Verify open account partnership view contract api case successful|200||MBB|105C155504
+Verify open account partnership view contract api case missing body|400|Invalid parameter||
+Verify open account partnership view contract api case missing param partnerId|400|partnerId invalid|null|105C155504
+Verify open account partnership view contract api case missing value param partnerId|400|partnerId invalid|empty|105C155504
+Verify open account partnership view contract api case invalid param partnerId|400|partnerId invalid|AAA|105C155504
+Verify open account partnership view contract api case missing param code105C|400|code105C invalid|MBB|null
+Verify open account partnership view contract api case missing value param code105C|400|code105C invalid|MBB|empty
+Verify open account partnership view contract api case not exists code105C|400|Profile not found|MBB|105CPP222
+Verify open account partnership view contract api case partnerId and tcbsId are not a pair in tcbs_partnership table|400|Tài khoản 105C255503 của quý khác được mở từ đối tác MBB. Quý khách không thể ký hợp đồng từ đối tác TCB|TCB|105C255503
+Verify open account partnership view contract api case partnerId and tcbsId are not a pair in tcbs_user table|400|Tài khoản 105C255503 của quý khác được mở từ đối tác MBB. Quý khách không thể ký hợp đồng từ đối tác TCB|TCB|105C255503
+Verify open account partnership view contract api case invalid x-api-key|401|Invalid X-Api-Key|MBB|105C155504

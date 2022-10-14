@@ -5,6 +5,8 @@ import lombok.Setter;
 import net.thucydides.core.annotations.Step;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -19,6 +21,7 @@ import static com.tcbs.automation.cas.CAS.casConnection;
 @Getter
 @Setter
 public class TcbsBankIaaccount {
+  private static Logger logger = LoggerFactory.getLogger(TcbsBankIaaccount.class);
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @NotNull

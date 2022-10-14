@@ -1,0 +1,30 @@
+testCaseName|statusCode|errorMessage|partnerId|partnerAccountId|code105C|linkType|accountNo|accountName|autoTransfer|isIAPaid|token
+Verify tcbs account link api case linkType ACCOUNT and IA successful with valid request|200||MBB|PA0001|105C066108|ACCOUNT,IA|19034189870108|TRINH THI HOAI LINH|N|N|token
+Verify tcbs account link api case missing body|400|Invalid parameter|||105C066108||||N|N|token
+Verify tcbs account link api case missing partnerId|400|partnerId invalid||PA0001|105C066108|ACCOUNT,IA|19034189870108|TRINH THI HOAI LINH|N|N|token
+Verify tcbs account link api case partnerId is empty|400|partnerId invalid|empty|PA0001|105C066108|ACCOUNT,IA|19034189870108|TRINH THI HOAI LINH|N|N|token
+Verify tcbs account link api case partnerId is not config in system|400|partnerId invalid|ACB|PA0001|105C066108|ACCOUNT,IA|19034189870108|TRINH THI HOAI LINH|N|N|token
+Verify tcbs account link api case partnerAccountId contains special characters|400|partnerAccountId invalid|MBB|P00123@|105C066108|ACCOUNT,IA|19034189870108|TRINH THI HOAI LINH|N|N|token
+Verify tcbs account link api case invalid missing linkType|400|Invalid parameter|MBB|PA0001|105C066108||19034189870108|TRINH THI HOAI LINH|N|N|token
+Verify tcbs account link api case invalid linkType is empty|400|Invalid parameter|MBB|PA0001|105C066108|empty|19034189870108|TRINH THI HOAI LINH|N|N|token
+Verify tcbs account link api case invalid linkType incorrect|400|Invalid parameter|MBB|PA0001|105C066108|ACCOUNTTTTT|19034189870108|TRINH THI HOAI LINH|N|N|token
+Verify tcbs account link api case linkType is IA with missing param accountNo|400|iaBankAccount.accountNo invalid|MBB|PA0001|105C066108|IA||TRINH THI HOAI LINH|N|N|token
+Verify tcbs account link api case linkType is IA with missing accountName|400|Tên tài khoản không phải chính chủ|MBB|PA0001|105C066108|IA|19034189870108|null|N|N|token
+Verify tcbs account link api case linkType is IA with accountName is empty|400|Tên tài khoản không phải chính chủ|MBB|PA0001|105C066108|IA|19034189870108|empty|N|N|token
+Verify tcbs account link api case linkType is IA with accountName is not same full name of 105C in db|400|Tên tài khoản không phải chính chủ|MBB|PA0001|105C066108|IA|19034189870108|Trinh test|N|N|token
+Verify tcbs account link api case linkType is IA with code105C already existed a corresponding link with another partnerId|400|Liên kết không hợp lệ|MBB|""|105CABC002|IA|354554656|Lê Trung Hiếu |N|N|token
+Verify tcbs account link api case linkType is IA with (code105C and partnerID) already existed and status is connected in tcbs_bank_iaaccount table|400|Liên kết không hợp lệ|TCB|""|105CABC002|IA|354554656|Lê Trung Hiếu |N|N|token
+Verify tcbs account link api case linkType is ACCOUNT only successful with valid request|200||MBB|PH0011184|105C066108|ACCOUNT|""|""|""|""|token
+Verify tcbs account link api case linkType is IA successful with valid request|200||MBB|PH0011185|105C066108|IA|19034189870108|TRINH THI HOAI LINH|N|N|token
+Verify tcbs account link api case linkType is IA with (code105C and partnerID) already existed and status is connected in tcbs_partnership table|400|Quý khách chỉ được kết nối với một ngân hàng tại một thời điểm, vì vậy quý khách vui lòng ngắt kết nối tài khoản ngân hàng Techcombank trước khi kết nối với tài khoản tại ngân hàng khác!|MBB|PH0011185|105C100177|IA|19036012022964|test TCBS44224256|N|N|token
+Verify tcbs account link api case linkType is ACCOUNT only with (code105C and partnerId and partnerAccountId) already existed and status is connected in tcbs_partnership table|400|Liên kết không hợp lệ! Tài khoản đang tồn tại liên kết trước đó|CTG|PH001111|105C100066|ACCOUNT|""|""|""|""|token
+Verify tcbs account link api case linkType is IA with (code105C and partnerID) already existed and status is wait connect in tcbs_partnership table|400|Quý khách chỉ được kết nối với một ngân hàng tại một thời điểm, vì vậy quý khách vui lòng ngắt kết nối tài khoản ngân hàng Techcombank trước khi kết nối với tài khoản tại ngân hàng khác!|MBB|PH00111779|105C010205|IA|232313121221115|test TCBS28010988|N|N|token
+Verify tcbs account link api case linkType is IA with (code105C and partnerID) already existed and status is wait disconnected in tcbs_partnership table|400|Số tài khoản ngân hàng đã đăng ký IA|TCB|PH001113|105C801805|IA|19024436732012|test TCBS25438793|N|N|token
+Verify tcbs account link api case code105C is exception|400|Tài khoản liên kết 2 bên không đúng|MBB|PA0002|105C065749|ACCOUNT||null|null|null|token
+Verify tcbs account link api case code105C is lock wait to close|400|Tài khoản liên kết 2 bên không đúng|MBB|PA0002|105C065703|ACCOUNT||null|null|null|token
+Verify tcbs account link api case missing autoTransfer|400|iaBankAccount.autoTransfer invalid|MBB|PA0001|105C066108|IA|19034189870108|TRINH THI HOAI LINH|null|N|token
+Verify tcbs account link api case autoTransfer is empty|400|iaBankAccount.autoTransfer invalid|MBB|PA0001|105C066108|IA|19034189870108|TRINH THI HOAI LINH|empty|N|token
+Verify tcbs account link api case autoTransfer is invalid|400|iaBankAccount.autoTransfer invalid|MBB|PA0001|105C066108|IA|19034189870108|TRINH THI HOAI LINH|NNNNNNYY|N|token
+Verify tcbs account link api case missing isIAPaid|400|iaBankAccount.isIAPaid invalid|MBB|PA0001|105C066108|IA|19034189870108|TRINH THI HOAI LINH|N|null|token
+Verify tcbs account link api case isIAPaid is empty|400|iaBankAccount.isIAPaid invalid|MBB|PA0001|105C066108|IA|19034189870108|TRINH THI HOAI LINH|N|empty|token
+Verify tcbs account link api case isIAPaid is invalid|400|iaBankAccount.isIAPaid invalid|MBB|PA0001|105C066108|IA|19034189870108|TRINH THI HOAI LINH|N|NNNNNNYY|token
