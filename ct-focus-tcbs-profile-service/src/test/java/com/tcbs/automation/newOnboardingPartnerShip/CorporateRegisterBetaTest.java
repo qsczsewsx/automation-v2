@@ -1,19 +1,14 @@
 package com.tcbs.automation.newOnboardingPartnerShip;
 
-import antlr.Token;
 import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.google.gson.Gson;
 import com.tcbs.automation.cas.TcbsBankAccount;
 import com.tcbs.automation.cas.TcbsNewOnboardingStatus;
 import com.tcbs.automation.cas.TcbsUser;
 import com.tcbs.automation.cas.TcbsUserOpenAccountQueue;
-import com.tcbs.automation.login.LoginApi;
-import com.tcbs.automation.login.TheUserInfo;
 import io.restassured.response.Response;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
-import net.serenitybdd.screenplay.Actor;
 import net.thucydides.junit.annotations.UseTestDataFrom;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,8 +23,8 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom(value = "data/newOnboardingPartnerShip/ApiPartnerShipRegisterBeta.csv", separator = '|')
-public class PartnerShipRegisterBetaTest {
+@UseTestDataFrom(value = "data/newOnboardingPartnerShip/CorporateRegisterBeta.csv", separator = '|')
+public class CorporateRegisterBetaTest {
   private String testCaseName;
   private int statusCode;
   private String fullName;
@@ -62,8 +57,7 @@ public class PartnerShipRegisterBetaTest {
   private String bankName;
   private String accountNo;
   private String chiefAccountantInfo;
-  private HashMap<String, Object> body = new HashMap<>();
-  private String authoToken;
+  private final HashMap<String, Object> body = new HashMap<>();
   private String errorCode;
   private String errorMessage;
 
@@ -73,8 +67,8 @@ public class PartnerShipRegisterBetaTest {
     HashMap<String, Object> personalInfo = new HashMap<>();
     HashMap<String, Object> identityCard = new HashMap<>();
     personalInfo.put("fullName", fullName);
-    personalInfo.put("acronym", acronym);
-    personalInfo.put("fullNameEN", fullNameEN);
+    personalInfo.put("acronym", "TRE");
+    personalInfo.put("fullNameEN", "GREEN TREE COMPANY");
     personalInfo.put("phoneNumber", phoneNumber);
     personalInfo.put("phoneCode", phoneCode);
     personalInfo.put("email", email);
@@ -89,7 +83,6 @@ public class PartnerShipRegisterBetaTest {
     identityCard.put("idPlace", idPlace);
     identityCard.put("idDate", idDate);
 
-    
     HashMap<String, Object> enterpriseInfo = new HashMap<>();
     HashMap<String, Object> representativePersons= new HashMap<>();
     List<Map<String, Object>> listRepresentativePersons = new ArrayList<>();
@@ -109,7 +102,6 @@ public class PartnerShipRegisterBetaTest {
     representativePersons.put("permissFromDate", permissFromDate);
     representativePersons.put("permissToDate", permissToDate);
     listRepresentativePersons.add(representativePersons);
-
 
     List<HashMap<String, Object>> contactPersons = new ArrayList<>();
     List<HashMap<String, Object>> authorizedPersons = new ArrayList<>();
@@ -202,22 +194,19 @@ public class PartnerShipRegisterBetaTest {
       additionalInfo.put("relatedPublicCompanys",relatedPublicCompanys);
       additionalInfo.put("falcaInfo",falcaInfo);
     }
-
     body.put("personalInfo", personalInfo);
     body.put("enterpriseInfo", enterpriseInfo);
     body.put("bankAccounts", bankAccounts);
     body.put("additionalInfo", additionalInfo);
     System.out.println(body);
   }
-
   @Test
   @TestCase(name = "#testCaseName")
-  public void partnerShipRegisterBeta() {
+  public void corporateRegisterBeta() {
     Gson gson = new Gson();
     Response response = given()
       .baseUri(PARTNERSHIP_REGISTER_BETA)
-//      .header("x-api-key", PARTNERSHIP_X_API_KEY)
-      .header("x-api-key", "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiAiaHR0cHM6Ly9kYXRhcG93ZXIudGNicy5jb20udm4iLCAic3ViIjogIm5ld2Zhc3Rtb2JpbGUtdGNicy1wcm9maWxlIiwgImlhdCI6IDE2MjIxMDczMTcsICJleHAiOiAxOTM3NDY3MzE3fQ.V2P5xkYjlM6UKTWuYB4EH7Ehosi_F2-q-jXownIEbFNy6caQk4v-3h7wkdkhLw3GnX6jBQ36h-ysdMkhALp3raj4QsS3a-ZUkFedXfTgPwpdL6vi-mknawfECxWsXxVM1pXqUVk3OFII87qnkl1y9tSoyHqtyW-k9DnWUEP0-YcpNCaEKmFya-sMbGDMKsJlsJcwa_J2baSZl2V6_qDCuUn8VKvAnqtFxp2QI3dVq-YjQyC38U9CvZ-lBaIDzI7HfGqWnIX65xqH1j6blUNfAd3TlTf6S0Ea88fWE9ivEtZjnuEfmSh7EB0MzQrdCzS05BwoZTacFmshqdaVpDQK6w")
+      .header("x-api-key", CORPORATE_X_API_KEY)
       .contentType("application/json")
       .header("Connection", "keep-alive")
       .body(gson.toJson(body))
@@ -226,29 +215,33 @@ public class PartnerShipRegisterBetaTest {
 
     assertThat("verify status code", response.getStatusCode(), is(statusCode));
 
-//    if(statusCode == 200){
-//      assertThat(response.jsonPath().get("custodyCode"), is(nullValue()));
-//      assertThat(response.jsonPath().get("status"), is(notNullValue()));
-//      assertThat(response.jsonPath().get("type"), is(notNullValue()));
-//      assertThat(response.jsonPath().get("accountType"), is(notNullValue()));
-//      String userId = TcbsUser.getByPhoneNumber(phoneNumber).getId().toString();
-//      assertThat(userId, is(notNullValue()));
-//      // Lưu thông tin TK beta vào bảng tạm
-//      assertThat(TcbsUserOpenAccountQueue.getByPhone(phoneNumber).getUserId().toString(), is(userId));
-//      // Lưu thông tin ngân hàng
-//      assertThat(TcbsBankAccount.getBank(userId).getBankAccountNo(), is(accountNo));
-//      // Lưu thông tin doanh nghiệp select * from TCBS_USER where phone ='0935161296'
-//      // Lưu thông tin trạng thái newonboarding
-//      assertThat(TcbsNewOnboardingStatus.getByUserIdAndStatusKey(userId, "ID_STATUS").getStatusValue(), is("WAIT_FOR_VERIFY"));
-//      // Lưu thông tin người đại diện: need to confirm
-//
-//    }
-//    else {
-//      assertThat("verify error message", response.jsonPath().get("code"), is(errorCode));
-//      assertThat("verify error message", response.jsonPath().get("message"), is(errorMessage));
-//    }
-  }
+    if(statusCode == 200){
+      assertThat(response.jsonPath().get("basicInfo.tcbsId"), is(notNullValue()));
+      assertThat(response.jsonPath().get("basicInfo.custodyCode"), is(nullValue()));
+      assertThat(response.jsonPath().get("basicInfo.status"), is("ACTIVE"));
+      assertThat(response.jsonPath().get("basicInfo.type"), is("BETA"));
+      assertThat(response.jsonPath().get("basicInfo.accountType"), is("CORPORATE"));
+      assertThat(response.jsonPath().get("accountStatus.fundActivationStatus"), is("0"));
+      assertThat(response.jsonPath().get("accountStatus.flexActivationStatus"), is("0"));
+      assertThat(response.jsonPath().get("accountStatus.onboardingStatus.preferActivationChannelStatus.value"), is("ONLINE_PREFER"));
+      assertThat(response.jsonPath().get("accountStatus.onboardingStatus.eContractStatus.value"), is("WAIT_ADDITIONAL_INFO"));
+      String userId = TcbsUser.getByPhoneNumber(phoneNumber).getId().toString();
+      assertThat(userId, is(notNullValue()));
+      // Lưu thông tin TK beta vào bảng tạm
+      assertThat(TcbsUserOpenAccountQueue.getByPhone(phoneNumber).getUserId().toString(), is(userId));
+      // Lưu thông tin ngân hàng
+      assertThat(TcbsBankAccount.getBank(userId).getBankAccountNo(), is(accountNo));
+      // Lưu thông tin doanh nghiệp select * from TCBS_USER where phone ='0935161296'
+      // Lưu thông tin trạng thái newonboarding
+      assertThat(TcbsNewOnboardingStatus.getByUserIdAndStatusKey(userId, "ID_STATUS").getStatusValue(), is("WAIT_FOR_VERIFY"));
+      // Lưu thông tin người đại diện: need to confirm
 
+    }
+    else {
+      assertThat("verify error message", response.jsonPath().get("code"), is(errorCode));
+      assertThat("verify error message", response.jsonPath().get("message"), is(errorMessage));
+    }
+  }
 
 }
 

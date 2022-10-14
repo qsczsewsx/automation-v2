@@ -392,4 +392,7 @@ public class TcbsProfileServiceConfig {
   public static final String SEARCH_BAU_HISTORY = conf.getString("bauTool.searchBauHistory");
   public static final String ACTION_TOOL_BAU = conf.getString("bauTool.actionToolBau");
 
+  // corporation
+  public static final String CORPORATE_X_API_KEY = conf.getString("tcbsprofile.corporate-x-api-key");
+
 }
