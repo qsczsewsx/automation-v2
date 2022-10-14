@@ -1,4 +1,4 @@
-package com.tcbs.automation.newOnboardingPartnerShip;
+package com.tcbs.automation.corporate;
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.google.gson.Gson;
@@ -23,7 +23,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom(value = "data/newOnboardingPartnerShip/CorporateRegisterBeta.csv", separator = '|')
+@UseTestDataFrom(value = "data/corporate/CorporateRegisterBeta.csv", separator = '|')
 public class CorporateRegisterBetaTest {
   private String testCaseName;
   private int statusCode;
