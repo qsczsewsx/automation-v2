@@ -61,6 +61,7 @@ public class CorporateRegisterBetaTest {
   private String errorMessage;
   private static final String companyName = "Công ty ABC";
   private static final String accountStatus = "0";
+  private static final String falcaInfoStatus = "YES";
   private final HashMap<String, Object> body = new HashMap<>();
 
   @Before
@@ -130,8 +131,8 @@ public class CorporateRegisterBetaTest {
     HashMap<String, Object> investmentKnowledge = new HashMap<>();
     registeredFund.put("others", "TEST");
     registeredFund.put("tcbf", "NO");
-    registeredFund.put("tcef", "YES");
-    registeredFund.put("tcff", "YES");
+    registeredFund.put("tcef", falcaInfoStatus);
+    registeredFund.put("tcff", falcaInfoStatus);
     individualTrustorInfo.put("birthday", "11/11/1981");
     individualTrustorInfo.put("fullName", "Nguyen Van A");
     individualTrustorInfo.put("issueDate", "11/11/2018");
@@ -176,11 +177,11 @@ public class CorporateRegisterBetaTest {
     relatedPublicCompanys.add(relatedPublicCompanys1);
 
     HashMap<String, Object> falcaInfo = new HashMap<>();
-    falcaInfo.put("bornInUS", "YES");
-    falcaInfo.put("haveRelatedUSCommunication", "YES");
-    falcaInfo.put("haveUSAuthority", "YES");
-    falcaInfo.put("haveUSFundTransfer", "YES");
-    falcaInfo.put("usResident", "YES");
+    falcaInfo.put("bornInUS", falcaInfoStatus);
+    falcaInfo.put("haveRelatedUSCommunication", falcaInfoStatus);
+    falcaInfo.put("haveUSAuthority", falcaInfoStatus);
+    falcaInfo.put("haveUSFundTransfer", falcaInfoStatus);
+    falcaInfo.put("usResident", falcaInfoStatus);
 
     if(testCaseName.contains("Additional")){
       additionalInfo.put("additionalInfo",null);
