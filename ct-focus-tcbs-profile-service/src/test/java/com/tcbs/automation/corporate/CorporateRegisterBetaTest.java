@@ -57,9 +57,11 @@ public class CorporateRegisterBetaTest {
   private String bankName;
   private String accountNo;
   private String chiefAccountantInfo;
-  private final HashMap<String, Object> body = new HashMap<>();
   private String errorCode;
   private String errorMessage;
+  private static final String companyName = "Công ty ABC";
+  private static final String accountStatus = "0";
+  private final HashMap<String, Object> body = new HashMap<>();
 
   @Before
   public void before() throws Exception {
@@ -149,25 +151,25 @@ public class CorporateRegisterBetaTest {
 
     List<HashMap<String, Object>> otherSecuritiesAccounts = new ArrayList<>();
     HashMap<String, Object> otherSecuritiesAccounts1 = new HashMap<>();
-    otherSecuritiesAccounts1.put("securitiesCompany", "Công ty ABC");
+    otherSecuritiesAccounts1.put("securitiesCompany", companyName);
     otherSecuritiesAccounts1.put("tradingAccountNumber", "2132437943247697234");
     otherSecuritiesAccounts.add(otherSecuritiesAccounts1);
 
     List<HashMap<String, Object>> managedPublicCompanys = new ArrayList<>();
     HashMap<String, Object> managedPublicCompanys1 = new HashMap<>();
-    managedPublicCompanys1.put("companyName", "Công ty ABC");
+    managedPublicCompanys1.put("companyName", companyName);
     managedPublicCompanys1.put("title", "Manager");
     managedPublicCompanys.add(managedPublicCompanys1);
 
     List<HashMap<String, Object>> ownedPublicCompanys = new ArrayList<>();
     HashMap<String, Object> ownedPublicCompanys1 = new HashMap<>();
-    ownedPublicCompanys1.put("companyName", "Công ty ABC");
+    ownedPublicCompanys1.put("companyName", companyName);
     ownedPublicCompanys1.put("title", "Engineer");
     ownedPublicCompanys.add(ownedPublicCompanys1);
 
     List<HashMap<String, Object>> relatedPublicCompanys = new ArrayList<>();
     HashMap<String, Object> relatedPublicCompanys1 = new HashMap<>();
-    relatedPublicCompanys1.put("issuer", "Công ty ABC");
+    relatedPublicCompanys1.put("issuer", companyName);
     relatedPublicCompanys1.put("relationship", "Investor");
     relatedPublicCompanys1.put("securitiesCode", "VIC2012");
     relatedPublicCompanys1.put("title", "Engineer");
@@ -205,7 +207,7 @@ public class CorporateRegisterBetaTest {
   public void corporateRegisterBeta() {
     Gson gson = new Gson();
     Response response = given()
-      .baseUri(PARTNERSHIP_REGISTER_BETA)
+      .baseUri(CORPORATE_REGISTER_BETA)
       .header("x-api-key", CORPORATE_X_API_KEY)
       .contentType("application/json")
       .header("Connection", "keep-alive")
@@ -221,8 +223,8 @@ public class CorporateRegisterBetaTest {
       assertThat(response.jsonPath().get("basicInfo.status"), is("ACTIVE"));
       assertThat(response.jsonPath().get("basicInfo.type"), is("BETA"));
       assertThat(response.jsonPath().get("basicInfo.accountType"), is("CORPORATE"));
-      assertThat(response.jsonPath().get("accountStatus.fundActivationStatus"), is("0"));
-      assertThat(response.jsonPath().get("accountStatus.flexActivationStatus"), is("0"));
+      assertThat(response.jsonPath().get("accountStatus.fundActivationStatus"), is(accountStatus));
+      assertThat(response.jsonPath().get("accountStatus.flexActivationStatus"), is(accountStatus));
       assertThat(response.jsonPath().get("accountStatus.onboardingStatus.preferActivationChannelStatus.value"), is("ONLINE_PREFER"));
       assertThat(response.jsonPath().get("accountStatus.onboardingStatus.eContractStatus.value"), is("WAIT_ADDITIONAL_INFO"));
       String userId = TcbsUser.getByPhoneNumber(phoneNumber).getId().toString();
@@ -242,6 +244,5 @@ public class CorporateRegisterBetaTest {
       assertThat("verify error message", response.jsonPath().get("message"), is(errorMessage));
     }
   }
-
 }
 

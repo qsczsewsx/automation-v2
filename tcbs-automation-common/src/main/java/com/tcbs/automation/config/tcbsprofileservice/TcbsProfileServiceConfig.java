@@ -371,7 +371,6 @@ public class TcbsProfileServiceConfig {
   public static final String PARTNERSHIP_VIEW_CONTRACT = conf.getString("newonboardingPartnerShip.partnerShipViewContract");
   public static final String PARTNERSHIP_SIGN_CONTRACT = conf.getString("newonboardingPartnerShip.partnerShipSignContract");
   public static final String PARTNERSHIP_CONFIRM = conf.getString("newonboardingPartnerShip.partnerShipConfirm");
-  public static final String PARTNERSHIP_REGISTER_BETA = conf.getString("newonboardingPartnerShip.partnerShipRegisterBeta");
   public static final String GET_INFO_BY_USERNAME = conf.getString("newonboardingPartnerShip.getInfoByUsername");
   public static final String RETURN_INFO_SOCIAS = conf.getString("newonboardingPartnerShip.returnInfoForSocias");
   public static final String PARTNERSHIP_GET_HISTORY_IA = conf.getString("newonboardingPartnerShip.partnerShipGetHistoryIa");
@@ -401,5 +400,6 @@ public class TcbsProfileServiceConfig {
 
   // corporation
   public static final String CORPORATE_X_API_KEY = conf.getString("tcbsprofile.corporate-x-api-key");
+  public static final String CORPORATE_REGISTER_BETA = conf.getString("tcbsprofile.corporateRegisterBeta");
 
 }
