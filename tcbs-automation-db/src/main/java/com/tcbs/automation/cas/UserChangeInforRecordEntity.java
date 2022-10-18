@@ -47,6 +47,10 @@ public class UserChangeInforRecordEntity {
   private String newEmail;
   @Column(name = "NEW_IDENTITY_NO")
   private String newIdentityNo;
+  @Column(name = "NEW_BANK_ACCOUNT_NO")
+  private String newBankAccountNo;
+
+  private static final String DATA_TCBSID = "tcbsId";
 
   private static Session getSession() {
     casConnection.getSession().clear();
@@ -59,7 +63,7 @@ public class UserChangeInforRecordEntity {
   public static Integer countByTcbsIdAndStatus(String tcbsId, Integer status) {
     Query<Integer> query = getSession().createNativeQuery(
       "SELECT COUNT(ID) FROM TCBS_USER_CHANGE_INFOR_RECORD WHERE TCBSID=:tcbsId AND STATUS=:status", Integer.class);
-    query.setParameter("tcbsId", tcbsId);
+    query.setParameter(DATA_TCBSID, tcbsId);
     query.setParameter("status", status);
     return query.getSingleResult();
   }
@@ -67,7 +71,7 @@ public class UserChangeInforRecordEntity {
   public static void updateStatusDoneForAllByTcbsid(String tcbsId) {
     Session session = getSession();
     Query query = session.createNativeQuery("UPDATE TCBS_USER_CHANGE_INFOR_RECORD SET STATUS = 1 WHERE  TCBSID=:tcbsId");
-    query.setParameter("tcbsId", tcbsId);
+    query.setParameter(DATA_TCBSID, tcbsId);
     query.executeUpdate();
     session.getTransaction().commit();
   }
@@ -85,7 +89,7 @@ public class UserChangeInforRecordEntity {
   public static List<UserChangeInforRecordEntity> getListByTcbsIdAndType(String tcbsId, String type) {
     Query<UserChangeInforRecordEntity> query = CAS.casConnection.getSession().createQuery(
       "from UserChangeInforRecordEntity a where a.tcbsId=:tcbsId and a.type=:type order by id desc ", UserChangeInforRecordEntity.class);
-    query.setParameter("tcbsId", tcbsId);
+    query.setParameter(DATA_TCBSID, tcbsId);
     query.setParameter("type", type);
     return query.getResultList();
 
@@ -97,7 +101,7 @@ public class UserChangeInforRecordEntity {
       Transaction trans = session.beginTransaction();
 
       Query<?> query = session.createQuery("DELETE UserChangeInforRecordEntity WHERE tcbsId=:tcbsId AND type=:type");
-      query.setParameter("tcbsId", tcbsId);
+      query.setParameter(DATA_TCBSID, tcbsId);
       query.setParameter("type", type);
       query.executeUpdate();
       trans.commit();
