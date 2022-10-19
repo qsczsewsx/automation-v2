@@ -6,7 +6,6 @@ import com.tcbs.automation.cas.TcbsPartnerShip;
 import com.tcbs.automation.cas.TcbsUser;
 import com.tcbs.automation.login.LoginApi;
 import com.tcbs.automation.login.TheUserInfo;
-import common.CommonUtils;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.Getter;
