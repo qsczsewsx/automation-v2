@@ -6,6 +6,7 @@ import com.tcbs.automation.cas.TcbsPartnerShip;
 import com.tcbs.automation.cas.TcbsUser;
 import com.tcbs.automation.login.LoginApi;
 import com.tcbs.automation.login.TheUserInfo;
+import common.CommonUtils;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.Getter;
@@ -44,7 +45,7 @@ public class TcbsAccountUnLinkTest {
   private String accountNo;
   private String token;
   private HashMap<String, Object> body;
-
+  private static final String VALUE = "1";
 
   @Before
   public void setup() {
@@ -101,8 +102,8 @@ public class TcbsAccountUnLinkTest {
   @After
   public void resetData() {
     if (statusCode == 200) {
-      TcbsPartnerShip.updatePartnerStatusLinkAcc(partnerAccountId, "1", "1");
-      TcbsBankIaaccount.updateStatusByUserId(TcbsUser.getByUserName(code105C).getId().toString(), "1");
+      TcbsPartnerShip.updatePartnerStatusLinkAcc(partnerAccountId, VALUE, VALUE);
+      TcbsBankIaaccount.updateStatusByUserId(TcbsUser.getByUserName(code105C).getId().toString(), VALUE);
     }
   }
 }
