@@ -1,0 +1,19 @@
+testCaseName|statusCode|errorMessage|partnerId|partnerAccountId|linkType|accountNo|code105C
+Verify tcbs account unlink api case successful with valid request|200||MBB|1910|ACCOUNT,IA|19034189870124|105C066135
+Verify tcbs account unlink api case missing body|400|Invalid parameter|||||105C066135
+Verify tcbs account unlink api case missing param partnerId|400|partnerId invalid|null|1910|ACCOUNT,IA|19034189870124|105C066135
+Verify tcbs account unlink api case partnerId is empty|400|partnerId invalid|empty|1910|ACCOUNT,IA|19034189870124|105C066135
+Verify tcbs account unlink api case partnerId is not config in system|400|partnerId invalid|ACB|1910|ACCOUNT,IA|19034189870124|105C066135
+Verify tcbs account unlink api case missing param partnerAccountId|400|partnerAccountId invalid|MBB|null|ACCOUNT,IA|19034189870124|105C066135
+Verify tcbs account unlink api case partnerAccountId is empty|400|partnerAccountId invalid|MBB|empty|ACCOUNT,IA|19034189870124|105C066135
+Verify tcbs account unlink api case partnerAccountId contains special characters|400|partnerAccountId invalid|MBB|PH00123@|ACCOUNT,IA|19034189870124|105C066135
+Verify tcbs account unlink api case partnerAccountId is not existed in tcbs_partnership table|400|partnerAccountId invalid|MBB|P100000011|ACCOUNT,IA|19034189870124|105C066135
+Verify tcbs account unlink api case missing param linkType|400|Invalid parameter|MBB|1910|""|19034189870124|105C066135
+Verify tcbs account unlink api case param linkType is empty|400|Invalid parameter|MBB|1910|empty|19034189870124|105C066135
+Verify tcbs account unlink api case invalid linkType|400|Invalid parameter|MBB|1910|ACCOUNTTTTT|19034189870124|105C066135
+Verify tcbs account unlink api case linkType is IA with missing param accountNo|400|iaBankAccount.accountNo invalid|MBB|1910|IA|null|105C066135
+Verify tcbs account unlink api case linkType is IA with accountNo is empty|400|iaBankAccount.accountNo invalid|MBB|1910|IA|empty|105C066135
+Verify tcbs account unlink api case linkType is IA with accountNo is incorrect|400|iaBankAccount.accountNo invalid|MBB|1910|IA|123|105C066135
+Verify tcbs account unlink api case linkType is IA with partnerAccountId has status is 2|400|Trạng thái ngắt không hợp lệ|HVN|1210|ACCOUNT|""|105C066118
+Verify tcbs account unlink api case linkType is IA with partnerAccountId has money wait hold|400|Đang còn nghĩa vụ về tiền, không thể hủy tài khoản IA|CTG|""|IA|19034189870126|105C066136
+Verify tcbs account unlink api case linkType is ACCOUNT with partnerAccountId has status not in (Y)|400|Trạng thái ngắt không hợp lệ|CTG|19101|ACCOUNT|""|105C066137
