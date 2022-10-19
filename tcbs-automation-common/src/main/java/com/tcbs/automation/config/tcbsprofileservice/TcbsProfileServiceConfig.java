@@ -381,6 +381,7 @@ public class TcbsProfileServiceConfig {
   public static final String OPEN_ACCOUNT_PARTNER_SIGN_CONTRACT = conf.getString("newonboardingPartnerShip.openAccountPartnerSignContract");
   public static final String OPEN_ACCOUNT_PARTNER_REGISTER = conf.getString("newonboardingPartnerShip.openAccountPartnerRegister");
   public static final String OPEN_ACCOUNT_PARTNER_SEND_OTP = conf.getString("newonboardingPartnerShip.openAccountPartnerSendOtp");
+  public static final String TCBS_ACCOUNT_UNLINK = conf.getString("newonboardingPartnerShip.tcbsAccountUnLink");
 
   //Additional API
   public static final String SUGGEST_ID_PLACE = conf.getString("tcbsprofile.suggestIdPlace");
