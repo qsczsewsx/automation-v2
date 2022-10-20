@@ -59,8 +59,6 @@ public class TcbsUser {
   private BigDecimal honorific;
   @Column(name = "PHONE")
   private String phone;
-  @Column(name = "PHONE_CODE")
-  private String phoneCode;
   @Column(name = "TCBSID")
   private String tcbsid;
   @Column(name = "VSD_STATUS")
@@ -115,6 +113,14 @@ public class TcbsUser {
   private BigDecimal isForeignPhone;
   @Column(name = "AVATAR_URL")
   private String avatarUrl;
+  @Column(name = "SIGN_CLOSE_CONTRACT")
+  private BigDecimal signCloseContract;
+  @Column(name = "PHONE_CODE")
+  private String phoneCode;
+  @Column(name = "KYC_LEVEL")
+  private BigDecimal kycLevel;
+  @Column(name = "OPEN_SOURCE")
+  private String openSource;
 
   private static final String DATA_EMAIL = "email";
   private static final String DATA_TCBSID = "tcbsId";
@@ -408,6 +414,43 @@ public class TcbsUser {
 
       Query<?> query = session.createQuery("UPDATE TcbsUser a SET a.custype=:custype WHERE a.username=:username");
       query.setParameter("custype", new BigDecimal(custype));
+      query.setParameter(DATA_USERNAME, username);
+      query.executeUpdate();
+      session.getTransaction().commit();
+    } catch (Exception e) {
+      logger.info(e.getMessage());
+    }
+  }
+
+  public static void updateAccountStatus(String username, String accountStatus) {
+    try {
+      Session session = CAS.casConnection.getSession();
+      session.clear();
+      if (!session.getTransaction().isActive()) {
+        session.beginTransaction();
+      }
+
+      Query<?> query = session.createQuery("UPDATE TcbsUser a SET a.accountStatus=:accountStatus WHERE a.username=:username");
+      query.setParameter("accountStatus", new BigDecimal(accountStatus));
+      query.setParameter(DATA_USERNAME, username);
+      query.executeUpdate();
+      session.getTransaction().commit();
+    } catch (Exception e) {
+      logger.info(e.getMessage());
+    }
+  }
+
+
+  public static void updateSignCloseContract(String username, String signCloseContract) {
+    try {
+      Session session = CAS.casConnection.getSession();
+      session.clear();
+      if (!session.getTransaction().isActive()) {
+        session.beginTransaction();
+      }
+
+      Query<?> query = session.createQuery("UPDATE TcbsUser a SET a.signCloseContract=:signCloseContract WHERE a.username=:username");
+      query.setParameter("signCloseContract", new BigDecimal(signCloseContract));
       query.setParameter(DATA_USERNAME, username);
       query.executeUpdate();
       session.getTransaction().commit();
