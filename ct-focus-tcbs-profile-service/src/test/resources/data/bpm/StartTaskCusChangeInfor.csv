@@ -1,7 +1,7 @@
 testCaseName|statusCode|tcbsId|errorMessage|status|processInstanceId|type|newPhone|newEmail|newIdentityNo|newBankAccountNo
 Verify start task cus change infor api case type as identityCard_change|200|10000023693|null|0|35555.01|identityCard_change|empty|empty|067818931|empty
-Verify start task cus change infor api case type as contactInfo_change|200|10000023693|null|0|35555.02|contactInfo_change|empty|thanhtruong314@gmail.com|empty|empty
+Verify start task cus change infor api case type as contactInfo_change|200|10000023693|null|0|35555.02|contactInfo_change|0938487472|thanhtruong314@gmail.com|empty|empty
 Verify start task cus change infor api case type as accountBank_change|200|10000023693|null|0|35555.03|accountBank_change|empty|empty|empty|50051095189588
-Verify start task cus change infor api case status as 1|200|0001802899|null|1|35555.04|contactInfo_change|0938487472|empty|empty|empty
+Verify start task cus change infor api case status as 1|200|0001802899|null|1|35555.04|contactInfo_change|0938487472|thanhtruong314@gmail.com|empty|empty
 Verify start task cus change infor api case missing BODY|400|empty|Invalid parameter|empty|empty|empty|empty|empty|empty|empty
-Verify start task cus change infor api case tcbsId does not exist|200|11111111111|Profile not found|0|35555.01|identityCard_change|empty|empty|empty|empty
+Verify start task cus change infor api case tcbsId does not exist|200|11111111111|Profile not found|0|35555.01|identityCard_change|empty|empty|067818931|empty

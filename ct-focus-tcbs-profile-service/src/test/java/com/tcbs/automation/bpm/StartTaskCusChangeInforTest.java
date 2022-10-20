@@ -91,18 +91,16 @@ public class StartTaskCusChangeInforTest {
     if (statusCode == 200) {
       List<UserChangeInforRecordEntity> listResult = UserChangeInforRecordEntity.getListByTcbsIdAndType(tcbsId, type);
       assertThat(listResult.size(), greaterThan(oldSize));
-      switch (testCaseName) {
+      switch (type) {
         case "identityCard_change":
           assertThat(listResult.get(0).getNewIdentityNo(), is(newIdentityNo));
           break;
         case "contactInfo_change":
           assertThat(listResult.get(0).getNewEmail(), is(newEmail));
+          assertThat(listResult.get(0).getNewPhone(), is(newPhone));
           break;
         case "accountBank_change":
           assertThat(listResult.get(0).getNewBankAccountNo(), is(newBankAccountNo));
-          break;
-        case "status as 1":
-          assertThat(listResult.get(0).getNewPhone(), is(newPhone));
           break;
         default:
           break;
