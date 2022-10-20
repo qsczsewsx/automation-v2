@@ -1,0 +1,11 @@
+testCaseName|statusCode|errorMessage|actionKey|data|username|docusignStatus|note
+Verify update docusign status api case valid|200|null|UPDATE_DOCUSIGN_STATUS|valid|105C198121|2|update success
+Verify update docusign status api case actionKey is empty|400|(actionKey) is required|empty|valid|105C198121|2|update fail
+Verify update docusign status api case data is empty|200|Body data is invalid|UPDATE_DOCUSIGN_STATUS|empty|empty|empty|update fail
+Verify update docusign status api case invalid actionKey|400|action key is invalid|ABC|valid|105C198121|2|update fail
+Verify update docusign status api case username is empty|200|username is invalid|UPDATE_DOCUSIGN_STATUS|invalid|empty|2|update fail
+Verify update docusign status api case docusignStatus is empty|200|For input string|UPDATE_DOCUSIGN_STATUS|invalid|105C198121|empty|update fail
+Verify update docusign status api case invalid username|200|Cannot get information of username 105C111LLL|UPDATE_DOCUSIGN_STATUS|invalid|105C111LLL|2|update fail
+Verify update docusign status api case invalid docusignStatus|200|For input string|UPDATE_DOCUSIGN_STATUS|invalid|105C198121|abc|update fail
+Verify update docusign status api case missing BODY|400|Invalid parameter|empty|empty|empty|empty|update fail
+Verify update docusign status api case user has no permission|403|Not Authorized|UPDATE_DOCUSIGN_STATUS|valid|105C198121|2|update fail
