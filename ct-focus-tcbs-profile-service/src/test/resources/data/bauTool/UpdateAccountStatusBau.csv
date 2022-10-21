@@ -1,0 +1,14 @@
+testCaseName|statusCode|errorMessage|actionKey|data|username|accountStatus|note
+Verify update account status api case valid from ACTIVE to LOCK_WAITING_TO_CLOSE|200|null|UPDATE_ACCOUNT_STATUS|valid|105C004185|LOCK_WAITING_TO_CLOSE|update success
+Verify update account status api case valid from LOCK_WAITING_TO_CLOSE to ACTIVE|200|null|UPDATE_ACCOUNT_STATUS|valid|105C004185|ACTIVE|update success
+Verify update account status api case valid from ACTIVE to BLOCK|200|null|UPDATE_ACCOUNT_STATUS|valid|105C198121|BLOCK|update success
+Verify update account status api case invalid from ACTIVE to INACTIVE|200|Not support inactive status|UPDATE_ACCOUNT_STATUS|valid|105C198121|INACTIVE|update fail
+Verify update account status api case actionKey is empty|400|(actionKey) is required|empty|valid|105C198121|ACTIVE|update fail
+Verify update account status api case data is empty|200|Body data is invalid|UPDATE_ACCOUNT_STATUS|empty|empty|empty|update fail
+Verify update account status api case invalid actionKey|400|action key is invalid|ABC|valid|105C198121|ACTIVE|update fail
+Verify update account status api case username is empty|200|username is required|UPDATE_ACCOUNT_STATUS|invalid|empty|ACTIVE|update fail
+Verify update account status api case accountStatus is empty|200|status is required|UPDATE_ACCOUNT_STATUS|invalid|105C198121|empty|update fail
+Verify update account status api case invalid username|200|null|UPDATE_ACCOUNT_STATUS|invalid|105C111LLL|ACTIVE|update fail
+Verify update account status api case invalid accountStatus|200|Invalid status|UPDATE_ACCOUNT_STATUS|invalid|105C198121|3441234|update fail
+Verify update account status api case missing BODY|400|Invalid parameter|empty|empty|empty|empty|update fail
+Verify update account status api case user has no permission|403|Not Authorized|UPDATE_ACCOUNT_STATUS|valid|105C198121|ACTIVE|update fail
