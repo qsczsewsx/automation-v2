@@ -505,7 +505,7 @@ public class CallApiUtils {
     personalInfo.put("contactAddress", "119 Bà Triệu, Hai Bà Trưng, Hà Nội");
     personalInfo.put("permanentAddress", "119, Trần Duy Hưng, Hà Nội");
     personalInfo.put("nationality", "VN");
-    personalInfo.put("province", "HA_NOI");
+    personalInfo.put("province", "HA-NOI");
     personalInfo.put("identityCard", identityCard);
 
     List<HashMap<String, Object>> bankAccounts = new ArrayList<>();
