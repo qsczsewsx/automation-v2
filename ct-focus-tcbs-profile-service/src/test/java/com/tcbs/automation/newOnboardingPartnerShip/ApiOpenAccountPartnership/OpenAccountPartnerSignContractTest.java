@@ -26,8 +26,7 @@ import static com.tcbs.automation.tools.FormatUtils.syncData;
 import static net.serenitybdd.rest.SerenityRest.given;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 @RunWith(SerenityParameterizedRunner.class)
 @UseTestDataFrom(value = "data/newOnboardingPartnerShip/ApiOpenAccountPartnership/ApiOpenAccountPartnerSignContract.csv", separator = '|')
@@ -41,11 +40,11 @@ public class OpenAccountPartnerSignContractTest {
   private String code105C;
   private String otp;
   private String otpId;
-  private String linkTypes ="";
-  private String autoTransfer ="";
-  private String isIAPaid ="";
-  private String iaBankAccount ="";
-  private String partnerAccountId = "";
+  private String linkTypes;
+  private String autoTransfer;
+  private String isIAPaid;
+  private String iaBankAccount;
+  private String partnerAccountId;
   private HashMap<String, Object> body;
 
   @Before
@@ -53,32 +52,28 @@ public class OpenAccountPartnerSignContractTest {
   public void setup() {
     if (statusCode == 200) {
       String prepareValue = String.valueOf(new Date().getTime() / 10);
-      if (testCaseName.contains("open account have account link and IA link")) {
-        linkTypes = "ACCOUNT, IA";
-        autoTransfer = "N";
-        isIAPaid = "N";
-        iaBankAccount = "10" + prepareValue;
-        partnerAccountId = "PHUONGMBB" + prepareValue;
-      }
-      else if (testCaseName.contains("only account link and not IA link")) {
-        linkTypes = "ACCOUNT";
-        partnerAccountId = "PHUONGMBB" + prepareValue;
-      }
-     else if (testCaseName.contains("only IA link and not account link")) {
-       linkTypes = "IA";
-        autoTransfer = "N";
-        isIAPaid = "N";
-        iaBankAccount = "10" + prepareValue;
-        partnerAccountId = "PHUONGMBB" + prepareValue;
-      }
+
+      linkTypes = syncData(linkTypes);
+      autoTransfer = syncData(autoTransfer);
+      isIAPaid = syncData(isIAPaid);
+      iaBankAccount = syncData(iaBankAccount);
+      partnerAccountId = syncData(partnerAccountId);
       List<String> linkType = new ArrayList<>(Arrays.asList(linkTypes.split(",")));
+
+     if (iaBankAccount.equalsIgnoreCase("autoGen")) {
+       iaBankAccount = "10" + prepareValue;
+     }
+     if (partnerAccountId.equalsIgnoreCase("autoGen")) {
+       partnerAccountId = "PHUONGMBB" + prepareValue;
+     }
+
       Response resRef;
       resRef = CallApiUtils.callRegisterPartnership(linkType, autoTransfer, isIAPaid, iaBankAccount, partnerAccountId);
       if (code105C.equals("autogen")) {
         code105C = resRef.jsonPath().get("basicInfo.code105C");
       }
-
     }
+
     code105C = syncData(code105C);
     partnerId = syncData(partnerId);
     otp = syncData(otp);
@@ -114,13 +109,13 @@ public class OpenAccountPartnerSignContractTest {
       assertEquals("WAIT_FOR_VERIFY", TcbsNewOnboardingStatus.getByUserIdAndStatusKey(userId.toString(), "ECONTRACT_STATUS").getStatusValue());
       if (testCaseName.contains("open account have account link and IA link") || !testCaseName.contains("not IA link")) {
         assertEquals("1",  TcbsPartnerShip.getByUserId(userId).getLinkIaStatus());
-        assertEquals("1", TcbsBankIaaccount.getIaiSaveBank(userId.toString(), partnerId));
+        assertEquals("1", TcbsBankIaaccount.getIaiSaveBank(userId.toString(), partnerId).toString());
       }
       if (testCaseName.contains("open account have account link and IA link") || !testCaseName.contains("not account link")) {
         assertEquals("1",  TcbsPartnerShip.getByUserId(userId).getLinkAccountStatus());
       }
     } else {
-      assertEquals(errorMessage, response.jsonPath().get("message"));
+      assertTrue(response.jsonPath().get("message").toString().contains(errorMessage));
     }
   }
 }
