@@ -4,14 +4,16 @@ import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.tcbs.automation.cas.TcbsBankIaaccount;
 import com.tcbs.automation.cas.TcbsPartnerShip;
 import com.tcbs.automation.cas.TcbsUser;
+import com.tcbs.automation.login.LoginApi;
+import com.tcbs.automation.login.TheUserInfo;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.Getter;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
+import net.serenitybdd.screenplay.Actor;
 import net.thucydides.core.annotations.Title;
 import net.thucydides.junit.annotations.UseTestDataFrom;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,15 +23,15 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.*;
+import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.TCBS_ACCOUNT_UNLINK;
 import static com.tcbs.automation.tools.FormatUtils.syncData;
 import static net.serenitybdd.rest.SerenityRest.given;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom(value = "data/newOnboardingPartnerShip/ApiPartnerShipAccountUnLink.csv", separator = '|')
-public class PartnerShipAccountUnLinkTest {
+@UseTestDataFrom(value = "data/newOnboardingPartnerShip/TcbsAccountUnLink.csv", separator = '|')
+public class TcbsAccountUnLinkTest {
   @Getter
   private String testCaseName;
   private int statusCode;
@@ -40,11 +42,15 @@ public class PartnerShipAccountUnLinkTest {
   private String code105C;
   private String linkType;
   private String accountNo;
+  private String token;
   private HashMap<String, Object> body;
-
+  private static final String VALUE = "1";
 
   @Before
   public void setup() {
+    Actor actor = Actor.named("linhtth");
+    LoginApi.withCredentials(code105C, "abc123").performAs(actor);
+    token = TheUserInfo.aboutLoginData().answeredBy(actor).getToken();
 
     linkType = syncData(linkType);
     List<String> listLinkType = new ArrayList<>(Arrays.asList(linkType.split(",")));
@@ -59,10 +65,9 @@ public class PartnerShipAccountUnLinkTest {
 
     body.put("partnerId", partnerId);
     body.put("partnerAccountId", partnerAccountId);
-    body.put("code105C", code105C);
     body.put("linkType", listLinkType);
 
-    if (!testCaseName.contains("case linkType is ACCOUNT")) {
+    if (linkType.contains("IA")) {
       body.put("iaBankAccount", iaBankAccount);
     }
   }
@@ -70,14 +75,13 @@ public class PartnerShipAccountUnLinkTest {
   @Test
   @TestCase(name = "#testCaseName")
   @Title("Verify partnership account unlink")
-  public void partnerShipAccountUnLink() {
+  public void tcbsAccountUnLink() {
     System.out.println("Test Case: " + testCaseName);
     RequestSpecification requestSpecification = given()
-      .baseUri(PARTNERSHIP_ACCOUNT_UNLINK)
-      .header("x-api-key", testCaseName.contains("invalid x-api-key") ? FMB_X_API_KEY : PARTNERSHIP_X_API_KEY);
+      .baseUri(TCBS_ACCOUNT_UNLINK)
+      .header("Authorization", "Bearer " + token);
 
     Response response;
-
     if (testCaseName.contains("missing body")) {
       response = requestSpecification.post();
     } else {
@@ -87,20 +91,18 @@ public class PartnerShipAccountUnLinkTest {
     assertEquals(statusCode, response.getStatusCode());
     if (statusCode == 200) {
       assertEquals("true", response.jsonPath().get("data").toString());
-      if (testCaseName.contains("case linkType is ACCOUNT")) {
-        assertEquals("0", TcbsPartnerShip.getPartnerShip(partnerAccountId).getLinkAccountStatus());
-      } else if (testCaseName.contains("case linkType is IA")) {
-        assertEquals("4", TcbsBankIaaccount.getpartnershipIALink(accountNo).getStatus().toString());
-      }
+      assertEquals("0", TcbsPartnerShip.getPartnerShip(partnerAccountId).getLinkAccountStatus());
+      assertEquals("4", TcbsBankIaaccount.getpartnershipIALink(accountNo).getStatus().toString());
     } else {
-      assertEquals(errorMessage, response.jsonPath().get("message"));
+      assertTrue(response.jsonPath().get("message").toString().contains(errorMessage));
     }
   }
+
   @After
   public void resetData() {
     if (statusCode == 200) {
-      TcbsPartnerShip.updatePartnerStatusLinkAcc(partnerAccountId, "1","1");
-      TcbsBankIaaccount.updateStatusByUserId(TcbsUser.getByUserName(code105C).getId().toString(),"1");
+      TcbsPartnerShip.updatePartnerStatusLinkAcc(partnerAccountId, VALUE, VALUE);
+      TcbsBankIaaccount.updateStatusByUserId(TcbsUser.getByUserName(code105C).getId().toString(), VALUE);
     }
   }
 }

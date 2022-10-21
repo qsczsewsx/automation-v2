@@ -39,6 +39,7 @@ public class StartTaskCusChangeInforTest {
   private String newPhone;
   private String newEmail;
   private String newIdentityNo;
+  private String newBankAccountNo;
   private HashMap<String, Object> body;
 
   @Before
@@ -50,6 +51,7 @@ public class StartTaskCusChangeInforTest {
     newPhone = syncData(newPhone);
     newEmail = syncData(newEmail);
     newIdentityNo = syncData(newIdentityNo);
+    newBankAccountNo = syncData(newBankAccountNo);
 
     body = new HashMap<>();
     body.put("tcbsId", tcbsId);
@@ -59,6 +61,7 @@ public class StartTaskCusChangeInforTest {
     body.put("newPhone", newPhone);
     body.put("newEmail", newEmail);
     body.put("newIdentityNo", newIdentityNo);
+    body.put("newBankAccountNo", newBankAccountNo);
 
   }
 
@@ -88,12 +91,19 @@ public class StartTaskCusChangeInforTest {
     if (statusCode == 200) {
       List<UserChangeInforRecordEntity> listResult = UserChangeInforRecordEntity.getListByTcbsIdAndType(tcbsId, type);
       assertThat(listResult.size(), greaterThan(oldSize));
-      if (testCaseName.contains("identityCard_change")) {
-        assertThat(listResult.get(0).getNewIdentityNo(), is(newIdentityNo));
-      } else if (testCaseName.contains("contactInfo_change")) {
-        assertThat(listResult.get(0).getNewEmail(), is(newEmail));
-      } else if (testCaseName.contains("status as 1")) {
-        assertThat(listResult.get(0).getNewPhone(), is(newPhone));
+      switch (type) {
+        case "identityCard_change":
+          assertThat(listResult.get(0).getNewIdentityNo(), is(newIdentityNo));
+          break;
+        case "contactInfo_change":
+          assertThat(listResult.get(0).getNewEmail(), is(newEmail));
+          assertThat(listResult.get(0).getNewPhone(), is(newPhone));
+          break;
+        case "accountBank_change":
+          assertThat(listResult.get(0).getNewBankAccountNo(), is(newBankAccountNo));
+          break;
+        default:
+          break;
       }
     } else {
       assertThat("verify error message", response.jsonPath().get("message"), is(containsString(errorMessage)));

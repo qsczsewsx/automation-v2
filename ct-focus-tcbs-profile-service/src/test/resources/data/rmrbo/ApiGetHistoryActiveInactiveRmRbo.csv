@@ -1,0 +1,12 @@
+testCaseName|statusCode|tcbsId|errorMessage|code105c|date
+Verify api get history active and inactive rmrbo with invalid x-api-key|401|""|Invalid X-Api-Key|105C793115|
+Verify api get history active and inactive rmrbo with missing tcbsid param|200|""|""||2022-06-16
+Verify api get history active and inactive rmrbo with missing username param|200|""|""||2022-06-16
+Verify api get history active and inactive rmrbo with missing date param|400|0001051009|Missing request parameter||
+Verify api get history active and inactive rmrbo with tcbsid not exsit|200|0001066651009|""||2022-06-16
+Verify api get history active and inactive rmrbo with username not exsit|200|||105C74734838483|2022-06-16
+Verify api get history active and inactive rmrbo with date as DD-MM-YYYY|400||format date is wrong. Ex: yyyy-MM||17-06-2022
+Verify api get history active and inactive rmrbo with date as MM-DD-YYYY|400||format date is wrong. Ex: yyyy-MM||06-17-2022
+Verify api get history active and inactive rmrbo with date as YYYY-MM-DD|200||||2022-06-16
+Verify api get history active and inactive rmrbo with date as YYYY/MM/DD|400||format date is wrong. Ex: yyyy-MM||2022/06/16
+Verify api get history active and inactive rmrbo with date as Y/M/D|400||format date is wrong. Ex: yyyy-MM||2/6/1

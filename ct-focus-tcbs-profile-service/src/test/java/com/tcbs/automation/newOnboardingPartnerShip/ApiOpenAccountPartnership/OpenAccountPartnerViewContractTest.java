@@ -1,4 +1,4 @@
-package com.tcbs.automation.newOnboardingPartnerShip;
+package com.tcbs.automation.newOnboardingPartnerShip.ApiOpenAccountPartnership;
 
 import com.adaptavist.tm4j.junit.annotation.TestCase;
 import com.tcbs.automation.login.LoginApi;
@@ -14,10 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 import static com.tcbs.automation.config.tcbsprofileservice.TcbsProfileServiceConfig.*;
 import static com.tcbs.automation.tools.FormatUtils.syncData;
@@ -28,45 +25,38 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom(value = "data/newOnboardingPartnerShip/ApiPartnerShipViewContract.csv", separator = '|')
-public class PartnerShipViewContractTest {
+@UseTestDataFrom(value = "data/newOnboardingPartnerShip/ApiOpenAccountPartnership/ApiOpenAccountPartnerViewContract.csv", separator = '|')
+public class OpenAccountPartnerViewContractTest {
   @Getter
   private String testCaseName;
   private int statusCode;
 
   private String errorMessage;
   private String partnerId;
-  private String linkType;
-  private String custodyCode;
-  private String authoToken;
+  private String code105C;
   private HashMap<String, Object> body;
-
 
   @Before
 
   public void setup() {
 
-    Actor actor = Actor.named("logintoken");
-    LoginApi.withCredentials(custodyCode, "abc123").performAs(actor);
-    authoToken = TheUserInfo.aboutLoginData().answeredBy(actor).getToken();
-
-    linkType = syncData(linkType);
-    List<String> listLinkType = new ArrayList<>(Arrays.asList(linkType.split(",")));
     partnerId = syncData(partnerId);
+    code105C = syncData(code105C);
+
     body = new HashMap<>();
 
     body.put("partnerId", partnerId);
-    body.put("linkType", listLinkType);
+    body.put("code105C", code105C);
   }
 
   @Test
   @TestCase(name = "#testCaseName")
-  @Title("Verify partnership view contract TNC")
+  @Title("Verify open account partnership view contract")
   public void partnerShipViewContract() {
     System.out.println("Test Case: " + testCaseName);
     RequestSpecification requestSpecification = given()
-      .baseUri(PARTNERSHIP_VIEW_CONTRACT)
-      .header("Authorization", "Bearer " + (testCaseName.contains("invalid Authorization") ? FMB_X_API_KEY : authoToken));
+      .baseUri(OPEN_ACCOUNT_PARTNER_VIEW_CONTRACT)
+      .header("x-api-key", (testCaseName.contains("invalid x-api-key") ? FMB_X_API_KEY : PARTNERSHIP_X_API_KEY));
 
     Response response;
 
@@ -77,11 +67,10 @@ public class PartnerShipViewContractTest {
     }
 
     assertEquals(statusCode, response.getStatusCode());
-    if (statusCode == 200 && testCaseName.contains("case successful")) {
-      assertThat("verify", response.jsonPath().get(partnerId + "_LINK_ACCOUNT"), is(notNullValue()));
-    } else if (testCaseName.contains("invalid Authorization")) {
-      assertEquals(statusCode, response.statusCode());
-    } else {
+    if (statusCode == 200) {
+      assertThat("verify onboarding contract", response.jsonPath().get("onboarding"), is(notNullValue()));
+      assertThat("verify derivative_account contract", response.jsonPath().get("derivative_account"), is(notNullValue()));
+    }  else {
       assertEquals(errorMessage, response.jsonPath().get("message"));
     }
   }

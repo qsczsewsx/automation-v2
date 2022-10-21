@@ -109,6 +109,7 @@ public class TcbsProfileServiceConfig {
   public static final String MULTIIA_TCBSID_X_API_KEY = conf.getString("tcbsprofile.multi-tcbsid-x-api-key");
   public static final String MULTIIA_USERNAME_X_API_KEY = conf.getString("tcbsprofile.multi-username-x-api-key");
   public static final String MULTIIA_PROFILE_R_X_API_KEY = conf.getString("tcbsprofile.multi-on-profile-r-x-api-key");
+  public static final String CORPORATE_CHECK_ACCOUNT_EXIST = conf.getString("tcbsprofile.corpCheckAccountExist");
 
   public static final String OPEN_DERIVATIVE_ACCOUNT = conf.getString("tcbsprofile.openDerivativeAccount");
   public static final String STATUS_DERIVATIVE_ACCOUNT = conf.getString("tcbsprofile.statusDerivativeAccount");
@@ -337,6 +338,8 @@ public class TcbsProfileServiceConfig {
   public static final String RM_RBO_HISTORY_VIEW = conf.getString("rmrbo.rmrbo-history-view");
   public static final String GET_NNB_BY_FUND = conf.getString("tcbsprofile.getNnbByFundList");
   public static final String GET_CUSTOMER_BY_RBO = conf.getString("rmrbo.getCustomerByRbo");
+  public static final String GET_HISTORY_ACTIVE_INACTIVE = conf.getString("rmrbo.getHistoryActiveInactive");
+  public static final String ADD_HISTORY_ACTIVE_INACTIVE_IWP = conf.getString("rmrbo.addHistoryActiveInactiveIwp");
 
   //FORGOT PASSWORD
   public static final String FORGOT_PASSWORD_PHONE = conf.getString("tcbsprofile.forgotPasswordPhone");
@@ -374,6 +377,11 @@ public class TcbsProfileServiceConfig {
   public static final String PARTNERSHIP_GET_DETAIL = conf.getString("newonboardingPartnerShip.partnerShipGetDetail");
   public static final String TCBS_ACCOUNT_CONFIRM = conf.getString("newonboardingPartnerShip.tcbsConfirmId");
   public static final String TCBS_ACCOUNT_LINK = conf.getString("newonboardingPartnerShip.tcbsAccountLink");
+  public static final String OPEN_ACCOUNT_PARTNER_VIEW_CONTRACT = conf.getString("newonboardingPartnerShip.openAccountPartnerViewContract");
+  public static final String OPEN_ACCOUNT_PARTNER_SIGN_CONTRACT = conf.getString("newonboardingPartnerShip.openAccountPartnerSignContract");
+  public static final String OPEN_ACCOUNT_PARTNER_REGISTER = conf.getString("newonboardingPartnerShip.openAccountPartnerRegister");
+  public static final String OPEN_ACCOUNT_PARTNER_SEND_OTP = conf.getString("newonboardingPartnerShip.openAccountPartnerSendOtp");
+  public static final String TCBS_ACCOUNT_UNLINK = conf.getString("newonboardingPartnerShip.tcbsAccountUnLink");
 
   //Additional API
   public static final String SUGGEST_ID_PLACE = conf.getString("tcbsprofile.suggestIdPlace");
@@ -390,5 +398,12 @@ public class TcbsProfileServiceConfig {
   public static final String GET_TOOL_BAU_LIST = conf.getString("bauTool.getToolBauList");
   public static final String SEARCH_BAU_HISTORY = conf.getString("bauTool.searchBauHistory");
   public static final String ACTION_TOOL_BAU = conf.getString("bauTool.actionToolBau");
+
+  // check contract
+  public static final String JOB_CHECK_CONTRACT = conf.getString("tcbsprofile.jobCheckContract");
+
+  // corporation
+  public static final String CORPORATE_X_API_KEY = conf.getString("tcbsprofile.corporate-x-api-key");
+  public static final String CORPORATE_REGISTER_BETA = conf.getString("tcbsprofile.corporateRegisterBeta");
 
 }

@@ -81,11 +81,16 @@ public class RegisterGetOcrDataTest {
       assertEquals(ocrData.getFullName(), mapOcrData.get("fullName"));
       assertEquals(ocrData.getDob(), mapOcrData.get("dob"));
       assertEquals(ocrData.getIdNumber(), mapOcrData.get("idNumber"));
-      assertEquals(ocrData.getIssuePlace(), mapOcrData.get("idPlace"));
+      if (testCaseName.contains("idPlace is standardized")) {
+        assertEquals("Cục CS ĐKQL CT và DLQG về DC", mapOcrData.get("idPlace"));
+      } else {
+        assertEquals(ocrData.getIssuePlace(), mapOcrData.get("idPlace"));
+      }
       assertEquals(ocrData.getIssueDate(), mapOcrData.get("idDate"));
       assertEquals(ocrData.getExpireDate(), mapOcrData.get("expireDate"));
       assertEquals(ocrData.getNationality(), mapOcrData.get("nationality"));
-      assertEquals(ocrData.getHometownAddress(), mapOcrData.get("hometownAddress"));
+      // fix mapping UI contactAddress as permanentAddress
+      assertEquals(ocrData.getPermanentAddress(), mapOcrData.get("hometownAddress"));
     } else {
       assertEquals(errorMessage, response.jsonPath().get("message"));
     }

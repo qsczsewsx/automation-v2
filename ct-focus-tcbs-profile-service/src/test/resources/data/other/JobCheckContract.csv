@@ -1,0 +1,6 @@
+testCaseName|statusCode|fromDate|toDate|username|contractOk|errorMsg
+Verify job check contract api case eContract is valid|200|2016-06-18|2022-10-19|105C000082|1|
+Verify job check contract api case eContract is invalid|200|2016-06-18|2022-10-19|105C002111|0|
+Verify job check contract api case missing param fromDate|400|empty|2022-10-19|105C000082|0|Missing request parameter
+Verify job check contract api case missing param toDate|400|2016-06-18|empty|105C000082|0|Missing request parameter
+Verify job check contract api case eContract does not exist |200|2016-06-18|2022-10-19|105C078035|0|
