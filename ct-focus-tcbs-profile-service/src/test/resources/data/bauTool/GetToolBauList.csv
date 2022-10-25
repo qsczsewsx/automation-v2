@@ -1,3 +1,0 @@
-testCaseName|statusCode|errorMessage
-Verify get tool bau list api case valid request|200|null
-Verify get tool bau list api case user has no permission|403|Not Authorized

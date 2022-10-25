@@ -1,5 +1,0 @@
-{
-    "condition": "(id>=200 or id != 10000 or id >= 5555 or id<= 2999 or id== 3663 OR id <=2136 or id ==123995) AND lastName LIKE '%a%'",
-    "fields": "personalInfo,basicInfo",
-    "limit": 10
-}

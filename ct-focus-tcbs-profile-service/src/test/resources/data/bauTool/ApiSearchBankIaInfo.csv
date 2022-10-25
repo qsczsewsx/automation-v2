@@ -1,7 +1,0 @@
-testCaseName,statusCode,errorMessage,actionKey,username
-Verify search bank info by 105C api with code105c and actionKey params valid,200,,FORCE_UPDATE_BANK_IAACCOUNT,105C898251
-Verify search bank info by 105C api with missing param actionKey and code105c,400,Missing request parameter,,
-Verify search bank info by 105C api with missing value actionKey param,400,action key is invalid,"",105C898251
-Verify search bank info by 105C api with missing value code105c param,400,Profile not found!,FORCE_UPDATE_BANK_IAACCOUNT,""
-Verify search bank info by 105C api with code105c is not exist recode in tcbs_bank_iaaccount,400,Cannot get bankIAAccount of username 105C056783,FORCE_UPDATE_BANK_IAACCOUNT,105C056783
-Verify search bank info by 105C api with authorization is invalid,403,Not Authorized,,

@@ -1,9 +1,0 @@
-testCaseName|authorization|taskId|statusCode|errorMsg
-Verify checker approve api case 400 with taskId as not assigned to checker|checker|19541|400|This task is not yours
-Verify checker approve api case 200 with valid request|checker|#taskId#|200|
-Verify checker approve api case 400 with missing value in taskId|checker||400|Invalid request taskId
-Verify checker approve api case 400 with value in taskId as 9999999|checker|9999999|400|Task not found
-Verify checker approve api case 400 with value in taskId as taskId|checker|taskId|400|Invalid parameter
-Verify checker approve api case 400 with value in taskId as special words|checker|#$#|400|Invalid parameter
-Verify checker approve api case 400 with value in taskId as done task|checker|19542|400|Task is close
-Verify checker approve api case 403 with value in authorization as maker|maker|#taskId#|400|Internal Error

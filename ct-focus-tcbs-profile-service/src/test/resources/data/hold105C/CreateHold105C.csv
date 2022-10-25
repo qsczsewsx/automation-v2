@@ -1,6 +1,0 @@
-testCaseName|statusCode|errorMessage|username|strCode105C
-Verify validate hold 105C api case valid request|200||105C005522|105CHYT996,105CTYH102
-Verify validate hold 105C api case username registered fancy code 105C|400|Quý khách đã sử dụng hết quyền giữ tài khoản số đẹp|105C060980|105CHYT996,105CTYH102
-Verify validate hold 105C api case username register code105C which is invalid|400|Profile 105C code is invalid|105C005522|105C084840,105CHYT191
-Verify validate hold 105C api case missing BODY|400|Invalid parameter|105C005522|empty
-Verify validate hold 105C api case code105C param is empty|400|Profile 105C code is invalid|105C005522|empty

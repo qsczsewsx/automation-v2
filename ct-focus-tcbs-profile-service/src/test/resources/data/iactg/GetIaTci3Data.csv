@@ -1,8 +1,0 @@
-testCaseName,username,tcbsId,statusCode,iaConnect,isIa,iaStatus
-Verify api get info IA from tci3 case token not permission with tcbsId,105C007122,0001738764,403,null,null,null
-Verify api get info IA from tci3 case user has IA CTG,105C007122,10000022726,200,CTG,Y,1
-Verify api get info IA from tci3 case user has IA TCB,105C033777,0001033777,200,TCB,Y,1
-Verify api get info IA from tci3 case user no IA and linked TCB,105C030905,10000022730,200,null,null,null
-Verify api get info IA from tci3 case user creating IA,105C091235,10000022692,200,TCB,CREATING,2
-Verify api get info IA from tci3 case user canceling IA,105C056546,10000022668,200,TCB,CANCELING,4
-Verify api get info IA from tci3 case user updating IA,105C037885,10000022664,200,TCB,UPDATING,5

@@ -1,5 +1,0 @@
-testCaseName,statusCode,roleName,lstUserAdd,errorMessage,Expected,lstUserRemove
-Verify API update role with roleName is IWPs and current role in WSO2 is RMs is active ,500,Application/IWPs,USER105C/105C100177,Internal server error,Display error message,
-Verify API update role with roleName is IWPs and current role in WSO2 is RBO is active ,500,Application/IWPs,USER105C/105C100175,Internal server error,Display error message,
-Verify API update role with roleName is role is not configured list in the system,500,Application/PPTest060622,USER105C/105C100258,Internal server error,Display error message,
-Verify API update role with roleName is role is configured list in the system,200,Application/APMs,USER105C/105C100103,,SUCCESS,

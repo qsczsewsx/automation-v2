@@ -1,7 +1,0 @@
-testCaseName
-Verify /profile/v1/bau/retry-manual-gen-105C/{tcbsId} api responses httpStatusCode as "400" and return "invalid request body" message which is missing param tcbsId in URL
-Verify /profile/v1/bau/retry-manual-gen-105C/{tcbsId} api responses httpStatusCode as "400" and return "tcbsId is not found" message which is missing value of param tcbsId in URL
-Verify /profile/v1/bau/retry-manual-gen-105C/{tcbsId} api responses httpStatusCode as "400" and return "tcbsId is not found" message which is contained value of param tcbsId in URL as "999999"
-Verify /profile/v1/bau/retry-manual-gen-105C/{tcbsId} api responses httpStatusCode as "400" and return "tcbsIdk is not found" message which is contained value of param tcbsId in URL as text
-Verify /profile/v1/bau/retry-manual-gen-105C/{tcbsId} api responses httpStatusCode as "400" and return "tcbsId is not found" message which is contained value of param tcbsId in URL as special word
-Verify /profile/v1/bau/retry-manual-gen-105C/{tcbsId} api responses httpStatusCode as "200" and STATUS column is updated as "COMPLETE", RETRY_COUNT column is +1 in OB_RETRY table

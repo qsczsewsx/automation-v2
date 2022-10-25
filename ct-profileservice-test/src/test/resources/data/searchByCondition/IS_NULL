@@ -1,5 +1,0 @@
-{
-    "condition": "email IS NULL",
-    "fields": "personalInfo,basicInfo",
-    "limit": 10
-}

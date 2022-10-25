@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 ZIP_FILE="tm4j_result.zip"
 AUTO_CREATE_TEST_CASES="true"
-JIRA_URL="https://jira.tcbs.com.vn"
+JIRA_URL="https://jira.xxxx.com.vn"
 
 PROJECT_KEY=$([[ "$PROJECT_KEY" == "" ]] && echo "QE" || echo "$PROJECT_KEY")
 PROJECT_ID=$([[ "$PROJECT_ID" == "" ]] && echo "11702" || echo "$PROJECT_ID")

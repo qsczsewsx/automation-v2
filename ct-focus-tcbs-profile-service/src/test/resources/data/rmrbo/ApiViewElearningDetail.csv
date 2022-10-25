@@ -1,5 +1,0 @@
-testCaseName|statusCode|tcbsId|errorMessage|Expected
-Verify api view elearning detail with tcbsId is incorrect |200|545rfsfgg|""|response is empty
-Verify api view elearning detail with tcbsId is correct and non-exist in table r3rd_elearning|200|62|""|response is empty
-Verify api view elearning detail with tcbsId is correct and exist in table r3rd_elearning and return data|200|gen|""|Display list data in response
-Verify api view elearning detail with authorization is incorrect|403|0001533321|Not Authorized|

@@ -1,8 +1,0 @@
-testCaseName|errorCode|tcbsId|errorMessage
-Verify send request open derivative account api case response 200 customer signed derivative contract and account has been already activated VSD|1|0001019015|OK
-Verify send request open derivative account api case response 400 customer account has been not yet activated VSD|-1|0001010212|Tai khoan chua kich hoat VSD
-Verify send request open derivative account api case response 400 tcbsId does not exist|-1|0001921928|Profile not found
-Verify send request open derivative account api case response 400 tcbsId has format different from 10 or 11 digit|-1|0001921938888|Profile not found
-Verify send request open derivative account api case response 400 tcbsId value is text|-1|hvh|Profile not found
-Verify send request open derivative account api case response 400 tcbsId value is special word|-1|$#|Wrong format of tcbsid
-Verify send request open derivative account api case response 400 tcbsId LIKE tcbsId exists in DB|-1|000192192|Profile not found

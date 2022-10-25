@@ -1,6 +1,0 @@
-testCaseName|statusCode|tcbsId|errorMessage|reason
-Verify sms to cus to stop send msg to derivative core api case valid request|200|10000000392 |null|Test từ chối điện 1
-Verify sms to cus to stop send msg to derivative core api case user has no permission|403|10000000392 |Not Authorized|Test từ chối điện 1
-Verify sms to cus to stop send msg to derivative core api case tcbsId does not have number format|400|abc@&|Wrong format of tcbsid|Test từ chối điện 1
-Verify sms to cus to stop send msg to derivative core api case tcbsId does not exist|400|0001388896|Profile not found|Test từ chối điện 1
-Verify sms to cus to stop send msg to derivative core api case missing BODY|400|10000000392 |Invalid parameter|empty

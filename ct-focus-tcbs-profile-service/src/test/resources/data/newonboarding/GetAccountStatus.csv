@@ -1,6 +1,0 @@
-testCaseName|statusCode|accountLogin|tcbsid|derivativeAccountStatus
-Verify api get account status user has no permission sign eContract|403|105C021929|0001496400|null
-Verify derivative status when user corporate is not beta user|200|105C519052|0001519052|NEED_TO_ACTIVATE
-Verify derivative status when user corporate is beta user with CKCS is not actived|200|105C519057|0001519057|NEED_TO_ACTIVATE
-Verify derivative status when user corporate is beta user with CKCS is actived, not sign derivative|200|105C519058|0001519058|NEED_TO_SIGN
-Verify derivative status when user corporate is beta user and has signed derivative contract|200|105C519056|0001519056|PROCESSING

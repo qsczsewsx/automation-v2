@@ -1,9 +1,0 @@
-testCaseName|tcbsId|accountNo|bankSource|statusCode|errorCode
-Verify api disconnect IA from tci3 case token not permission with tcbsId|0001738764|100870080100|CTG|403|0
-Verify api disconnect IA from tci3 case accountNo is null|10000021932|null|CTG|400|104043
-Verify api disconnect IA from tci3 case accountNo is empty|10000021932|empty|CTG|400|104043
-Verify api disconnect IA from tci3 case accountNo is invalid|10000021932|123xxxx|CTG|400|104173
-Verify api disconnect IA from tci3 case bankSource is null|10000021932|103870080089|null|400|104043
-Verify api disconnect IA from tci3 case bankSource is empty|10000021932|103870080089|empty|400|104027
-Verify api disconnect IA from tci3 case bankSource is invalid|10000021932|103870080089|BID|400|104027
-Verify api disconnect IA from tci3 case success|10000021932|103870080089|CTG|400|104555094

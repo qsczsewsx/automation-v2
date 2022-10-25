@@ -1,4 +1,0 @@
-testCaseName |statusValueGen105C|numConfig
-Verify api auto retry gen 105C when call openFlexAccount fail |ACTIVATE_PENDING|5
-Verify api auto retry gen 105C when call confirmFlexAccount fail |OPEN_ACCOUNT|5
-Verify api auto retry gen 105C when call sync105CFromFlex fail |CONFIRM_ACCOUNT|5

@@ -1,7 +1,0 @@
-testCaseName|statusCode|errorMessage|sessionID
-Verify add sessionID to black list success|200|null|sessionID
-Verify add to black list missing sessionID|400|SessionId cannot blank |
-Verify add to black list with sessionID not exist|400|Session not found: b16d2215-9004-460e-8435-e0277613fad1|b16d2215-9004-460e-8435-e0277613fad1
-Verify add to black list missing body|400|Invalid parameter|
-Verify add to black list with sessionID of another user|400|Session not found: 72c06574-4290-4b6f-aece-bf8891973189|72c06574-4290-4b6f-aece-bf8891973189
-Verify add to black list with multiple sessionID|400|Session not found: sessionID|sessionID,9bf2446e

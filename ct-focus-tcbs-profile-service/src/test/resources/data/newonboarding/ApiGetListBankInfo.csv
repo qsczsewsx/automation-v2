@@ -1,6 +1,0 @@
-testCaseName|statusCode|errorMsg|pageSize
-Verify api get list bank info with pageSize as 4000|200|""|4000
-Verify api get list bank info with pageSize less than 4000|400|Page size invalid exception|100
-Verify api get list bank info with missing pageSize param|200||
-Verify api get list bank info with pageSize is text|400|Type mismatch request parameter|aaa
-Verify api get list bank info with pageSize greater than 4000|200||5600

@@ -1,3 +1,0 @@
-testCaseName|statusCode|errorMessage
-Verify API get all partner success with data list is exist in DB|200|
-Verify API get all partner with incorrect Authorization|403|Not Authorized

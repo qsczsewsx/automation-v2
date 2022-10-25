@@ -1,7 +1,0 @@
-testCaseName|statusCode|errorMessage|wblUserId|actor
-Verify delete user from policy list fund case valid request|200|null|""|test
-Verify delete user from policy list fund case invalid x-api-key|401|Invalid X-Api-Key|""|
-Verify delete user from policy list fund case missing body|400|Invalid parameter|""|
-Verify delete user from policy list fund case wblUserId is text|400|Invalid parameter|dddff|
-Verify delete user from policy list fund case with multi wblUserId not exsit|400|wblUser not found|1,7999876644|
-Verify delete user from policy list fund case wblUserId not exsit|400|wblUser not found|2121222222222|

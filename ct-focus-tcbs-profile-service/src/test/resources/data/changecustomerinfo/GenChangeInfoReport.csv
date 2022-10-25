@@ -1,9 +1,0 @@
-testCaseName|statusCode|errorMessage|reportType|oldData|newData
-Verify gen change info report api case type report is HNX_REPORT|200|null|HNX_REPORT|valid|valid
-Verify gen change info report api case type report is HSX_REPORT|200|null|HSX_REPORT|valid|valid
-Verify gen change info report api case missing BODY|400|Invalid parameter|null|null|null
-Verify gen change info report api case missing param reportType|400|Invalid report type|null|valid|valid
-Verify gen change info report api case missing param oldData|400|Gen file fail|HSX_REPORT|null|valid
-Verify gen change info report api case missing param newData|400|Gen file fail|HSX_REPORT|valid|null
-Verify gen change info report api case value of param reportType is empty|400|Invalid report type|empty|valid|valid
-Verify gen change info report api case type report is invalid|400|Invalid report type|invalid|valid|valid

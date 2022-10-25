@@ -1,4 +1,0 @@
-testCaseName|status|errorMessage|referenceId
-Verify rm print contract api case valid request|0|SUCCESS|2979708163550578
-Verify rm print contract api case missing BODY|1|NOT_FOUND|null
-Verify rm print contract api case referenceId is invalid|1|NOT_FOUND|2979708163550000

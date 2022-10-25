@@ -1,7 +1,0 @@
-testCaseName|statusCode|role|errorMessage
-Verify api get course code case 200 with role as RBO|200|RBO|""
-Verify api get course code case 400 with invalid token|403|RM|Not Authorized
-Verify api get course code case 400 with missing role is null|404||No message available
-Verify api get course code case 400 with role non-exist|200|TDBFJJF|""
-Verify api get course code case 200 with valid information non-exist course code|200|iWP|
-Verify api get course code case 200 with role as RM|200|RM|

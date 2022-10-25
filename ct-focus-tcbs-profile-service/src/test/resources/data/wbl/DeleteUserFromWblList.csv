@@ -1,5 +1,0 @@
-testCaseName|statusCode|errorMessage|wblUserId
-Verify delete user from policy list api case valid request|200|null|#wblUserId#
-Verify delete user from policy list api case user has no permission|403|Not Authorized|521
-Verify delete user from policy list api case wblUserId does not have number format|400|Type mismatch request parameter|avc123
-Verify delete user from policy list api case wblUserId does not exist|400|wblUser not found|521

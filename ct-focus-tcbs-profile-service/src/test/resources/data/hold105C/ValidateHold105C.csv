@@ -1,7 +1,0 @@
-testCaseName|statusCode|errorMessage|code105C
-Verify validate hold 105C api case valid when code105C is ready to onboarding|200|200|105CHLT845
-Verify validate hold 105C api case code105C is in fancy list|400|104004|105CCC0000
-Verify validate hold 105C api case code105C is owned by personal|400|104004|105CVIET94
-Verify validate hold 105C api case code105C existed|400|104004|105C084840
-Verify validate hold 105C api case missing BODY|400|104027|empty
-Verify validate hold 105C api case code105C param is empty|400|104004|empty

@@ -1,6 +1,0 @@
-testCase      ,description                         ,filePath                                               ,testDataFile                                ,subPath ,ok   
-ProfileController#searchProfileByCondition,ProfileController#searchProfileByCondition,/src/test/resources/data/searchByCondition/,LIKE           ,/profiles/search-by-condition,TRUE 
-ProfileController#searchProfileByCondition,ProfileController#searchProfileByCondition,/src/test/resources/data/searchByCondition/,IS_NULL              ,/profiles/search-by-condition,TRUE 
-ProfileController#searchProfileByCondition,ProfileController#searchProfileByCondition,/src/test/resources/data/searchByCondition/,IS_NOT_NULL             ,/profiles/search-by-condition,TRUE 
-ProfileController#searchProfileByCondition,ProfileController#searchProfileByCondition,/src/test/resources/data/searchByCondition/,IN_AND_LIKE          ,/profiles/search-by-condition,TRUE 
-ProfileController#searchProfileByCondition,ProfileController#searchProfileByCondition,/src/test/resources/data/searchByCondition/,NOT_IN_AND_LIKE           ,/profiles/search-by-condition,TRUE 

@@ -1,5 +1,0 @@
-testCaseName|statusCode|email|erroMsg
-Verify check 105C api case 200 with valid request|200|no_email_571260960@tcbs.com.vn|
-Verify check 105C api case 400 with missing email param|400||Profile not found
-Verify check 105C api case 400 with missing value of email|400||Profile not found
-Verify check 105C api case 400 with value of code105C as not exist in database|400|no_email_999999999@tcbs.com.vn|User's info not found

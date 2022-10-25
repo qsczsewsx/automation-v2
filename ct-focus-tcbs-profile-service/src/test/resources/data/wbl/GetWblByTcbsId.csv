@@ -1,7 +1,0 @@
-testCaseName|statusCode|errorMessage|tcbsId
-Verify get wbl by tcbsId api case valid request|200|null|0001954259
-Verify get wbl by tcbsId api case invalid x-api-key|401|Invalid X-Api-Key|0001300126
-Verify get wbl by tcbsId api case tcbsId as a word|400|Profile not found|aik
-Verify get wbl by tcbsId api case tcbsId as a special character|400|Profile not found|&*
-Verify get wbl by tcbsId api case tcbsId does not exist|400|Profile not found|0001593378
-Verify get wbl by tcbsId api case tcbsId has format different from 10 or 11 digit|400|Profile not found|00013001268999

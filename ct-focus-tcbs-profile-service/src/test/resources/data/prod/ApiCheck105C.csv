@@ -1,9 +1,0 @@
-testCaseName|statusCode|code105C|erroMsg
-Verify check 105C api case 200 with valid request|200|105C100167|
-Verify check 105C api case 400 with missing code105C param|400||Profile not found
-Verify check 105C api case 400 with missing value of code105C|400||Profile not found
-Verify check 105C api case 400 with value of code105C as text|400|code105C|User's info not found
-Verify check 105C api case 400 with value of code105C as special word|400|105$088854|User's info not found
-Verify check 105C api case 400 with value of code105C lower case|400|105c088854|User's info not found
-Verify check 105C api case 400 with value of code105C as not exist in database|400|105C999997|User's info not found
-Verify check 105C api case 200 with valid 105C has APP_ID as 7 in TCBS_APPLICATION_USER table|200|105C777772|

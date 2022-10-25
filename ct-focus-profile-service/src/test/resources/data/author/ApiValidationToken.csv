@@ -1,0 +1,13 @@
+testCaseName|token|statusCode|errorMessage|action|resource
+Verify check validation with token expried|eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzaXRfYXV0aGVuX3NlcnZpY2UiLCJleHAiOjE2NTEwNTYwNzAsImp0aSI6IiIsImlhdCI6MTY1MTA0NTI3MCwic3ViIjoiMTAwMDAwMjU0MzQiLCJjdXN0b2R5SUQiOiIxMDVDMDYwOTgwIiwiZW1haWwiOiJkdW9uODg4OGdiMkBnbWFpbC5jb20iLCJyb2xlcyI6WyJjdXN0b21lciJdLCJzdGVwdXBfZXhwIjowLCJzb3RwX3NpZ24iOiIiLCJjbGllbnRfa2V5IjoiSWlyWGZSVUFnMlZIeE5ocmlJblZycWFuNjIzbm1zUUwiLCJzZXNzaW9uSUQiOiIwZWExMzNiZC1jOThiLTQxNWEtYWJhZS1mYmRhMTU2OTA4NmYiLCJhY2NvdW50X3N0YXR1cyI6IjEiLCJvdHAiOiIiLCJvdHBUeXBlIjoiIiwib3RwU291cmNlIjoiVENJTlZFU1QifQ.rtnazdhdAQxlD9o5yaIon3x8gF1GUfdh8oYG141V6wVupWIr0N_NuhI4ZbLPb_EVBnmIJ2IPFWPmfACUh862vTGiWLKwzlCKk9ThUDMiO6Jni41NbViytQuEKiWqW_adE7ZvhL5BiZDZ11quIl0J3zAD3lz1J59mn84paQmvSRZV2pR-RwbcYLFd_ydnp7BRkniKmj5rQWtMmZ54VGV3GCuCJX0CwJX5pnRGnSd3e1z0aHLronBbUjP4bUJeSsnQGdgJq-ZknZQGhHEkzC_6_PSOxn-t7uG1XZDyTfllu1WgLjtGOVjM0xVG7zdJwAdGn4jdpXEKJqL9-M5TakG8wg|400|invalid input->token is expried|rest:GET|/profile-r/v2/get-profile/by-xxxxid/10000025434
+Verify check validation with missing token|""|400|invalid input->require at least subjects or token in the request body|rest:GET|/profile-r/v2/get-profile/by-xxxxid/10000025434
+Verify check validation with token is empty|empty|400|invalid input->require at least subjects or token in the request body|rest:GET|/profile-r/v2/get-profile/by-xxxxid/10000025434
+Verify check validation with token not exist|test|400|invalid input->token contains an invalid number of segments|rest:GET|/profile-r/v2/get-profile/by-xxxxid/10000025434
+Verify check validation with token not in black list|token|200|""|rest:GET|/profile-r/v2/get-profile/by-xxxxid/10000025434
+Verify check validation with missing action|token|400|invalid input->action is required||/profile-r/v2/get-profile/by-xxxxid/10000025434
+Verify check validation with missing resource|token|400|invalid input->resource is required|rest:GET|
+Verify check validation with action is empty|token|200|""|empty|/profile-r/v2/get-profile/by-xxxxid/10000025434
+Verify check validation with resource is empty|token|200|""|rest:GET|empty
+Verify check validation with action not exist|token|200|""|123|/profile-r/v2/get-profile/by-xxxxid/10000025434
+Verify check validation with resource not exist|token|200|""|rest:GET|5677
+Verify check validation missing body||400|invalid format||

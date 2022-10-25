@@ -1,7 +1,0 @@
-testCaseName|condition|tcbsId|statusCode|errorMessage
-Verify API get profile by tcbsId case fields valid|basicInfo,personalInfo|10000025745|200|
-Verify API get profile by tcbsId case fields null|null|10000025745|200|
-Verify API get profile by tcbsId case fields empty|empty|10000025745|200|
-Verify API get profile by tcbsId case fields invalid|abcdefgh|10000025745|200|
-Verify API get profile by tcbsId case invalid x-api-key|basicInfo,personalInfo|10000025745|401|Invalid X-Api-Key
-Verify API get profile by tcbsId case fields basicInfo,personalInfo and invalid tcbsId|basicInfo,personalInfo|1vc0025768|400|Profile not found

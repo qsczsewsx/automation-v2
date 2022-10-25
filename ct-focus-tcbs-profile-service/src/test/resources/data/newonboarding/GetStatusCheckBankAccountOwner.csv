@@ -1,5 +1,0 @@
-testCaseName|statusCode|tcbsId|expectedStatus
-Verify get status check bank account owner api case valid request|200|10000023695|1
-Verify get status check bank account owner api case tcbsId is not found|200|99999999999|0
-Verify get status check bank account owner api case tcbsId value is text|200|abc|0
-Verify get status check bank account owner api case tcbsId value is special word|200|*#@|0

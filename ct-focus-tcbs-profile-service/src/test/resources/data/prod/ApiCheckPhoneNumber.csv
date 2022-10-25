@@ -1,7 +1,0 @@
-testCaseName|statusCode|phone|erroMsg
-Verify check phoneNumber api case 200 with valid request|200|01292968616|
-Verify check phoneNumber api case 400 with missing phoneNumber param|400||Profile not found
-Verify check phoneNumber api case 400 with missing value of phoneNumber|400||Profile not found
-Verify check phoneNumber api case 400 with value of phoneNumber as text|400|phone|User's info not found
-Verify check phoneNumber api case 400 with value of phoneNumber as special word|400|$129296861@|User's info not found
-Verify check phoneNumber api case 400 with value of phoneNumber as not exist in database|400|99999999999|User's info not found

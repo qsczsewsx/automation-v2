@@ -1,5 +1,0 @@
-{
-    "condition": "tcbsId IN ('0001948886','0001669510','0001582021','0001707897','0001333555','0001100133','0001419474') AND lastName LIKE '%a%'",
-    "fields": "personalInfo,basicInfo",
-    "limit": 10
-}

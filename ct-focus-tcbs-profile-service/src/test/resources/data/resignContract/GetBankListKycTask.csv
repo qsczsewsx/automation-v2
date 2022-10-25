@@ -1,3 +1,0 @@
-testCaseName|statusCode|errorMessage
-Verify get bank list kyc task api case valid request|200|null
-Verify get bank list kyc task api case invalid token|403|Not Authorized

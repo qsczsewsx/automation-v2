@@ -1,6 +1,0 @@
-testcaseName|data|subType|stpMode
-Verify api trigger approve contract case 200 with stpMode is off|105C730403|CNTN|OFF
-Verify api trigger approve contract case 200 with stpMode is on and subtype is CNTN|105C730403|CNTN|ON
-Verify api trigger approve contract case 200 with stpMode is on and subtype is CNNN|105C575938|CNNN|ON
-Verify api trigger approve contract case 200 with stpMode is on and subtype is TCTN|105C224557 |TCTN|ON
-Verify api trigger approve contract case 200 with stpMode is on and subtype is TCNN|105C023000 |TCNN|ON

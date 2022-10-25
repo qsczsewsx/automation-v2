@@ -1,6 +1,0 @@
-testCaseName|username|statusCode|erroMess
-Verify Get Proinvestor By 105C API Case 400 With Empty 105C code||400|Profile not found
-Verify Get Proinvestor By 105C API Case 400 With non-existed 105C code|105FCC10|400|Profile not found
-Verify Get Proinvestor By 105C API Case 400 With 105C code conatining special characters|105FCC10@@|400|Profile not found
-Verify Get Proinvestor By 105C API Case 400 With user having no permission|105FCC1035|401|Invalid X-Api-Key
-Verify Get Proinvestor By 105C Case 200 With Valid 105C Code|gen|200|

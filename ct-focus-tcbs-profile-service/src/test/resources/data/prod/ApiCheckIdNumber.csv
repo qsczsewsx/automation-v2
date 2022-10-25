@@ -1,7 +1,0 @@
-testCaseName|statusCode|idNumber|erroMsg
-Verify check 105C api case 200 with valid request|200|179522153|
-Verify check 105C api case 400 with missing idNumber param|400||Profile not found
-Verify check 105C api case 400 with missing value of idNumber|400||Profile not found
-Verify check 105C api case 400 with value of idNumber as text|400|idNumber|User's info not found
-Verify check 105C api case 400 with value of idNumber as special word|400|$7952215@|User's info not found
-Verify check 105C api case 400 with value of idNumber as not exist in database|400|999999999|User's info not found

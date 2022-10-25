@@ -1,4 +1,0 @@
-testCaseName|status|errorMessage|referenceId
-Verify rm download signed contract api case valid request|200|null|2979708163550578
-Verify rm download signed contract api case missing BODY|400|NOT_FOUND|null
-Verify rm download signed contract api case referenceId is invalid|400|NOT_FOUND|2979708163550000

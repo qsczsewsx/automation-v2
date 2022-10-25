@@ -1,4 +1,0 @@
-testCaseName|tcbsId|statusCode|erroMsg
-Verify check SLA customer api case 200 with customer has just opened account|10000000744|200|
-Verify check SLA customer api case 200 with customer has just uploaded both idNumber and video|10000000744|200|
-Verify check SLA customer api case 200 with customer already sent to VSD|0001010157|200|

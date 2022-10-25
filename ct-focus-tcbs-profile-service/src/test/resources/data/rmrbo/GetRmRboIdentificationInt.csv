@@ -1,8 +1,0 @@
-testCaseName|statusCode|custodyCd|identifyCustodyCd|errMess
-Verify api get Rm Rbo identification information case 401 with user having no permission|401|gen|gen|Invalid X-Api-Key
-Verify api get Rm Rbo identification information case 200 with null custodyCd|200||gen|
-Verify api get Rm Rbo identification information case 200 with null identifyCustodyCd|200|gen||
-Verify api get Rm Rbo identification information case 200 with params containing special characters|200|@@@@|@@@@|
-Verify api get Rm Rbo identification information case 200 with params containing word characters|200|asdfQWERTYaSDFG|asdfQWERTYaSDFG|
-Verify api get Rm Rbo identification information case 400 with null params|400|||Profile 105C code is invalid
-Verify api get Rm Rbo identification information case 200 with valid params|200|gen|gen|

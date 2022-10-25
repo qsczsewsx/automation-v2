@@ -1,5 +1,0 @@
-testCaseName|statusCode|errorMessage|wblUserId
-Verify get wbl user detail api case valid request|200|null|307
-Verify get wbl user detail api case user has no permission|403|Not Authorized|307
-Verify get wbl user detail api case wblUserId does not have number format|400|Type mismatch request parameter|&*
-Verify get wbl user detail api case wblUserId does not exist|403|wblUser not found|133333333

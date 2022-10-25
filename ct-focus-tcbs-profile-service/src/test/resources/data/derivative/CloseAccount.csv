@@ -1,9 +1,0 @@
-testCaseName|errorCode|tcbsId|errorMessage
-Verify close derivative account api case response 200 close derivative account which is ready to closed|1|0001010890|null
-Verify close derivative account api case response 400 close derivative account which is not allowed to close|2010|0001388895|Tai khoan con tien mat
-Verify close derivative account api case response 400 close derivative account which has been closed|2001|0001019015|Trang thai TK khong hop le: DA_DONG
-Verify close derivative account api case response 400 tcbsId does not exist|104001|0001921928|Profile not found
-Verify close derivative account api case response 400 tcbsId has format different from 10 or 11 digit|104001|0001921938888|Profile not found
-Verify close derivative account api case response 400 tcbsId value is text|104001|hvh|Profile not found
-Verify close derivative account api case response 400 tcbsId value is special word|104001|$#|Profile not found
-Verify close derivative account api case response 400 tcbsId LIKE tcbsId exists in DB|104001|000192192|Profile not found

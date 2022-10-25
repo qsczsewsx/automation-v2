@@ -1,5 +1,0 @@
-{
-    "condition": "lastName LIKE '%ê%'",
-    "fields": "personalInfo,basicInfo",
-    "limit": 10
-}

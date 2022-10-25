@@ -1,3 +1,0 @@
-testCase      ,description                         ,filePath                                               ,testDataFile                                ,subPath,oldParams,newParams,ok
-ProfileController#profileByUsername,ProfileController#profileByUsername,,,/profiles,filter?=userName:105C861310,/profiles/username/105C861310,true
-ProfileController#profileByTcbsId,ProfileController#profileByTcbsId,,,/profiles,filter?=tcbsId:0001861310,/profiles/0001861310,true

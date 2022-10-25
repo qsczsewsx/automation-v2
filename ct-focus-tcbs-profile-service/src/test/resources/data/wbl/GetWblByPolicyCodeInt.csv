@@ -1,5 +1,0 @@
-testCaseName|statusCode|errorMessage|policyCode
-Verify get wbl by policyCode api case valid request|200|null|NNB_NLQ.TCS
-Verify get wbl by policyCode api case invalid x-api-key|401|Invalid X-Api-Key|NNB_NLQ.TCS
-Verify get wbl by policyCode api case policyCode as a special character|400|policy not found|&*
-Verify get wbl by policyCode api case policyCode does not exist|400|policy not found|TCS-NNB1_NLQ

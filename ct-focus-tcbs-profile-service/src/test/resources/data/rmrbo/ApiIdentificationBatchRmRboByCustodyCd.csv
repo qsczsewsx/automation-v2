@@ -1,8 +1,0 @@
-testCaseName|statusCode|custodyCds|errMess|
-Verify Api get identification batch case 401 with invalid x-api-key|401|105C956857|Invalid X-Api-Key|
-Verify Api get identification batch case 400 with empty custodyCds list|400||Min batch size 1|
-Verify Api get identification batch case 200 with custodyCds containing number only|200|2||
-Verify Api get identification batch case 200 with custodyCds containing words|200|HelloThisISME||
-Verify Api get identification batch case 200 with custodyCds containing special characters|200|@@@@@||
-Verify Api get identification batch case 200 with custodyCds containing unexisted 105C code|200|105C189112||
-Verify Api get identification batch case 200 with valid custodyCds|200|gen||

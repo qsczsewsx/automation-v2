@@ -1,6 +1,0 @@
-testCaseName|statusCode|errorMessage|transactionId|otp|token|phoneCode
-Verify profile pending activate api case valid request with VN phone|200|Hệ thống đã ghi nhận yêu cầu của bạn. Vui lòng chờ tin nhắn thông báo mở tài khoản thành công|valid|111111|valid|+84
-Verify profile pending activate api case valid request with foreign phone|200|Hệ thống đã ghi nhận yêu cầu của bạn. Vui lòng chờ tin nhắn thông báo mở tài khoản thành công|valid|111111|valid|+58
-Verify profile pending activate api case missing BODY|400|Invalid parameter|null|null|null|+84
-Verify profile pending activate api case otp is invalid|400|Verify OTP Fail Exception|valid|000000|valid|+84
-Verify profile pending activate api case token does not exist|400|Token invalid exception|valid|111111|c162e7909fb5583635a75279a85ec5532c7abfe973e223e4f1eb4689ea69f6ea|+84

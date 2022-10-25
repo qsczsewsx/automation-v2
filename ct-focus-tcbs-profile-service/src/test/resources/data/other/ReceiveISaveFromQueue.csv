@@ -1,4 +1,0 @@
-testCaseName|code|accountId|custodyCd|accountType|status
-Verify receive ISave from queue case ACTIVE status|200|10000023379ISAVE|105C051296|ISAVE|ACTIVE
-Verify receive ISave from queue case INACTIVE status|200|10000023379ISAVE|105C051296|ISAVE|INACTIVE
-Verify receive ISave from queue case invalid custodyCd|400|10000023379ISAVE|105C0555559|ISAVE|ACTIVE

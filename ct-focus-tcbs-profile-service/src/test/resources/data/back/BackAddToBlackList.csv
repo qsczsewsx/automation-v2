@@ -1,9 +1,0 @@
-testCaseName|statusCode|errorMessage|sessionIDs|tcbsId
-Verify add sessionID to black list success|200|null|sessionID|10000025745
-Verify add to black list missing sessionIDs|400|SessionId cannot blank||10000025745
-Verify add to black list with sessionIDs already exist in black list|400|SessionId is existed: 9a3abea0-01fa-4c9c-a961-d5f7b3316264|9a3abea0-01fa-4c9c-a961-d5f7b3316264|10000025745
-Verify add to black list missing body|400|Invalid parameter||
-Verify add to black list with sessionIDs of another user|400|Session not found: efdf97b4-dfdd-4d1c-865c-63c26499793c|efdf97b4-dfdd-4d1c-865c-63c26499793c|10000025745
-Verify add to black list missing tcbsId|400|TcbsId is wrong!|sessionID|
-Verify add to black list with tcbsId not exist|400|Session not found: e9f08ed4-3e3d-4ecd-874b-ea69eea426b1|e9f08ed4-3e3d-4ecd-874b-ea69eea426b1|3333
-Verify add to black list with multiple sessionIDs not exist|400|Session not found: hhddoo|hhddoo,yyyyy|10000025745

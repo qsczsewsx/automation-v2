@@ -1,6 +1,0 @@
-testCaseName|errorCode|dayDistance|errorMessage
-Verify process ocr fail api case response 200 valid request|200|5260108|null
-Verify process ocr fail api case response 400 missing dayDistance param|400|null|Invalid parameter
-Verify process ocr fail api case response 400 dayDistance value is empty|400|empty|Invalid parameter
-Verify process ocr fail api case response 400 dayDistance value is text|400|hvh|Invalid parameter
-Verify process ocr fail api case response 400 dayDistance value is special word|400|$#|Invalid parameter

@@ -1,5 +1,0 @@
-testCaseName|statusCode|errorMsg|date
-Verify sync pro investor from ani api case valid|200|null|2022-09-20
-Verify sync pro investor from ani api case param date has wrong format|500|Text '20/09/2022' could not be parsed at index 0|20/09/2022
-Verify sync pro investor from ani api case user having no permission|401|Invalid X-Api-Key|2022-09-20
-Verify sync pro investor from ani api case missing param date|500|null|empty

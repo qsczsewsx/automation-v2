@@ -1,2 +1,0 @@
-description |url
-Verify httpStatusCode 404 is getting when request has invalid url |/profiles/registerss

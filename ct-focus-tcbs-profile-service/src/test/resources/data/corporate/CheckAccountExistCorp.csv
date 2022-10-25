@@ -1,9 +1,0 @@
-testCaseName|statusCode|keys|value|errorMsg
-Verify check account corporate exist case 200 with value of keyValue as idNumber of account exist in CAS database|200|idNumber|2323232212111|
-Verify check account corporate exist case 400 with value of keyValue as idNumber of account not exist in CAS database|400|idNumber|164193718|Profile not found
-Verify check account corporate exist case 400 with value of keyValue as idNumber of account exist in CAS database but accountType as individual|400|idNumber|164193718|Profile not found
-Verify check account corporate exist case 500 with missing param key in Body and keyValue as valid idNumber|500||2323232212111|No value present
-Verify check account corporate exist case 400 with value of keyValue as empty or null|400|idNumber|null|Profile not found
-Verify check account corporate exist case 400 with value of keyValue as text|400|idNumber|value|Profile not found
-Verify check account corporate exist case 400 with value of keyValue as special word|400|idNumber|#$#|Profile not found
-Verify check account corporate exist case 400 missing body|400|empty|empty|Invalid parameter

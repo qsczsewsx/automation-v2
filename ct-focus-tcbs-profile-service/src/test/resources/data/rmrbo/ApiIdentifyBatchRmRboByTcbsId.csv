@@ -1,9 +1,0 @@
-testCaseName|statusCode|tcbsIds|errMess|items
-Verify Api get identification batch by tcbsid case 401 with invalid x-api-key|401|0001004685|Invalid X-Api-Key|0
-Verify Api get identification batch by tcbsid case 400 with empty tcbsId list|400||Min batch size 1|0
-Verify Api get identification batch by tcbsid case 200 with tcbsIds containing number only|200|2||0
-Verify Api get identification batch by tcbsid case 200 with tcbsIds containing words|200|HelloThisISME||0
-Verify Api get identification batch by tcbsid case 200 with tcbsIds containing special characters|200|@@@@@||0
-Verify Api get identification batch by tcbsid case 200 with tcbsIds containing unexisted tcbsId|200|0001000011||0
-Verify Api get identification batch by tcbsid case 200 with tcbsIds containing existed tcbsId but does not sharing view asset|200|10000026652||1
-Verify Api get identification batch by tcbsid case 200 with valid tcbsIds|200|gen||10

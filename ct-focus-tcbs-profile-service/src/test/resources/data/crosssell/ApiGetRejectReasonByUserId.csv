@@ -1,4 +1,0 @@
-testCaseName|statusCode|idNumber|errorMessage
-Verify Get Reject Reason Api case 200 with idNumber has one reject reason|200|112233445566|""
-Verify Get Reject Reason Api case 200 with idNumber not exist|200|9999999|
-Verify Get Reject Reason Api case 200 with idNumber has multi reject reasons|200|113113113|

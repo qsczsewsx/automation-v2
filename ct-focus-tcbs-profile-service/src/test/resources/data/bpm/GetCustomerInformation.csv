@@ -1,8 +1,0 @@
-testcaseName|statusCode|tcbsId|totalElements|errorMess
-Verify API get Customer information case 200 with valid tcbsId|200|0001010161|1|
-Verify API get Customer information case 401 user having no permission|401|0001010161|""|Invalid X-Api-Key
-Verify API get Customer information case 200 with empty tcbsId|200||0|
-Verify API get Customer information case 200 tcbsId containing more than 12 numbers|200|000101016111|0|
-Verify API get Customer information case 200 tcbsId containing word characters|200|0001010abc|0|
-Verify API get Customer information case 200 tcbsId containing special characters|200|0001010!@$|0|
-Verify API get Customer information case 200 tcbsId containing only word and special characters|200|asdfg!@#$&|0|

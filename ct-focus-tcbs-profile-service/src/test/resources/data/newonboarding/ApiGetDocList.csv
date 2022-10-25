@@ -1,6 +1,0 @@
-testCaseName|taskId|statusCode|errorMsg
-Verify get file list api case 200 with valid request|541|200|
-Verify get file list api case 400 with missing value in taskId||400|(TaskId) is required
-Verify get file list api case 400 with value in taskId as 9999999|999999|400|Task not found
-Verify get file list api case 400 with value in taskId as taskId|taskId|400|Type mismatch request parameter
-Verify get file list api case 400 with value in taskId as special word|#$#|400|Type mismatch request parameter

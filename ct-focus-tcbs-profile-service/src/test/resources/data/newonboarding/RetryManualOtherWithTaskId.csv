@@ -1,7 +1,0 @@
-testCaseName
-Verify /profile/v1/bau/retry-manual-other/{taskId} api responses httpStatusCode as ""400"" and return ""invalid request body"" message, ERROR_CODE and ERROR_MESSAGE are updated,RETRY_COUNT column is +1 in OB_RETRY table which is missing param taskId in URL
-"Verify api responses httpStatusCode as ""400"" and return ""Task is not found"" message, ERROR_CODE and ERROR_MESSAGE are updated,RETRY_COUNT column is +1 in OB_RETRY table which is missing value of param taskId in URL"
-"Verify api responses httpStatusCode as ""400"" and return ""Task is not found"" message, ERROR_CODE and ERROR_MESSAGE are updated,RETRY_COUNT column is +1 in OB_RETRY table which is contained value of param taskId in URL as ""999999"""
-"Verify api responses httpStatusCode as ""400"" and return ""Task is not found"" message, ERROR_CODE and ERROR_MESSAGE are updated,RETRY_COUNT column is +1 in OB_RETRY table which is contained value of param taskId in URL as text"
-"Verify api responses httpStatusCode as ""400"" and return ""Task is not found"" message, ERROR_CODE and ERROR_MESSAGE are updated,RETRY_COUNT column is +1 in OB_RETRY table which is contained value of param taskId in URL as special word"
-"Verify api responses httpStatusCode as ""200"" and STATUS column is updated as ""COMPLETE"", RETRY_COUNT column is +1 in OB_RETRY table"

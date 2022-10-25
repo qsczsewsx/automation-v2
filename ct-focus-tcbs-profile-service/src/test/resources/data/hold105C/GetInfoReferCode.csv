@@ -1,4 +1,0 @@
-testCaseName|referCode
-Verify get info refer code api case referCode is valid|123e4567e89b12d3a456556642440000
-Verify get info refer code api case referCode is invalid|987e4567e89b12d3a456556642440000
-Verify get info refer code api case missing referCode param|empty

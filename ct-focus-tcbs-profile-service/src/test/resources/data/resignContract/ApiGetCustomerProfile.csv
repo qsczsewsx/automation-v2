@@ -1,5 +1,0 @@
-testCaseName|statusCode|tcbsId|errMess
-Verify api get customer profile case 500 with user having no permission|403|10000210433|
-Verify api get customer profile case 500 with tcbsId containing word characters |403|105C277900|
-Verify api get customer profile case 500 with empty tcbsId|404||No message available
-Verify api get customer profile case 200 with valid tcbsId|200|10000210433|

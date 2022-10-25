@@ -1,9 +1,0 @@
-testCaseName|errorCode|tcbsId|errorMessage
-Verify get derivative account status api case response 200 signal sent to VSD|1|0001018776|null
-Verify get derivative account status api case response 200 signal sent to core derivative|1|0001010211|null
-Verify get derivative account status api case response 200 derivative account is opened successfully|1|0001921236|null
-Verify get derivative account status api case response 400 tcbsId does not exist|104001|0001921928|Profile not found
-Verify get derivative account status api case response 400 tcbsId has format different from 10 or 11 digit|104001|0001921938888|Profile not found
-Verify get derivative account status api case response 400 tcbsId value is text|104001|hvh|Profile not found
-Verify get derivative account status api case response 400 tcbsId value is special word|104001|$#|Profile not found
-Verify get derivative account status api case response 400 tcbsId LIKE tcbsId exists in DB|104001|000192192|Profile not found

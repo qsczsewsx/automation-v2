@@ -1,4 +1,0 @@
-description                                               ,tcbsId     ,code
-verify user profile with invalid TcbsId of only characters,aa         ,400
-verify user profile with invalid TcbsId of 11 digits      ,00016819861,400
-verify user profile with non-existed TcbsId of 10 digits  ,9999999999 ,400
