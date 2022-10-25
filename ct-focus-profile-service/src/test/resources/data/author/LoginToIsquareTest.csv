@@ -1,0 +1,7 @@
+testCaseName|statusCode|errorMessage|username|password
+Verify authen login api case user is customer|200|null|hoangoctri96@gmail.com|Hoadt5@1234
+Verify authen login api case missing BODY|400|Invalid format||
+Verify authen login api case param username is empty|400|One of username, email and phone must be present|empty|Hoadt5@1234
+Verify authen login api case param password is empty|400|Password must be not empty|hoangoctri96@gmail.com|empty
+Verify authen login api case username not exist|400|Username and password are not matched|tester@gmail.com|Hoadt5@1234
+Verify authen login api case password is invalid|400|Username and password are not matched|hoangoctri96@gmail.com|abc123456
